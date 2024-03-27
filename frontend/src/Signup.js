@@ -4,7 +4,6 @@ import Validation from './SignUpValidation';
 import axios from 'axios';
 
 function Signup() {
-    
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -45,7 +44,7 @@ function Signup() {
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.name && <span className='text-danger'> {errors.name}</span>}
                 </div>
-                
+
                 <div className='mb-3'>
                     <label htmlFor='email'><strong>Email</strong></label>
                     <input type="email" placeholder='Enter your Email' name='email'
@@ -61,6 +60,7 @@ function Signup() {
                 </div>
                 
                 {/* campos que pueden ser por agregación de items : Posibles Mejoras*/}
+
                 <div className='mb-3'>
                     <label htmlFor='interest_areas'><strong>Interest Areas</strong></label>
                     <input type="text" placeholder='Enter your Interest Areas' name='interest_area'
@@ -74,6 +74,8 @@ function Signup() {
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.skills && <span className='text-danger'> {errors.skills}</span>}
                 </div>
+
+                {/* ---------------------------------------------- */}
 
                 <div className='mb-3'>
                     <label htmlFor='user_type'><strong>User Type</strong></label>
@@ -92,7 +94,7 @@ function Signup() {
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
-                
+
                 <button type='submit' className='btn btn-success w-100 rounded-100'> Sign Up</button>
                 <p>You are agree to our terms and policies.</p>
                 <Link to="/" className='btn btn-default border w-100 bg-light rounded-100 decoration-none'>Log In</Link>
