@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from './SignUpValidation';
 import axios from 'axios';
+import './css/try.css'
 
 function Signup() {
     const [values, setValues] = useState({
@@ -34,8 +35,7 @@ function Signup() {
         }
     }
   return (
-    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-        <div className='bg-white p-3 rounded w-25'>
+    <section>
             <h2>Sign Up</h2>
             <form  action='' onSubmit={handleSubmit}>
                 <div className='mb-3'>
@@ -99,8 +99,8 @@ function Signup() {
                 <p>You are agree to our terms and policies.</p>
                 <Link to="/" className='btn btn-default border w-100 bg-light rounded-100 decoration-none'>Log In</Link>
             </form>
-        </div>
-    </div>
+
+    </section>
   )
 }
 
