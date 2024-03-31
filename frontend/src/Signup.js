@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from './SignUpValidation';
+import Validation from './SignupValidation';
 import axios from 'axios';
 
 function Signup() {
@@ -10,7 +10,7 @@ function Signup() {
         actual_area: '',
         interest_area: '',
         skills: '',
-        user_type:'',
+        user_type: '',
         password: ''
     })
 
@@ -19,13 +19,11 @@ function Signup() {
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
     }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(Validation(values));
-        if(errors.name === "" && errors.email === "" 
-        && errors.actual_area === "" && errors.interest_area === ""
-        && errors.skills === "" && errors.user_type === ""
-        && errors.password === ""){
+        if(errors.name === "" && errors.email === "" && errors.actual_area === "" && errors.interest_area === "" && errors.skills === "" && errors.user_type === "" && errors.password === ""){
             axios.post('http://localhost:8081/signup', values)
             .then(res => {
                 navigate('/');
@@ -59,7 +57,6 @@ function Signup() {
                     {errors.actual_area && <span className='text-danger'> {errors.actual_area}</span>}
                 </div>
                 
-                {/* campos que pueden ser por agregación de items : Posibles Mejoras*/}
 
                 <div className='mb-3'>
                     <label htmlFor='interest_areas'><strong>Interest Areas</strong></label>
@@ -75,7 +72,6 @@ function Signup() {
                     {errors.skills && <span className='text-danger'> {errors.skills}</span>}
                 </div>
 
-                {/* ---------------------------------------------- */}
 
                 <div className='mb-3'>
                     <label htmlFor='user_type'><strong>User Type</strong></label>

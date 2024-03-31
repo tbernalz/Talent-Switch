@@ -37,10 +37,10 @@ function Validation(values){
     }
 
     // skills validation
-    if(values.skils === ""){
-        error.skils = "Skills should not be empty"
+    if(values.skills === ""){
+        error.skills = "Skills should not be empty"
     }else {
-        error.skils = ""
+        error.skills = ""
     }
     
     // user_type validation
