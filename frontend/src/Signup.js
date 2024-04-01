@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from './SignupValidation';
 import axios from 'axios';
+import './css/profile.css'; // css
 
 function Signup() {
     const [values, setValues] = useState({
@@ -32,48 +33,56 @@ function Signup() {
         }
     }
   return (
-    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-        <div className='bg-white p-3 rounded w-25'>
+    <section>
+        <form  action='' onSubmit={handleSubmit}>
             <h2>Sign Up</h2>
-            <form  action='' onSubmit={handleSubmit}>
-                <div className='mb-3'>
+
+                <div className='inputbox'>
+                    {/* <ion-icon name=''></ion-icon> */}
                     <label htmlFor='name'><strong>Name</strong></label>
                     <input type="text" placeholder='Enter your Name' name='name'
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.name && <span className='text-danger'> {errors.name}</span>}
                 </div>
 
-                <div className='mb-3'>
+                <div className='inputbox'>
+                    {/* <ion-icon name=''></ion-icon> */}
                     <label htmlFor='email'><strong>Email</strong></label>
                     <input type="email" placeholder='Enter your Email' name='email'
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
 
-                <div className='mb-3'>
+                <div className='inputbox'>
+                    {/* <ion-icon name=''></ion-icon>    */}
                     <label htmlFor='actual_area'><strong>Actual Area</strong></label>
                     <input type="text" placeholder='Enter your Actual Area' name='actual_area'
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.actual_area && <span className='text-danger'> {errors.actual_area}</span>}
                 </div>
                 
+                {/* campos que pueden ser por agregación de items : Posibles Mejoras*/}
 
-                <div className='mb-3'>
+                <div className='inputbox'>
+                    {/* <ion-icon name=''></ion-icon>    */}
                     <label htmlFor='interest_areas'><strong>Interest Areas</strong></label>
                     <input type="text" placeholder='Enter your Interest Areas' name='interest_area'
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.interest_area && <span className='text-danger'> {errors.interest_area}</span>}
                 </div>
 
-                <div className='mb-3'>
+                <div className='inputbox'>
+                    {/* <ion-icon name=''></ion-icon>    */}
                     <label htmlFor='skills'><strong>Skills</strong></label>
                     <input type="text" placeholder='Enter your Interest Areas' name='skills'
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.skills && <span className='text-danger'> {errors.skills}</span>}
                 </div>
 
+                {/* ---------------------------------------------- */}
 
-                <div className='mb-3'>
+                <div className='inputbox - select-container'>
+                    {/* <ion-icon name=''></ion-icon>    */}
                     <label htmlFor='user_type'><strong>User Type</strong></label>
                     <select id="user_type" name='user_type'
                     onChange={handleInput} className='form-control rounded-0'>
@@ -84,19 +93,26 @@ function Signup() {
                     {errors.user_type && <span className='text-danger'> {errors.user_type}</span>}
                 </div>
 
-                <div className='mb-3'>
+                <div className='inputbox'>
+                    <ion-icon name= 'locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Password</strong></label>
                     <input type="password" placeholder='Enter a Password' name='password'
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
-
-                <button type='submit' className='btn btn-success w-100 rounded-100'> Sign Up</button>
-                <p>You are agree to our terms and policies.</p>
-                <Link to="/" className='btn btn-default border w-100 bg-light rounded-100 decoration-none'>Log In</Link>
+                <div>
+                <button type='submit' className='button'> Sign Up</button>    
+                </div>
+                <div>
+                    <hr/>
+                    <p>You are agree to our terms and policies.</p>
+                    <div>
+                    <Link to="/" className='link'>Log In</Link>        
+                    </div>
+                </div>
             </form>
-        </div>
-    </div>
+            <div className='text'>Magneto07</div>
+    </section>
   )
 }
 
