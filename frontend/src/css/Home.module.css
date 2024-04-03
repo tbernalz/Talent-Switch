@@ -55,3 +55,40 @@
   font-size: 16px;
   font-weight: bold;
 }
+.button {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #ddd;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  display: block;
+  width: calc(100% - 20px);
+}
+
+.button:hover {
+  background-color: #ccc;
+}
+
+@media (max-width: 600px) {
+  .button {
+    margin: 10px 0;
+    width: 100%;
+  }
+}
+
+/* */
+body {
+  margin: 0;
+  padding: 0;
+}
+.dark_bg {
+  background-color: rgba(0, 0, 0, 0.5); /* Cambia el valor alpha para ajustar el nivel de transparencia */
+  color: white; /* Cambia el color del texto si es necesario */
+  padding: 20px; /* Ajusta el relleno según sea necesario */
+  border-radius: 10px; /* Agrega bordes redondeados si deseas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Agrega una sombra para mejorar el efecto */
+}

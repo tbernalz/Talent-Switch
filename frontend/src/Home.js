@@ -5,17 +5,33 @@ import styles from './css/Home.module.css'; // Importa los estilos CSS Module
 function Home() {
   return (
     <div>
-      {/* Navbar */}
-      <nav className={styles.navbar}>
+      <nav className={styles.navbar} title='Home'>
         <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/profile">Profile</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
-          <li><Link to="/logout">Logout</Link></li>
+          <li>Magneto Switch Talent</li>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/home">Dashboard</Link></li>
+          <li><Link to="/home">Profile</Link></li>
+          <li><Link to="/home">Settings</Link></li>
+          <li><Link to="/">Logout</Link></li>
         </ul>
       </nav>
 
-      {/* Panel central */}
+      <div>
+
+        {/* Contenedor de botones */}
+        <div className={styles.buttonContainer}>
+          <Link to="/create-opportunity" className={styles.button}>Create Opportunity</Link>
+          <Link to="/home" className={styles.button}>See Opportunities</Link>
+          <Link to="/create-team" className={styles.button}>Create Project Team</Link>
+          <Link to="/home" className={styles.button}>See my Team</Link>
+          <Link to="/home" className={styles.button}>Apply Individually</Link>
+          <Link to="/home" className={styles.button}>See Individual Applicants</Link>
+          <Link to="/home" className={styles.button}>Evaluation</Link>
+          <p className={styles.dark_bg}>This page generalizes the functions of both types of users, later they will be separated.</p>  
+          
+        </div>
+      </div>
+      {/*       
       <div className={styles.panelContainer}>
         <div className={styles.panel}>
           <div className={styles.panelItem}><Link to="/create-opportunity">Create Opportunity</Link></div>
@@ -23,7 +39,7 @@ function Home() {
           <div className={styles.panelItem}><Link to="/function3">Function 3</Link></div>
           <div className={styles.panelItem}><Link to="/function4">Function 4</Link></div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
