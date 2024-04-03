@@ -54,6 +54,25 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.post('/create-opportunity', (req, res) => {
+    const sql = "INSERT INTO opportunity (`opportunity_name`,`leader_user_id`,`opportunity_area`,`description`, `required_skills`, `start_date`, `final_date`) VALUES (?)";
+    const values = [
+        req.body.opportunity_name,
+        req.body.leader_user_id,
+        req.body.opportunity_area,
+        req.body.description,
+        req.body.required_skills,
+        req.body.start_date,
+        req.body.final_date
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json("Error");
+        }
+        return res.json(data);
+    })
+})
+
 app.listen(8081, () => {
     console.log("Listening")
 });

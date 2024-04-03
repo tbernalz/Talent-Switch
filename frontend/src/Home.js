@@ -18,7 +18,7 @@ function Home() {
       {/* Panel central */}
       <div className={styles.panelContainer}>
         <div className={styles.panel}>
-          <div className={styles.panelItem}><Link to="/CreateOpportunity">Create Opportunity</Link></div>
+          <div className={styles.panelItem}><Link to="/create-opportunity">Create Opportunity</Link></div>
           <div className={styles.panelItem}><Link to="/function2">Function 2</Link></div>
           <div className={styles.panelItem}><Link to="/function3">Function 3</Link></div>
           <div className={styles.panelItem}><Link to="/function4">Function 4</Link></div>
