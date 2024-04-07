@@ -23,6 +23,13 @@ function CreateOpportunity() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(Validation(values));
+
+        if (new Date(values.start_date) > new Date(values.final_date)) {
+            const newErrors = { ...errors, final_date: 'Final date cannot be earlier than start date' };
+            setErrors(newErrors);
+            return;
+        }
+
         if (
             !errors.opportunity_name &&
             !errors.leader_user_id &&
@@ -34,7 +41,15 @@ function CreateOpportunity() {
         ) {
             axios.post('http://localhost:8081/create-opportunity', values)
                 .then(res => {
-                    navigate('/home');
+                    if(res.data === "Success"){
+                    
+                        //por ahora alert
+                        alert('Opportunity was created');
+                        navigate('/home');
+                    }else {
+                        alert("It was not possible to create the opportunity");
+                        navigate('/home');
+                    }
                 })
                 .catch(err => console.log(err));
         }

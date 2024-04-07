@@ -35,6 +35,8 @@ function Signup() {
          ){
             axios.post('http://localhost:8081/signup', values)
             .then(res => {
+                // por ahora alert
+                alert('User was Successfully registered')
                 navigate('/');
             })
             .catch(err => console.log(err));

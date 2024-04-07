@@ -33,10 +33,19 @@ app.post('/signup', (req, res) => {
         req.body.password
     ]
     db.query(sql, [values], (err, data) => {
+        // if(err){
+        //     return res.json("Error");
+        // }
+        // return res.json(data);
+
         if(err){
             return res.json("Error");
         }
-        return res.json(data);
+        if (data.length > 0){
+            return res.json("Success");
+        }else {
+            return res.json("Faile");
+        }
     })
 })
 
@@ -66,10 +75,15 @@ app.post('/create-opportunity', (req, res) => {
         req.body.final_date
     ]
     db.query(sql, [values], (err, data) => {
+        // if(err){
+        //     return res.json("Error");
+        // }
+        // return res.json(data);
+
         if(err){
             return res.json("Error");
         }
-        return res.json(data);
+        return res.json("Success");
     })
 })
 
@@ -84,10 +98,15 @@ app.post('/create-team', (req, res) => {
         req.body.final_date
     ]
     db.query(sql, [values], (err, data) => {
+        // if(err){
+        //     return res.json("Error");
+        // }
+        // return res.json(data);
+
         if(err){
             return res.json("Error");
         }
-        return res.json(data);
+        return res.json("Success");
     })
 })
 

@@ -32,7 +32,15 @@ function CreateOpportunity() {
         ) {
             axios.post('http://localhost:8081/create-team', values)
                 .then(res => {
-                    navigate('/home');
+                    if(res.data === "Success"){
+                    
+                        //por ahora alert
+                        alert('Project Team was created');
+                        navigate('/home');
+                    }else {
+                        alert("No record It was not possible to create the Project Team");
+                        navigate('/home');
+                    }
                 })
                 .catch(err => console.log(err));
         }

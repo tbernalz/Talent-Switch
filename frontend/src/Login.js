@@ -22,6 +22,9 @@ function Login() {
             axios.post('http://localhost:8081/login', values)
             .then(res => {
                 if(res.data === "Success"){
+                    
+                    // por ahora alert
+                    alert('User was found, Welcome to Magneto Talent Switch')
                     navigate('/home');
                 }else {
                     alert("No record exists");
