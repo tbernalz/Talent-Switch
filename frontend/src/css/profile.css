@@ -1,0 +1,217 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('../../resources/images/background-1.jpg');
+    /*background-image: url(https://wallpapers.com/images/featured/retro-background-gjqkb94ajz14w26m.jpg);*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+section {
+    position: relative;
+    max-width: 400px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(55px);
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    padding: 2rem 3rem;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.inputbox input,
+.inputbox2 input {
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.inputbox ion-icon,
+.inputbox2 ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2rem;
+    top: 20px;
+}
+
+body .text {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+.inputbox,
+.inputbox2 {
+    position: relative;
+    margin: 30px 0;
+    max-width: 310px;
+    border-bottom: 2px solid #fff;
+}
+
+.inputbox label,
+.inputbox2 label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-145%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.inputbox input:focus ~ label,
+.inputbox input:valid ~ label,
+.inputbox2 input:focus ~ label,
+.inputbox2 input:valid ~ label {
+    top: -5px;
+}
+
+/* Estilos para los campos de entrada */
+.inputbox input:not(:placeholder-shown),
+.inputbox2 input:not(:placeholder-shown) {
+    top: -5px;
+}
+
+/* Estilos para los campos de selección */
+.select-container select:not([value=""]) + label {
+    top: -5px;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -5px;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -5px;
+}
+
+p {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 200;
+}
+
+p:hover {
+    text-decoration: none;
+}
+
+.button {
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(-40%);
+    transition: all 0.4s ease;
+}
+.button:hover {
+    background-color: transparent;
+}
+
+.link {
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    color: #000;
+    transition: all 0.4s ease
+}
+
+.link:hover {
+    background-color: transparent;
+}
+
+/* Options */
+select {
+    background-color: transparent; /* Hace que el fondo sea transparente */
+}
+
+.select-container {
+    position: relative;
+    margin: 30px 0;
+    max-width: 310px;
+}
+
+.select-container select {
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+    -webkit-appearance: none; /* Oculta la flecha del selector */
+    -moz-appearance: none; /* Oculta la flecha del selector */
+    appearance: none; /* Oculta la flecha del selector */
+}
+
+.select-container::after {
+    content: '\25BC'; /* Agrega un símbolo de flecha */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    pointer-events: none;
+}
+
+.select-container label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-145%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+select:focus ~ label,
+select:valid ~ label {
+    top: -5px;
+}

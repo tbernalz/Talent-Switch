@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from './LoginValidation';
+import Validation from './validations/LoginValidation';
 import axios from 'axios';
-import './css/try.css'
+import './css/profile.css';
 
 
 function Login() {
@@ -33,15 +33,16 @@ function Login() {
 
   return (
     <section>
-        <form action='' onSubmit={handleSubmit}>
+
+        <form  action='' onSubmit={handleSubmit}>
+
             <h2>Sign In</h2>
                 <div className='inputbox'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" placeholder='Enter Email' name='email'
-
-                   onChange={handleInput} className='form-control rounded-0' />
-                   {errors.email && <span className='text-danger'> {errors.email}</span>}
+                    onChange={handleInput} className='form-control rounded-0' />
+                    {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
 
                 <div className='inputbox2'>
@@ -53,17 +54,18 @@ function Login() {
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>
-                <button className='button'> Log In</button>
+                    <button type='submit' className='button'>Log In</button>
                 </div>
                 <div>
-                <p>I don't have an account</p>
-                <div>
-                <Link to="/signup" className='link'>Create account</Link>
+                    <hr />
+                    <p>I don't have an account</p>
+                    <div>
+                        <Link to="/signup" className='link'>Create account</Link>
+                    </div>
                 </div>
-                </div>
-            </form>
-            <div className='text'>Magneto07</div>
-        </section>
+        </form>
+        <div className='text'>Magneto07</div>
+    </section>
   )
 }
 

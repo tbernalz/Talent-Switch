@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+// const myconnection = require('express-myconnection');
 
 const app = express();
 app.use(cors());
@@ -10,12 +11,18 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: "signup"
+    database: "magneto_db"
 });
-
+// app.use(myconnection(mysql, {
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     port: '3306',
+//     database: 'signup'
+// }))
 
 app.post('/signup', (req, res) => {
-    const sql = "INSERT INTO login (`name`,`email`,`actual_area`,`interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
+    const sql = "INSERT INTO user (`name`,`email`,`actual_area`,`interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
     const values = [
         req.body.name,
         req.body.email,
@@ -34,7 +41,7 @@ app.post('/signup', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-    const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?";
+    const sql = "SELECT * FROM user WHERE `email` = ? AND `password` = ?";
     db.query(sql, [req.body.email, req.body.password], (err, data) => {
         if(err){
             return res.json("Error");
@@ -46,6 +53,44 @@ app.post('/login', (req, res) => {
         }
     })
 })
+
+app.post('/create-opportunity', (req, res) => {
+    const sql = "INSERT INTO opportunity (`opportunity_name`,`leader_user_id`,`opportunity_area`,`description`, `required_skills`, `start_date`, `final_date`) VALUES (?)";
+    const values = [
+        req.body.opportunity_name,
+        req.body.leader_user_id,
+        req.body.opportunity_area,
+        req.body.description,
+        req.body.required_skills,
+        req.body.start_date,
+        req.body.final_date
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json("Error");
+        }
+        return res.json(data);
+    })
+})
+
+app.post('/create-team', (req, res) => {
+    const sql = "INSERT INTO team (`team_name`,`leader_user_id`,`team_area`,`description`, `start_date`, `final_date`) VALUES (?)";
+    const values = [
+        req.body.team_name,
+        req.body.leader_user_id,
+        req.body.team_area,
+        req.body.description,
+        req.body.start_date,
+        req.body.final_date
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json("Error");
+        }
+        return res.json(data);
+    })
+})
+
 
 app.listen(8081, () => {
     console.log("Listening")
