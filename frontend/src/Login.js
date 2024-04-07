@@ -33,7 +33,9 @@ function Login() {
 
   return (
     <section>
+
         <form  action='' onSubmit={handleSubmit}>
+
             <h2>Sign In</h2>
                 <div className='inputbox'>
                     <ion-icon name='mail-outline'></ion-icon>
@@ -42,6 +44,7 @@ function Login() {
                     onChange={handleInput} className='form-control rounded-0' />
                     {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
+
                 <div className='inputbox2'>
                     <ion-icon name= 'locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Password</strong></label>
