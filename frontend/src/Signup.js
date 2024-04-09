@@ -49,7 +49,7 @@ function Signup() {
                     {/* <ion-icon name=''></ion-icon> */}
                     <label htmlFor='name'><strong>Name</strong></label>
                     <input type="text" placeholder='Enter your Name' name='name'
-                    onChange={handleInput} className='form-control rounded-0' />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.name ? ' is-invalid' : '')} />
                     {errors.name && <span className='text-danger'> {errors.name}</span>}
                 </div>
 
@@ -57,7 +57,7 @@ function Signup() {
                     {/* <ion-icon name=''></ion-icon> */}
                     <label htmlFor='email'><strong>Email</strong></label>
                     <input type="email" placeholder='Enter your Email' name='email'
-                    onChange={handleInput} className='form-control rounded-0' />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')} />
                     {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
 
@@ -65,7 +65,7 @@ function Signup() {
                     {/* <ion-icon name=''></ion-icon>    */}
                     <label htmlFor='actual_area'><strong>Actual Area</strong></label>
                     <input type="text" placeholder='Enter your Actual Area' name='actual_area'
-                    onChange={handleInput} className='form-control rounded-0' />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.actual_area ? ' is-invalid' : '')} />
                     {errors.actual_area && <span className='text-danger'> {errors.actual_area}</span>}
                 </div>
                 
@@ -75,15 +75,15 @@ function Signup() {
                     {/* <ion-icon name=''></ion-icon>    */}
                     <label htmlFor='interest_areas'><strong>Interest Areas</strong></label>
                     <input type="text" placeholder='Enter your Interest Areas' name='interest_area'
-                    onChange={handleInput} className='form-control rounded-0' />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.interest_area ? ' is-invalid' : '')} />
                     {errors.interest_area && <span className='text-danger'> {errors.interest_area}</span>}
                 </div>
 
                 <div className='inputbox'>
                     {/* <ion-icon name=''></ion-icon>    */}
                     <label htmlFor='skills'><strong>Skills</strong></label>
-                    <input type="text" placeholder='Enter your Interest Areas' name='skills'
-                    onChange={handleInput} className='form-control rounded-0' />
+                    <input type="text" placeholder='Enter your skills' name='skills'
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.skills ? ' is-invalid' : '')} />
                     {errors.skills && <span className='text-danger'> {errors.skills}</span>}
                 </div>
 
@@ -105,7 +105,7 @@ function Signup() {
                     <ion-icon name= 'locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Password</strong></label>
                     <input type="password" placeholder='Enter a Password' name='password'
-                    onChange={handleInput} className='form-control rounded-0' />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')} />
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>
@@ -113,7 +113,7 @@ function Signup() {
                 </div>
                 <div>
                     <hr/>
-                    <p>You are agree to our terms and policies.</p>
+                    <p>You agree to our terms and policies.</p>
                     <div>
                     <Link to="/" className='link'>Log In</Link>        
                     </div>

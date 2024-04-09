@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-image: url('../../resources/images/background-1.jpg');
+    background-image: url('../../resources/images/background-2.jpg');
     /*background-image: url(https://wallpapers.com/images/featured/retro-background-gjqkb94ajz14w26m.jpg);*/
     background-repeat: no-repeat;
     background-position: center;
@@ -28,12 +28,13 @@ section {
     justify-content: center;
     align-items: center ;
     padding: 2rem 3rem;
-    margin-top: 20%;
-    margin-bottom: 20%;
+    margin-top: 40%;
+    margin-bottom: 40%;
 }
 
 .inputbox input,
 .inputbox2 input {
+    position: relative;
     width: 100%;
     height: 20px;
     background: transparent;
@@ -72,16 +73,50 @@ h2 {
 .inputbox2 {
     position: relative;
     margin: 30px 0;
-    max-width: 310px;
+    max-width: 290px;
+    font-size: 0.8rem;
     border-bottom: 2px solid #fff;
 }
 
-.inputbox label,
+.inputbox2 input.is-invalid {
+    border-color: red; /* Cambia el borde a rojo cuando hay un error */
+}
+
+.inputbox2 .text-danger {
+    position: absolute;
+    bottom: -15px; /* Ajusta la posición vertical del mensaje de error */
+    left: 0;
+    font-size: 0.6rem;
+    color: red;
+}
+
+.inputbox input.is-valid{
+    border-color: red;
+}
+
+.inputbox .text-danger{
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    font-size: 0.7rem;
+    color: rgb(251, 48, 48);
+}
+
+.inputbox label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-127%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
 .inputbox2 label {
     position: absolute;
     top: 50%;
     left: 5px;
-    transform: translateY(-145%);
+    transform: translateY(-130%);
     color: #fff;
     font-size: 1rem;
     pointer-events: none;
@@ -172,13 +207,13 @@ select {
 
 .select-container {
     position: relative;
-    margin: 30px 0;
+    margin: 20px 0;
     max-width: 310px;
 }
 
 .select-container select {
     width: 100%;
-    height: 30px;
+    height: 20px;
     background: transparent;
     border: none;
     outline: none;
@@ -204,7 +239,7 @@ select {
     position: absolute;
     top: 50%;
     left: 5px;
-    transform: translateY(-145%);
+    transform: translateY(-137%);
     color: #fff;
     font-size: 1rem;
     pointer-events: none;
