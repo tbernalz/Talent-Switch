@@ -40,11 +40,11 @@ function Login() {
         <form  action='' onSubmit={handleSubmit}>
 
             <h2>Sign In</h2>
-                <div className='inputbox'>
+                <div className='inputbox2'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" placeholder='Enter Email' name='email'
-                    onChange={handleInput} className='form-control rounded-0' />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')}/>
                     {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
 
@@ -52,8 +52,7 @@ function Login() {
                     <ion-icon name= 'locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Password</strong></label>
                     <input type="password" placeholder='Enter Password' name='password'
-
-                    onChange={handleInput} className='form-control rounded-0' />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')}/>
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>
