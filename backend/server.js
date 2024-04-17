@@ -13,41 +13,67 @@ const db = mysql.createConnection({
     password: '',
     database: "magneto_db"
 });
-// app.use(myconnection(mysql, {
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     port: '3306',
-//     database: 'signup'
-// }))
 
 app.post('/signup', (req, res) => {
-    const sql = "INSERT INTO user (`name`,`email`,`actual_area`,`interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
-    const values = [
-        req.body.name,
-        req.body.email,
-        req.body.actual_area,
-        req.body.interest_area,
-        req.body.skills,
-        req.body.user_type,
-        req.body.password
-    ]
-    db.query(sql, [values], (err, data) => {
-        // if(err){
-        //     return res.json("Error");
-        // }
-        // return res.json(data);
-
+    const email = req.body.email;
+    // Verificar si el correo ya existe en la base de datos
+    db.query("SELECT * FROM user WHERE email = ?", email, (err, data) => {
         if(err){
             return res.json("Error");
         }
         if (data.length > 0){
-            return res.json("Success");
-        }else {
-            return res.json("Faile");
+            return res.json("email_exists");
+        } else {
+            // Si el correo no existe, procede con el registro
+            const sql = "INSERT INTO user (`name`,`email`,`actual_area`,`interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
+            const values = [
+                req.body.name,
+                req.body.email,
+                req.body.actual_area,
+                req.body.interest_area,
+                req.body.skills,
+                req.body.user_type,
+                req.body.password
+            ]
+            db.query(sql, [values], (err, result) => {
+                if(err){
+                    return res.json("Error");
+                }
+                return res.json("Success");
+            });
         }
-    })
-})
+    });
+});
+
+
+//Complete Sign Up
+// app.post('/signup', (req, res) => {
+//     const sql = "INSERT INTO user (`name`,`email`,`actual_area`,`interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
+//     const values = [
+//         req.body.name,
+//         req.body.email,
+//         req.body.actual_area,
+//         req.body.interest_area,
+//         req.body.skills,
+//         req.body.user_type,
+//         req.body.password
+//     ]
+//     db.query(sql, [values], (err, data) => {
+//         // if(err){
+//         //     return res.json("Error");
+//         // }
+//         // return res.json(data);
+
+//         if(err){
+//             return res.json("Error");
+//         }
+//         if (data.length > 0){
+//             return res.json("Success");
+//         }else {
+//             return res.json("Faile");
+//         }
+//     })
+// })
 
 app.post('/login', (req, res) => {
     const sql = "SELECT * FROM user WHERE `email` = ? AND `password` = ?";
