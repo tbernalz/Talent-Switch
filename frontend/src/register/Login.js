@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from './validations/LoginValidation';
+import Validation from '../validations/LoginValidation';
 import axios from 'axios';
-import './css/profile.css';
+import './../css/profile.css';
 
 
 function Login() {

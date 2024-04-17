@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './css/Home.module.css'; // Importa los estilos CSS Module
+import styles from './../css/Home.module.css'; // Importa los estilos CSS Module
 
 function Home() {
   return (

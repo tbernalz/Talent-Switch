@@ -1,10 +1,10 @@
 import React from 'react'
-import Login from './Login'
+import Login from './register/Login'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Signup from './Signup';
-import Home from './Home';
-import CreateOpportunity from './CreateOpportunity';
-import CreateTeam from './CreateTeam';
+import Signup from './register/Signup';
+import Home from './profile/Home';
+import CreateOpportunity from './functions/CreateOpportunity';
+import CreateTeam from './functions/CreateTeam';
 
 function App() {
   return (
