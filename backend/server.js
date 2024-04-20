@@ -90,10 +90,10 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/create-opportunity', (req, res) => {
-    const sql = "INSERT INTO opportunity (`opportunity_name`,`leader_user_id`,`opportunity_area`,`description`, `required_skills`, `start_date`, `final_date`) VALUES (?)";
+    const sql = "INSERT INTO opportunity (`opportunity_name`,`opportunity_leader_email`,`opportunity_area`,`description`, `required_skills`, `start_date`, `final_date`) VALUES (?)";
     const values = [
         req.body.opportunity_name,
-        req.body.leader_user_id,
+        req.body.opportunity_leader_email,
         req.body.opportunity_area,
         req.body.description,
         req.body.required_skills,
@@ -114,10 +114,10 @@ app.post('/create-opportunity', (req, res) => {
 })
 
 app.post('/create-team', (req, res) => {
-    const sql = "INSERT INTO team (`team_name`,`leader_user_id`,`team_area`,`description`, `start_date`, `final_date`) VALUES (?)";
+    const sql = "INSERT INTO team (`team_name`,`team_leader_email`,`team_area`,`description`, `start_date`, `final_date`) VALUES (?)";
     const values = [
         req.body.team_name,
-        req.body.leader_user_id,
+        req.body.team_leader_email,
         req.body.team_area,
         req.body.description,
         req.body.start_date,

@@ -7,7 +7,7 @@ import './../css/profile.css'; // css
 function CreateOpportunity() {
     const [values, setValues] = useState({
         opportunity_name: '',
-        leader_user_id: '',
+        opportunity_leader_email: '',
         opportunity_area: '',
         description: '',
         required_skills: '',
@@ -32,7 +32,7 @@ function CreateOpportunity() {
 
         if (
             !errors.opportunity_name &&
-            !errors.leader_user_id &&
+            !errors.opportunity_leader_email &&
             !errors.opportunity_area &&
             !errors.description &&
             !errors.required_skills &&
@@ -70,10 +70,10 @@ function CreateOpportunity() {
 
             <div className='inputbox'>
                 {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='leader_user_id'><strong>Leader User ID</strong></label>
-                <input type="text" placeholder='Enter Leader User ID' name='leader_user_id'
-                onChange={handleInput} className={'form-control rounded-0' + (errors.leader_user_id ? ' is-invalid' : '')} />
-                {errors.leader_user_id && <span className='text-danger'> {errors.leader_user_id}</span>}
+                <label htmlFor='opportunity_leader_email'><strong>Opportunity Leader Email</strong></label>
+                <input type="text" placeholder='Enter Opportunity Leader Email' name='opportunity_leader_email'
+                onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_leader_email ? ' is-invalid' : '')} />
+                {errors.opportunity_leader_email && <span className='text-danger'> {errors.opportunity_leader_email}</span>}
             </div>
 
             <div className='inputbox'>
