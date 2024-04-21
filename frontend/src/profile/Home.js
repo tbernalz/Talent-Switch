@@ -24,8 +24,8 @@ function Home() {
           <Link to="/list-opportunities" className={styles.button}>See Opportunities</Link>
           <Link to="/create-team" className={styles.button}>Create Project Team</Link>
           <Link to="/list-teams" className={styles.button}>See Teams</Link>
-          <Link to="/home" className={styles.button}>Apply Individually</Link>
-          <Link to="/home" className={styles.button}>See Individual Applicants</Link>
+          <Link to="/create-postulation" className={styles.button}>Apply Individually</Link>
+          <Link to="/list-postulations" className={styles.button}>See Postulations</Link>
           <Link to="/home" className={styles.button}>Evaluation</Link>
           <p className={styles.dark_bg}>This page generalizes the functions of both types of users, later they will be separated.</p>  
           

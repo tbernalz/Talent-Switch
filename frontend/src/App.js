@@ -4,12 +4,18 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Signup from './register/Signup';
 import Home from './profile/Home';
 
+//Opportunity
 import CreateOpportunity from './functions/CreateOpportunity';
 import ListOpportunities from './functions/ListOpportunities';
 import OpportunityDetail from './functions/OpportunityDetail';
 
+//Team
 import CreateTeam from './functions/CreateTeam';
 import ListTeams from './functions/ListTeams';
+
+//Postulation
+import CreatePostulation from './functions/CreatePotulation';
+
 
 function App() {
   return (
@@ -29,6 +35,12 @@ function App() {
             {/* Teams Project */}
             <Route path='/create-team' element={<CreateTeam />}></Route>
             <Route path='/list-teams' element={<ListTeams />}></Route>
+            {/* <Route path='/teams/:id' element={<TeamDetail />}></Route> */}
+
+            {/* Opportunities */}
+            <Route path='/create-postulation' element={<CreatePostulation />}></Route>
+            {/* <Route path='/list-postulations' element={<ListPostulations />}></Route> */}
+            {/* <Route path='/postulations/:id' element={<PostulationDetail />}></Route> */}
 
           </Routes>
       </BrowserRouter>
