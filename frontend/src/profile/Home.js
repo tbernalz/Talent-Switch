@@ -21,9 +21,9 @@ function Home() {
         {/* Contenedor de botones */}
         <div className={styles.buttonContainer}>
           <Link to="/create-opportunity" className={styles.button}>Create Opportunity</Link>
-          <Link to="/home" className={styles.button}>See Opportunities</Link>
+          <Link to="/list-opportunities" className={styles.button}>See Opportunities</Link>
           <Link to="/create-team" className={styles.button}>Create Project Team</Link>
-          <Link to="/home" className={styles.button}>See my Team</Link>
+          <Link to="/list-teams" className={styles.button}>See Teams</Link>
           <Link to="/home" className={styles.button}>Apply Individually</Link>
           <Link to="/home" className={styles.button}>See Individual Applicants</Link>
           <Link to="/home" className={styles.button}>Evaluation</Link>

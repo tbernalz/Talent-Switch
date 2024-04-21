@@ -89,6 +89,9 @@ app.post('/login', (req, res) => {
     })
 })
 
+//Opportunity
+
+//create-opportunity
 app.post('/create-opportunity', (req, res) => {
     const sql = "INSERT INTO opportunity (`opportunity_name`,`opportunity_leader_email`,`opportunity_area`,`description`, `required_skills`, `start_date`, `final_date`) VALUES (?)";
     const values = [
@@ -113,6 +116,42 @@ app.post('/create-opportunity', (req, res) => {
     })
 })
 
+//list-opportunities
+app.get('/list-opportunities', (req, res) => {
+    //const sql = "SELECT * FROM opportunity";
+    const sql = "SELECT opportunity_id, opportunity_name, opportunity_area, start_date, final_date FROM opportunity";
+    db.query(sql, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar las oportunidades' });
+        }
+        res.json(data);
+    });
+});
+
+//Opportunity Detail
+app.get('/opportunities/:id', (req, res) => {
+    const opportunityId = req.params.id;
+    const sql = "SELECT * FROM opportunity WHERE id = ?";
+    db.query(sql, opportunityId, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.json("Error");
+        }
+        if (data.length === 0) {
+            return res.json("Opportunity not found");
+        }
+        return res.json(data[0]); // Devolver los detalles de la oportunidad encontrada
+    });
+});
+
+
+
+
+
+//Team Project
+
+//create-team
 app.post('/create-team', (req, res) => {
     const sql = "INSERT INTO team (`team_name`,`team_leader_email`,`team_area`,`description`, `start_date`, `final_date`) VALUES (?)";
     const values = [
@@ -135,6 +174,18 @@ app.post('/create-team', (req, res) => {
         return res.json("Success");
     })
 })
+
+//list-teams
+app.get('/list-teams', (req, res) => {
+    const sql = "SELECT * FROM team";
+    db.query(sql, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar los equipos de trabajo' });
+        }
+        res.json(data);
+    });
+});
 
 
 app.listen(8081, () => {
