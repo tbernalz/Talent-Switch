@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
-import './../css/profile.css'; // css
+import './../css/OpportunityDetail.css'; // css
 
 function ListOpportunities() {
     const [opportunities, setOpportunities] = useState([]);
@@ -29,13 +29,13 @@ function ListOpportunities() {
                 </thead>
                 <tbody>
                     {opportunities.map(opportunity => (
-                        <tr key={opportunity.id}>
+                        <tr key={opportunity.opportunity_id}>
                             <td>{opportunity.opportunity_name}</td>
                             <td>{opportunity.opportunity_area}</td>
                             <td>{opportunity.start_date}</td>
                             <td>{opportunity.final_date}</td>
                             <td>
-                                <Link to={`/opportunity/${opportunity.id}`} className="link">View</Link>
+                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="link">View</Link>
                             </td>
                         </tr>
                     ))}

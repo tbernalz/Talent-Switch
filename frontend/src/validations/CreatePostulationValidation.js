@@ -2,13 +2,6 @@ function Validation(values){
     // alert("")
     let error = {}
 
-    // postulant_name validation
-    if(values.postulant_name === ""){
-        error.postulant_name = "Postulant Name should not be empty"
-    }else {
-        error.postulant_name = ""
-    }
-
     // postulant_email validation
     if(values.postulant_email === ""){
         error.postulant_email = "Postulant Email should not be empty"

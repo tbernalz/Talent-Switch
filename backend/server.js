@@ -132,19 +132,18 @@ app.get('/list-opportunities', (req, res) => {
 //Opportunity Detail
 app.get('/opportunities/:id', (req, res) => {
     const opportunityId = req.params.id;
-    const sql = "SELECT * FROM opportunity WHERE id = ?";
+    const sql = "SELECT * FROM opportunity WHERE opportunity_id = ?";
     db.query(sql, opportunityId, (err, data) => {
         if (err) {
             console.log(err);
-            return res.json("Error");
+            return res.status(500).json({ error: "Internal Server Error" });
         }
         if (data.length === 0) {
-            return res.json("Opportunity not found");
+            return res.status(404).json({ error: "Opportunity not found" });
         }
         return res.json(data[0]); // Devolver los detalles de la oportunidad encontrada
     });
 });
-
 
 
 
@@ -221,6 +220,19 @@ app.get('/get-name', (req, res) => {
         }
         const name = data[0].name;
         return res.json({ name: name });
+    });
+});
+
+
+//list-postulations
+app.get('/list-postulations', (req, res) => {
+    const sql = "SELECT postulation_id, postulant_name, postulant_email, postulant_actual_area, postulant_interest_area, postulant_skills FROM postulation";
+    db.query(sql, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar las oportunidades' });
+        }
+        res.json(data);
     });
 });
 

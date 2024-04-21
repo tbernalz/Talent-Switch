@@ -15,7 +15,7 @@ import ListTeams from './functions/ListTeams';
 
 //Postulation
 import CreatePostulation from './functions/CreatePotulation';
-
+import ListPostulations from './functions/ListPostulations';
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
 
             {/* Opportunities */}
             <Route path='/create-postulation' element={<CreatePostulation />}></Route>
-            {/* <Route path='/list-postulations' element={<ListPostulations />}></Route> */}
+            <Route path='/list-postulations' element={<ListPostulations />}></Route>
             {/* <Route path='/postulations/:id' element={<PostulationDetail />}></Route> */}
 
           </Routes>
