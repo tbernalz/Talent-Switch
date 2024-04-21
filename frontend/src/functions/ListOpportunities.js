@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
-import './../css/OpportunityDetail.css'; // css
+import './../css/Detail.css'; // css
 
 function ListOpportunities() {
     const [opportunities, setOpportunities] = useState([]);

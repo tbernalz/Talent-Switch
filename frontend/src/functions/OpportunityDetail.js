@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import './../css/OpportunityDetail.css'; // Importa tus estilos CSS personalizados
+import './../css/Detail.css'; // Importa tus estilos CSS personalizados
 
 function OpportunityDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
@@ -17,7 +17,7 @@ function OpportunityDetail() {
                 console.log(err);
                 setError("Opportunity not Found"); // Establece el mensaje de error en caso de falla
             });
-    }, [id]); // Asegúrate de que useEffect se ejecute cuando cambie el ID
+    }, [id]);
 
     if (error) {
         return (

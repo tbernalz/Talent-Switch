@@ -104,11 +104,6 @@ app.post('/create-opportunity', (req, res) => {
         req.body.final_date
     ]
     db.query(sql, [values], (err, data) => {
-        // if(err){
-        //     return res.json("Error");
-        // }
-        // return res.json(data);
-
         if(err){
             return res.json("Error");
         }
@@ -162,11 +157,6 @@ app.post('/create-team', (req, res) => {
         req.body.final_date
     ]
     db.query(sql, [values], (err, data) => {
-        // if(err){
-        //     return res.json("Error");
-        // }
-        // return res.json(data);
-
         if(err){
             return res.json("Error");
         }
@@ -176,7 +166,8 @@ app.post('/create-team', (req, res) => {
 
 //list-teams
 app.get('/list-teams', (req, res) => {
-    const sql = "SELECT * FROM team";
+    //const sql = "SELECT * FROM team";
+    const sql = "SELECT team_id, team_name, team_area, start_date, final_date FROM team";
     db.query(sql, (err, data) => {
         if (err) {
             console.error(err);
@@ -185,6 +176,25 @@ app.get('/list-teams', (req, res) => {
         res.json(data);
     });
 });
+
+//Team Detail
+app.get('/teams/:id', (req, res) => {
+    const teamId = req.params.id;
+    const sql = "SELECT * FROM team WHERE team_id = ?";
+    db.query(sql, teamId, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+        if (data.length === 0) {
+            return res.status(404).json({ error: "Team not found" });
+        }
+        return res.json(data[0]); // Devolver los detalles del equipo encontrado
+    });
+});
+
+
+
 
 //Postulation
 
@@ -206,7 +216,6 @@ app.post('/create-postulation', (req, res) => {
     })
 })
 
-// Suponiendo que aquí es donde tienes la lógica de tu servidor
 app.get('/get-name', (req, res) => {
     const email = req.query.email;
     const sql = "SELECT name FROM user WHERE email = ?";
@@ -226,13 +235,29 @@ app.get('/get-name', (req, res) => {
 
 //list-postulations
 app.get('/list-postulations', (req, res) => {
-    const sql = "SELECT postulation_id, postulant_name, postulant_email, postulant_actual_area, postulant_interest_area, postulant_skills FROM postulation";
+    const sql = "SELECT postulation_id, postulant_name, postulant_email, postulant_actual_area, postulant_interest_area FROM postulation";
     db.query(sql, (err, data) => {
         if (err) {
             console.error(err);
-            return res.status(500).json({ error: 'Error al recuperar las oportunidades' });
+            return res.status(500).json({ error: 'Error al recuperar los postulantes' });
         }
         res.json(data);
+    });
+});
+
+//Postulation Detail
+app.get('/postulations/:id', (req, res) => {
+    const teamId = req.params.id;
+    const sql = "SELECT * FROM postulation WHERE postulation_id = ?";
+    db.query(sql, teamId, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+        if (data.length === 0) {
+            return res.status(404).json({ error: "Postulant not found" });
+        }
+        return res.json(data[0]); // Devolver los detalles del postulante encontrado
     });
 });
 

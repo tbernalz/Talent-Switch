@@ -12,10 +12,12 @@ import OpportunityDetail from './functions/OpportunityDetail';
 //Team
 import CreateTeam from './functions/CreateTeam';
 import ListTeams from './functions/ListTeams';
+import TeamDetail from './functions/TeamDetail';
 
 //Postulation
 import CreatePostulation from './functions/CreatePotulation';
 import ListPostulations from './functions/ListPostulations';
+import PostulationDetail from './functions/PostulationDetail';
 
 function App() {
   return (
@@ -31,16 +33,15 @@ function App() {
             <Route path='/list-opportunities' element={<ListOpportunities />}></Route>
             <Route path='/opportunities/:id' element={<OpportunityDetail />}></Route>
 
-
             {/* Teams Project */}
             <Route path='/create-team' element={<CreateTeam />}></Route>
             <Route path='/list-teams' element={<ListTeams />}></Route>
-            {/* <Route path='/teams/:id' element={<TeamDetail />}></Route> */}
+            <Route path='/teams/:id' element={<TeamDetail />}></Route>
 
             {/* Opportunities */}
             <Route path='/create-postulation' element={<CreatePostulation />}></Route>
             <Route path='/list-postulations' element={<ListPostulations />}></Route>
-            {/* <Route path='/postulations/:id' element={<PostulationDetail />}></Route> */}
+            <Route path='/postulations/:id' element={<PostulationDetail />}></Route>
 
           </Routes>
       </BrowserRouter>

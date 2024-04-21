@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
-import './../css/profile.css'; // css
+import './../css/Detail.css'; // css
 
 function ListPostulations() {
     const [postulations, setPostulations] = useState([]);
@@ -24,7 +24,6 @@ function ListPostulations() {
                         <th>Postulant Area</th>
                         <th>Postulant Actual Area</th>
                         <th>Postulant Interest Area</th>
-                        <th>Postulant Skills</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -35,9 +34,9 @@ function ListPostulations() {
                             <td>{postulation.postulant_email}</td>
                             <td>{postulation.postulant_actual_area}</td>
                             <td>{postulation.postulant_interest_area}</td>
-                            <td>{postulation.postulant_skills}</td>
-                            {/* Agregar función de copiar al portapapeles */}
-                            <td>Copy email</td>
+                            <td>
+                                <Link to={`/postulations/${postulation.postulation_id}`} className="link">View</Link>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
