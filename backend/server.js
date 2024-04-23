@@ -235,7 +235,7 @@ app.get('/get-name', (req, res) => {
 
 //list-postulations
 app.get('/list-postulations', (req, res) => {
-    const sql = "SELECT postulation_id, postulant_name, postulant_email, postulant_actual_area, postulant_interest_area FROM postulation";
+    const sql = "SELECT postulation_id, postulant_name, postulant_email, postulant_actual_area, postulant_interest_area, postulation_state FROM postulation";
     db.query(sql, (err, data) => {
         if (err) {
             console.error(err);

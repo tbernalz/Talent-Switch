@@ -14,6 +14,10 @@ function ListPostulations() {
             .catch(err => console.log(err));
     }, []);
 
+    const getRowClassName = (postulation) => {
+        return postulation.postulation_state === 'accepted' ? 'accepted-row' : 'pending-row';
+    };
+
     return (
         <div className="table-container">
             <h2>List of Postulants</h2>
@@ -24,16 +28,18 @@ function ListPostulations() {
                         <th>Postulant Area</th>
                         <th>Postulant Actual Area</th>
                         <th>Postulant Interest Area</th>
+                        <th>Postulantion State</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {postulations.map(postulation => (
-                        <tr key={postulation.id}>
+                        <tr key={postulation.id} className={getRowClassName(postulation)}>
                             <td>{postulation.postulant_name}</td>
                             <td>{postulation.postulant_email}</td>
                             <td>{postulation.postulant_actual_area}</td>
                             <td>{postulation.postulant_interest_area}</td>
+                            <td>{postulation.postulation_state}</td>
                             <td>
                                 <Link to={`/postulations/${postulation.postulation_id}`} className="link">View</Link>
                             </td>

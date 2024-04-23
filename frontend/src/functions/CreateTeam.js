@@ -22,6 +22,13 @@ function CreateOpportunity() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(Validation(values));
+
+        if (new Date(values.start_date) > new Date(values.final_date)) {
+            const newErrors = { ...errors, final_date: 'Final date cannot be earlier than start date' };
+            setErrors(newErrors);
+            return;
+        }
+
         if (
             !errors.team_name &&
             !errors.team_leader_email &&

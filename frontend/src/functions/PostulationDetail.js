@@ -45,6 +45,7 @@ function PostulationDetail() {
                 <p><strong>Postulant Actual Area:</strong> {postulation.postulant_actual_area}</p>
                 <p><strong>Postulant Interest Area:</strong> {postulation.postulant_interest_area}</p>
                 <p><strong>Postulant Skills:</strong> {postulation.postulant_skills}</p>
+                <p><strong>Postulant State:</strong> {postulation.postulation_state}</p>
             </div>
             <hr />
             <div>
