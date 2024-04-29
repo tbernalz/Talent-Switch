@@ -9,11 +9,11 @@ function Validation(values){
         error.team_name = ""
     }
 
-    // leader_user_id validation
-    if(values.leader_user_id === ""){
-        error.leader_user_id = "Leader user ID should not be empty"
+    // team_leader_email validation
+    if(values.team_leader_email === ""){
+        error.team_leader_email = "Team Leader Email should not be empty"
     }else {
-        error.leader_user_id = ""
+        error.team_leader_email = ""
     }
 
     // team_area validation

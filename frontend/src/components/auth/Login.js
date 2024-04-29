@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from './validations/LoginValidation';
+import Validation from '../validations/LoginValidation';
 import axios from 'axios';
-import './css/profile.css';
+import './../../styles/profile.css';
 
 
 function Login() {
@@ -40,7 +40,7 @@ function Login() {
         <form  action='' onSubmit={handleSubmit}>
 
             <h2>Sign In</h2>
-                <div className='inputbox2'>
+                <div className='inputbox'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" placeholder='Enter Email' name='email'
@@ -48,7 +48,7 @@ function Login() {
                     {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
 
-                <div className='inputbox2'>
+                <div className='inputbox'>
                     <ion-icon name= 'locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Password</strong></label>
                     <input type="password" placeholder='Enter Password' name='password'
@@ -66,7 +66,6 @@ function Login() {
                     </div>
                 </div>
         </form>
-        <div className='text'>Magneto07</div>
     </section>
   )
 }

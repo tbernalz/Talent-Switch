@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from './validations/CreateTeamValidation';
+import Validation from '../validations/CreateTeamValidation';
 import axios from 'axios';
-import './css/profile.css'; // css
+import './../../styles/profile.css'; // css
 
 function CreateOpportunity() {
     const [values, setValues] = useState({
         team_name: '',
-        leader_user_id: '',
+        team_leader_email: '',
         team_area: '',
         description: '',
         start_date: '',
@@ -22,9 +22,16 @@ function CreateOpportunity() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(Validation(values));
+
+        if (new Date(values.start_date) > new Date(values.final_date)) {
+            const newErrors = { ...errors, final_date: 'Final date cannot be earlier than start date' };
+            setErrors(newErrors);
+            return;
+        }
+
         if (
             !errors.team_name &&
-            !errors.leader_user_id &&
+            !errors.team_leader_email &&
             !errors.team_area &&
             !errors.description &&
             !errors.start_date &&
@@ -61,10 +68,10 @@ function CreateOpportunity() {
 
             <div className='inputbox'>
                 {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='leader_user_id'><strong>Leader User ID</strong></label>
-                <input type="text" placeholder='Enter Leader User ID' name='leader_user_id'
+                <label htmlFor='team_leader_email'><strong>Team Leader Email</strong></label>
+                <input type="text" placeholder='Enter Team Leader Email' name='team_leader_email'
                 onChange={handleInput} className='form-control rounded-0' />
-                {errors.leader_user_id && <span className='text-danger'> {errors.leader_user_id}</span>}
+                {errors.team_leader_email && <span className='text-danger'> {errors.team_leader_email}</span>}
             </div>
 
             <div className='inputbox'>

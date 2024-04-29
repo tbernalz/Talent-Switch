@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from './validations/SignupValidation';
+import Validation from '../validations/SignupValidation';
 import axios from 'axios';
-import './css/profile.css'; // css
+import './../../styles/profile.css'; // css
 
 function Signup() {
     const [values, setValues] = useState({
@@ -16,7 +16,7 @@ function Signup() {
     })
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({})    
+    const [errors, setErrors] = useState({})
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
     }
@@ -35,9 +35,17 @@ function Signup() {
          ){
             axios.post('http://localhost:8081/signup', values)
             .then(res => {
-                // por ahora alert
-                alert('User was Successfully registered')
-                navigate('/');
+                if(res.data === "Success"){
+
+                    // por ahora alert
+                    alert('User was Successfully registered')
+                    navigate('/');
+                }else if(res.data === "email_exists"){
+                    alert("Email Already Exists");
+                }else{
+                    alert("An Error has Cccurred")
+                }
+
             })
             .catch(err => console.log(err));
         }
@@ -70,7 +78,7 @@ function Signup() {
                     onChange={handleInput} className={'form-control rounded-0' + (errors.actual_area ? ' is-invalid' : '')}/>
                     {errors.actual_area && <span className='text-danger'> {errors.actual_area}</span>}
                 </div>
-                
+
                 {/* campos que pueden ser por agregación de items : Posibles Mejoras*/}
 
                 <div className='inputbox'>
@@ -111,17 +119,16 @@ function Signup() {
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>
-                <button type='submit' className='button'> Sign Up</button>    
+                <button type='submit' className='button'> Sign Up</button>
                 </div>
                 <div>
                     <hr/>
                     <p>You agree to our terms and policies.</p>
                     <div>
-                    <Link to="/" className='link'>Log In</Link>        
+                    <Link to="/" className='link'>Log In</Link>
                     </div>
                 </div>
             </form>
-            <div className='text'>Magneto07</div>
     </section>
   )
 }
