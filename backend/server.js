@@ -160,7 +160,6 @@ app.post('/create-team', (req, res) => {
         if(err){
             return res.json("Error");
         }
-        return res.json("Success");
 
         // Obtener el team_id del equipo recién creado
         const team_id = data.insertId;
