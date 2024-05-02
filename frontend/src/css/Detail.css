@@ -56,6 +56,19 @@
     background-color: #b6b63c96; /* Amarillo para pendiente */
 }
 
+.closed-row {
+    background-color: #8b3333b4; /* Verde para aceptado */
+}
+
+.dark_bg {
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Cambia el valor alpha para ajustar el nivel de transparencia */
+    color: white; /* Cambia el color del texto si es necesario */
+    padding: 20px; /* Ajusta el relleno según sea necesario */
+    border-radius: 10px; /* Agrega bordes redondeados si deseas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Agrega una sombra para mejorar el efecto */
+  }
+
 /* Opportunity */
 
 .opportunity-detail {

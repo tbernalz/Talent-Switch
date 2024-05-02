@@ -114,7 +114,7 @@ app.post('/create-opportunity', (req, res) => {
 //list-opportunities
 app.get('/list-opportunities', (req, res) => {
     //const sql = "SELECT * FROM opportunity";
-    const sql = "SELECT opportunity_id, opportunity_name, opportunity_area, start_date, final_date FROM opportunity";
+    const sql = "SELECT opportunity_id, opportunity_name, opportunity_area, start_date, final_date, opportunity_state FROM opportunity";
     db.query(sql, (err, data) => {
         if (err) {
             console.error(err);
@@ -262,6 +262,52 @@ app.get('/postulations/:id', (req, res) => {
 });
 
 
+// Applicants
+
+//add-applicant
+app.post('/add-applicant', (req, res) => {
+    const { opportunity_id, applicant_email } = req.body;
+
+    // Verificar si el correo del solicitante ya existe en la tabla user
+    db.query("SELECT * FROM user WHERE email = ?", applicant_email, (err, userData) => {
+        if (err) {
+            return res.json("Error");
+        }
+        if (userData.length === 0) {
+            return res.json("user_not_exists");
+        }
+        
+        // Verificar si el usuario es un empleado
+        const user = userData[0];
+        if (user.user_type !== 'employee') {
+            return res.json("applicant_not_employee");
+        }
+
+        // Verificar si el correo del solicitante ya existe en la tabla applicant
+        db.query("SELECT * FROM opportunity_applicant WHERE opportunity_id = ? AND applicant_email = ?", [
+            opportunity_id, applicant_email], (err, applicantData) => {
+            if (err) {
+                return res.json("Error");
+            }
+            if (applicantData.length > 0) {
+                return res.json("applicant_exists");
+            }
+
+            // Insertar el solicitante en la tabla applicant
+            const sql = "INSERT INTO opportunity_applicant (opportunity_id, applicant_email) VALUES (?, ?)";
+            const values = [
+                opportunity_id, 
+                applicant_email
+            ];
+            db.query(sql, values, (err, result) => {
+                if (err) {
+                    return res.json("Error");
+                }
+                return res.json("Success");
+            });
+        });
+    });
+});
 
 app.listen(8081, () => {
     console.log("Listening")
