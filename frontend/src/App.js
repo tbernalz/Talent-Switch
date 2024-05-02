@@ -1,7 +1,12 @@
 import React from 'react'
-import Login from './register/Login'
+
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+
+//Register
+import Login from './register/Login'
 import Signup from './register/Signup';
+
+//Profile
 import Home from './profile/Home';
 
 //Opportunity
@@ -18,6 +23,13 @@ import TeamDetail from './functions/TeamDetail';
 import CreatePostulation from './functions/CreatePotulation';
 import ListPostulations from './functions/ListPostulations';
 import PostulationDetail from './functions/PostulationDetail';
+
+//Evaluation
+import EvaluationForm from './functions/EvaluationForm';
+
+//Profile Functions
+import UpdateProfile from './profile/UpdateProfile';
+import MyProfile from './profile/MyProfile';
 
 function App() {
   return (
@@ -42,6 +54,13 @@ function App() {
             <Route path='/create-postulation' element={<CreatePostulation />}></Route>
             <Route path='/list-postulations' element={<ListPostulations />}></Route>
             <Route path='/postulations/:id' element={<PostulationDetail />}></Route>
+
+            {/* Evaluation */}
+            <Route path='/evaluation-form' element={<EvaluationForm />}></Route>
+
+            {/* Profile Funtions */}
+            <Route path='/my-profile' element={<MyProfile />}></Route>
+            <Route path='/update-profile' element={<UpdateProfile />}></Route>
 
           </Routes>
       </BrowserRouter>

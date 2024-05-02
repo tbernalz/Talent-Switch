@@ -10,7 +10,7 @@ function Home() {
           <li>Magneto Switch Talent</li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/home">Dashboard</Link></li>
-          <li><Link to="/home">Profile</Link></li>
+          <li><Link to="/my-profile">Profile</Link></li>
           <li><Link to="/home">Settings</Link></li>
           <li><Link to="/">Logout</Link></li>
         </ul>
@@ -26,7 +26,7 @@ function Home() {
           <Link to="/list-teams" className={styles.button}>See Teams</Link>
           <Link to="/create-postulation" className={styles.button}>Apply Individually</Link>
           <Link to="/list-postulations" className={styles.button}>See Postulations</Link>
-          <Link to="/home" className={styles.button}>Evaluation</Link>
+          <Link to="/evaluation-form" className={styles.button}>Evaluation</Link>
           <p className={styles.dark_bg}>This page generalizes the functions of both types of users, later they will be separated.</p>  
           
         </div>
