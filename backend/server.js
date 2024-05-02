@@ -161,8 +161,21 @@ app.post('/create-team', (req, res) => {
             return res.json("Error");
         }
         return res.json("Success");
-    })
-})
+
+        // Obtener el team_id del equipo recién creado
+        const team_id = data.insertId;
+
+        // Insertar al líder como un miembro más en la tabla team_member
+        const leader_sql = "INSERT INTO team_member (`team_id`, `member_email`) VALUES (?, ?)";
+        const leader_values = [team_id, req.body.team_leader_email];
+        db.query(leader_sql, leader_values, (err, data) => {
+            if(err){
+                return res.json("Error");
+            }
+            return res.json("Success");
+        });
+    });
+});
 
 //list-teams
 app.get('/list-teams', (req, res) => {
@@ -308,6 +321,80 @@ app.post('/add-applicant', (req, res) => {
         });
     });
 });
+
+//list-applicants
+app.get('/opportunities/:id/list-applicants', (req, res) => {
+    const opportunityId = req.params.id;
+    const sql = "SELECT id, applicant_email, applicant_state FROM opportunity_applicant WHERE opportunity_id = ?";
+    db.query(sql, [opportunityId], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar los solicitantes de la oportunidad' });
+        }
+        res.json(data);
+    });
+});
+
+//Members
+
+//add-member
+app.post('/add-member', (req, res) => {
+    const { team_id, member_email } = req.body;
+
+    // Verificar si el correo del solicitante ya existe en la tabla user
+    db.query("SELECT * FROM user WHERE email = ?", member_email, (err, userData) => {
+        if (err) {
+            return res.json("Error");
+        }
+        if (userData.length === 0) {
+            return res.json("user_not_exists");
+        }
+        
+        // Verificar si el usuario es un empleado
+        const user = userData[0];
+        if (user.user_type !== 'employee') {
+            return res.json("member_not_employee");
+        }
+
+        // Verificar si el correo del solicitante ya existe en la tabla member
+        db.query("SELECT * FROM team_member WHERE team_id = ? AND member_email = ?", [
+            team_id, member_email], (err, membertData) => {
+            if (err) {
+                return res.json("Error");
+            }
+            if (membertData.length > 0) {
+                return res.json("member_exists");
+            }
+
+            // Insertar el solicitante en la tabla member
+            const sql = "INSERT INTO team_member (team_id, member_email) VALUES (?, ?)";
+            const values = [
+                team_id, 
+                member_email
+            ];
+            db.query(sql, values, (err, result) => {
+                if (err) {
+                    return res.json("Error");
+                }
+                return res.json("Success");
+            });
+        });
+    });
+});
+
+//list-members
+app.get('/teams/:id/list-members', (req, res) => {
+    const teamId = req.params.id;
+    const sql = "SELECT id, member_email FROM team_member WHERE team_id = ?";
+    db.query(sql, [teamId], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar los miembros del Equipo' });
+        }
+        res.json(data);
+    });
+});
+
 
 app.listen(8081, () => {
     console.log("Listening")

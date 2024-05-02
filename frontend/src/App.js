@@ -13,11 +13,13 @@ import Home from './profile/Home';
 import CreateOpportunity from './functions/CreateOpportunity';
 import ListOpportunities from './functions/ListOpportunities';
 import OpportunityDetail from './functions/OpportunityDetail';
+import ListApplicants from './functions/ListApplicants'
 
 //Team
 import CreateTeam from './functions/CreateTeam';
 import ListTeams from './functions/ListTeams';
 import TeamDetail from './functions/TeamDetail';
+import ListMembers from './functions/ListMembers'
 
 //Postulation
 import CreatePostulation from './functions/CreatePotulation';
@@ -44,13 +46,15 @@ function App() {
             <Route path='/create-opportunity' element={<CreateOpportunity />}></Route>
             <Route path='/list-opportunities' element={<ListOpportunities />}></Route>
             <Route path='/opportunities/:id' element={<OpportunityDetail />}></Route>
+            <Route path='/opportunities/:id/list-applicants' element={<ListApplicants />}></Route>
 
             {/* Teams Project */}
             <Route path='/create-team' element={<CreateTeam />}></Route>
             <Route path='/list-teams' element={<ListTeams />}></Route>
             <Route path='/teams/:id' element={<TeamDetail />}></Route>
+            <Route path='/teams/:id/list-members' element={<ListMembers />}></Route>
 
-            {/* Opportunities */}
+            {/* Postulations */}
             <Route path='/create-postulation' element={<CreatePostulation />}></Route>
             <Route path='/list-postulations' element={<ListPostulations />}></Route>
             <Route path='/postulations/:id' element={<PostulationDetail />}></Route>

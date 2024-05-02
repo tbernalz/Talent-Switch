@@ -48,14 +48,19 @@
 }
 
 /* Clases para filas de las List */
+.open-row,
+.high-level-row,
 .accepted-row {
     background-color: #437944b4; /* Verde para aceptado */
 }
 
+.middle-level-row,
 .pending-row {
     background-color: #b6b63c96; /* Amarillo para pendiente */
 }
 
+.rejected-row,
+.low-level-row,
 .closed-row {
     background-color: #8b3333b4; /* Verde para aceptado */
 }

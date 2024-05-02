@@ -122,7 +122,7 @@ function OpportunityDetail() {
                 {/* Restringir ver solo leaders y aplicar solo employees */}
                 <hr />
                 <div>
-                    <Link to="/list-applicants" className='link'>See Applicants</Link>        
+                    <Link to={`/opportunities/${id}/list-applicants`} className='link'>See Applicants</Link>
                 </div>
                 <hr/>
                 <Link to="/list-opportunities" className="link">Back</Link>
