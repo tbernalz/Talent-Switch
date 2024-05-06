@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './../css/Detail.css'; // Importa tus estilos CSS personalizados
 
@@ -14,7 +14,6 @@ function TeamDetail() {
         member_email: '',
     })
 
-    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
 
     // Función para manejar cambios en los inputs del formulario
@@ -71,7 +70,6 @@ function TeamDetail() {
         .then(response => {
             if(response.data === "Success"){
                 alert('User Added successfully')
-                navigate('/list-teams');
             } else if(response.data === "member_exists"){
                 alert("User is Already Part of this Team");
             } else if(response.data === "member_not_employee"){

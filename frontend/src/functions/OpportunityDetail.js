@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './../css/Detail.css';
 
@@ -15,7 +15,6 @@ function OpportunityDetail() {
         applicant_email: '',
     })
 
-    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
 
     // Función para manejar cambios en los inputs del formulario
@@ -75,7 +74,6 @@ function OpportunityDetail() {
         .then(response => {
             if(response.data === "Success"){
                 alert('User applied successfully')
-                navigate('/list-opportunities');
             } else if(response.data === "applicant_exists"){
                 alert("User has Already Applied for this Opportunity");
             } else if(response.data === "applicant_not_employee"){
@@ -83,7 +81,7 @@ function OpportunityDetail() {
             } else if(response.data === "user_not_exists"){
                 alert("User not found or does not exist");
             } else{
-                alert("An Error has Cccurred")
+                alert("An Error has Occurred")
             }
         })
         .catch(error => console.log(error));

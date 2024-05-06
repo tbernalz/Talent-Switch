@@ -27,7 +27,7 @@ import ListPostulations from './functions/ListPostulations';
 import PostulationDetail from './functions/PostulationDetail';
 
 //Evaluation
-import EvaluationForm from './functions/EvaluationForm';
+import Evaluate from './functions/Evaluate';
 
 //Profile Functions
 import UpdateProfile from './profile/UpdateProfile';
@@ -60,7 +60,7 @@ function App() {
             <Route path='/postulations/:id' element={<PostulationDetail />}></Route>
 
             {/* Evaluation */}
-            <Route path='/evaluation-form' element={<EvaluationForm />}></Route>
+            <Route path='/evaluate-member/:id/:user_id/:member_email' element={<Evaluate />} />
 
             {/* Profile Funtions */}
             <Route path='/my-profile' element={<MyProfile />}></Route>

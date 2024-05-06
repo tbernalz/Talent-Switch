@@ -394,6 +394,136 @@ app.get('/teams/:id/list-members', (req, res) => {
     });
 });
 
+// Ruta para obtener el user_id asociado a un correo electrónico de miembro
+app.get('/get-user-id', (req, res) => {
+    const email = req.query.email;
+    const sql = "SELECT user_id FROM user WHERE email = ?";
+    db.query(sql, [email], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error retrieving user ID' });
+        }
+        if (data.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        const user_id = data[0].user_id;
+        return res.json({ user_id: user_id });
+    });
+});
+
+
+// Evaluate member
+// app.post('/evaluate-member/:user_id', (req, res) => {
+//     const { qualification, comment } = req.body;
+//     const member_email;
+
+//     // Insertar la evaluación del miembro en la base de datos
+//     const sql = "INSERT INTO evaluation (evaluated_email, qualification, comment, evaluation_date) VALUES (?, ?, ?, NOW())";
+//     const values = [member_email, qualification, comment];
+//     db.query(sql, values, (err, result) => {
+//         if (err) {
+//             return res.json("Error");
+//         }
+//         return res.json("Success");
+//     });
+// });
+
+//función para pasar datos desdee list-members hasta evaluate-member
+app.post('/to-evaluate-member', (req, res) => {
+    const { id, user_id, member_email } = req.body;
+    
+    // Envía todos los datos del miembro en un solo objeto JSON
+    res.json({ id, user_id, member_email });
+});
+
+
+//función de evaluación, inserción y actualización del respectivo usuario
+app.post('/evaluate-member', (req, res) => {
+    const { evaluated_email, qualification, comment } = req.body;
+
+    // Verifica si todos los campos necesarios están presentes
+    if (!evaluated_email || !qualification || !comment) {
+        return res.status(400).json("Missing required fields");
+    }
+
+    // Obtener el nivel actual de evaluación del miembro de la base de datos
+    const sqlSelect = "SELECT evaluation_level, total_evaluations FROM user WHERE email = ?";
+    db.query(sqlSelect, [evaluated_email], (err, rows) => {
+        if (err) {
+            console.error("Error selecting evaluation level:", err);
+            return res.status(500).json("Error selecting evaluation level");
+        }
+
+        if (rows.length === 0) {
+            return res.status(404).json("Member not found");
+        }
+
+        // Calcular el nuevo nivel de evaluación combinando el nivel actual y la nueva calificación
+        const currentLevel = rows[0].evaluation_level;
+        const totalEvaluations = rows[0].total_evaluations;
+        const newLevel = calculateNewLevel(currentLevel, qualification, totalEvaluations);
+
+        // Actualizar el campo evaluation_level en la base de datos
+        const sqlUpdate = "UPDATE user SET evaluation_level = ?, total_evaluations = ? WHERE email = ?";
+        const updatedTotalEvaluations = totalEvaluations + 1;
+        db.query(sqlUpdate, [newLevel, updatedTotalEvaluations, evaluated_email], (err, result) => {
+            if (err) {
+                console.error("Error updating evaluation level:", err);
+                return res.status(500).json("Error updating evaluation level");
+            }
+            
+            // Insertar la evaluación del miembro en la tabla evaluation
+            const sqlInsert = "INSERT INTO evaluation (evaluated_email, qualification, comment, evaluation_date) VALUES (?, ?, ?, NOW())";
+            const values = [evaluated_email, qualification, comment];
+            db.query(sqlInsert, values, (err, result) => {
+                if (err) {
+                    console.error("Error inserting evaluation:", err);
+                    return res.status(500).json("Error inserting evaluation");
+                }
+                return res.json("Success");
+            });
+        });
+    });
+});
+
+// Función para calcular el nuevo nivel de evaluación
+function calculateNewLevel(currentLevel, newQualification, totalEvaluations) {
+    // Manejar el caso en el que el usuario no ha recibido ninguna evaluación
+    if (currentLevel === null || totalEvaluations === 0) {
+        return parseFloat(newQualification); // Retornar la nueva calificación como nivel
+    }
+
+    // Calcular el nuevo nivel como el promedio ponderado de las calificaciones
+    const weightedSum = currentLevel * totalEvaluations + parseFloat(newQualification);
+    const updatedLevel = weightedSum / (totalEvaluations + 1);
+
+    return updatedLevel;
+}
+
+
+
+
+// app.post('/evaluate-member', (req, res) => {
+//     const { evaluated_email, qualification, comment } = req.body;
+
+//     // Verifica si todos los campos necesarios están presentes
+//     if (!evaluated_email || !qualification || !comment) {
+//         return res.status(400).json("Missing required fields");
+//     }
+    
+//     // Insertar la evaluación del miembro en la base de datos
+//     const sql = "INSERT INTO evaluation (evaluated_email, qualification, comment, evaluation_date) VALUES (?, ?, ?, NOW())";
+//     const values = [evaluated_email, qualification, comment];
+//     db.query(sql, values, (err, result) => {
+//         if (err) {
+//             console.error("Error inserting evaluation:", err);
+//             return res.status(500).json("Error inserting evaluation");
+//         }
+//         return res.json("Success");
+//     });
+// });
+
+
 
 app.listen(8081, () => {
     console.log("Listening")
