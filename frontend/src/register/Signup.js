@@ -124,6 +124,7 @@ function Signup() {
                 <div>
                     <hr/>
                     <p>You agree to our terms and policies.</p>
+                    <p>You agree to our terms and policies.</p>
                     <div>
                     <Link to="/" className='link'>Log In</Link>
                     </div>

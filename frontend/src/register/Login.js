@@ -41,6 +41,7 @@ function Login() {
 
             <h2>Sign In</h2>
                 <div className='inputbox2'>
+                <div className='inputbox2'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" placeholder='Enter Email' name='email'
