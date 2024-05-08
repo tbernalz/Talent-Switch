@@ -78,7 +78,40 @@ h2 {
     border-bottom: 2px solid #fff;
 }
 
-.inputbox label,
+.inputbox2 input.is-invalid {
+    border-color: red; /* Cambia el borde a rojo cuando hay un error */
+}
+
+.inputbox2 .text-danger {
+    position: absolute;
+    bottom: -15px; /* Ajusta la posición vertical del mensaje de error */
+    left: 0;
+    font-size: 0.6rem;
+    color: red;
+}
+
+.inputbox input.is-valid{
+    border-color: red;
+}
+
+.inputbox .text-danger{
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    font-size: 0.7rem;
+    color: rgb(251, 48, 48);
+}
+
+.inputbox label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-127%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
 .inputbox2 label {
     position: absolute;
     top: 50%;
