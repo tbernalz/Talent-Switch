@@ -9,11 +9,11 @@ function Validation(values){
         error.opportunity_name = ""
     }
 
-    // leader_user_id validation
-    if(values.leader_user_id === ""){
-        error.leader_user_id = "Leader user ID should not be empty"
+    // opportunity_leader_email validation
+    if(values.opportunity_leader_email === ""){
+        error.opportunity_leader_email = "Leader user ID should not be empty"
     }else {
-        error.leader_user_id = ""
+        error.opportunity_leader_email = ""
     }
 
     // opportunity_area validation
@@ -34,7 +34,7 @@ function Validation(values){
     if(values.required_skills === ""){
         error.required_skills = "Required skills should not be empty"
     }else {
-        error.required_skillsuser_type = ""
+        error.required_skills = ""
     }
 
     // start_date validation

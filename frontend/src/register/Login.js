@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from './validations/LoginValidation';
+import Validation from '../validations/LoginValidation';
 import axios from 'axios';
-import './css/profile.css';
+import './../css/profile.css';
 
 
 function Login() {
@@ -22,6 +22,9 @@ function Login() {
             axios.post('http://localhost:8081/login', values)
             .then(res => {
                 if(res.data === "Success"){
+                    
+                    // por ahora alert
+                    alert('User was found, Welcome to Magneto Talent Switch')
                     navigate('/home');
                 }else {
                     alert("No record exists");
@@ -38,14 +41,11 @@ function Login() {
 
             <h2>Sign In</h2>
                 <div className='inputbox2'>
+                <div className='inputbox2'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
-                    <input 
-                    type="email" 
-                    placeholder='Enter Email' 
-                    name='email'
-                    onChange={handleInput} 
-                    className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')}/>
+                    <input type="email" placeholder='Enter Email' name='email'
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')}/>
                     {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
 
@@ -53,8 +53,7 @@ function Login() {
                     <ion-icon name= 'locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Password</strong></label>
                     <input type="password" placeholder='Enter Password' name='password'
-
-                    onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')} />
+                    onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')}/>
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>

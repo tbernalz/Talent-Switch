@@ -1,0 +1,70 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del body */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('../../resources/images/background-2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'poppins', sans-serif;
+}
+
+/* Estilos del contenedor de la tabla */
+.table-container {
+    position: relative;
+    max-width: 800px; /* Ajusta el ancho máximo de la tabla según sea necesario */
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(55px);
+    padding: 2rem 3rem;
+    margin-top: 40px; /* Ajusta el margen superior según sea necesario */
+}
+
+/* Estilos de la tabla */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Estilos de las celdas de encabezado */
+.table-container th,
+.table-container td {
+    padding: 12px 15px;
+    text-align: left;
+    color: #fff; /* Color del texto */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Borde inferior */
+}
+
+/* Estilos de las celdas de encabezado */
+.table-container th {
+    background-color: #343a40; /* Color de fondo */
+}
+
+/* Estilos de las filas pares */
+.table-container tbody tr:nth-child(even) {
+    background-color: #495057; /* Color de fondo */
+}
+
+/* Estilos al pasar el ratón sobre las filas */
+.table-container tbody tr:hover {
+    background-color: #6c757d; /* Color de fondo */
+}
+
+/* Estilos específicos para las celdas de la última columna */
+.table-container td:last-child {
+    text-align: center; /* Alineación centrada */
+}
+
+.table-container td {
+    vertical-align: middle;
+  }

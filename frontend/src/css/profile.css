@@ -123,6 +123,30 @@ h2 {
     transition: all 0.5s ease-in-out;
 }
 
+.inputbox2 input.is-invalid {
+    border-color: red; /* Cambia el borde a rojo cuando hay un error */
+}
+
+.inputbox2 .text-danger {
+    position: absolute;
+    bottom: -15px; /* Ajusta la posición vertical del mensaje de error */
+    left: 0;
+    font-size: 0.6rem;
+    color: red;
+}
+
+.inputbox input.is-valid{
+    border-color: red;
+}
+
+.inputbox .text-danger{
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    font-size: 0.7rem;
+    color: rgb(251, 48, 48);
+}
+
 .inputbox input:focus ~ label,
 .inputbox input:valid ~ label,
 .inputbox2 input:focus ~ label,
@@ -250,3 +274,5 @@ select:focus ~ label,
 select:valid ~ label {
     top: -5px;
 }
+
+

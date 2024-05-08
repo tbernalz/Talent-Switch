@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './css/Home.module.css'; // Importa los estilos CSS Module
+import styles from './../css/Home.module.css'; // Importa los estilos CSS Module
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
           <li>Magneto Switch Talent</li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/home">Dashboard</Link></li>
-          <li><Link to="/home">Profile</Link></li>
+          <li><Link to="/my-profile">Profile</Link></li>
           <li><Link to="/home">Settings</Link></li>
           <li><Link to="/">Logout</Link></li>
         </ul>
@@ -21,13 +21,12 @@ function Home() {
         {/* Contenedor de botones */}
         <div className={styles.buttonContainer}>
           <Link to="/create-opportunity" className={styles.button}>Create Opportunity</Link>
-          <Link to="/home" className={styles.button}>See Opportunities</Link>
+          <Link to="/list-opportunities" className={styles.button}>See Opportunities</Link>
           <Link to="/create-team" className={styles.button}>Create Project Team</Link>
-          <Link to="/home" className={styles.button}>See my Team</Link>
-          <Link to="/home" className={styles.button}>Apply Individually</Link>
-          <Link to="/home" className={styles.button}>See Individual Applicants</Link>
-          <Link to="/home" className={styles.button}>Evaluation</Link>
-          <p className={styles.dark_bg}>This page generalizes the functions of both types of users, later they will be separated.</p>  
+          <Link to="/list-teams" className={styles.button}>See Teams</Link>
+          <Link to="/create-postulation" className={styles.button}>Apply Individually</Link>
+          <Link to="/list-postulations" className={styles.button}>See Postulations</Link>
+          <p className={styles.dark_bg}>This page generalizes the functions of both types of users, later they will be separated.</p>
           
         </div>
       </div>
