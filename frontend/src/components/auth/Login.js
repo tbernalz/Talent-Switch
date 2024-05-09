@@ -62,7 +62,7 @@ function Login() {
                     <hr />
                     <p>I don't have an account</p>
                     <div>
-                        <Link to="/signup" className='link'>Create account</Link>
+                        <Link to="/signup" className='link-button'>Create account</Link>
                     </div>
                 </div>
         </form>

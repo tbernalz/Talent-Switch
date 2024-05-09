@@ -49,7 +49,7 @@ function TeamDetail() {
             </div>
             <hr />
             <div>
-                <Link to="/list-teams" className="link">Back</Link>        
+                <Link to="/list-teams" className="link-button">Back</Link>        
             </div>
         </section>
     );

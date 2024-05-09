@@ -106,7 +106,7 @@ function CreateOpportunity() {
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='link'>Back</Link>        
+                    <Link to="/home" className='link-button'>Back</Link>        
                 </div>
             </div>
         </form>

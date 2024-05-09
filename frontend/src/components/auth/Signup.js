@@ -125,7 +125,7 @@ function Signup() {
                     <hr/>
                     <p>You agree to our terms and policies.</p>
                     <div>
-                    <Link to="/" className='link'>Log In</Link>
+                    <Link to="/" className='link-button'>Log In</Link>
                     </div>
                 </div>
             </form>

@@ -35,7 +35,7 @@ function ListOpportunities() {
                             <td>{opportunity.start_date}</td>
                             <td>{opportunity.final_date}</td>
                             <td>
-                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="link">View</Link>
+                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="link-button">View</Link>
                             </td>
                         </tr>
                     ))}
@@ -43,7 +43,7 @@ function ListOpportunities() {
             </table>
             <hr />
             <div>
-                <Link to="/home" className='link'>Back</Link>        
+                <Link to="/home" className='link-button'>Back</Link>        
             </div>
         </div>
     );

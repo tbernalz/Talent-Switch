@@ -8,18 +8,21 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'localhost', // localhost 127.0.0.1
     user: 'root',
     password: '',
     database: "magneto_db"
 });
-// app.use(myconnection(mysql, {
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     port: '3306',
-//     database: 'signup'
-// }))
+
+db.connect((err) => {
+    if(err) {
+      console.error('An error occurred while connecting to the DB');
+      console.error(err.message);
+      return;
+    }
+  
+    console.log('Successfully connected to the DB');
+  });
 
 app.post('/signup', (req, res) => {
     const sql = "INSERT INTO user (`name`,`email`,`actual_area`,`interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
@@ -53,11 +56,14 @@ app.post('/login', (req, res) => {
     const sql = "SELECT * FROM user WHERE `email` = ? AND `password` = ?";
     db.query(sql, [req.body.email, req.body.password], (err, data) => {
         if(err){
+            console.error(err);
             return res.json("Error");
         }
         if (data.length > 0){
+            console.log("Success login");
             return res.json("Success");
         }else {
+            console.log("Failed login");
             return res.json("Faile");
         }
     })

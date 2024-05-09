@@ -50,7 +50,7 @@ function OpportunityDetail() {
             </div>
             <hr />
             <div>
-                <Link to="/list-opportunities" className="link">Back</Link>        
+                <Link to="/list-opportunities" className="link-button">Back</Link>        
             </div>
         </section>
     );

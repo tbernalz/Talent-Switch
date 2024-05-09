@@ -49,7 +49,7 @@ function PostulationDetail() {
             </div>
             <hr />
             <div>
-                <Link to="/list-postulations" className="link">Back</Link>        
+                <Link to="/list-postulations" className="link-button">Back</Link>        
             </div>
         </section>
     );
