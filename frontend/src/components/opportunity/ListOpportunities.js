@@ -14,6 +14,10 @@ function ListOpportunities() {
             .catch(err => console.log(err));
     }, []);
 
+    const getRowClassName = (opportunity) => {
+        return opportunity.opportunity_state === 'open' ? 'accepted-row' : 'closed-row';
+    };
+
     return (
         <div className="table-container">
             <h2>List of Opportunities</h2>
@@ -24,16 +28,18 @@ function ListOpportunities() {
                         <th>Opportunity Area</th>
                         <th>Start Date</th>
                         <th>Final Date</th>
+                        <th>Opportunity State</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {opportunities.map(opportunity => (
-                        <tr key={opportunity.opportunity_id}>
+                        <tr key={opportunity.opportunity_id} className={getRowClassName(opportunity)}>
                             <td>{opportunity.opportunity_name}</td>
                             <td>{opportunity.opportunity_area}</td>
                             <td>{opportunity.start_date}</td>
                             <td>{opportunity.final_date}</td>
+                            <td>{opportunity.opportunity_state}</td>
                             <td>
                                 <Link to={`/opportunities/${opportunity.opportunity_id}`} className="link-button">View</Link>
                             </td>
