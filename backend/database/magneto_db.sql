@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2024 a las 21:17:23
+-- Tiempo de generación: 10-05-2024 a las 06:44:55
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -24,13 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `applicant`
+-- Estructura de tabla para la tabla `evaluation`
 --
 
-CREATE TABLE `applicant` (
-  `applicant_email` varchar(30) NOT NULL,
-  `applicant_status` varchar(20) NOT NULL
+CREATE TABLE `evaluation` (
+  `id` int(11) NOT NULL,
+  `evaluated_email` varchar(30) NOT NULL,
+  `qualification` tinyint(1) NOT NULL,
+  `comment` text DEFAULT NULL,
+  `evaluation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `evaluation`
+--
+
+INSERT INTO `evaluation` (`id`, `evaluated_email`, `qualification`, `comment`, `evaluation_date`) VALUES
+(1, 'jepavasg@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
+(2, 'jepavasg@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
+(3, 'jepavasg@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
+(4, 'jepavasg@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
+(5, 'tbernalz@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
+(6, 'tbernalz@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
+(7, 'tbernalz@eafit.edu.co', 2, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
+(8, 'tbernalz@eafit.edu.co', 3, 'Evaluación de Prueba', '2024-05-05'),
+(9, 'tbernalz@eafit.edu.co', 1, 'Evaluación de Prueba', '2024-05-05'),
+(10, 'tbernalz@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
+(11, 'tbernalz@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
+(12, 'tbernalz@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
+(13, 'tbernalz@eafit.edu.co', 1, 'Evaluación de Prueba', '2024-05-05');
 
 -- --------------------------------------------------------
 
@@ -46,19 +68,20 @@ CREATE TABLE `opportunity` (
   `description` text NOT NULL,
   `required_skills` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
-  `final_date` date NOT NULL
+  `final_date` date NOT NULL,
+  `opportunity_state` varchar(10) NOT NULL DEFAULT 'open'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `opportunity`
 --
 
-INSERT INTO `opportunity` (`opportunity_id`, `opportunity_name`, `opportunity_leader_email`, `opportunity_area`, `description`, `required_skills`, `start_date`, `final_date`) VALUES
-(1, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Test', 'Requerimos registrar usuarios ficticios para pruebas', 'Test', '2024-04-20', '2024-04-23'),
-(2, 'Opportunity Test 1', 'jepavasg1@eafit.edu.co', 'Infraestructura', 'Opportunity of test Sprint 1', 'Redes', '2024-04-20', '2024-04-25'),
-(4, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', 'Test', '2024-04-22', '2024-04-22'),
-(5, 'Opportunity Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', 'Test', '2024-04-24', '2024-04-24'),
-(7, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', 'None', '2024-04-24', '2024-04-25');
+INSERT INTO `opportunity` (`opportunity_id`, `opportunity_name`, `opportunity_leader_email`, `opportunity_area`, `description`, `required_skills`, `start_date`, `final_date`, `opportunity_state`) VALUES
+(1, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Test', 'Requerimos registrar usuarios ficticios para pruebas', 'Test', '2024-04-20', '2024-04-23', 'open'),
+(2, 'Opportunity Test 1', 'jepavasg1@eafit.edu.co', 'Infraestructura', 'Opportunity of test Sprint 1', 'Redes', '2024-04-20', '2024-04-25', 'open'),
+(4, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', 'Test', '2024-04-22', '2024-04-22', 'closed'),
+(5, 'Opportunity Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', 'Test', '2024-04-24', '2024-04-24', 'open'),
+(7, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', 'None', '2024-04-24', '2024-04-25', 'open');
 
 -- --------------------------------------------------------
 
@@ -69,8 +92,20 @@ INSERT INTO `opportunity` (`opportunity_id`, `opportunity_name`, `opportunity_le
 CREATE TABLE `opportunity_applicant` (
   `id` int(11) NOT NULL,
   `opportunity_id` int(11) NOT NULL,
-  `applicant_email` varchar(30) NOT NULL
+  `applicant_email` varchar(30) NOT NULL,
+  `applicant_state` varchar(10) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `opportunity_applicant`
+--
+
+INSERT INTO `opportunity_applicant` (`id`, `opportunity_id`, `applicant_email`, `applicant_state`) VALUES
+(5, 1, 'jepavasg@eafit.edu.co', 'accepted'),
+(6, 1, 'anselmo@email.com', 'rejected'),
+(7, 2, 'jepavasg@eafit.edu.co', 'pending'),
+(8, 4, 'jepavasg@eafit.edu.co', 'pending'),
+(9, 1, 'tbernalz@eafit.edu.co', 'pending');
 
 -- --------------------------------------------------------
 
@@ -95,7 +130,8 @@ CREATE TABLE `postulation` (
 INSERT INTO `postulation` (`postulation_id`, `postulant_name`, `postulant_email`, `postulant_actual_area`, `postulant_interest_area`, `postulant_skills`, `postulation_state`) VALUES
 (1, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'pending'),
 (3, 'Juan Esteban Pavas González', 'jepavasg1@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'accepted'),
-(6, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'accepted');
+(6, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'accepted'),
+(7, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', '', '', '', 'pending');
 
 -- --------------------------------------------------------
 
@@ -123,7 +159,39 @@ INSERT INTO `team` (`team_id`, `team_name`, `team_leader_email`, `team_area`, `d
 (3, 'Proyecto Desarrollo de Contenido', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos personas con capacidad de crear contenido virtual para publicidad.', '2024-04-24', '0000-00-00'),
 (6, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', '2024-04-20', '0000-00-00'),
 (10, 'Project Team for Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Test for Sprint 2', '2024-04-23', '2024-04-24'),
-(11, 'Project Team 2 for Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Description', '2024-04-23', '2024-04-22');
+(11, 'Project Team 2 for Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Description', '2024-04-23', '2024-04-22'),
+(13, 'Prueba Auto Adición', 'jepavasg1@eafit.edu.co', 'Test', 'Prueba de Autoedición del Leader a Members', '2024-05-09', '2024-05-16'),
+(14, 'Prueba Auto Adición', 'jepavasg1@eafit.edu.co', 'Test', 'Prueba de Autoedición del Leader a Members', '2024-05-09', '2024-05-16'),
+(15, 'Prueba Auto Adición 2', 'jepavasg1@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', '2024-05-07', '2024-05-15'),
+(16, 'Prueba Auto Adición 3', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', '2024-05-07', '2024-05-14');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `team_member`
+--
+
+CREATE TABLE `team_member` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `member_email` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `team_member`
+--
+
+INSERT INTO `team_member` (`id`, `team_id`, `member_email`) VALUES
+(1, 1, 'jepavasg@eafit.edu.co'),
+(2, 14, 'jepavasg1@eafit.edu.co'),
+(3, 1, 'tbernalz@eafit.edu.co'),
+(4, 15, 'jepavasg1@eafit.edu.co'),
+(5, 6, 'jepavasg@eafit.edu.co'),
+(6, 15, 'jepavasg@eafit.edu.co'),
+(7, 16, 'jepavasg@eafit.edu.co'),
+(8, 10, 'jepavasg@eafit.edu.co'),
+(9, 11, 'jepavasg@eafit.edu.co'),
+(10, 3, 'jepavasg@eafit.edu.co');
 
 -- --------------------------------------------------------
 
@@ -140,37 +208,40 @@ CREATE TABLE `user` (
   `skills` varchar(255) NOT NULL,
   `user_type` enum('leader','employee') NOT NULL,
   `password` varchar(30) NOT NULL,
-  `evaluation_level` float DEFAULT NULL
+  `evaluation_level` float DEFAULT NULL,
+  `total_evaluations` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`user_id`, `name`, `email`, `actual_area`, `interest_area`, `skills`, `user_type`, `password`, `evaluation_level`) VALUES
-(1, 'Elvis', 'elvis@email.com', 'Negocios', 'Marketing', 'Ventas', 'leader', 'Hola1234', NULL),
-(2, 'name', 'name@email.com', 'Programación', 'Arquitectura', 'Diagramas', 'employee', 'Hola1234', NULL),
-(3, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'employee', 'Hola1234', NULL),
-(4, 'Jose Manuel Camargo', 'chemahpta@gmail.com', 'Programación', 'Arquitectura', 'Estadistica', 'employee', 'Hola1234', NULL),
-(5, 'John Alexander Acevedo', 'jaacevedos@eafit.edu.co', 'Diseño Ux', 'Test', 'Planeación', 'employee', 'Godo1234', NULL),
-(6, 'Tomas Bernal zuluaga', 'tbernalz@eafit.edu.co', 'Arquitectura', 'Test', 'Planeación', 'employee', 'Berni1234', NULL),
-(7, 'Santiago Rodriguez', 'srodriguez@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL),
-(10, 'Alberto Restrepo', 'arestrepo@email.com', 'Ingeniería', 'Gestión Humana', '', 'leader', 'Hola1234', NULL),
-(12, 'Juan Esteban Pavas González', 'jepavasg1@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', NULL),
-(13, 'Luis Quiroga', 'luisquiro@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL),
-(15, 'Sergio Medina', 'sergiomed@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL),
-(16, 'Luis Quiroga', 'luisquiro1@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL),
-(17, 'Juan Pavas', 'juespago19@gmail.com', 'Programación', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', NULL);
+INSERT INTO `user` (`user_id`, `name`, `email`, `actual_area`, `interest_area`, `skills`, `user_type`, `password`, `evaluation_level`, `total_evaluations`) VALUES
+(1, 'Elvis', 'elvis@email.com', 'Negocios', 'Marketing', 'Ventas', 'leader', 'Hola1234', NULL, 0),
+(2, 'name', 'name@email.com', 'Programación', 'Arquitectura', 'Diagramas', 'employee', 'Hola1234', NULL, 0),
+(3, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'employee', 'Hola1234', 5, 0),
+(4, 'Jose Manuel Camargo', 'chemahpta@gmail.com', 'Programación', 'Arquitectura', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(5, 'John Alexander Acevedo', 'jaacevedos@eafit.edu.co', 'Diseño Ux', 'Test', 'Planeación', 'employee', 'Godo1234', NULL, 0),
+(6, 'Tomas Bernal zuluaga', 'tbernalz@eafit.edu.co', 'Arquitectura', 'Test', 'Planeación', 'employee', 'Berni1234', 3.33333, 6),
+(7, 'Santiago Rodriguez', 'srodriguez@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(10, 'Alberto Restrepo', 'arestrepo@email.com', 'Ingeniería', 'Gestión Humana', '', 'leader', 'Hola1234', NULL, 0),
+(12, 'Juan Esteban Pavas González', 'jepavasg1@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', NULL, 0),
+(13, 'Luis Quiroga', 'luisquiro@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(15, 'Sergio Medina', 'sergiomed@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(16, 'Luis Quiroga', 'luisquiro1@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(17, 'Juan Pavas', 'juespago19@gmail.com', 'Programación', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', NULL, 0),
+(18, 'Anselmo', 'anselmo@email.com', 'Ventas', 'Desarrollo', 'Creatividad', 'employee', 'Hola1234', NULL, 0);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `applicant`
+-- Indices de la tabla `evaluation`
 --
-ALTER TABLE `applicant`
-  ADD KEY `applicant_email` (`applicant_email`);
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `evaluated_email` (`evaluated_email`);
 
 --
 -- Indices de la tabla `opportunity`
@@ -184,7 +255,7 @@ ALTER TABLE `opportunity`
 --
 ALTER TABLE `opportunity_applicant`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `opportunity_id` (`opportunity_id`),
+  ADD KEY `opportunity_id` (`opportunity_id`) USING BTREE,
   ADD KEY `applicant_user_email` (`applicant_email`);
 
 --
@@ -202,6 +273,14 @@ ALTER TABLE `team`
   ADD KEY `team_leader_email` (`team_leader_email`);
 
 --
+-- Indices de la tabla `team_member`
+--
+ALTER TABLE `team_member`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `team_id` (`team_id`),
+  ADD KEY `member_email` (`member_email`);
+
+--
 -- Indices de la tabla `user`
 --
 ALTER TABLE `user`
@@ -213,44 +292,56 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `evaluation`
+--
+ALTER TABLE `evaluation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `opportunity`
 --
 ALTER TABLE `opportunity`
-  MODIFY `opportunity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `opportunity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `opportunity_applicant`
 --
 ALTER TABLE `opportunity_applicant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `postulation`
 --
 ALTER TABLE `postulation`
-  MODIFY `postulation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `postulation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de la tabla `team_member`
+--
+ALTER TABLE `team_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `applicant`
+-- Filtros para la tabla `evaluation`
 --
-ALTER TABLE `applicant`
-  ADD CONSTRAINT `applicant_email` FOREIGN KEY (`applicant_email`) REFERENCES `user` (`email`);
+ALTER TABLE `evaluation`
+  ADD CONSTRAINT `evaluated_email` FOREIGN KEY (`evaluated_email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `opportunity`
@@ -262,8 +353,8 @@ ALTER TABLE `opportunity`
 -- Filtros para la tabla `opportunity_applicant`
 --
 ALTER TABLE `opportunity_applicant`
-  ADD CONSTRAINT `applicant_user_email` FOREIGN KEY (`applicant_email`) REFERENCES `applicant` (`applicant_email`),
-  ADD CONSTRAINT `opportunity_id` FOREIGN KEY (`opportunity_id`) REFERENCES `opportunity` (`opportunity_id`);
+  ADD CONSTRAINT `applicant_user_email` FOREIGN KEY (`applicant_email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `opportunity_id` FOREIGN KEY (`opportunity_id`) REFERENCES `opportunity` (`opportunity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `postulation`
@@ -276,6 +367,13 @@ ALTER TABLE `postulation`
 --
 ALTER TABLE `team`
   ADD CONSTRAINT `team_leader_email` FOREIGN KEY (`team_leader_email`) REFERENCES `user` (`email`);
+
+--
+-- Filtros para la tabla `team_member`
+--
+ALTER TABLE `team_member`
+  ADD CONSTRAINT `member_email` FOREIGN KEY (`member_email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
