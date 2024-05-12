@@ -26,7 +26,7 @@ function CreatePostulation() {
         axios.get(`http://localhost:8081/get-name?email=${values.postulant_email}`)
             .then(res => {
                 const userName = res.data.name; // Suponiendo que el nombre se devuelve como 'name'
-                // Actualiza el estado con el nombre encontrado
+                // Actualiza el estado con el nombre encontrado en la db
                 setValues(prev => ({...prev, postulant_name: userName }));
     
                 // Crea un nuevo objeto con los datos actualizados, incluido el nombre
