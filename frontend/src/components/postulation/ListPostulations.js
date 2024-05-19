@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
-import './../../styles/Detail.css'; // css
+import './../../styles/Postulation.css'; // css
 
 function ListPostulations() {
     const [postulations, setPostulations] = useState([]);
@@ -19,16 +19,16 @@ function ListPostulations() {
     };
 
     return (
-        <div className="table-container">
-            <h2>List of Postulants</h2>
+        <div className="List-Post">
+            <h2>Listado de postulaciones</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Postulant Name</th>
-                        <th>Postulant Area</th>
-                        <th>Postulant Actual Area</th>
-                        <th>Postulant Interest Area</th>
-                        <th>Postulantion State</th>
+                        <th>Nombre del postulante</th>
+                        <th>Correo del postulante</th>
+                        <th>Area actual del postulante</th>
+                        <th>Areas de interes del postulante</th>
+                        <th>Estado de postulación</th>
                         <th></th>
                     </tr>
                 </thead>

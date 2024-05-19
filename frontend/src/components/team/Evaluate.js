@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Detail.css'; //css
-import './../../styles/profile.css'; //css
+import './../../styles/Team.css'; //css
 
 function Evaluate() {
     //parametros recibidos
@@ -95,17 +94,17 @@ function Evaluate() {
     return (
         <section className='opportunity-detail'>
             <div className="opportunity-header">
-                <h3>Evaluating</h3>
+                <h3>Evaluacion</h3>
                 <h5>{member_email}</h5>
                 {/* <p>ID: {id}</p> */}
                 {/* <p>User ID: {user_id}</p> */}
             </div>
             <form onSubmit={handleSubmit}>
-                <div className='inputbox - select-container'>
-                    <label htmlFor='qualification'><strong>Qualification:</strong></label>
+                <div className='Qualification'>
+                    <label htmlFor='qualification'><strong>Calificacion:</strong></label>
                     <select id="qualification" name='qualification'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.qualification ? ' is-invalid' : '')}>
-                            <option value="" disabled selected>Choose your Qualification</option>
+                            <option value="" disabled selected>Escoge tu calificacion</option>
                             <option value='1'>1 Star</option>
                             <option value='2'>2 Stars</option>
                             <option value='3'>3 Stars</option>
@@ -115,20 +114,21 @@ function Evaluate() {
                     {errors.qualification && <span className='text-danger'> {errors.qualification}</span>}
                 </div>
                 
-                <div className='inputbox'>
-                    <label htmlFor='comment'><strong>Comment:</strong></label>
-                    <input type="text" placeholder='Enter your Comment' name='comment'
+                <div className='Comment'>
+                    <label htmlFor='comment'><strong>Comentarios:</strong></label>
+                    <input type="text" placeholder='Ingresa tu comentario' name='comment'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.comment ? ' is-invalid' : '')} />
                     {errors.comment && <span className='text-danger'> {errors.comment}</span>}
                 </div>
                 <div>
-                    <button type='submit' className='button'>Evaluate</button>
+                    <button type='submit' className='button'>Evaluar</button>
                 </div>
             </form>
             <hr />
             <div>
-                <Link to={`/teams/${id}/list-members`} className='link-button'>Back</Link>-
+                <Link to={`/teams/${id}/list-members`} className='link-button'>Atras</Link>-
             </div>
+            <div className='text'>Talent Switch</div>
         </section>
     );
 }

@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #333;
+  background-color: transparent;
   padding: 10px;
   color: white;
   position: fixed;
@@ -7,12 +7,14 @@
   left: 0;
   right: 0;
   z-index: 1000;
+
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
   justify-content: flex-end;
+  
 }
 
 .navbar ul li {
@@ -55,7 +57,7 @@
   font-size: 16px;
   font-weight: bold;
 }
-.button {
+.card {
   text-decoration: none;
   color: black;
   font-size: 18px;
@@ -69,12 +71,12 @@
   width: calc(100% - 20px);
 }
 
-.button:hover {
+.card:hover {
   background-color: #ccc;
 }
 
 @media (max-width: 600px) {
-  .button {
+  .card {
     margin: 10px 0;
     width: 100%;
   }

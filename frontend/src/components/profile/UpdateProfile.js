@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Detail.css'; // css
+import './../../styles/PerfilU.css'; // css
 
 function UpdateProfile() {
     const [userData, setUserData] = useState({
@@ -30,39 +30,38 @@ function UpdateProfile() {
 
     return (
         <section>
-            <h2>Update Information</h2>
+            <h2>Actualizar información</h2>
             <form onSubmit={handleSubmit}>
-                <div className='inputbox'>
-                    <label htmlFor='name'><strong>Name</strong></label>
+                <div className='Name'>
+                    <label htmlFor='name'><strong>Nombre</strong></label>
                     <input type="text" name="name" value={userData.name} onChange={handleInput} />
                 </div>
-                <div className='inputbox'>
-                    <label htmlFor='email'><strong>Email</strong></label>
+                <div className='Email'>
+                    <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" name="email" value={userData.email} onChange={handleInput} />
                 </div>
-                <div className='inputbox'>
-                    <label htmlFor='actual_area'><strong>Actual Area</strong></label>
+                <div className='Actual-area'>
+                    <label htmlFor='actual_area'><strong>Area actual</strong></label>
                     <input type="text" name="actual_area" value={userData.actual_area} onChange={handleInput} />
                 </div>
-                <div className='inputbox'>
-                    <label htmlFor='interest_areas'><strong>Interest Areas</strong></label>
+                <div className='Interest-Area'>
+                    <label htmlFor='interest_areas'><strong>Areas de interes</strong></label>
                     <input type="text" name="interest_area" value={userData.interest_area} onChange={handleInput} />
                 </div>
-                <div className='inputbox'>
-                    <label htmlFor='skills'><strong>Skills</strong></label>
+                <div className='Skills'>
+                    <label htmlFor='skills'><strong>Habilidades</strong></label>
                     <input type="text" name="skills" value={userData.skills} onChange={handleInput} />
                 </div>
-                <div className='inputbox'>
-                    <label htmlFor='user_type'><strong>User Type</strong></label>
-                    <input type="text" name="user_type" value={userData.user_type} onChange={handleInput} />
-                </div>
+                <div className='User-Type'>
+                <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
+                <input type="text" value={userData.user_type} readOnly /></div>
                 <div>
-                    <button type='submit' className='button'>Save</button>
+                    <button type='submit' className='button'>Guardar</button>
                 </div>
                 <div>
                     <hr />
                     <div>
-                        <Link to="/my-profile" className='link-button'>Back</Link>
+                        <Link to="/my-profile" className='link-button'>Atras</Link>
                     </div>
                 </div>
             </form>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from '../../utils/validations/SignupValidation';
 import axios from 'axios';
-import './../../styles/profile.css'; // css
+import './../../styles/Login.css'; // css
 
 function Signup() {
     const [values, setValues] = useState({

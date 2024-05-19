@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from '../../utils/validations/CreatePostulationValidation';
 import axios from 'axios';
-import './../../styles/profile.css'; // css
+import './../../styles/Postulation.css'; // css
 
 function CreatePostulation() {
     const [values, setValues] = useState({
@@ -59,7 +59,7 @@ function CreatePostulation() {
   return (
     <section>
         <form  action='' onSubmit={handleSubmit}>
-            <h2>Create Postulation</h2>
+            <h2>Crear postulación</h2>
 
             {/* <div className='inputbox'>
                 <label htmlFor='postulant_name'><strong>Postulant Name</strong></label>
@@ -68,46 +68,46 @@ function CreatePostulation() {
                 {errors.postulant_name && <span className='text-danger'> {errors.postulant_name}</span>}
             </div> */}
 
-            <div className='inputbox'>
+            <div className='Postulant-email'>
                 {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='postulant_email'><strong>Postulant Email</strong></label>
-                <input type="text" placeholder='Enter Postulant Email' name='postulant_email'
+                <label htmlFor='postulant_email'><strong>Correo del postulante</strong></label>
+                <input type="text" placeholder='Ingresa el correo' name='postulant_email'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_email ? ' is-invalid' : '')} />
                 {errors.postulant_email && <span className='text-danger'> {errors.postulant_email}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='postulant_actual_area'><strong>Postulant Actual Area</strong></label>
-                <input type="text" placeholder='Enter Postulant Actual Area' name='postulant_actual_area'
+            <div className='Postulant-Area'>
+                <label htmlFor='postulant_actual_area'><strong>Area actual del postulante</strong></label>
+                <input type="text" placeholder='Ingresa el area actual' name='postulant_actual_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_actual_area ? ' is-invalid' : '')}/>
                 {errors.postulant_actual_area && <span className='text-danger'> {errors.postulant_actual_area}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='postulant_interest_area'><strong>Postulant Interest Area</strong></label>
-                <input type="text" placeholder='Enter Postulant Interest Area' name='postulant_interest_area'
+            <div className='Postulant-Interest'>
+                <label htmlFor='postulant_interest_area'><strong>Area de interes del postulante</strong></label>
+                <input type="text" placeholder='Ingresa el area de interes' name='postulant_interest_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_interest_area ? ' is-invalid' : '')}/>
                 {errors.postulant_interest_area && <span className='text-danger'> {errors.postulant_interest_area}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='postulant_skills'><strong>Postulant Skills</strong></label>
-                <input type="text" placeholder='Enter Postulant Skills' name='postulant_skills'
+            <div className='Postulant-Skills'>
+                <label htmlFor='postulant_skills'><strong>Habilidades del postulante</strong></label>
+                <input type="text" placeholder='Ingrese habilidades' name='postulant_skills'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_skills ? ' is-invalid' : '')}/>
                 {errors.postulant_skills && <span className='text-danger'> {errors.postulant_skills}</span>}
             </div>
 
             <div>
-                <button type='submit' className='button'>Create</button>    
+                <button type='submit' className='button'>Crear</button>    
             </div>
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='link-button'>Back</Link>        
+                    <Link to="/home" className='link-button'>Atras</Link>        
                 </div>
             </div>
         </form>
-        <div className='text'>Magneto07</div>
+        <div className='text'>Talent Switch</div>
     </section>
   );
 }

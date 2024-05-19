@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+
 import styles from './../../styles/Home.module.css'; // Importa los estilos CSS Module
  
 function Home() {
@@ -8,11 +9,9 @@ function Home() {
       <nav className={styles.navbar} title='Home'>
         <ul>
           <li>Magneto Switch Talent</li>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/home">Dashboard</Link></li>
-          <li><Link to="/my-profile">Profile</Link></li>
-          <li><Link to="/home">Settings</Link></li>
-          <li><Link to="/">Logout</Link></li>
+          <li><Link to="/home">Inicio</Link></li>
+          <li><Link to="/my-profile">Mi perfil</Link></li>
+          <li><Link to="/">Salir</Link></li>
         </ul>
       </nav>
 
@@ -20,13 +19,13 @@ function Home() {
 
         {/* Contenedor de botones */}
         <div className={styles.buttonContainer}>
-          <Link to="/create-opportunity" className={styles.button}>Create Opportunity</Link>
-          <Link to="/list-opportunities" className={styles.button}>See Opportunities</Link>
-          <Link to="/create-team" className={styles.button}>Create Project Team</Link>
-          <Link to="/list-teams" className={styles.button}>See Teams</Link>
-          <Link to="/create-postulation" className={styles.button}>Apply Individually</Link>
-          <Link to="/list-postulations" className={styles.button}>See Postulations</Link>
-          <p className={styles.dark_bg}>This page generalizes the functions of both types of users, later they will be separated.</p>
+          <Link to="/create-opportunity" className={styles.card}>Crear oportunidades</Link>
+          <Link to="/list-opportunities" className={styles.card}>Ver oportunidades</Link>
+          <Link to="/create-team" className={styles.card}>Crear equipos de proyecto</Link>
+          <Link to="/list-teams" className={styles.card}>Ver equipos</Link>
+          <Link to="/create-postulation" className={styles.card}>Aplicacion individual</Link>
+          <Link to="/list-postulations" className={styles.card}>Postulaciones</Link>
+          <p className={styles.dark_bg}>Aun no se discierne la informacion de ambos perfiles, se hara proximamente.</p>
           
         </div>
       </div>

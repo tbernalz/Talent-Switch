@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
-import './../../styles/profile.css'; // css
+import './../../styles/Opportunity.css'; // css
 
 function ListOpportunities() {
     const [opportunities, setOpportunities] = useState([]);
@@ -19,16 +19,16 @@ function ListOpportunities() {
     };
 
     return (
-        <div className="table-container">
-            <h2>List of Opportunities</h2>
+        <div className="List-Opp">
+            <h2>Lista de oportunidades</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Opportunity Name</th>
-                        <th>Opportunity Area</th>
-                        <th>Start Date</th>
-                        <th>Final Date</th>
-                        <th>Opportunity State</th>
+                        <th>Nombre oportunidad</th>
+                        <th>Area de la oportunidad</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha final</th>
+                        <th>Estado de la oportunidad</th>
                         <th></th>
                     </tr>
                 </thead>

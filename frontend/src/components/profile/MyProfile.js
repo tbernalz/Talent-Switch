@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Detail.css'; // css
+import './../../styles/Perfil.css'; // css
 
 function MyProfile() {
     const [userData, setUserData] = useState({
@@ -21,27 +21,30 @@ function MyProfile() {
 
     return (
         <section>
-            <h2>My Profile</h2>
-            <div className='inputbox'>
-                <label htmlFor='name'><strong>Name</strong></label>
+            <h2>Mi perfil</h2>
+            <div className='Name'>
+                <label htmlFor='name'><strong>Nombre</strong></label>
                 <input type="text" value={userData.name} readOnly /></div>
-            <div className='inputbox'>
-                <label htmlFor='email'><strong>Email</strong></label>
+            <div className='Email'>
+                <label htmlFor='email'><strong>Correo</strong></label>
                 <input type="email" value={userData.email} readOnly /></div>
-            <div className='inputbox'>
-                <label htmlFor='actual_area'><strong>Actual Area</strong></label>
+            <div className='Actual-area'>
+                <label htmlFor='actual_area'><strong>Area actual</strong></label>
                 <input type="text" value={userData.actual_area} readOnly /></div>
-            <div className='inputbox'>
-                <label htmlFor='interest_areas'><strong>Interest Areas</strong></label>
+            <div className='Interest-Area'>
+                <label htmlFor='interest_areas'><strong>Areas de interes</strong></label>
                 <input type="text" value={userData.interest_area} readOnly /></div>
-            <div className='inputbox'>
-                <label htmlFor='skills'><strong>Skills</strong></label>
+            <div className='Skills'>
+                <label htmlFor='skills'><strong>Habilidades</strong></label>
                 <input type="text" value={userData.skills} readOnly />
-            </div><div className='inputbox'>
-                <label htmlFor='user_type'><strong>User Type</strong></label>
+            </div>
+            <div className='User-Type'>
+                <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
                 <input type="text" value={userData.user_type} readOnly /></div>
             <div>
-                <Link to="/update-profile" className='button'>Update Information</Link></div>
+                <Link to="/update-profile" className='button'>Actualizar informacion</Link>
+                </div>
+            <div className='text'>Talent Switch</div>
         </section>
     );
 }

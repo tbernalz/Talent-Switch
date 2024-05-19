@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from '../../utils/validations/CreateOpportunityValidation';
 import axios from 'axios';
-import './../../styles/profile.css'; // css
+import './../../styles/Opportunity.css'; // css
 
 function CreateOpportunity() {
     const [values, setValues] = useState({
@@ -59,69 +59,69 @@ function CreateOpportunity() {
   return (
     <section>
         <form  action='' onSubmit={handleSubmit}>
-            <h2>Create Opportunity</h2>
+            <h2>Crear oportunidades</h2>
 
-            <div className='inputbox'>
-                <label htmlFor='opportunity_name'><strong>Opportunity Name</strong></label>
-                <input type="text" placeholder='Enter Opportunity Name' name='opportunity_name'
+            <div className='Opportunity-Name'>
+                <label htmlFor='opportunity_name'><strong>Nombre oportunidad</strong></label>
+                <input type="text" placeholder='Ingresa el nombre de la oportunidad' name='opportunity_name'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_name ? ' is-invalid' : '')} />
                 {errors.opportunity_name && <span className='text-danger'> {errors.opportunity_name}</span>}
             </div>
 
-            <div className='inputbox'>
+            <div className='Opportunity-leader'>
                 {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='opportunity_leader_email'><strong>Opportunity Leader Email</strong></label>
-                <input type="text" placeholder='Enter Opportunity Leader Email' name='opportunity_leader_email'
+                <label htmlFor='opportunity_leader_email'><strong>Correo del lider de la oportunidad</strong></label>
+                <input type="text" placeholder='Ingresa el correo del lider' name='opportunity_leader_email'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_leader_email ? ' is-invalid' : '')} />
                 {errors.opportunity_leader_email && <span className='text-danger'> {errors.opportunity_leader_email}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='opportunity_area'><strong>Opportunity Area</strong></label>
-                <input type="text" placeholder='Enter Opportunity Area' name='opportunity_area'
+            <div className='Opportunity-Area'>
+                <label htmlFor='opportunity_area'><strong>Area de la oportunidad</strong></label>
+                <input type="text" placeholder='Ingresa el area del lider' name='opportunity_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_area ? ' is-invalid' : '')}/>
                 {errors.opportunity_area && <span className='text-danger'> {errors.opportunity_area}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='description'><strong>Description</strong></label>
-                <input type="text" placeholder='Enter Description' name='description'
+            <div className='Opportunity-Description'>
+                <label htmlFor='description'><strong>Descripción</strong></label>
+                <input type="text" placeholder='Ingresa la descripción' name='description'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.description ? ' is-invalid' : '')}/>
                 {errors.description && <span className='text-danger'> {errors.description}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='required_skills'><strong>Required Skills</strong></label>
-                <input type="text" placeholder='Enter Required Skills' name='required_skills'
+            <div className='Opportunity-Skills'>
+                <label htmlFor='required_skills'><strong>Habilidades requeridas</strong></label>
+                <input type="text" placeholder='Ingresa que habilidades se requieren' name='required_skills'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.required_skills ? ' is-invalid' : '')}/>
                 {errors.required_skills && <span className='text-danger'> {errors.required_skills}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='start_date'><strong>Start Date</strong></label>
+            <div className='Opportunity-Start'>
+                <label htmlFor='start_date'><strong>Fecha de inicio</strong></label>
                 <input type="date" name="start_date" 
                 onChange={handleInput} className={'form-control rounded-0' + (errors.start_date ? ' is-invalid' : '')}/>
                 {errors.start_date && <span className='text-danger'> {errors.start_date}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='final_date'><strong>Final Date</strong></label>
+            <div className='Opportunity-End'>
+                <label htmlFor='final_date'><strong>Fecha final</strong></label>
                 <input type="date" name="final_date" 
                 onChange={handleInput} className={'form-control rounded-0' + (errors.final_date ? ' is-invalid' : '')}/>
                 {errors.final_date && <span className='text-danger'> {errors.final_date}</span>}
             </div>
 
             <div>
-                <button type='submit' className='button'>Create</button>    
+                <button type='submit' className='button'>Crear</button>    
             </div>
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='link-button'>Back</Link>        
+                    <Link to="/home" className='link-button'>Atras</Link>        
                 </div>
             </div>
         </form>
-        <div className='text'>Magneto07</div>
+        <div className='text'>Talent Switch</div>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
-import './../../styles/Detail.css'; // css
+import './../../styles/Team.css'; // css
 
 function ListTeams() {
     const [teams, setTeams] = useState([]);
@@ -15,15 +15,15 @@ function ListTeams() {
     }, []);
 
     return (
-        <div className="table-container">
-            <h2>List of Teams</h2>
+        <div className="List-Teams">
+            <h2>Lista de equipos</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Team Name</th>
-                        <th>Team Area</th>
-                        <th>Start Date</th>
-                        <th>Final Date</th>
+                        <th>Nombre del equipo</th>
+                        <th>Area del equipo</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha final</th>
                         <th></th>
                     </tr>
                 </thead>

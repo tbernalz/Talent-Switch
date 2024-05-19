@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from '../../utils/validations/CreateTeamValidation';
 import axios from 'axios';
-import './../../styles/profile.css'; // css
+import './../../styles/Team.css'; // css
 
 function CreateOpportunity() {
     const [values, setValues] = useState({
@@ -57,60 +57,60 @@ function CreateOpportunity() {
   return (
     <section>
         <form  action='' onSubmit={handleSubmit}>
-            <h2>Create Project Team</h2>
+            <h2>Crear proyecto de equipo</h2>
 
-            <div className='inputbox'>
-                <label htmlFor='team_name'><strong>Opportunity Name</strong></label>
-                <input type="text" placeholder='Enter Team Name' name='team_name'
+            <div className='Team-Name'>
+                <label htmlFor='team_name'><strong>Nombre del equipo</strong></label>
+                <input type="text" placeholder='Ingrese el nombre del equipo' name='team_name'
                 onChange={handleInput} className='form-control rounded-0' />
                 {errors.team_name && <span className='text-danger'> {errors.team_name}</span>}
             </div>
 
-            <div className='inputbox'>
+            <div className='Team-Email'>
                 {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='team_leader_email'><strong>Team Leader Email</strong></label>
-                <input type="text" placeholder='Enter Team Leader Email' name='team_leader_email'
+                <label htmlFor='team_leader_email'><strong>Correo del lider de equipo</strong></label>
+                <input type="text" placeholder='Ingrese el correo del lider' name='team_leader_email'
                 onChange={handleInput} className='form-control rounded-0' />
                 {errors.team_leader_email && <span className='text-danger'> {errors.team_leader_email}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='team_area'><strong>Team Area</strong></label>
-                <input type="text" placeholder='Enter Team Area' name='team_area'
+            <div className='Team-Area'>
+                <label htmlFor='team_area'><strong>Area del equipo</strong></label>
+                <input type="text" placeholder='Ingrese el area del equipo' name='team_area'
                 onChange={handleInput} className='form-control rounded-0' />
                 {errors.team_area && <span className='text-danger'> {errors.team_area}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='description'><strong>Description</strong></label>
-                <input type="text" placeholder='Enter Description' name='description'
+            <div className='Team-Description'>
+                <label htmlFor='description'><strong>Descripción</strong></label>
+                <input type="text" placeholder='Ingrese la descripción' name='description'
                 onChange={handleInput} className='form-control rounded-0' />
                 {errors.description && <span className='text-danger'> {errors.description}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='start_date'><strong>Start Date</strong></label>
+            <div className='Team-Start'>
+                <label htmlFor='start_date'><strong>Fecha de inicio</strong></label>
                 <input type="date" name="start_date" onChange={handleInput} className='form-control rounded-0' />
                 {errors.start_date && <span className='text-danger'> {errors.start_date}</span>}
             </div>
 
-            <div className='inputbox'>
-                <label htmlFor='final_date'><strong>Final Date</strong></label>
+            <div className='Team-End'>
+                <label htmlFor='final_date'><strong>Fecha final</strong></label>
                 <input type="date" name="final_date" onChange={handleInput} className='form-control rounded-0' />
                 {errors.final_date && <span className='text-danger'> {errors.final_date}</span>}
             </div>
 
             <div>
-                <button type='submit' className='button'>Create</button>    
+                <button type='submit' className='button'>Crear</button>    
             </div>
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='link-button'>Back</Link>        
+                    <Link to="/home" className='link-button'>Atras</Link>        
                 </div>
             </div>
         </form>
-        <div className='text'>Magneto07</div>
+        <div className='text'>Talent Switch</div>
     </section>
   );
 }

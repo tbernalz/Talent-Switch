@@ -43,19 +43,19 @@ function App() {
             {/* Opportunities */}
             <Route path='/create-opportunity' element={<CreateOpportunity />}></Route>
             <Route path='/list-opportunities' element={<ListOpportunities />}></Route>
-            <Route path='/opportunities/:id' element={<OpportunityDetail />}></Route>
-            <Route path='/opportunities/:id/list-applicants' element={<ListApplicants />}></Route>
+            <Route path='/opportunities/:id' element={<OpportunityDetail />}></Route>  //FALTA FRONT
+            <Route path='/opportunities/:id/list-applicants' element={<ListApplicants />}></Route> // FALTA FRONT
 
             {/* Teams Project */}
             <Route path='/create-team' element={<CreateTeam />}></Route>
             <Route path='/list-teams' element={<ListTeams />}></Route>
-            <Route path='/teams/:id' element={<TeamDetail />}></Route>
-            <Route path='/teams/:id/list-members' element={<ListMembers />}></Route>
+            <Route path='/teams/:id' element={<TeamDetail />}></Route> // FALTA FRONT
+            <Route path='/teams/:id/list-members' element={<ListMembers />}></Route> // FALTA FRONT
 
             {/* Postulations */}
             <Route path='/create-postulation' element={<CreatePostulation />}></Route>
             <Route path='/list-postulations' element={<ListPostulations />}></Route>
-            <Route path='/postulations/:id' element={<PostulationDetail />}></Route>
+            <Route path='/postulations/:id' element={<PostulationDetail />}></Route> // FALTA FRONT
 
             {/* Evaluation */}
             <Route path='/evaluate-member/:id/:user_id/:member_email' element={<Evaluate />} />
