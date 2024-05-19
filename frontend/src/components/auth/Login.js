@@ -36,33 +36,34 @@ function Login() {
 
   return (
     <section>
+    <div className='text'>Talent Switch</div>
 
         <form  action='' onSubmit={handleSubmit}>
 
-            <h2>Sign In</h2>
-                <div className='inputbox'>
+            <h2>Ingreso</h2>
+                <div className='login-email'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
-                    <input type="email" placeholder='Enter Email' name='email'
+                    <input type="email" placeholder='Ingresa tu correo' name='email'
                     onChange={handleInput} className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')}/>
                     {errors.email && <span className='text-danger'> {errors.email}</span>}
                 </div>
 
-                <div className='inputbox'>
+                <div className='login-pass'>
                     <ion-icon name= 'locked-closed-outline'></ion-icon>
-                    <label htmlFor='password'><strong>Password</strong></label>
-                    <input type="password" placeholder='Enter Password' name='password'
+                    <label htmlFor='password'><strong>Contraseña</strong></label>
+                    <input type="password" placeholder='Ingresa tu contraseña' name='password'
                     onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')}/>
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>
-                    <button type='submit' className='button'>Log In</button>
+                    <button type='submit' className='button'>Ingresar</button>
                 </div>
                 <div>
                     <hr />
-                    <p>I don't have an account</p>
+                    <p>No tengo una cuenta</p>
                     <div>
-                        <Link to="/signup" className='link-button'>Create account</Link>
+                        <Link to="/signup" className='link-button'>Crear cuenta</Link>
                     </div>
                 </div>
         </form>
