@@ -105,11 +105,11 @@ function Evaluate() {
                     <select id="qualification" name='qualification'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.qualification ? ' is-invalid' : '')}>
                             <option value="" disabled selected>Escoge tu calificacion</option>
-                            <option value='1'>1 Star</option>
-                            <option value='2'>2 Stars</option>
-                            <option value='3'>3 Stars</option>
-                            <option value='4'>4 Stars</option>
-                            <option value='5'>5 Stars</option>
+                            <option value='1'>1 Estrella</option>
+                            <option value='2'>2 Estrellas</option>
+                            <option value='3'>3 Estrellas</option>
+                            <option value='4'>4 Estrellas</option>
+                            <option value='5'>5 Estrellas</option>
                     </select>
                     {errors.qualification && <span className='text-danger'> {errors.qualification}</span>}
                 </div>
@@ -126,7 +126,7 @@ function Evaluate() {
             </form>
             <hr />
             <div>
-                <Link to={`/teams/${id}/list-members`} className='link-button'>Atras</Link>-
+                <Link to={`/teams/${id}/list-members`} className='button2'>Atras</Link>
             </div>
             <div className='text'>Talent Switch</div>
         </section>

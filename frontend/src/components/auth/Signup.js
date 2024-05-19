@@ -123,12 +123,12 @@ function Signup() {
                     <button type='submit' className='button'> Registrarse</button>
                 </div>
                 <div>
-                    <hr/>
                     <p>Al darle registrar aceptas nuestros terminos y condiciones.</p>
                     <div>
-                    <Link to="/" className='link-button'>Ingreso</Link>
+                    <Link to="/"  className='button2'>Ingreso</Link>
                     </div>
                 </div>
+                
             </form>
     </section>
   )

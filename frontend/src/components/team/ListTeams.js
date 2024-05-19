@@ -35,7 +35,7 @@ function ListTeams() {
                             <td>{team.start_date}</td>
                             <td>{team.final_date}</td>
                             <td>
-                                <Link to={`/teams/${team.team_id}`} className="link-button">View</Link>
+                                <Link to={`/teams/${team.team_id}`} className="button-O">Ver equipo</Link>
                             </td>
                         </tr>
                     ))}
@@ -43,8 +43,9 @@ function ListTeams() {
             </table>
             <hr />
             <div>
-                <Link to="/home" className='link-button'>Back</Link>        
+                <Link to="/home" className='button2'>Atras</Link>        
             </div>
+            <div className='text'>Talent Switch</div>
         </div>
     );
 }

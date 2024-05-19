@@ -35,6 +35,13 @@ h2 {
     color: #fff;
     text-align: center;
 }
+
+.team-header{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-30%);
+}
 h3 {
     font-size: 2rem;
     color: #fff;
@@ -61,11 +68,26 @@ p:hover {
     height: 30px;
     border-radius: 20px;
     background-color: #fff;
+    text-decoration: none;
     border: none;
     outline: none;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button-O {
+    width: 120%;
+    height: 60px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
     transform: translateY(-60%);
     transition: all 0.4s ease;
 }
@@ -79,56 +101,20 @@ p:hover {
     transform: translateY(-40%);
   }
 
-  .link-button {
-    display: inline-block;
+.button2{
     width: 100%;
     height: 30px;
     border-radius: 20px;
-    background-color: #fff;
+    text-decoration: none;
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    transform: translateY(-10%);
+    color: #933b3b;
+    transform: translateY(-60%);
     transition: all 0.4s ease;
-    text-align: center;
-    line-height: 30px;
-    text-decoration: none;
-    color: inherit;
 }
-
-.link-button:hover {
-    transform: translateY(-40%) scale(1.03);
-}
-
-.link-button:active {
-    transform: scale(0.8);
-    transform: translateY(-10%);
-}
-
-.link {
-    display: inline-block;
-    width: 100%; 
-    height: 30px; 
-    border-radius: 20px; 
-    background-color: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    line-height: 30px; 
-    color: #000;
-    transition: all 0.4s ease
-}
-
-.link:hover {
-    background-color: transparent;
-}
-
 /* Clase unicamente del Team-Name (Team-Name, ion-icon, label, input, place holder, text danger, input invalid) */
 .Team-Name{
     position: relative;
@@ -458,23 +444,22 @@ thead {
     background-color: transparent;
 }
 
-th, td {
+tr {
     padding: 10px 15px;
     text-align: left;
     border-bottom: 1px solid transparent;
+}
+.barra{
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-30%);
 }
 
 th {
     font-weight: 600;
 }
 
-tbody tr:nth-child(even) {
-    background-color: transparent;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: transparent;
-}
 
 /* Clase unicamente de evaluate/*
 /* Options */

@@ -63,7 +63,7 @@ function Login() {
                     <hr />
                     <p>No tengo una cuenta</p>
                     <div>
-                        <Link to="/signup" className='link-button'>Crear cuenta</Link>
+                        <Link to="/signup" className='button2'>Crear cuenta</Link>
                     </div>
                 </div>
         </form>

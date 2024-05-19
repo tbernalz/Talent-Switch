@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import './../../styles/Detail.css'; //css
+import './../../styles/Team.css'; //css
 
 function ListMembers() {
     const { id } = useParams(); // team_id
@@ -62,13 +62,14 @@ function ListMembers() {
     }
 
     return (
-        <div className="table-container">
-            <h2>List of Members for Team {id}</h2>
+        
+        <div className="ListaMiembros">
+            <h2>Lista de miembros de equipo {id}</h2>
             <table>
                 <thead>
-                    <tr>
-                        <th>Member Email</th>
-                        <th>Member Evaluation</th>
+                    <tr className='Barra'>
+                        <th>Correo del miembro</th>
+                        <th>Evaluaciones del miembro</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,7 +77,7 @@ function ListMembers() {
                         <tr key={member.id}>
                             <td>{member.member_email}</td>
                             <td>
-                                <button onClick={() => handleEvaluate(member)} className="link-button">Evaluate</button>
+                                <button onClick={() => handleEvaluate(member)} className="button">Evaluar</button>
                             </td>
                         </tr>
                     ))}
@@ -84,8 +85,9 @@ function ListMembers() {
             </table>
             <hr />
             <div>
-                <Link to={`/teams/${id}`} className='link-button'>Back</Link>
+                <Link to={`/teams/${id}`} className='button2'>Atras</Link>
             </div>
+            <div className='text'>Talent Switch</div>
         </div>
     );
 }

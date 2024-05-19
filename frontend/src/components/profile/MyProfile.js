@@ -42,7 +42,10 @@ function MyProfile() {
                 <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
                 <input type="text" value={userData.user_type} readOnly /></div>
             <div>
-                <Link to="/update-profile" className='button'>Actualizar informacion</Link>
+                <Link to="/update-profile" className='buttonP'>Actualizar informacion</Link>
+                </div>
+                <div>
+                    <Link to="/home" className='button2'>Atras</Link>        
                 </div>
             <div className='text'>Talent Switch</div>
         </section>

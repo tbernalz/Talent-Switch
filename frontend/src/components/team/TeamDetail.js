@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Detail.css'; //css
+import './../../styles/Team.css'; //css
 
 function TeamDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
@@ -85,16 +85,16 @@ function TeamDetail() {
     };
 
     return (
-        <section className="team-detail">
+        <section>
             <div className="team-header">
                 <h2>{team.team_name}</h2>
             </div>
             <div className="team-details">
-                <p><strong>Team Leader Email:</strong> {team.team_leader_email}</p>
-                <p><strong>Team Area:</strong> {team.team_area}</p>
-                <p><strong>Description:</strong> {team.description}</p>
-                <p><strong>Start Date:</strong> {team.start_date}</p>
-                <p><strong>Final Date:</strong> {team.final_date}</p>
+                <p><strong>Correo del Lider:</strong> {team.team_leader_email}</p>
+                <p><strong>Area del equipo:</strong> {team.team_area}</p>
+                <p><strong>Descripción:</strong> {team.description}</p>
+                <p><strong>Inicio de fecha:</strong> {team.start_date}</p>
+                <p><strong>Final de fecha:</strong> {team.final_date}</p>
             </div>
             <hr/>
             <div>
@@ -102,27 +102,29 @@ function TeamDetail() {
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="team_id" value={id} />
                         <div className='inputbox'>
-                            <label htmlFor='member_email'><strong>Member Email</strong></label>
-                            <input type="email" placeholder='Enter Member Email' name='member_email'
+                            <label htmlFor='member_email'><strong>Correo de miembros</strong></label>
+                            <input type="email" placeholder='Ingresa el correo de un nuevo miembro' name='member_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.member_email ? ' is-invalid' : '')} />
                             {errors.member_email && <span className='text-danger'> {errors.member_email}</span>}
                         </div>
                         <div>
-                            <button type='submit' className='button'>Add New Member</button>
+                            <button type='submit' className='button'>Agregar nuevo miembro</button>
                         </div>
                     </form>
                 </div>
                 {/* Restringir ver solo leaders */}
                 <hr />
                 <div>
-                    <Link to={`/teams/${id}/list-members`} className='link-button'>See Members</Link>
+                    <Link to={`/teams/${id}/list-members`} className='buttonP'>Ver miembros</Link>
                 </div>
                 <hr/>
-                <Link to="/list-teams" className="link-button">Back</Link>
+                <Link to="/list-teams" className="button2">Atras</Link>
             </div>
             <div>
-                <p className="dark_bg">This page generalizes the functions of both types of users, later they will be separated.</p>
+                <p className="dark_bg">Aun no se discierne la informacion de ambos perfiles, se hara proximamente.</p>
             </div>
+            <div className='text'>Talent Switch</div>
+
         </section>
     );
 }

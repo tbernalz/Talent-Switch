@@ -58,12 +58,12 @@ function UpdateProfile() {
                 <div>
                     <button type='submit' className='button'>Guardar</button>
                 </div>
-                <div>
-                    <hr />
+
                     <div>
-                        <Link to="/my-profile" className='link-button'>Atras</Link>
+                        <Link to="/my-profile" className='button2'>Atras</Link>
                     </div>
-                </div>
+
+                <div className='text'>Talent Switch</div>
             </form>
         </section>
     );

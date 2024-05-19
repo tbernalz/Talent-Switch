@@ -103,7 +103,7 @@ function CreatePostulation() {
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='link-button'>Atras</Link>        
+                    <Link to="/home" className='button2'>Atras</Link>        
                 </div>
             </div>
         </form>

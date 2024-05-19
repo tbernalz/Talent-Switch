@@ -41,7 +41,7 @@ function ListOpportunities() {
                             <td>{opportunity.final_date}</td>
                             <td>{opportunity.opportunity_state}</td>
                             <td>
-                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="link-button">View</Link>
+                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>
                             </td>
                         </tr>
                     ))}
@@ -49,8 +49,9 @@ function ListOpportunities() {
             </table>
             <hr />
             <div>
-                <Link to="/home" className='link-button'>Back</Link>        
+                <Link to="/home" className='button2'>Atras</Link>        
             </div>
+            <div className='text'>Talent Switch</div>
         </div>
     );
 }

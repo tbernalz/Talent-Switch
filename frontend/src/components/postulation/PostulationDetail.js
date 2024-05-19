@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Detail.css'; // Importa tus estilos CSS personalizados
+import './../../styles/Postulation.css'; // Importa tus estilos CSS personalizados
 
 function PostulationDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
@@ -36,7 +36,7 @@ function PostulationDetail() {
     }
 
     return (
-        <section className="postulation-detail">
+        <section>
             <div className="postulation-header">
                 <h2>{postulation.postulant_name}</h2>
             </div>
@@ -49,8 +49,9 @@ function PostulationDetail() {
             </div>
             <hr />
             <div>
-                <Link to="/list-postulations" className="link-button">Back</Link>        
+                <Link to="/list-postulations" className="button2">Atras</Link>        
             </div>
+            <div className='text'>Talent Switch</div>
         </section>
     );
 }

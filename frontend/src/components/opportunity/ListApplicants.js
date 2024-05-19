@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import './../../styles/Detail.css'; //css
+import './../../styles/Applicants.css'; //css
 
 function ListApplicants() {
     const { id } = useParams(); // Obtener el ID de la oportunidad de los parámetros de la URL
@@ -38,13 +38,14 @@ function ListApplicants() {
     };
 
     return (
-        <div className="table-container">
-            <h2>List of Applicants for Opportunity {id}</h2>
+        <section>
+        <div className="applicants">
+            <h2>Lista de aplicantes por oportunidad {id}</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Applicant Email</th>
-                        <th>Applicant State</th>
+                        <th>Correo del aplicante</th>
+                        <th>Estado del aplicante</th>
                         {/* <th></th> */}
                     </tr>
                 </thead>
@@ -60,9 +61,11 @@ function ListApplicants() {
             </table>
             <hr />
             <div>
-                <Link to={`/opportunities/${id}`} className='link'>Back</Link>        
+                <Link to={`/opportunities/${id}`} className='link'>Atras</Link>        
             </div>
+            <div className='text'>Talent Switch</div>
         </div>
+        </section>
     );
 }
 

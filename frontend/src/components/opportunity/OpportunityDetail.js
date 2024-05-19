@@ -107,27 +107,28 @@ function OpportunityDetail() {
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="opportunity_id" value={id} />
                         <div className='inputbox'>
-                            <label htmlFor='applicant_email'><strong>Applicant Email</strong></label>
-                            <input type="email" placeholder='Enter Applicant Email' name='applicant_email'
+                            <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
+                            <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
                             {errors.applicant_email && <span className='text-danger'> {errors.applicant_email}</span>}
                         </div>
                         <div>
-                            <button type='submit' className='button'>Apply</button>
+                            <button type='submit' className='button'>Aplicar</button>
                         </div>
                     </form>
                 </div>
                 {/* Restringir ver solo leaders y aplicar solo employees */}
                 <hr />
                 <div>
-                    <Link to={`/opportunities/${id}/list-applicants`} className='link-button'>See Applicants</Link>
+                    <Link to={`/opportunities/${id}/list-applicants`} className='button2'>Ver aplicantes</Link>
                 </div>
                 <hr/>
-                <Link to="/list-opportunities" className="link-button">Back</Link>
+                <Link to="/list-opportunities" className="button2">Atras</Link>
             </div>
             <div>
                 <p className="dark_bg">This page generalizes the functions of both types of users, later they will be separated.</p>
             </div>
+            <div className='text'>Talent Switch</div>
         </section>
         
     );

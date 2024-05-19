@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-
 import styles from './../../styles/Home.module.css'; // Importa los estilos CSS Module
  
 function Home() {
@@ -26,7 +25,7 @@ function Home() {
           <Link to="/create-postulation" className={styles.card}>Aplicacion individual</Link>
           <Link to="/list-postulations" className={styles.card}>Postulaciones</Link>
           <p className={styles.dark_bg}>Aun no se discierne la informacion de ambos perfiles, se hara proximamente.</p>
-          
+
         </div>
       </div>
       {/*       
