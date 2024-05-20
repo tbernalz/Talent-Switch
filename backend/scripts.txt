@@ -1,0 +1,4 @@
+CREATE DATABASE magneto_ggc_db
+    DEFAULT CHARACTER SET = 'utf8mb4';
+
+
