@@ -1,0 +1,356 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+/* Visual de section en general, no son los cuadros de texto */
+section {
+    position: relative;
+    max-width: 400px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(55px);
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    padding: 2rem 3rem;
+    margin-top: 40%;
+    margin-bottom: 40%;
+}
+
+body .text {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(40%);
+}
+
+.postulation-header{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-30%);
+}
+
+p {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+p:hover {
+    text-decoration: none;
+}
+
+
+
+.button {
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button-O {
+    width: 120%;
+    height: 60px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button:hover {
+    transform: translateY(-40%) scale(1.03); /* Un poco de zoom al pasar el ratón */ 
+}
+
+.button:active {
+    transform: scale(0.8); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
+    transform: translateY(-40%);
+  }
+
+.button2{
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #933b3b;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+
+
+/* Clase unicamente del Postulant-email (Postulant-email, ion-icon, label, input, place holder, text danger, input invalid) */
+.Postulant-email{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Postulant-email label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Postulant-email input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Postulant-email input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Postulant-email .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Postulant-email input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Postulant-Area (Postulant-Area, ion-icon, label, input, place holder, text danger, input invalid) */
+.Postulant-Area{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Postulant-Area label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Postulant-Area input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Postulant-Area input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Postulant-Area .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Postulant-Area input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Postulant-Interest (Postulant-Interest, ion-icon, label, input, place holder, text danger, input invalid) */
+.Postulant-Interest{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Postulant-Interest label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Postulant-Interest input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Postulant-Interest input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Postulant-Interest .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Postulant-Interest input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Postulant-Skills (Postulant-Skills, ion-icon, label, input, place holder, text danger, input invalid) */
+.Postulant-Skills{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Postulant-Skills label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Postulant-Skills input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Postulant-Skills input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Postulant-Skills .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Postulant-Skills input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del List-Post (List-Post, ion-icon, label, input, place holder, text danger, input invalid) */
+
+.List-Post{
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    background-color:transparent;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+thead {
+    background-color: transparent;
+}
+
+th, td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid transparent;
+}
+
+th {
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: transparent;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: transparent;
+}

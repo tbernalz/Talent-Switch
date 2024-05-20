@@ -1,0 +1,497 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+/* Visual de section en general, no son los cuadros de texto */
+section {
+    position: relative;
+    max-width: 400px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(55px);
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    padding: 2rem 3rem;
+    margin-top: 40%;
+    margin-bottom: 40%;
+}
+
+body .text {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+p {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+p:hover {
+    text-decoration: none;
+}
+
+
+.button {
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button-O {
+    width: 120%;
+    height: 60px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button:hover {
+    transform: translateY(-40%) scale(1.03); /* Un poco de zoom al pasar el ratón */ 
+}
+
+.button:active {
+    transform: scale(0.8); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
+    transform: translateY(-40%);
+  }
+
+.button2{
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #933b3b;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+/* Clase unicamente del Opportunity-Name (Opportunity-Name, ion-icon, label, input, place holder, text danger, input invalid) */
+.Opportunity-Name{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Opportunity-Name label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Opportunity-Name input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Opportunity-Name input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Opportunity-Name .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Opportunity-Name input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Opportunity-leader (Opportunity-leader, ion-icon, label, input, place holder, text danger, input invalid) */
+.Opportunity-leader{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Opportunity-leader label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Opportunity-leader input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Opportunity-leader input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Opportunity-leader .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Opportunity-leader input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Opportunity-Area (Opportunity-Area, ion-icon, label, input, place holder, text danger, input invalid) */
+.Opportunity-Area{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Opportunity-Area label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Opportunity-Area input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Opportunity-Area input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Opportunity-Area .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Opportunity-Area input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Opportunity-Description (Opportunity-Description, ion-icon, label, input, place holder, text danger, input invalid) */
+.Opportunity-Description{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Opportunity-Description label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Opportunity-Description input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Opportunity-Description input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Opportunity-Description .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Opportunity-Description input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+/* Clase unicamente del Opportunity-Skills (Opportunity-Skills, ion-icon, label, input, place holder, text danger, input invalid) */
+.Opportunity-Skills{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Opportunity-Skills label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Opportunity-Skills input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Opportunity-Skills input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Opportunity-Skills .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Opportunity-Skills input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Opportunity-Start (Opportunity-Start, ion-icon, label, input, place holder, text danger, input invalid) */
+.Opportunity-Start{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Opportunity-Start label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Opportunity-Start input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Opportunity-Start input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Opportunity-Start .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Opportunity-Start input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Opportunity-End (Opportunity-End, ion-icon, label, input, place holder, text danger, input invalid) */
+.Opportunity-End{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Opportunity-End label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Opportunity-End input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Opportunity-End input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Opportunity-End .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Opportunity-End input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del List-Opp (List-Opp, ion-icon, label, input, place holder, text danger, input invalid) */
+
+.List-Opp{
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    background-color:transparent;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+thead {
+    background-color: transparent;
+}
+
+th, td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid transparent;
+}
+
+th {
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: transparent;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: transparent;
+}

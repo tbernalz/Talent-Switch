@@ -1,0 +1,565 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+/* Visual de section en general, no son los cuadros de texto */
+section {
+    position: relative;
+    max-width: 400px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(55px);
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    padding: 2rem 3rem;
+    margin-top: 40%;
+    margin-bottom: 40%;
+}
+
+body .text {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+.team-header{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-30%);
+}
+h3 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+}
+h5 {
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+}
+
+p {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+p:hover {
+    text-decoration: none;
+}
+
+
+.button {
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button-O {
+    width: 120%;
+    height: 60px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button:hover {
+    transform: translateY(-40%) scale(1.03); /* Un poco de zoom al pasar el ratón */ 
+}
+
+.button:active {
+    transform: scale(0.8); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
+    transform: translateY(-40%);
+  }
+
+.button2{
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #933b3b;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+/* Clase unicamente del Team-Name (Team-Name, ion-icon, label, input, place holder, text danger, input invalid) */
+.Team-Name{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Team-Name label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Team-Name input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Team-Name input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Team-Name .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Team-Name input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Team-Email (Team-Email, ion-icon, label, input, place holder, text danger, input invalid) */
+.Team-Email{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Team-Email label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Team-Email input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Team-Email input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Team-Email .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Team-Email input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Team-Area (Team-Area, ion-icon, label, input, place holder, text danger, input invalid) */
+.Team-Area{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Team-Area label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Team-Area input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Team-Area input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Team-Area .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Team-Area input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Team-Description (Team-Description, ion-icon, label, input, place holder, text danger, input invalid) */
+.Team-Description{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Team-Description label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Team-Description input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Team-Description input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Team-Description .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Team-Description input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Team-Start (Team-Start, ion-icon, label, input, place holder, text danger, input invalid) */
+.Team-Start{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Team-Start label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Team-Start input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Team-Start input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Team-Start .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Team-Start input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Team-End (Team-End, ion-icon, label, input, place holder, text danger, input invalid) */
+.Team-End{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Team-End label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Team-End input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Team-End input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Team-End .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Team-End input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del List-Teams (List-Post, ion-icon, label, input, place holder, text danger, input invalid) */
+
+.List-Teams{
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    background-color:transparent;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+thead {
+    background-color: transparent;
+}
+
+tr {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid transparent;
+}
+.barra{
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-30%);
+}
+
+th {
+    font-weight: 600;
+}
+
+
+/* Clase unicamente de evaluate/*
+/* Options */
+select {
+    background-color: transparent; /* Hace que el fondo sea transparente */
+}
+
+.Qualification {
+    position: relative;
+    margin: 20px 0;
+    max-width: 310px;
+}
+
+.Qualification select {
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+    -webkit-appearance: none; /* Oculta la flecha del selector */
+    -moz-appearance: none; /* Oculta la flecha del selector */
+    appearance: none; /* Oculta la flecha del selector */
+}
+
+.Qualification::after {
+    content: '\25BC'; /* Agrega un símbolo de flecha */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    pointer-events: none;
+}
+
+.Qualification label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-137%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+select:focus ~ label,
+select:valid ~ label {
+    top: -5px;
+}
+
+/* Clase unicamente del Comment (Comment, ion-icon, label, input, place holder, text danger, input invalid) */
+.Comment{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Comment label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Comment input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Comment input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Comment .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Comment input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}

@@ -1,0 +1,600 @@
+/* Visual externa */
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+/* Fondo y demas */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('../assets/images/background-5.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+body .text {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+/* Visual de section en general, no son los cuadros de texto */
+section {
+    position: relative;
+    max-width: 400px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(55px);
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    padding: 2rem 3rem;
+    margin-top: 40%;
+    margin-bottom: 40%;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+p {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+p:hover {
+    text-decoration: none;
+}
+
+.button  {
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+.button:hover {
+    background-color: transparent;
+    transform: translateY(-40%) scale(1.03); /* Un poco de zoom al pasar el ratón */ 
+}
+
+.button:active {
+    transform: scale(0.8) translateY(-10%); /* Aplicado el efecto de active */
+  }
+
+.button2{
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transform: translateY(-60%);
+    transition: all 0.4s ease;
+}
+
+
+/* Clase unicamente del login (login-email, ion-icon, label, input, place holder, text danger, input invalid */
+
+.login-email {
+    position: relative;
+    margin: 30px 0;
+    max-width: 290px;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #fff;
+}
+
+.login-email ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2rem;
+    top: 20px;
+}
+
+.login-email label {
+    position: absolute;
+    top: 30%;
+    left: 5px;
+    transform: translateY(-110%);
+    color: #fff;
+    font-size: 1.1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.login-email input {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+
+}
+
+.login-email input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.login-email .text-danger {
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+.login-email input.is-invalid {
+    border-color: red; /* Cambia el borde a rojo cuando hay un error */
+    height: 16px;
+    width: 100%;
+}
+
+
+/* Clase unicamente del password (login-pass, ion-icon, label, input, place holder, text danger, input invalid */
+
+.login-pass {
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+
+.login-pass ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2rem;
+    top: 20px;
+}
+
+.login-pass label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.login-pass input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.login-pass input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.login-pass .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.login-pass input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+
+/* Clase unicamente del signup (Signup-Name, Signup-Email, Signup-actualArea, Signup-interestArea, Signup-Skills, Signup - select-container, Signup-Pass) */
+/* Clase unicamente del Signupname (SignupName, ion-icon, label, input, place holder, text danger, input invalid) */
+.Signup-Name{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Signup-Name label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Signup-Name input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Signup-Name input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Signup-Name .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Signup-Name input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+
+/* Clase unicamente del Signup-Email (Signup-Email, ion-icon, label, input, place holder, text danger, input invalid) */
+.Signup-Email{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Signup-Email label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Signup-Email input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Signup-Email input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Signup-Email .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Signup-Email input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Signup-Area (Signup-actualArea, ion-icon, label, input, place holder, text danger, input invalid) */
+.Signup-actualArea{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Signup-actualArea label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Signup-actualArea input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Signup-actualArea input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Signup-actualArea .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Signup-actualArea input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+
+/* Clase unicamente del Signup-Interes (Signup-interestArea, ion-icon, label, input, place holder, text danger, input invalid) */
+.Signup-interestArea{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Signup-interestArea label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Signup-interestArea input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Signup-interestArea input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Signup-interestArea .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Signup-interestArea input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Signup-Skills (Signup-interestArea, ion-icon, label, input, place holder, text danger, input invalid) */
+.Signup-Skills{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Signup-Skills label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Signup-Skills input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Signup-Skills input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Signup-Skills .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Signup-Skills input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Clase unicamente del Signup-usuario (Signup-usuario, ion-icon, label, input, place holder, text danger, input invalid) */
+select {
+    background-color: transparent; /* Hace que el fondo sea transparente */
+}
+
+.Signup-usuario {
+    position: relative;
+    margin: 30px 0;
+    max-width: 310px;
+}
+
+.Signup-usuario select {
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+    -webkit-appearance: none; /* Oculta la flecha del selector */
+    -moz-appearance: none; /* Oculta la flecha del selector */
+    appearance: none; /* Oculta la flecha del selector */
+}
+
+.Signup-usuario::after {
+    content: '\25BC'; /* Agrega un símbolo de flecha */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    pointer-events: none;
+}
+
+.Signup-usuario label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-145%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+select:focus ~ label,
+select:valid ~ label {
+    top: -10px;
+}
+
+.Signup-usuario .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Signup-usuario input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
+
+/* Estilos para los campos de selección */
+.Signup-usuario select:not([value=""]) + label {
+    top: -5px;
+}
+
+/* Clase unicamente del Signup-Pass (Signup-Pass, ion-icon, label, input, place holder, text danger, input invalid) */
+.Signup-Pass{
+    position: relative;
+    margin: 50px 0;
+    max-width: 290px;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #fff;
+}
+.Signup-Pass label {
+    position: absolute;
+    top: 60%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.Signup-Pass input {
+    position: relative;
+    width: 100%;    
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.Signup-Pass input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.Signup-Pass .text-danger{
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+
+.Signup-Pass input.is-valid{
+    border-color: red;
+    height: 16px;
+    width: 100%;
+}
