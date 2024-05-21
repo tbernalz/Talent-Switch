@@ -12,27 +12,33 @@ function Login() {
     })
     const navigate = useNavigate();
     const [errors, setErrors] = useState({})
+
     const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-    }
+        setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors(Validation(values))
-        if (errors.email === "" && errors.password === ""){
+        const validationErrors = Validation(values);
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
             axios.post('http://localhost:8081/login', values)
-            .then(res => {
-                if(res.data === "Success"){
-                    
-                    // por ahora alert
-                    alert('User was found, Welcome to Magneto Talent Switch')
-                    navigate('/home');
-                }else {
-                    alert("No record exists");
-                }
-            })
-            .catch(err => console.log(err));
+                .then(res => {
+                    if (res.data === "Success") {
+                        alert('User was found, Welcome to Magneto Talent Switch');
+                        navigate('/home');
+                    } else if (res.data === "email_no_exists") {
+                        alert("Email not found");
+                    } else if (res.data === "error_password") {
+                        alert("Incorrect Password");
+                    } else {
+                        alert("A problem has occurred");
+                    }
+                })
+                .catch(err => console.log(err));
         }
-    }
+    };
 
   return (
     <section>
