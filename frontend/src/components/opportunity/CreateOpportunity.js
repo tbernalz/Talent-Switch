@@ -16,44 +16,33 @@ function CreateOpportunity() {
     })
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({})    
+    const [errors, setErrors] = useState({})  
+
     const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-    }
+        setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
+    };
+
+    
     const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors(Validation(values));
-
-        if (new Date(values.start_date) > new Date(values.final_date)) {
-            const newErrors = { ...errors, final_date: 'Final date cannot be earlier than start date' };
-            setErrors(newErrors);
-            return;
-        }
-
-        if (
-            !errors.opportunity_name &&
-            !errors.opportunity_leader_email &&
-            !errors.opportunity_area &&
-            !errors.description &&
-            !errors.required_skills &&
-            !errors.start_date &&
-            !errors.final_date
-        ) {
+        const validationErrors = Validation(values);
+        setErrors(validationErrors);
+    
+        if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
             axios.post('http://localhost:8081/create-opportunity', values)
                 .then(res => {
-                    if(res.data === "Success"){
-                    
-                        //por ahora alert
+                    if (res.data === "Success") {
                         alert('Opportunity was created');
                         navigate('/home');
-                    }else {
+                    } else {
                         alert("It was not possible to create the opportunity");
                         navigate('/home');
                     }
                 })
                 .catch(err => console.log(err));
         }
-    }
+    };
+    
 
 
   return (
