@@ -32,18 +32,24 @@ exports.signup = (req, res) => {
 };
 
 exports.login = (req, res) => {
-    const sql = "SELECT * FROM user WHERE `email` = ? AND `password` = ?";
-    db.query(sql, [req.body.email, req.body.password], (err, data) => {
-        if(err){
+    const sql = "SELECT * FROM user WHERE `email` = ?";
+    db.query(sql, [req.body.email], (err, data) => {
+        if (err) {
             console.error(err);
             return res.json("Error");
         }
-        if (data.length > 0){
-            console.log("Success login");
-            return res.json("Success");
-        }else {
-            console.log("Failed login");
-            return res.json("Faile");
+        if (data.length > 0) {
+            const user = data[0];
+            if (user.password === req.body.password) {
+                console.log("Success login");
+                return res.json("Success");
+            } else {
+                console.log("Incorrect password");
+                return res.json("error_password");
+            }
+        } else {
+            console.log("Email not found");
+            return res.json("email_no_exists");
         }
-    })
+    });
 };

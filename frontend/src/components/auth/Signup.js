@@ -17,39 +17,32 @@ function Signup() {
 
     const navigate = useNavigate();
     const [errors, setErrors] = useState({})
+
     const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-    }
+        setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors(Validation(values));
-        if(
-            errors.name === "" &&
-            errors.email === "" &&
-            errors.actual_area === "" &&
-            errors.interest_area === "" &&
-            errors.skills === "" &&
-            errors.user_type === "" &&
-            errors.password === ""
-         ){
+        const validationErrors = Validation(values);
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
             axios.post('http://localhost:8081/signup', values)
-            .then(res => {
-                if(res.data === "Success"){
-
-                    // por ahora alert
-                    alert('User was Successfully registered')
-                    navigate('/');
-                }else if(res.data === "email_exists"){
-                    alert("Email Already Exists");
-                }else{
-                    alert("An Error has Cccurred")
-                }
-
-            })
-            .catch(err => console.log(err));
+                .then(res => {
+                    if (res.data === "Success") {
+                        alert('User was Successfully registered');
+                        navigate('/');
+                    } else if (res.data === "email_exists") {
+                        alert("Email Already Exists");
+                    } else {
+                        alert("An Error has Occurred");
+                    }
+                })
+                .catch(err => console.log(err));
         }
-    }
+    };
+
   return (
     <section>
         <div className='text'>Talent Switch</div>
