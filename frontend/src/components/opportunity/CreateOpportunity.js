@@ -101,12 +101,13 @@ function CreateOpportunity() {
             </div>
 
             <div>
-                <button type='submit' className='button'>Crear</button>    
+                <button type='submit' className='buttonOpportunity'>Crear</button>    
             </div>
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='button2'>Atras</Link>        
+                    {/* Css que no corresponde */}
+                    <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
                 </div>
             </div>
         </form>

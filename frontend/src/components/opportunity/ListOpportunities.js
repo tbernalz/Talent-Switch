@@ -18,6 +18,14 @@ function ListOpportunities() {
         return opportunity.opportunity_state === 'open' ? 'accepted-row' : 'closed-row';
     };
 
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
     return (
         <div className="List-Opp">
             <h2>Lista de oportunidades</h2>
@@ -37,8 +45,8 @@ function ListOpportunities() {
                         <tr key={opportunity.opportunity_id} className={getRowClassName(opportunity)}>
                             <td>{opportunity.opportunity_name}</td>
                             <td>{opportunity.opportunity_area}</td>
-                            <td>{opportunity.start_date}</td>
-                            <td>{opportunity.final_date}</td>
+                            <td>{formatDate(opportunity.start_date)}</td>
+                            <td>{formatDate(opportunity.final_date)}</td>
                             <td>{opportunity.opportunity_state}</td>
                             <td>
                                 <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>
@@ -49,7 +57,7 @@ function ListOpportunities() {
             </table>
             <hr />
             <div>
-                <Link to="/home" className='button2'>Atras</Link>        
+                <Link to="/home" className='buttonOpportunity2'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

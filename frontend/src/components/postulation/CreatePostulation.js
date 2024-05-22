@@ -144,12 +144,12 @@ function CreatePostulation() {
             </div>
 
             <div>
-                <button type='submit' className='button'>Crear</button>    
+                <button type='submit' className='buttonPostulation'>Crear</button>    
             </div>
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='button2'>Atras</Link>        
+                    <Link to="/home" className='buttonPostulation2'>Atrás</Link>        
                 </div>
             </div>
         </form>

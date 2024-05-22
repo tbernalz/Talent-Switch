@@ -30,7 +30,9 @@ function UpdateProfile() {
 
     return (
         <section>
-            <h2>Actualizar información</h2>
+            <div className='h2Update'>
+                <h2>Actualizar información</h2>
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className='Name'>
                     <label htmlFor='name'><strong>Nombre</strong></label>
@@ -56,11 +58,11 @@ function UpdateProfile() {
                 <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
                 <input type="text" value={userData.user_type} readOnly /></div>
                 <div>
-                    <button type='submit' className='button'>Guardar</button>
+                    <button type='submit' className='buttonP'>Guardar</button>
                 </div>
 
                     <div>
-                        <Link to="/my-profile" className='button2'>Atras</Link>
+                        <Link to="/my-profile" className='buttonP1'>Atrás</Link>
                     </div>
 
                 <div className='text'>Talent Switch</div>

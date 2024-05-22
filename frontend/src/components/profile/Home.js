@@ -29,7 +29,7 @@ function Home() {
           <li>Magneto Switch Talent</li>
           <li><Link to="/home">Inicio</Link></li>
           <li><Link to="/my-profile">Mi perfil</Link></li>
-          <li><Link to="/logout">Salir</Link></li>
+          <li><Link to="/">Salir</Link></li> {/* /logout */}
         </ul>
       </nav>
 
