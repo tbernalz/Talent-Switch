@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const { db } = require('../config/db'); // Importa solo la propiedad 'db' del objeto exportado en db.js
 
 exports.toEvaluateMember = (req, res) => {
     const { id, user_id, member_email } = req.body;

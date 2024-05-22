@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const { db } = require('../config/db'); // Importa solo la propiedad 'db' del objeto exportado en db.js
 
 exports.addApplicant = (req, res) => {
     const { opportunity_id, applicant_email } = req.body;

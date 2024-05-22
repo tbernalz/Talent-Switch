@@ -1,17 +1,15 @@
-const db = require('../config/db');
+const { db } = require('../config/db'); // Importa solo la propiedad 'db' del objeto exportado en db.js
 
 exports.signup = (req, res) => {
     const email = req.body.email;
-    // Check if the email already exist in the DB
     db.query("SELECT * FROM user WHERE email = ?", email, (err, data) => {
-        if(err){
+        if (err) {
             return res.json("Error");
         }
-        if (data.length > 0){
+        if (data.length > 0) {
             return res.json("email_exists");
         } else {
-            // If the email doesn't exist, the it proceed with registration
-            const sql = "INSERT INTO user (`name`,`email`,`actual_area`,`interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
+            const sql = "INSERT INTO user (`name`, `email`, `actual_area`, `interest_area`, `skills`, `user_type`, `password`) VALUES (?)";
             const values = [
                 req.body.name,
                 req.body.email,
@@ -20,9 +18,9 @@ exports.signup = (req, res) => {
                 req.body.skills,
                 req.body.user_type,
                 req.body.password
-            ]
+            ];
             db.query(sql, [values], (err, result) => {
-                if(err){
+                if (err) {
                     return res.json("Error");
                 }
                 return res.json("Success");
@@ -35,21 +33,31 @@ exports.login = (req, res) => {
     const sql = "SELECT * FROM user WHERE `email` = ?";
     db.query(sql, [req.body.email], (err, data) => {
         if (err) {
-            console.error(err);
             return res.json("Error");
         }
         if (data.length > 0) {
             const user = data[0];
             if (user.password === req.body.password) {
-                console.log("Success login");
-                return res.json("Success");
+                req.session.user = user;
+                req.session.save(err => {
+                    if (err) {
+                        return res.status(500).json("Error");
+                    }
+                    return res.json("Success");
+                });
             } else {
-                console.log("Incorrect password");
                 return res.json("error_password");
             }
         } else {
-            console.log("Email not found");
             return res.json("email_no_exists");
         }
     });
+};
+
+exports.checkSession = (req, res) => {
+    if (req.session.user) {
+        res.json(req.session.user);
+    } else {
+        res.status(401).json("No session");
+    }
 };
