@@ -94,6 +94,8 @@ function Evaluate() {
     return (
         <section>
             <div className="evaluateHeader">
+        <section>
+            <div className="evaluateHeader">
                 <h3>Evaluacion</h3>
                 <h5>{member_email}</h5>
                 {/* <p>ID: {id}</p> */}
@@ -104,7 +106,6 @@ function Evaluate() {
                     <label htmlFor='qualification'><strong>Calificacion:</strong></label>
                     <select id="qualification" name='qualification'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.qualification ? ' is-invalid' : '')}>
-                            <option value="" disabled selected>Escoge tu calificacion</option>
                             <option value='1'>1 Estrella:  &#9733;</option>
                             <option value='2'>2 Estrellas: &#9733;&#9733;</option>
                             <option value='3'>3 Estrellas: &#9733;&#9733;&#9733;</option>
@@ -122,11 +123,12 @@ function Evaluate() {
                 </div>
                 <div>
                     <button type='submit' className='buttonTmembers'>Evaluar</button>
+                    <button type='submit' className='buttonTmembers'>Evaluar</button>
                 </div>
             </form>
             <hr />
             <div className='button-container2'>
-                <Link to={`/teams/${id}/list-members`} className='buttonBack'>Atras</Link>
+                <Link to={`/teams/${id}/list-members`} className='buttonBack'>Atrás</Link>
             </div>
             <div className='text'>Talent Switch</div>
         </section>

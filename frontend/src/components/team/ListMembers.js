@@ -63,34 +63,34 @@ function ListMembers() {
 
     return (
         <section>
-        <div className="ListaMiembros">
-            <div className='memberList'>
-            <h2>Lista de miembros de equipo {id}</h2>
-            </div>
-            <table>
-                <thead>
-                    <tr className='Barra'>
-                        <th>Correo del miembro</th>
-                        <th>Evaluaciones del miembro</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {members.map(member => (
-                        <tr key={member.id}>
-                            <td>{member.member_email}</td>
-                            <td>
-                                <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
-                            </td>
+            <div className="ListaMiembros">
+                <div className='memberList'>
+                    <h2>Lista de miembros de equipo {id}</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr className='Barra'>
+                            <th>Correo del miembro</th>
+                            <th>Evaluaciones del miembro</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            <hr />
-            <div>
-                <Link to={`/teams/${id}`} className='buttonTeamC1'>Atras</Link>
+                    </thead>
+                    <tbody>
+                        {members.map(member => (
+                            <tr key={member.id}>
+                                <td>{member.member_email}</td>
+                                <td>
+                                    <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <hr />
+                <div>
+                    <Link to={`/teams/${id}`} className='buttonTeamC1'>Atrás</Link>
+                </div>
+                <div className='text'>Talent Switch</div>
             </div>
-            <div className='text'>Talent Switch</div>
-        </div>
         </section>
     );
 }

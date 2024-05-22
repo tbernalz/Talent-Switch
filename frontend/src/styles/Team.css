@@ -35,6 +35,7 @@ h2 {
     color: #fff;
     text-align: center;
 }
+
 .memberList{
     font-size: 1.2rem;
     color: #fff;
@@ -65,6 +66,7 @@ h2 {
     font-size: 1.2rem;
     color: #fff;
     text-align: center;
+    transform: translateY(-20%);
     transform: translateY(-20%);
 }
 h3 {
@@ -113,6 +115,7 @@ p:hover {
 .buttonBack:hover{
     background-color: #a1a1a1;
 }
+
 
 .buttonTeamC {
     width: 100%;
@@ -173,6 +176,7 @@ p:hover {
     transform: translateY(-10%);
     transition: all 0.4s ease
 }
+
 .buttonTdetails:hover {
     background-color: #a1a1a1;
 }
@@ -553,6 +557,7 @@ tr {
     border-bottom: 1px solid transparent;
 }
 .Barra{
+.Barra{
     font-size: 2rem;
     color: #fff;
     text-align: center;
@@ -582,7 +587,6 @@ tr {
     background: transparent;
     border: none;
     outline: none;
-    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -638,7 +642,6 @@ select {
     -moz-appearance: none; /* Oculta la flecha del selector */
     appearance: none; /* Oculta la flecha del selector */
     transform: translateY(120%);
-
 }
 
 .Qualification::after {
@@ -646,6 +649,7 @@ select {
     position: absolute;
     top: 50%;
     right: 10px;
+    transform: translateY(60%);
     transform: translateY(60%);
     color: #fff;
     pointer-events: none;
@@ -655,6 +659,7 @@ select {
     position: absolute;
     top: 50%;
     left: 5px;
+    transform: translateY(-60%);
     transform: translateY(-60%);
     color: #fff;
     font-size: 1rem;
@@ -673,12 +678,12 @@ select:valid ~ label {
     margin: 50px 0;
     max-width: 290px;
     font-size: 0.8rem;
-
 }
 .Comment label {
     position: absolute;
     top: 60%;
     left: 5px;
+    transform: translateY(-100%);
     transform: translateY(-100%);
     color: #fff;
     font-size: 1rem;
@@ -697,6 +702,8 @@ select:valid ~ label {
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
+    transform: translateY(100%);
+    border-bottom: 2px solid #fff;
     transform: translateY(100%);
     border-bottom: 2px solid #fff;
 }

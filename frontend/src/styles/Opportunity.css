@@ -47,6 +47,7 @@ p:hover {
 
 
 .buttonOpportunity {
+.buttonOpportunity {
     width: 100%;
     height: 30px;
     border-radius: 20px;
@@ -58,15 +59,15 @@ p:hover {
     font-size: 1rem;
     font-weight: 600;
     transform: translateY(-20%);
+    transform: translateY(-20%);
     transition: all 0.4s ease;
 }
+
 .buttonOpportunity:hover {
     background-color: #a1a1a1;
 }
 
-
 .button-O {
-    
     width: 100%;
     height: 60px;
     border-radius: 10px;
@@ -75,6 +76,11 @@ p:hover {
     outline: none;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    transform: translateY(-40%);
     font-weight: bold;
     text-align: center;
     text-decoration: none;
@@ -89,9 +95,27 @@ p:hover {
     height: 30px; 
     border-radius: 20px; 
     background-color: #fff;
+.buttonOpportunity2{
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
     border: none;
     outline: none;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    color: #000;
+    transform: translateY(-10%);
+    transition: all 0.4s ease
+}
+
+.buttonOpportunity2:hover {
+    background-color: #a1a1a1;
     font-size: 1rem;
     font-weight: bold;
     text-align: center;

@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const { db } = require('../config/db'); // Importa solo la propiedad 'db' del objeto exportado en db.js
 
 exports.createTeam = (req, res) => {
     const sql = "INSERT INTO team (`team_name`,`team_leader_email`,`team_area`,`description`, `start_date`, `final_date`) VALUES (?)";

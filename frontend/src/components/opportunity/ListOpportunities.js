@@ -17,6 +17,7 @@ function ListOpportunities() {
     const getRowClassName = (opportunity) => {
         return opportunity.opportunity_state === 'open' ? 'accepted-row' : 'closed-row';
     };
+
     function formatDate(dateString) {
         const date = new Date(dateString);
         const day = String(date.getDate()).padStart(2, '0');
@@ -46,6 +47,8 @@ function ListOpportunities() {
                             <td>{opportunity.opportunity_area}</td>
                             <td>{formatDate(opportunity.start_date)}</td>
                             <td>{formatDate(opportunity.final_date)}</td>
+                            <td>{formatDate(opportunity.start_date)}</td>
+                            <td>{formatDate(opportunity.final_date)}</td>
                             <td>{opportunity.opportunity_state}</td>
                             <td>
                                 <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>
@@ -56,7 +59,7 @@ function ListOpportunities() {
             </table>
             <hr />
             <div>
-                <Link to="/home" className='buttonOpportunity2'>Atras</Link>
+                <Link to="/home" className='buttonOpportunity2'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

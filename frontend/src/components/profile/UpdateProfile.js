@@ -31,7 +31,7 @@ function UpdateProfile() {
     return (
         <section>
             <div className='h2Update'>
-            <h2>Actualizar información</h2>
+                <h2>Actualizar información</h2>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className='Name'>
@@ -59,10 +59,11 @@ function UpdateProfile() {
                 <input type="text" value={userData.user_type} readOnly /></div>
                 <div>
                     <button type='submit' className='buttonP'>Guardar</button>
+                    <button type='submit' className='buttonP'>Guardar</button>
                 </div>
 
                     <div>
-                        <Link to="/my-profile" className='buttonP1'>Atras</Link>
+                        <Link to="/my-profile" className='buttonP1'>Atrás</Link>
                     </div>
 
                 <div className='text'>Talent Switch</div>

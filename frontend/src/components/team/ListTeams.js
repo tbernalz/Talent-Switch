@@ -13,6 +13,7 @@ function ListTeams() {
             })
             .catch(err => console.log(err));
     }, []);
+
     function formatDate(dateString) {
         const date = new Date(dateString);
         const day = String(date.getDate()).padStart(2, '0');
@@ -24,7 +25,7 @@ function ListTeams() {
     return (
         <div className="List-Teams">
             <div className='lista'>
-            <h2>Lista de equipos</h2>          
+                <h2>Lista de equipos</h2>          
             </div>
             <table>
                 <thead>
@@ -43,6 +44,8 @@ function ListTeams() {
                             <td>{team.team_area}</td>
                             <td>{formatDate(team.start_date)}</td>
                             <td>{formatDate(team.final_date)}</td>
+                            <td>{formatDate(team.start_date)}</td>
+                            <td>{formatDate(team.final_date)}</td>
                             <td>
                                 <Link to={`/teams/${team.team_id}`} className="button-O">Ver equipo</Link>
                             </td>
@@ -52,7 +55,7 @@ function ListTeams() {
             </table>
             <hr />
             <div>
-                <Link to="/home" className='buttonTeamC1'>Atras</Link>        
+                <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

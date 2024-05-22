@@ -42,6 +42,7 @@ function ListPostulations() {
                             <td>{postulation.postulation_state}</td>
                             <td>
                                 <Link to={`/postulations/${postulation.postulation_id}`} className="buttonViewP">Ver postulación</Link>
+                                <Link to={`/postulations/${postulation.postulation_id}`} className="buttonViewP">Ver postulación</Link>
                             </td>
                         </tr>
                     ))}
@@ -49,7 +50,7 @@ function ListPostulations() {
             </table>
             <hr />
             <div>
-                <Link to="/home" className='buttonPostulation2'>Atras</Link>        
+                <Link to="/home" className='buttonPostulation2'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

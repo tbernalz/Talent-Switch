@@ -46,9 +46,8 @@ function CreateOpportunity() {
     <section>
         <form  action='' onSubmit={handleSubmit}>
             <div className='createProject'>
-            <h2>Crear proyecto de equipo</h2>
+                <h2>Crear proyecto de equipo</h2>
             </div>
-            
             <div className='Team-Name'>
                 <label htmlFor='team_name'><strong>Nombre del equipo</strong></label>
                 <input type="text" placeholder='Ingrese el nombre del equipo' name='team_name'
@@ -92,11 +91,12 @@ function CreateOpportunity() {
 
             <div>
                 <button type='submit' className='buttonTeamC'>Crear</button>    
+                <button type='submit' className='buttonTeamC'>Crear</button>    
             </div>
             <div>
                 <hr/>
                 <div>
-                    <Link to="/home" className='buttonTeamC1'>Atras</Link>        
+                    <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
                 </div>
             </div>
         </form>
