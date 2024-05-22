@@ -201,6 +201,7 @@
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;

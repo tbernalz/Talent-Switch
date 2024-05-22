@@ -238,6 +238,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -289,6 +290,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -340,6 +342,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -391,6 +394,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -442,6 +446,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -493,6 +498,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -576,6 +582,7 @@ tr {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -623,6 +630,7 @@ select {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -685,6 +693,7 @@ select:valid ~ label {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
