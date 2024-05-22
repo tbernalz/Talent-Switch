@@ -59,6 +59,7 @@ function UpdateProfile() {
                 <input type="text" value={userData.user_type} readOnly /></div>
                 <div>
                     <button type='submit' className='buttonP'>Guardar</button>
+                    <button type='submit' className='buttonP'>Guardar</button>
                 </div>
 
                     <div>

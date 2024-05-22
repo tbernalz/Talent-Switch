@@ -47,6 +47,8 @@ function ListOpportunities() {
                             <td>{opportunity.opportunity_area}</td>
                             <td>{formatDate(opportunity.start_date)}</td>
                             <td>{formatDate(opportunity.final_date)}</td>
+                            <td>{formatDate(opportunity.start_date)}</td>
+                            <td>{formatDate(opportunity.final_date)}</td>
                             <td>{opportunity.opportunity_state}</td>
                             <td>
                                 <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>

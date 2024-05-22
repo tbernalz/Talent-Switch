@@ -67,6 +67,7 @@ h2 {
     color: #fff;
     text-align: center;
     transform: translateY(-20%);
+    transform: translateY(-20%);
 }
 h3 {
     font-size: 2rem;
@@ -241,6 +242,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -292,6 +294,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -343,6 +346,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -394,6 +398,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -445,6 +450,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -496,6 +502,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -549,6 +556,7 @@ tr {
     text-align: left;
     border-bottom: 1px solid transparent;
 }
+.Barra{
 .Barra{
     font-size: 2rem;
     color: #fff;
@@ -617,6 +625,7 @@ select {
     position: relative;
     margin: 20px 0;
     max-width: 310px;
+
 }
 
 .Qualification select {
@@ -625,6 +634,7 @@ select {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -640,6 +650,7 @@ select {
     top: 50%;
     right: 10px;
     transform: translateY(60%);
+    transform: translateY(60%);
     color: #fff;
     pointer-events: none;
 }
@@ -648,6 +659,7 @@ select {
     position: absolute;
     top: 50%;
     left: 5px;
+    transform: translateY(-60%);
     transform: translateY(-60%);
     color: #fff;
     font-size: 1rem;
@@ -672,6 +684,7 @@ select:valid ~ label {
     top: 60%;
     left: 5px;
     transform: translateY(-100%);
+    transform: translateY(-100%);
     color: #fff;
     font-size: 1rem;
     pointer-events: none;
@@ -685,9 +698,12 @@ select:valid ~ label {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
+    transform: translateY(100%);
+    border-bottom: 2px solid #fff;
     transform: translateY(100%);
     border-bottom: 2px solid #fff;
 }
@@ -696,6 +712,7 @@ select:valid ~ label {
     color: #ffffffe6;
     position: relative;
     width: 100%;
+    
 }
 
 .Comment .text-danger{

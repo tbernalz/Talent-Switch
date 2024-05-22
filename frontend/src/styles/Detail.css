@@ -104,11 +104,24 @@
 }
 
 /* General */
+/* General */
 
 .buttonOppDetail{
     width: 100%;
     height: 30px;
+.buttonOppDetail{
+    width: 100%;
+    height: 30px;
     border-radius: 20px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(30%);
+    transition: all 0.4s ease;
+    text-decoration: none;
     background-color: #fff;
     border: none;
     outline: none;
@@ -134,11 +147,36 @@
     outline: none;
     cursor: pointer;
     font-size: 1rem;
+.buttonOppDetail:hover {
+    background-color: #a1a1a1;
+}
+
+.buttonOppDetail2{
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
     line-height: 30px; 
+    text-decoration: none;
+    line-height: 30px; 
     color: #000;
+    transform: translateY(5%);
+    transition: all 0.4s ease
+}
+
+.buttonOppDetail2:hover{
+    background-color: #a1a1a1;
+}
+
+.buttonOppDetail3{
     transform: translateY(5%);
     transition: all 0.4s ease
 }
@@ -158,10 +196,12 @@
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
     line-height: 30px; 
     color: #000;
+    transform: translateY(-10%);
     transform: translateY(-10%);
     transition: all 0.4s ease
 }
