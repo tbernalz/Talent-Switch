@@ -112,18 +112,17 @@ function Signup() {
                     onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')}/>
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
-
                 <div className='Password-criteria'>
                     <p>La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial.</p>
                 </div>
 
                 <div>
-                    <button type='submit' className='button'> Registrarse</button>
+                    <button type='submit' className='button1'> Registrarse</button>
                 </div>
                 <div>
                     <p>Al darle registrar aceptas nuestros terminos y condiciones.</p>
                     <div>
-                    <Link to="/"  className='button2'>Ingreso</Link>
+                    <Link to="/"  className='button1'>Ingreso</Link>
                     </div>
                 </div>
                 

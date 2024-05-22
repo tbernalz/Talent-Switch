@@ -49,7 +49,7 @@ function PostulationDetail() {
             </div>
             <hr />
             <div>
-                <Link to="/list-postulations" className="button2">Atras</Link>        
+                <Link to="/list-postulations" className="buttonPostulation3">Atras</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </section>

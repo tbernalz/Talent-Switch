@@ -36,11 +36,38 @@ h2 {
     text-align: center;
 }
 
+.memberList{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-20%);
+}
+.createProject{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-20%);
+}
+.lista{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(-20%);
+}
+
+.evaluateHeader{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    transform: translateY(10%);
+}
+
 .team-header{
     font-size: 1.2rem;
     color: #fff;
     text-align: center;
-    transform: translateY(-30%);
+    transform: translateY(-20%);
+    transform: translateY(-20%);
 }
 h3 {
     font-size: 2rem;
@@ -62,8 +89,35 @@ p:hover {
     text-decoration: none;
 }
 
+.button-container2 {
+    position: relative;
+    width: 100%; /* Ajusta este valor según el ancho deseado */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+  }
+.buttonBack{
+    display: inline-block; /* Cambiado a 'block' para que los botones se apilen verticalmente */
+    width: 100%; /* Ajusta el ancho de los botones al 100% del contenedor */
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px;
+    color: #000;
+    transition: all 0.4s ease;
+}
 
-.button {
+.buttonBack:hover{
+    background-color: #a1a1a1;
+}
+
+
+.buttonTeamC {
     width: 100%;
     height: 30px;
     border-radius: 20px;
@@ -78,6 +132,77 @@ p:hover {
     transition: all 0.4s ease;
 }
 
+.buttonTeamC:hover {
+    background-color: #a1a1a1;
+}
+
+
+.buttonTeamC1{
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    color: #000;
+    transform: translateY(-10%);
+    transition: all 0.4s ease
+}
+.buttonTeamC1:hover {
+    background-color: #a1a1a1;
+}
+.buttonTdetails{
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    color: #000;
+    transform: translateY(-10%);
+    transition: all 0.4s ease
+}
+
+.buttonTdetails:hover {
+    background-color: #a1a1a1;
+}
+
+.buttonTmembers{
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    color: #000;
+    transform: translateY(-10%);
+    transition: all 0.4s ease
+}
+.buttonTmembers:hover {
+    background-color: #a1a1a1;
+}
+
 .button-O {
     width: 120%;
     height: 60px;
@@ -88,30 +213,6 @@ p:hover {
     cursor: pointer;
     font-size: 1rem;
     font-weight: 400;
-    transform: translateY(-60%);
-    transition: all 0.4s ease;
-}
-
-.button:hover {
-    transform: translateY(-40%) scale(1.03); /* Un poco de zoom al pasar el ratón */ 
-}
-
-.button:active {
-    transform: scale(0.8); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
-    transform: translateY(-40%);
-  }
-
-.button2{
-    width: 100%;
-    height: 30px;
-    border-radius: 20px;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #933b3b;
     transform: translateY(-60%);
     transition: all 0.4s ease;
 }
@@ -141,6 +242,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -192,6 +294,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -243,6 +346,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -294,6 +398,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -345,6 +450,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -396,6 +502,7 @@ p:hover {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
@@ -449,11 +556,58 @@ tr {
     text-align: left;
     border-bottom: 1px solid transparent;
 }
-.barra{
+.Barra{
+.Barra{
     font-size: 2rem;
     color: #fff;
     text-align: center;
-    transform: translateY(-30%);
+    transform: translateY(10%);
+}
+.member-email{
+    position: relative;
+    margin: 30px 0;
+    max-width: 290px;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #fff;
+}
+.member-email label{
+    position: absolute;
+    top: 30%;
+    left: 5px;
+    transform: translateY(-140%);
+    color: #fff;
+    font-size: 1.1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+.member-email input{
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+.member-email input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.member-email .text-danger {
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+.member-email input.is-invalid {
+    border-color: red; /* Cambia el borde a rojo cuando hay un error */
+    height: 16px;
+    width: 100%;
 }
 
 th {
@@ -471,6 +625,7 @@ select {
     position: relative;
     margin: 20px 0;
     max-width: 310px;
+
 }
 
 .Qualification select {
@@ -479,12 +634,14 @@ select {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
     -webkit-appearance: none; /* Oculta la flecha del selector */
     -moz-appearance: none; /* Oculta la flecha del selector */
     appearance: none; /* Oculta la flecha del selector */
+    transform: translateY(120%);
 }
 
 .Qualification::after {
@@ -492,7 +649,8 @@ select {
     position: absolute;
     top: 50%;
     right: 10px;
-    transform: translateY(-50%);
+    transform: translateY(60%);
+    transform: translateY(60%);
     color: #fff;
     pointer-events: none;
 }
@@ -501,7 +659,8 @@ select {
     position: absolute;
     top: 50%;
     left: 5px;
-    transform: translateY(-137%);
+    transform: translateY(-60%);
+    transform: translateY(-60%);
     color: #fff;
     font-size: 1rem;
     pointer-events: none;
@@ -519,13 +678,13 @@ select:valid ~ label {
     margin: 50px 0;
     max-width: 290px;
     font-size: 0.8rem;
-    border-bottom: 2px solid #fff;
 }
 .Comment label {
     position: absolute;
     top: 60%;
     left: 5px;
-    transform: translateY(-140%);
+    transform: translateY(-100%);
+    transform: translateY(-100%);
     color: #fff;
     font-size: 1rem;
     pointer-events: none;
@@ -539,15 +698,21 @@ select:valid ~ label {
     background: transparent;
     border: none;
     outline: none;
+    opacity: 40%;
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
+    transform: translateY(100%);
+    border-bottom: 2px solid #fff;
+    transform: translateY(100%);
+    border-bottom: 2px solid #fff;
 }
 
 .Comment input::placeholder {
     color: #ffffffe6;
     position: relative;
     width: 100%;
+    
 }
 
 .Comment .text-danger{
