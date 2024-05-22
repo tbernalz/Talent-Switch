@@ -74,6 +74,7 @@
     margin-bottom: 40%;
     color: #fff; /* Cambia el color del texto */
     justify-content: center;
+    
 }
 
 .opportunity-detail h2 {
@@ -102,106 +103,28 @@
     color: #000;
 }
 
-
-/* Team */
-
-.team-detail {
-    position: relative;
-    max-width: 400px;
-    background-color: transparent; /* Cambia el color de fondo */
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Cambia el color del borde */
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
-    display: flex;
-    flex-direction: column; /* Ajusta el diseño a una columna */
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 3rem;
-    margin-top: 40%;
-    margin-bottom: 40%;
-    color: #fff; /* Cambia el color del texto */
-    justify-content: center;
-}
-
-.team-detail h2 {
-    font-size: 2rem; /* Aumenta el tamaño del título */
-    color: #fff; /* Cambia el color del texto */
-    text-align: center;
-    margin-bottom: 20px;
-
-}
-
-.team-detail p {
-    font-size: 1rem; /* Ajusta el tamaño del texto */
-    margin-bottom: 10px;
-    color: #fff; /* Cambia el color del texto */
-}
-
-.team-detail strong {
-    font-weight: bold;
-}
-
-.team-detail p:last-child {
-    margin-bottom: 0;
-}
-
-.team-detail.error {
-    color: #000;
-}
-
-
-/* Postulation */
-
-.postulation-detail {
-    position: relative;
-    max-width: 400px;
-    background-color: transparent; /* Cambia el color de fondo */
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Cambia el color del borde */
-    border-radius: 20px;
-    backdrop-filter: blur(55px);
-    display: flex;
-    flex-direction: column; /* Ajusta el diseño a una columna */
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 3rem;
-    margin-top: 40%;
-    margin-bottom: 40%;
-    color: #fff; /* Cambia el color del texto */
-    justify-content: center;
-}
-
-.postulation-detail h2 {
-    font-size: 2rem; /* Aumenta el tamaño del título */
-    color: #fff; /* Cambia el color del texto */
-    text-align: center;
-    margin-bottom: 20px;
-
-}
-
-.postulation-detail p {
-    font-size: 1rem; /* Ajusta el tamaño del texto */
-    margin-bottom: 10px;
-    color: #fff; /* Cambia el color del texto */
-}
-
-.postulation-detail strong {
-    font-weight: bold;
-}
-
-.postulation-detail p:last-child {
-    margin-bottom: 0;
-}
-
-.postulation-detail.error {
-    color: #000;
-}
-
-
-
-
 /* General */
 
-.link {
+.buttonOppDetail{
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(30%);
+    transition: all 0.4s ease;
+    text-decoration: none;
+}
+
+.buttonOppDetail:hover {
+    background-color: #a1a1a1;
+}
+
+.buttonOppDetail2{
     display: inline-block;
     width: 100%; 
     height: 30px; 
@@ -211,14 +134,95 @@
     outline: none;
     cursor: pointer;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
     line-height: 30px; 
     color: #000;
+    transform: translateY(5%);
     transition: all 0.4s ease
 }
 
-.link:hover {
-    background-color: transparent;
+.buttonOppDetail2:hover{
+    background-color: #a1a1a1;
+}
+
+.buttonOppDetail3{
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    color: #000;
+    transform: translateY(-10%);
+    transition: all 0.4s ease
+}
+
+.buttonOppDetail3:hover{
+    background-color: #a1a1a1;
+}
+
+.dark_bg{
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(20%);
+}
+
+.emailDetail{
+    position: relative;
+    margin: 10px 0;
+    max-width: 290px;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #fff;
+}
+.emailDetail label {
+    position: absolute;
+    top: 30%;
+    left: 5px;
+    transform: translateY(-120%);
+    color: #fff;
+    font-size: 1.1rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.emailDetail input {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    opacity: 40%;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: #fff;
+
+}
+
+.emailDetail input::placeholder {
+    color: #ffffffe6;
+    position: relative;
+    width: 100%;
+}
+
+.emailDetail .text-danger {
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición vertical del mensaje de error */
+    left: 5px;
+    font-size: 0.654rem;
+    color: red;
+}
+.emailDetail input.is-invalid {
+    border-color: red; /* Cambia el borde a rojo cuando hay un error */
+    height: 16px;
+    width: 100%;
 }

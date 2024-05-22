@@ -63,13 +63,13 @@ function Login() {
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>
-                    <button type='submit' className='button'>Ingresar</button>
+                    <button type='submit' className='buttonL'>Ingresar</button>
                 </div>
                 <div>
                     <hr />
                     <p>No tengo una cuenta</p>
                     <div>
-                        <Link to="/signup" className='button2'>Crear cuenta</Link>
+                        <Link to="/signup" className='buttonL1'>Crear cuenta</Link>
                     </div>
                 </div>
         </form>

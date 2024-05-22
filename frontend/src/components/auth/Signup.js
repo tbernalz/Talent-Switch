@@ -113,12 +113,12 @@ function Signup() {
                     {errors.password && <span className='text-danger'> {errors.password}</span>}
                 </div>
                 <div>
-                    <button type='submit' className='button'> Registrarse</button>
+                    <button type='submit' className='buttonL'> Registrarse</button>
                 </div>
                 <div>
                     <p>Al darle registrar aceptas nuestros terminos y condiciones.</p>
                     <div>
-                    <Link to="/"  className='button2'>Ingreso</Link>
+                    <Link to="/"  className='buttonL1'>Ingreso</Link>
                     </div>
                 </div>
                 
