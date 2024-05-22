@@ -86,8 +86,15 @@ function OpportunityDetail() {
         })
         .catch(error => console.log(error));
     };
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
 
-    return (
+return (
         <section className="opportunity-detail">
             <div className="opportunity-header">
                 <h2>{opportunity.opportunity_name}</h2>
@@ -97,8 +104,8 @@ function OpportunityDetail() {
                 <p><strong>Opportunity Area:</strong> {opportunity.opportunity_area}</p>
                 <p><strong>Description:</strong> {opportunity.description}</p>
                 <p><strong>Required Skills:</strong> {opportunity.required_skills}</p>
-                <p><strong>Start Date:</strong> {opportunity.start_date}</p>
-                <p><strong>Final Date:</strong> {opportunity.final_date}</p>
+                <p><strong>Start Date:</strong> {formatDate(opportunity.start_date)}</p>
+                <p><strong>Final Date:</strong> {formatDate(opportunity.final_date)}</p>
                 <p><strong>Opportunity State:</strong> {opportunity.opportunity_state} </p>
             </div>
             <hr />
@@ -106,27 +113,27 @@ function OpportunityDetail() {
                 <div>
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="opportunity_id" value={id} />
-                        <div className='inputbox'>
+                        <div className='emailDetail'>
                             <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
-                            <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
+                            <input type="email" placeholder='ejemplo@tucorreo.com' name='applicant_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
                             {errors.applicant_email && <span className='text-danger'> {errors.applicant_email}</span>}
                         </div>
                         <div>
-                            <button type='submit' className='button'>Aplicar</button>
+                            <button type='submit' className='buttonOppDetail'>Aplicar</button>
                         </div>
                     </form>
                 </div>
                 {/* Restringir ver solo leaders y aplicar solo employees */}
                 <hr />
                 <div>
-                    <Link to={`/opportunities/${id}/list-applicants`} className='button2'>Ver aplicantes</Link>
+                    <Link to={`/opportunities/${id}/list-applicants`} className='buttonOppDetail2'>Ver aplicantes</Link>
                 </div>
                 <hr/>
-                <Link to="/list-opportunities" className="button2">Atras</Link>
+                <Link to="/list-opportunities" className="buttonOppDetail3">Atras</Link>
             </div>
             <div>
-                <p className="dark_bg">This page generalizes the functions of both types of users, later they will be separated.</p>
+                <p className="dark_bg">Aun no se discierne la informacion de ambos perfiles, se hara proximamente.</p>
             </div>
             <div className='text'>Talent Switch</div>
         </section>

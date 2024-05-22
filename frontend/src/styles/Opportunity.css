@@ -46,7 +46,7 @@ p:hover {
 }
 
 
-.button {
+.buttonOpportunity {
     width: 100%;
     height: 30px;
     border-radius: 20px;
@@ -57,12 +57,17 @@ p:hover {
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    transform: translateY(-60%);
+    transform: translateY(-20%);
     transition: all 0.4s ease;
 }
+.buttonOpportunity:hover {
+    background-color: #a1a1a1;
+}
+
 
 .button-O {
-    width: 120%;
+    
+    width: 100%;
     height: 60px;
     border-radius: 10px;
     text-decoration: none;
@@ -70,33 +75,35 @@ p:hover {
     outline: none;
     cursor: pointer;
     font-size: 1rem;
-    font-weight: 400;
-    transform: translateY(-60%);
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    transform: translateY(-40%);
     transition: all 0.4s ease;
 }
 
-.button:hover {
-    transform: translateY(-40%) scale(1.03); /* Un poco de zoom al pasar el ratón */ 
-}
-
-.button:active {
-    transform: scale(0.8); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
-    transform: translateY(-40%);
-  }
-
-.button2{
-    width: 100%;
-    height: 30px;
-    border-radius: 20px;
-    text-decoration: none;
+.buttonOpportunity2{
+    display: inline-block;
+    width: 100%; 
+    height: 30px; 
+    border-radius: 20px; 
+    background-color: #fff;
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #933b3b;
-    transform: translateY(-60%);
-    transition: all 0.4s ease;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px; 
+    color: #000;
+    transform: translateY(-10%);
+    transition: all 0.4s ease
+}
+
+.buttonOpportunity2:hover {
+    background-color: #a1a1a1;
 }
 
 /* Clase unicamente del Opportunity-Name (Opportunity-Name, ion-icon, label, input, place holder, text danger, input invalid) */

@@ -62,9 +62,11 @@ function ListMembers() {
     }
 
     return (
-        
+        <section>
         <div className="ListaMiembros">
+            <div className='memberList'>
             <h2>Lista de miembros de equipo {id}</h2>
+            </div>
             <table>
                 <thead>
                     <tr className='Barra'>
@@ -77,7 +79,7 @@ function ListMembers() {
                         <tr key={member.id}>
                             <td>{member.member_email}</td>
                             <td>
-                                <button onClick={() => handleEvaluate(member)} className="button">Evaluar</button>
+                                <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
                             </td>
                         </tr>
                     ))}
@@ -85,10 +87,11 @@ function ListMembers() {
             </table>
             <hr />
             <div>
-                <Link to={`/teams/${id}`} className='button2'>Atras</Link>
+                <Link to={`/teams/${id}`} className='buttonTeamC1'>Atras</Link>
             </div>
             <div className='text'>Talent Switch</div>
         </div>
+        </section>
     );
 }
 
