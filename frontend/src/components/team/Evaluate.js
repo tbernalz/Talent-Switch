@@ -94,8 +94,6 @@ function Evaluate() {
     return (
         <section>
             <div className="evaluateHeader">
-        <section>
-            <div className="evaluateHeader">
                 <h3>Evaluacion</h3>
                 <h5>{member_email}</h5>
                 {/* <p>ID: {id}</p> */}
@@ -122,7 +120,6 @@ function Evaluate() {
                     {errors.comment && <span className='text-danger'> {errors.comment}</span>}
                 </div>
                 <div>
-                    <button type='submit' className='buttonTmembers'>Evaluar</button>
                     <button type='submit' className='buttonTmembers'>Evaluar</button>
                 </div>
             </form>
