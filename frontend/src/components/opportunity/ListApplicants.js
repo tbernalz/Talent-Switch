@@ -27,6 +27,14 @@ function ListApplicants() {
         );
     }
 
+    const handleAccept = (applicantId) => {
+        console.log(`Applicant ${applicantId} accepted.`);
+    };
+
+    const handleReject = (applicantId) => {
+        console.log(`Applicant ${applicantId} rejected.`);
+    };
+
     const getRowClassName = (applicant) => {
         if (applicant.applicant_state === 'accepted') {
             return 'accepted-row';
@@ -55,6 +63,14 @@ function ListApplicants() {
                             <td>{applicant.applicant_email}</td>
                             <td>{applicant.applicant_state}</td>
                             {/* <td>Botón de copiar Info</td> */}
+                            <td>
+                                    {applicant.applicant_state === 'pending' && (
+                                        <>
+                                            <button onClick={() => handleAccept(applicant.id)}>Aceptar</button>
+                                            <button onClick={() => handleReject(applicant.id)}>Rechazar</button>
+                                        </>
+                                    )}
+                                </td>
                         </tr>
                     ))}
                 </tbody>
