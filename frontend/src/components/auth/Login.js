@@ -16,9 +16,6 @@ function Login() {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
     };
 
-        setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
-    };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const validationErrors = Validation(values);
@@ -40,7 +37,6 @@ function Login() {
                 })
                 .catch(err => console.log(err));
         }
-    };
     };
 
     return (

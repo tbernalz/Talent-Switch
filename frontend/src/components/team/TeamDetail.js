@@ -92,14 +92,6 @@ function TeamDetail() {
         return `${day}/${month}/${year}`;
     }
 
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
-        const year = date.getFullYear();
-        return `${day}/${month}/${year}`;
-    }
-
     return (
         <section>
             <div className="team-header">
@@ -111,8 +103,6 @@ function TeamDetail() {
                 <p><strong>Descripción:</strong> {team.description}</p>
                 <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
                 <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p>
-                <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
-                <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p>
             </div>
             <hr/>
             <div>
@@ -120,14 +110,12 @@ function TeamDetail() {
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="team_id" value={id} />
                         <div className='member-email'>
-                        <div className='member-email'>
                             <label htmlFor='member_email'><strong>Correo de miembros</strong></label>
-                            <input type="email" placeholder='ejemplo@tucorreo.com' name='member_email'
+                            <input type="email" placeholder='Ingresa el correo de un nuevo miembro' name='member_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.member_email ? ' is-invalid' : '')} />
                             {errors.member_email && <span className='text-danger'> {errors.member_email}</span>}
                         </div>
                         <div>
-                            <button type='submit' className='buttonTdetails'>Agregar nuevo miembro</button>
                             <button type='submit' className='buttonTdetails'>Agregar nuevo miembro</button>
                         </div>
                     </form>
@@ -135,7 +123,6 @@ function TeamDetail() {
                 {/* Restringir ver solo leaders */}
                 <hr />
                 <div>
-                    <Link to={`/teams/${id}/list-members`} className='buttonTmembers'>Ver miembros</Link>
                     <Link to={`/teams/${id}/list-members`} className='buttonTmembers'>Ver miembros</Link>
                 </div>
                 <hr/>

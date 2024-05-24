@@ -42,7 +42,6 @@ function ListPostulations() {
                             <td>{postulation.postulation_state}</td>
                             <td>
                                 <Link to={`/postulations/${postulation.postulation_id}`} className="buttonViewP">Ver postulación</Link>
-                                <Link to={`/postulations/${postulation.postulation_id}`} className="buttonViewP">Ver postulación</Link>
                             </td>
                         </tr>
                     ))}
