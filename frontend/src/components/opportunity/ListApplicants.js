@@ -19,6 +19,40 @@ function ListApplicants() {
             });
     }, [id]);
 
+    const handleAccept = (applicantId) => {
+        axios.put(`http://localhost:8081/opportunities/${id}/applicants/${applicantId}/accept`)
+            .then(res => {
+                if (res.data.success) {
+                    setApplicants(applicants.map(applicant => {
+                        if (applicant.id === applicantId) {
+                            return { ...applicant, applicant_state: 'accepted' };
+                        }
+                        return applicant;
+                    }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
+    const handleReject = (applicantId) => {
+        axios.put(`http://localhost:8081/opportunities/${id}/applicants/${applicantId}/reject`)
+            .then(res => {
+                if (res.data.success) {
+                    setApplicants(applicants.map(applicant => {
+                        if (applicant.id === applicantId) {
+                            return { ...applicant, applicant_state: 'rejected' };
+                        }
+                        return applicant;
+                    }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
     if (error) {
         return (
             <section className="opportunity-detail error">
@@ -26,14 +60,6 @@ function ListApplicants() {
             </section>
         );
     }
-
-    const handleAccept = (applicantId) => {
-        console.log(`Applicant ${applicantId} accepted.`);
-    };
-
-    const handleReject = (applicantId) => {
-        console.log(`Applicant ${applicantId} rejected.`);
-    };
 
     const getRowClassName = (applicant) => {
         if (applicant.applicant_state === 'accepted') {
@@ -54,6 +80,7 @@ function ListApplicants() {
                     <tr>
                         <th>Correo del aplicante</th>
                         <th>Estado del aplicante</th>
+                        
                         {/* <th></th> */}
                     </tr>
                 </thead>
