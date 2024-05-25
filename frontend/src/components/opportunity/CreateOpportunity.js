@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/CreateOpportunityValidation';
 import axios from 'axios';
 import './../../styles/Opportunity.css'; // css
@@ -16,7 +16,28 @@ function CreateOpportunity() {
     })
 
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
     const [errors, setErrors] = useState({})  
+
+    //Validación de Sesión
+    useEffect(() => {
+        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+            if (response.data.user_type !== 'leader') {
+                alert('Solo los líderes pueden crear oportunidades.');
+                navigate('/home');
+            }
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/');
+          });
+      }, [navigate]);
+
+    if (!user) {
+        return null; // O un mensaje de carga si lo prefieres
+    }
 
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
