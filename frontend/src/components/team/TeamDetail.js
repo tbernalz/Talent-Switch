@@ -92,14 +92,6 @@ function TeamDetail() {
         return `${day}/${month}/${year}`;
     }
 
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
-        const year = date.getFullYear();
-        return `${day}/${month}/${year}`;
-    }
-
     return (
         <section>
             <div className="team-header">
@@ -119,7 +111,6 @@ function TeamDetail() {
                 <div>
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="team_id" value={id} />
-                        <div className='member-email'>
                         <div className='member-email'>
                             <label htmlFor='member_email'><strong>Correo de miembros</strong></label>
                             <input type="email" placeholder='Ingresa el correo de un nuevo miembro' name='member_email'

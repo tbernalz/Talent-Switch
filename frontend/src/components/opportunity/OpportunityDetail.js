@@ -117,7 +117,6 @@ function OpportunityDetail() {
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="opportunity_id" value={id} />
                         <div className='emailDetail'>
-                        <div className='emailDetail'>
                             <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
                             <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
