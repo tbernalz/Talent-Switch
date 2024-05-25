@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/Team.css'; //css
 
@@ -14,7 +14,24 @@ function TeamDetail() {
         member_email: '',
     })
 
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
+    const [user, setUser] = useState({ userName: '', userType: '' });
+
+    //Revisión del tipo de Usuario para separar funciones
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        .then(response => {
+            setUser({
+              userEmail: response.data.email,
+              userType: response.data.user_type,
+            });
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si hay un error de sesión
+          });
+    }, [navigate]);
 
     // Función para manejar cambios en los inputs del formulario
     const handleInput = (event) => {
@@ -108,6 +125,8 @@ function TeamDetail() {
             </div>
             <hr/>
             <div>
+                {/* Mostrar el formulario y el botón de aplicar solo para empleados */}
+                {user.userType === 'leader' && (
                 <div>
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="team_id" value={id} />
@@ -119,19 +138,19 @@ function TeamDetail() {
                         </div>
                         <div>
                             <button type='submit' className='buttonTdetails'>Agregar nuevo miembro</button>
+                            <hr />
+                            <br />
                         </div>
                     </form>
                 </div>
-                {/* Restringir ver solo leaders */}
-                <hr />
+                )}
                 <div>
                     <Link to={`/teams/${id}/list-members`} className='buttonTmembers'>Ver miembros</Link>
+                    <hr />
                 </div>
-                <hr/>
-                <Link to="/list-teams" className="buttonTeamC1">Atrás</Link>
-            </div>
-            <div>
-                <p className="dark_bg">Aun no se discierne la informacion de ambos perfiles, se hara proximamente.</p>
+                <div>
+                    <Link to="/list-teams" className="buttonTeamC1">Atrás</Link>
+                </div>
             </div>
             <div className='text'>Talent Switch</div>
 

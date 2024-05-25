@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/Detail.css'; // Importa tus estilos CSS personalizados
 
@@ -15,7 +15,24 @@ function OpportunityDetail() {
         applicant_email: '',
     })
 
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
+    const [user, setUser] = useState({ userName: '', userType: '' });
+
+    //Revisión del tipo de Usuario para separar funciones
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        .then(response => {
+            setUser({
+              userEmail: response.data.email,
+              userType: response.data.user_type,
+            });
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si hay un error de sesión
+          });
+    }, [navigate]);
 
     // Función para manejar cambios en los inputs del formulario
     const handleInput = (event) => {
@@ -113,30 +130,35 @@ function OpportunityDetail() {
             </div>
             <hr />
             <div>
+                {/* Mostrar el formulario y el botón de aplicar solo para empleados */}
+                {user.userType === 'employee' && (
+                    <div>
+                        <form action='' onSubmit={handleSubmit}>
+                            <input type="hidden" name="opportunity_id" value={id} />
+                            <div className='emailDetail'>
+                                <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
+                                <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
+                                onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
+                                {errors.applicant_email && <span className='text-danger'> {errors.applicant_email}</span>}
+                            </div>
+                            <div>
+                                <button type='submit' className='buttonOppDetail'>Aplicar</button>
+                                <hr />
+                                <br />
+                            </div>
+                        </form>
+                    </div>
+                )}
+                {/* Mostrar el botón de ver aplicantes solo para líderes */}
+                {user.userType === 'leader' && (
+                    <div>
+                        <Link to={`/opportunities/${id}/list-applicants`} className='buttonOppDetail2'>Ver aplicantes</Link>
+                        <hr/>
+                    </div>
+                )}
                 <div>
-                    <form action='' onSubmit={handleSubmit}>
-                        <input type="hidden" name="opportunity_id" value={id} />
-                        <div className='emailDetail'>
-                            <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
-                            <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
-                            onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
-                            {errors.applicant_email && <span className='text-danger'> {errors.applicant_email}</span>}
-                        </div>
-                        <div>
-                            <button type='submit' className='buttonOppDetail'>Aplicar</button>
-                        </div>
-                    </form>
+                    <Link to="/list-opportunities" className="buttonOppDetail3">Atrás</Link>
                 </div>
-                {/* Restringir ver solo leaders y aplicar solo employees */}
-                <hr />
-                <div>
-                    <Link to={`/opportunities/${id}/list-applicants`} className='buttonOppDetail2'>Ver aplicantes</Link>
-                </div>
-                <hr/>
-                <Link to="/list-opportunities" className="buttonOppDetail3">Atrás</Link>
-            </div>
-            <div>
-                <p className="dark_bg">This page generalizes the functions of both types of users, later they will be separated.</p>
             </div>
             <div className='text'>Talent Switch</div>
         </section>
