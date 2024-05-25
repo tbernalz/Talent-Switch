@@ -90,14 +90,14 @@ function ListApplicants() {
                             <td>{applicant.applicant_email}</td>
                             <td>{applicant.applicant_state}</td>
                             {/* <td>Botón de copiar Info</td> */}
-                            <td>
-                                    {applicant.applicant_state === 'pending' && (
-                                        <>
-                                            <button onClick={() => handleAccept(applicant.id)}>Aceptar</button>
-                                            <button onClick={() => handleReject(applicant.id)}>Rechazar</button>
-                                        </>
-                                    )}
-                                </td>
+                        <td>
+                            {applicant.applicant_state === 'pending' && (
+                                <div className="button-container">
+                                    <button className="accept-button" onClick={() => handleAccept(applicant.id)}>Aceptar</button>
+                                    <button className="reject-button" onClick={() => handleReject(applicant.id)}>Rechazar</button>
+                                </div>
+                            )}
+                        </td>
                         </tr>
                     ))}
                 </tbody>

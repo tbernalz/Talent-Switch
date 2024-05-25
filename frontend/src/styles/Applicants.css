@@ -1,27 +1,26 @@
+/* General Styles */
 * { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Visual de section en general, no son los cuadros de texto */
 section {
     position: relative;
-    max-width: 400px;
-    background-color: transparent;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     backdrop-filter: blur(55px);
     display: flex;
     justify-content: center;
-    align-items: center ;
+    align-items: center;
     padding: 2rem 3rem;
-    margin-top: 40%;
-    margin-bottom: 40%;
+    margin: 40px auto; /* Changed margin for better positioning */
 }
 
-body .text {
+.body-text {
     position: absolute;
     color: #fff;
     right: 10px;
@@ -34,15 +33,15 @@ body .text {
     font-size: 1.5rem;
     color: #fff;
     text-align: center;
-    display: block;
-    transform: translateY(-30%);
-
+    margin-bottom: 20px; /* Added margin for spacing */
 }
+
 h3 {
     font-size: 2rem;
     color: #fff;
     text-align: center;
 }
+
 h5 {
     font-size: 1rem;
     color: #fff;
@@ -58,12 +57,9 @@ p:hover {
     text-decoration: none;
 }
 
-
-.applicants{
-    margin: 20px auto;
-    width: 80%;
-    max-width: 1200px;
-    background-color:transparent;
+.applicants {
+    width: 100%;
+    background-color: transparent;
     border-radius: 10px;
     padding: 20px;
 }
@@ -80,11 +76,11 @@ thead {
     background-color: transparent;
 }
 
-
-th {
+th, td {
     font-size: 0.9rem;
     color: #fff;
     text-align: center;
+    padding: 10px;
 }
 
 tbody tr:nth-child(even) {
@@ -115,9 +111,52 @@ tbody tr:nth-child(odd) {
 }
 
 .link:hover {
-     background-color: #a1a1a1;
+    background-color: #a1a1a1;
 }
 
 .link:active {
+    transform: scale(0.95);
+}
+
+/* Button Styles */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.accept-button, .reject-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.accept-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.accept-button:hover {
+    background-color: #45a049;
+}
+
+.accept-button:active {
+    transform: scale(0.95);
+}
+
+.reject-button {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.reject-button:hover {
+    background-color: #e53935;
+}
+
+.reject-button:active {
     transform: scale(0.95);
 }
