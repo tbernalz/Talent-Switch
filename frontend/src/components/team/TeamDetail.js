@@ -122,7 +122,7 @@ function TeamDetail() {
                         <div className='member-email'>
                         <div className='member-email'>
                             <label htmlFor='member_email'><strong>Correo de miembros</strong></label>
-                            <input type="email" placeholder='ejemplo@tucorreo.com' name='member_email'
+                            <input type="email" placeholder='Ingresa el correo de un nuevo miembro' name='member_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.member_email ? ' is-invalid' : '')} />
                             {errors.member_email && <span className='text-danger'> {errors.member_email}</span>}
                         </div>

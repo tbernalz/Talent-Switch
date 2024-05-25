@@ -95,7 +95,7 @@ function OpportunityDetail() {
         return `${day}/${month}/${year}`;
     }
 
-return (
+    return (
         <section className="opportunity-detail">
             <div className="opportunity-header">
                 <h2>{opportunity.opportunity_name}</h2>
@@ -119,7 +119,7 @@ return (
                         <div className='emailDetail'>
                         <div className='emailDetail'>
                             <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
-                            <input type="email" placeholder='ejemplo@tucorreo.com' name='applicant_email'
+                            <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
                             {errors.applicant_email && <span className='text-danger'> {errors.applicant_email}</span>}
                         </div>
@@ -139,7 +139,7 @@ return (
                 <Link to="/list-opportunities" className="buttonOppDetail3">Atrás</Link>
             </div>
             <div>
-                <p className="dark_bg">Aun no se discierne la informacion de ambos perfiles, se hara proximamente.</p>
+                <p className="dark_bg">This page generalizes the functions of both types of users, later they will be separated.</p>
             </div>
             <div className='text'>Talent Switch</div>
         </section>

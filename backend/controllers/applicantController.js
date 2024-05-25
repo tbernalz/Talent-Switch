@@ -50,3 +50,27 @@ exports.listApplicants = (req, res) => {
         res.json(data);
     });
 };
+
+exports.acceptApplicant = (req, res) => {
+    const { id, applicantId } = req.params;
+    const sql = "UPDATE opportunity_applicant SET applicant_state = 'accepted' WHERE opportunity_id = ? AND id = ?";
+    db.query(sql, [id, applicantId], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al aceptar el aplicante' });
+        }
+        return res.json({ success: true });
+    });
+};
+
+exports.rejectApplicant = (req, res) => {
+    const { id, applicantId } = req.params;
+    const sql = "UPDATE opportunity_applicant SET applicant_state = 'rejected' WHERE opportunity_id = ? AND id = ?";
+    db.query(sql, [id, applicantId], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al rechazar el aplicante' });
+        }
+        return res.json({ success: true });
+    });
+};

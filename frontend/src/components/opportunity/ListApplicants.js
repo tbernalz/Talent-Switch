@@ -19,6 +19,40 @@ function ListApplicants() {
             });
     }, [id]);
 
+    const handleAccept = (applicantId) => {
+        axios.put(`http://localhost:8081/opportunities/${id}/applicants/${applicantId}/accept`)
+            .then(res => {
+                if (res.data.success) {
+                    setApplicants(applicants.map(applicant => {
+                        if (applicant.id === applicantId) {
+                            return { ...applicant, applicant_state: 'accepted' };
+                        }
+                        return applicant;
+                    }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
+    const handleReject = (applicantId) => {
+        axios.put(`http://localhost:8081/opportunities/${id}/applicants/${applicantId}/reject`)
+            .then(res => {
+                if (res.data.success) {
+                    setApplicants(applicants.map(applicant => {
+                        if (applicant.id === applicantId) {
+                            return { ...applicant, applicant_state: 'rejected' };
+                        }
+                        return applicant;
+                    }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
     if (error) {
         return (
             <section className="opportunity-detail error">
@@ -46,6 +80,7 @@ function ListApplicants() {
                     <tr>
                         <th>Correo del aplicante</th>
                         <th>Estado del aplicante</th>
+                        
                         {/* <th></th> */}
                     </tr>
                 </thead>
@@ -55,6 +90,14 @@ function ListApplicants() {
                             <td>{applicant.applicant_email}</td>
                             <td>{applicant.applicant_state}</td>
                             {/* <td>Botón de copiar Info</td> */}
+                        <td>
+                            {applicant.applicant_state === 'pending' && (
+                                <div className="button-container">
+                                    <button className="accept-button" onClick={() => handleAccept(applicant.id)}>Aceptar</button>
+                                    <button className="reject-button" onClick={() => handleReject(applicant.id)}>Rechazar</button>
+                                </div>
+                            )}
+                        </td>
                         </tr>
                     ))}
                 </tbody>

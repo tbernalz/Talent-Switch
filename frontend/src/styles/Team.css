@@ -625,7 +625,6 @@ select {
     position: relative;
     margin: 20px 0;
     max-width: 310px;
-
 }
 
 .Qualification select {
@@ -712,7 +711,6 @@ select:valid ~ label {
     color: #ffffffe6;
     position: relative;
     width: 100%;
-    
 }
 
 .Comment .text-danger{
