@@ -8,6 +8,7 @@ function PostulationDetail() {
     const [postulation, setPostulation] = useState(null);
     const [error, setError] = useState(null);
 
+    //Validación de Sesión
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars

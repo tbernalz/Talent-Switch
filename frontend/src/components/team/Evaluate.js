@@ -15,7 +15,23 @@ function Evaluate() {
     });
     const [errors, setErrors] = useState({});
 
+    //Validación de Sesión
     const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
 
     useEffect(() => {
         console.log("Received props: ", { id, user_id, member_email });

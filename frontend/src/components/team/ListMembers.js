@@ -1,12 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
 import './../../styles/Team.css'; //css
 
 function ListMembers() {
     const { id } = useParams(); // team_id
     const [members, setMembers] = useState([]);
     const [error, setError] = useState(null);
+
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
 
     const handleEvaluate = async (member) => {
         try {
