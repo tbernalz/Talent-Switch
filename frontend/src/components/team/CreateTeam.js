@@ -89,8 +89,7 @@ function CreateOpportunity() {
                 {errors.final_date && <span className='text-danger'> {errors.final_date}</span>}
             </div>
 
-            <div>
-                <button type='submit' className='buttonTeamC'>Crear</button>    
+            <div> 
                 <button type='submit' className='buttonTeamC'>Crear</button>    
             </div>
             <div>

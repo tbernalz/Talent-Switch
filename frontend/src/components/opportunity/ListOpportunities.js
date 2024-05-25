@@ -57,8 +57,8 @@ function ListOpportunities() {
                     ))}
                 </tbody>
             </table>
-            <hr />
             <div>
+                <hr />
                 <Link to="/home" className='buttonOpportunity2'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>

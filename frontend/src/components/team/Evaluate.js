@@ -121,11 +121,10 @@ function Evaluate() {
                 </div>
                 <div>
                     <button type='submit' className='buttonTmembers'>Evaluar</button>
-                    <button type='submit' className='buttonTmembers'>Evaluar</button>
                 </div>
             </form>
-            <hr />
             <div className='button-container2'>
+            <hr />
                 <Link to={`/teams/${id}/list-members`} className='buttonBack'>Atrás</Link>
             </div>
             <div className='text'>Talent Switch</div>

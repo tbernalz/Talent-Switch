@@ -102,7 +102,6 @@ function CreateOpportunity() {
 
             <div>
                 <button type='submit' className='buttonOpportunity'>Crear</button>    
-                <button type='submit' className='buttonOpportunity'>Crear</button>    
             </div>
             <div>
                 <hr/>

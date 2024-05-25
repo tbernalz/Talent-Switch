@@ -113,12 +113,11 @@ function TeamDetail() {
                         <input type="hidden" name="team_id" value={id} />
                         <div className='member-email'>
                             <label htmlFor='member_email'><strong>Correo de miembros</strong></label>
-                            <input type="email" placeholder='Ingresa el correo de un nuevo miembro' name='member_email'
+                            <input type="email" placeholder='Ingresa el correo' name='member_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.member_email ? ' is-invalid' : '')} />
                             {errors.member_email && <span className='text-danger'> {errors.member_email}</span>}
                         </div>
                         <div>
-                            <button type='submit' className='buttonTdetails'>Agregar nuevo miembro</button>
                             <button type='submit' className='buttonTdetails'>Agregar nuevo miembro</button>
                         </div>
                     </form>
@@ -126,7 +125,6 @@ function TeamDetail() {
                 {/* Restringir ver solo leaders */}
                 <hr />
                 <div>
-                    <Link to={`/teams/${id}/list-members`} className='buttonTmembers'>Ver miembros</Link>
                     <Link to={`/teams/${id}/list-members`} className='buttonTmembers'>Ver miembros</Link>
                 </div>
                 <hr/>

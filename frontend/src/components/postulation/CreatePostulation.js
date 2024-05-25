@@ -143,15 +143,12 @@ function CreatePostulation() {
                 {errors.postulant_skills && <span className='text-danger'> {errors.postulant_skills}</span>}
             </div>
 
-            <div>
-                <button type='submit' className='buttonPostulation'>Crear</button>    
+            <div> 
                 <button type='submit' className='buttonPostulation'>Crear</button>    
             </div>
             <div>
-                <hr/>
-                <div>
-                    <Link to="/home" className='buttonPostulation2'>Atrás</Link>        
-                </div>
+                <hr />
+                <Link to="/home" className='buttonPostulation2'>Atrás</Link>        
             </div>
         </form>
         <div className='text'>Talent Switch</div>

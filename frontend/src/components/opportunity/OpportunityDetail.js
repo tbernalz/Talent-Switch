@@ -124,14 +124,12 @@ function OpportunityDetail() {
                         </div>
                         <div>
                             <button type='submit' className='buttonOppDetail'>Aplicar</button>
-                            <button type='submit' className='buttonOppDetail'>Aplicar</button>
                         </div>
                     </form>
                 </div>
                 {/* Restringir ver solo leaders y aplicar solo employees */}
                 <hr />
                 <div>
-                    <Link to={`/opportunities/${id}/list-applicants`} className='buttonOppDetail2'>Ver aplicantes</Link>
                     <Link to={`/opportunities/${id}/list-applicants`} className='buttonOppDetail2'>Ver aplicantes</Link>
                 </div>
                 <hr/>
