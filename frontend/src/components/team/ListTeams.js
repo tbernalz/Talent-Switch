@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import './../../styles/Team.css'; // css
 
 function ListTeams() {
     const [teams, setTeams] = useState([]);
+
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
 
     useEffect(() => {
         axios.get('http://localhost:8081/list-teams')
@@ -42,6 +60,8 @@ function ListTeams() {
                         <tr key={team.team_id}>
                             <td>{team.team_name}</td>
                             <td>{team.team_area}</td>
+                            <td>{formatDate(team.start_date)}</td>
+                            <td>{formatDate(team.final_date)}</td>
                             <td>{formatDate(team.start_date)}</td>
                             <td>{formatDate(team.final_date)}</td>
                             <td>
