@@ -70,6 +70,7 @@ p:hover {
     transform: translateY(-60%);
     transition: all 0.4s ease;
     text-decoration: none;
+    text-decoration: none;
 }
 
 .button1:hover {

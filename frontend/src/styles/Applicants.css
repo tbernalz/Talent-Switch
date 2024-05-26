@@ -32,8 +32,11 @@ section {
     font-size: 1.5rem;
     color: #fff;
     text-align: center;
+    display: block;
+    transform: translateY(-30%);
     margin-bottom: 20px; /* Added margin for spacing */
 }
+
 h3 {
     font-size: 2rem;
     color: #fff;
@@ -113,7 +116,6 @@ tbody tr:nth-child(odd) {
 .link:active {
     transform: scale(0.95);
 }
-
 
 .button-container {
     display: flex;

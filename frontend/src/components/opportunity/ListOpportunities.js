@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import './../../styles/Opportunity.css'; // css
 
 function ListOpportunities() {
     const [opportunities, setOpportunities] = useState([]);
+
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
 
     useEffect(() => {
         axios.get('http://localhost:8081/list-opportunities')
@@ -47,6 +65,8 @@ function ListOpportunities() {
                             <td>{opportunity.opportunity_area}</td>
                             <td>{formatDate(opportunity.start_date)}</td>
                             <td>{formatDate(opportunity.final_date)}</td>
+                            <td>{formatDate(opportunity.start_date)}</td>
+                            <td>{formatDate(opportunity.final_date)}</td>
                             <td>{opportunity.opportunity_state}</td>
                             <td>
                                 <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>
@@ -55,8 +75,8 @@ function ListOpportunities() {
                     ))}
                 </tbody>
             </table>
-            <hr />
             <div>
+                <hr />
                 <Link to="/home" className='buttonOpportunity2'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>

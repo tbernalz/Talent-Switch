@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/PerfilU.css'; // css
 
@@ -12,6 +12,24 @@ function UpdateProfile() {
         skills: '',
         user_type: ''
     });
+
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
 
     const handleInput = (event) => {
         setUserData(prev => ({ ...prev, [event.target.name]: event.target.value }));
@@ -58,6 +76,7 @@ function UpdateProfile() {
                 <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
                 <input type="text" value={userData.user_type} readOnly /></div>
                 <div>
+                    <button type='submit' className='buttonP'>Guardar</button>
                     <button type='submit' className='buttonP'>Guardar</button>
                 </div>
 
