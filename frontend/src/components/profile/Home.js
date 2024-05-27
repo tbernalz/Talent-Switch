@@ -51,16 +51,16 @@ function Home() {
               {user.userType === 'leader' && (
                 <>
                   <div className="col-md-4">
-                    <Link to="/create-opportunity" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear oportunidades</Link>
+                    <Link to="/create-opportunity" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear Oportunidades</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver oportunidades</Link>
+                    <Link to="/list-my-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Oportunidades</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/create-team" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear equipos de proyecto</Link>
+                    <Link to="/create-team" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear Equipos de Proyecto</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver equipos</Link>
+                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Equipos</Link>
                   </div>
                   <div className="col-md-4">
                     <Link to="/list-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Postulaciones</Link>
@@ -70,16 +70,16 @@ function Home() {
               {user.userType === 'employee' && (
                 <>
                   <div className="col-md-4">
-                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver oportunidades</Link>
+                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Oportunidades</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver equipos</Link>
+                    <Link to="/list-my-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Equipos</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/create-postulation" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Aplicacion individual</Link>
+                    <Link to="/create-postulation" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Aplicacion Individual</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Postulaciones</Link>
+                    <Link to="/list-my-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Postulaciones</Link>
                   </div>
                 </>
               )}

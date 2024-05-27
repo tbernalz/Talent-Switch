@@ -12,18 +12,22 @@ function PostulationDetail() {
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({ userName: '', email: '', userType: '' });
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
+            .then(response => {
+                setUser({
+                    userName: response.data.name,
+                    email: response.data.email,
+                    userType: response.data.user_type,
+                });
+            })
+            .catch(error => {
+                console.error("There was an error fetching the user data!", error);
+                navigate('/'); // Redirige a la página de inicio si no hay sesión
+            });
     }, [navigate]);
 
     useEffect(() => {
@@ -67,7 +71,12 @@ function PostulationDetail() {
             </div>
             <hr />
             <div>
-                <Link to="/list-postulations" className="buttonPostulation3">Atras</Link>        
+                {user.userType === 'employee' && (
+                    <Link to="/list-my-postulations" className="buttonPostulation3">Atrás</Link>
+                )}
+                {user.userType === 'leader' && (
+                    <Link to="/list-postulations" className="buttonPostulation3">Atrás</Link>
+                )}
             </div>
             <div className='text'>Talent Switch</div>
         </section>

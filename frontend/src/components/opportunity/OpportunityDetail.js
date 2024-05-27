@@ -17,15 +17,16 @@ function OpportunityDetail() {
 
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
-    const [user, setUser] = useState({ userName: '', userType: '' });
+    const [user, setUser] = useState({ userName: '', email: '', userType: '' });
 
     //Revisión del tipo de Usuario para separar funciones
     useEffect(() => {
         axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
         .then(response => {
             setUser({
-              userEmail: response.data.email,
-              userType: response.data.user_type,
+                userName: response.data.name,
+                email: response.data.email,
+                userType: response.data.user_type,
             });
           })
           .catch(error => {
@@ -157,7 +158,12 @@ function OpportunityDetail() {
                     </div>
                 )}
                 <div>
-                    <Link to="/list-opportunities" className="buttonOppDetail3">Atrás</Link>
+                    {user.userType === 'employee' && (
+                        <Link to="/list-opportunities" className="buttonOppDetail3">Atrás</Link>
+                    )}
+                    {user.userType === 'leader' && (
+                        <Link to="/list-my-opportunities" className="buttonOppDetail3">Atrás</Link>
+                    )}
                 </div>
             </div>
             <div className='text'>Talent Switch</div>
