@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import styles from './../../styles/Home.module.css';
+import { Navbar, Nav, Container } from 'react-bootstrap'; 
+import styles from './../../styles/bootstrap.min.css';
 
 function Home() {
   const [user, setUser] = useState({ userName: '', userType: '' });
@@ -22,36 +23,68 @@ function Home() {
   }, [navigate]);
 
   return (
-    <div>
-      <nav className={styles.navbar} title='Home'>
-        <ul>
-          <li>{user.userName && <div>Hi {user.userType === 'employee' ? 'employee' : 'leader'} {user.userName}</div>}</li>
-          <li>Magneto Switch Talent</li>
-          <li><Link to="/home">Inicio</Link></li>
-          <li><Link to="/my-profile">Mi perfil</Link></li>
-          <li><Link to="/">Salir</Link></li> {/* /logout */}
-        </ul>
-      </nav>
+    <div className={styles.dark_bg}>
+      <Navbar bg="primary" variant="dark" expand="lg" fixed="top" className="rounded-4">
+        <Container>
+          <Navbar.Brand as={Link} to="/home">Magneto Switch Talent</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
+              <Nav.Link as={Link} to="/my-profile">Mi Perfil</Nav.Link>
+              <Nav.Link as={Link} to="/">Salir</Nav.Link>
+            </Nav>
+            {user.userName && (
+              <Nav>
+                <Nav.Link>Hi {user.userType === 'employee' ? 'employee' : 'leader'} {user.userName}</Nav.Link>
+              </Nav>
+            )}
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-      <div>
-        <div className={styles.buttonContainer}>
-          {user.userType === 'leader' && (
-            <>
-              <Link to="/create-opportunity" className={styles.card}>Crear oportunidades</Link>
-              <Link to="/list-opportunities" className={styles.card}>Ver oportunidades</Link>
-              <Link to="/create-team" className={styles.card}>Crear equipos de proyecto</Link>
-              <Link to="/list-teams" className={styles.card}>Ver equipos</Link>
-              <Link to="/list-postulations" className={styles.card}>Ver Postulaciones</Link>
-            </>
-          )}
-          {user.userType === 'employee' && (
-            <>
-              <Link to="/list-opportunities" className={styles.card}>Ver oportunidades</Link>
-              <Link to="/list-teams" className={styles.card}>Ver equipos</Link>
-              <Link to="/create-postulation" className={styles.card}>Aplicacion individual</Link>
-              <Link to="/list-postulations" className={styles.card}>Ver Postulaciones</Link>
-            </>
-          )}
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-12 d-flex flex-column justify-content-center align-items-center mt-5">
+            <h1 className="text-gradient mb-4">Magneto Switch Talent</h1>
+            <div className="row mt-4">
+              {user.userType === 'leader' && (
+                <>
+                  <div className="col-md-4">
+                    <Link to="/create-opportunity" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear oportunidades</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver oportunidades</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/create-team" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear equipos de proyecto</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver equipos</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Postulaciones</Link>
+                  </div>
+                </>
+              )}
+              {user.userType === 'employee' && (
+                <>
+                  <div className="col-md-4">
+                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver oportunidades</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver equipos</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/create-postulation" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Aplicacion individual</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Postulaciones</Link>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -59,32 +92,3 @@ function Home() {
 }
 
 export default Home;
-
-//   return (
-//     <div>
-//       <nav className={styles.navbar} title='Home'>
-//         <ul>
-//           <li>{user.userName && <div>Hi {user.userType === 'employee' ? 'employee' : 'leader'} {user.userName}</div>}</li>
-//           <li>Magneto Switch Talent</li>
-//           <li><Link to="/home">Inicio</Link></li>
-//           <li><Link to="/my-profile">Mi perfil</Link></li>
-//           <li><Link to="/">Salir</Link></li>
-//         </ul>
-//       </nav>
-
-//       <div>
-//         <div className={styles.buttonContainer}>
-//           <Link to="/create-opportunity" className={styles.card}>Crear oportunidades</Link>
-//           <Link to="/list-opportunities" className={styles.card}>Ver oportunidades</Link>
-//           <Link to="/create-team" className={styles.card}>Crear equipos de proyecto</Link>
-//           <Link to="/list-teams" className={styles.card}>Ver equipos</Link>
-//           <Link to="/create-postulation" className={styles.card}>Aplicacion individual</Link>
-//           <Link to="/list-postulations" className={styles.card}>Postulaciones</Link>
-//           <p className={styles.dark_bg}>Aun no se discierne la información de ambos perfiles, se hará próximamente.</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Home;

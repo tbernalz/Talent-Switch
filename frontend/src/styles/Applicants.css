@@ -35,11 +35,9 @@ section {
 
     display: block;
     transform: translateY(-30%);
-
-    display: block;
-    transform: translateY(-30%);
     margin-bottom: 20px; /* Added margin for spacing */
 }
+
 h3 {
     font-size: 2rem;
     color: #fff;
@@ -113,17 +111,12 @@ tbody tr:nth-child(odd) {
 }
 
 .link:hover {
-     background-color: #a1a1a1;
+    background-color: #a1a1a1;
 }
 
 .link:active {
     transform: scale(0.95);
 }
-
-.link:active {
-    transform: scale(0.95);
-}
-
 
 .button-container {
     display: flex;

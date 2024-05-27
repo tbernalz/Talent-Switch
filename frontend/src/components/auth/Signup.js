@@ -115,6 +115,7 @@ function Signup() {
                 <div className='Password-criteria'>
                     <p>La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial.</p>
                 </div>
+
                 <div>
                     <button type='submit' className='button1'> Registrarse</button>
                 </div>
