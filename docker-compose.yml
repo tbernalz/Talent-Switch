@@ -1,0 +1,36 @@
+# Version of Docker Compose file format
+version: '3'
+
+# Definition of services (containers) that should be run
+services:
+  # The first service is the application (in this case the backend)
+  app:
+    # Location of Dockerfile for building the app image
+    build: ./backend
+    # Ports mapping - host:container
+    ports:
+      - '8082:8082'
+    # This service depends on the 'db' service
+    depends_on:
+      - db
+
+  # The second service is the database
+  db:
+    # Use the mariadb image version 10.5
+    image: mariadb:10.5
+    # Environment variables for the db service
+    environment:
+      # Root password for the MariaDB instance
+      MYSQL_ROOT_PASSWORD: 'admin123'
+      # Name of the database to be created on image startup
+      MYSQL_DATABASE: 'magneto_db'
+    # Mount 'db_data' volume to persist data
+    volumes:
+      - db_data:/var/lib/mysql
+      # Mounts local directory to container, executing SQL scripts at startup
+      - ./backend/database/magneto_db.sql:/docker-entrypoint-initdb.d/init.sql # ./backend/database:/docker-entrypoint-initdb.d
+
+# Definition of named volumes
+volumes:
+  # Named volume for persisting database data
+  db_data:
