@@ -4,6 +4,8 @@ import Validation from '../../utils/validations/CreateOpportunityValidation';
 import axios from 'axios';
 import './../../styles/Opportunity.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function CreateOpportunity() {
     const [values, setValues] = useState({
         opportunity_name: '',
@@ -21,7 +23,7 @@ function CreateOpportunity() {
 
     //Validación de Sesión
     useEffect(() => {
-        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
             if (response.data.user_type !== 'leader') {
@@ -50,7 +52,7 @@ function CreateOpportunity() {
         setErrors(validationErrors);
     
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            axios.post('http://localhost:8081/create-opportunity', values)
+            axios.post(`${BASE_URL}/create-opportunity`, values)
                 .then(res => {
                     if (res.data === "Success") {
                         alert('Opportunity was created');

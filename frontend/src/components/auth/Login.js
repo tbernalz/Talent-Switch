@@ -4,6 +4,8 @@ import Validation from '../../utils/validations/LoginValidation';
 import axios from 'axios';
 import './../../styles/Login.css'; // ACA CAMBIAR NOMBRE A LOGIN
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Login() {
     const [values, setValues] = useState({
         email: '',
@@ -22,7 +24,7 @@ function Login() {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            axios.post('http://localhost:8081/login', values, { withCredentials: true })
+            axios.post(`${BASE_URL}/login`, values, { withCredentials: true })
                 .then(res => {
                     if (res.data === "Success") {
                         alert('User was found, Welcome to Magneto Talent Switch');

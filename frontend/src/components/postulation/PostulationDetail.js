@@ -3,6 +3,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/Postulation.css'; // Importa tus estilos CSS personalizados
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function PostulationDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
     const [postulation, setPostulation] = useState(null);
@@ -16,7 +18,7 @@ function PostulationDetail() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })
@@ -27,7 +29,7 @@ function PostulationDetail() {
     }, [navigate]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/postulations/${id}`)
+        axios.get(`${BASE_URL}/postulations/${id}`)
             .then(res => {
                 setPostulation(res.data);
             })

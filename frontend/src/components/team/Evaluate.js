@@ -3,6 +3,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/Team.css'; //css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Evaluate() {
     //parametros recibidos
     const [error, setError] = useState(null);
@@ -23,7 +25,7 @@ function Evaluate() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })
@@ -38,7 +40,7 @@ function Evaluate() {
         // Verifica si todos los datos están disponibles
         if (id && user_id && member_email) {
             // Hacer la solicitud POST al servidor
-            fetch('http://localhost:8081/to-evaluate-member', { // Reemplaza el puerto por el correcto
+            fetch(`${BASE_URL}/to-evaluate-member`, { // Reemplaza el puerto por el correcto
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -92,7 +94,7 @@ function Evaluate() {
                 comment: values.comment
             };
     
-            const response = await axios.post(`http://localhost:8081/evaluate-member`, postData);
+            const response = await axios.post(`${BASE_URL}/evaluate-member`, postData);
     
             if (response.data === "Success") {
                 alert('User Evaluated successfully');

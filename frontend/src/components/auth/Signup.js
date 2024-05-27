@@ -4,6 +4,8 @@ import Validation from '../../utils/validations/SignupValidation';
 import axios from 'axios';
 import './../../styles/Login.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Signup() {
     const [values, setValues] = useState({
         name: '',
@@ -28,7 +30,7 @@ function Signup() {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            axios.post('http://localhost:8081/signup', values)
+            axios.post(`${BASE_URL}/signup`, values)
                 .then(res => {
                     if (res.data === "Success") {
                         alert('User was Successfully registered');

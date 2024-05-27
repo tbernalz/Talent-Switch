@@ -3,6 +3,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/Team.css'; //css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function TeamDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
     const [team, setTeam] = useState(null);
@@ -20,7 +22,7 @@ function TeamDetail() {
 
     //Revisión del tipo de Usuario para separar funciones
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
         .then(response => {
             setUser({
               userEmail: response.data.email,
@@ -39,7 +41,7 @@ function TeamDetail() {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/teams/${id}`)
+        axios.get(`${BASE_URL}/teams/${id}`)
             .then(res => {
                 setTeam(res.data);
                 setValues(prev => ({...prev, team_id: id}));
@@ -83,7 +85,7 @@ function TeamDetail() {
         };
 
         // Enviar datos al servidor
-        axios.post('http://localhost:8081/add-member', postData)
+        axios.post(`${BASE_URL}/add-member`, postData)
         .then(response => {
             if(response.data === "Success"){
                 alert('User Added successfully')

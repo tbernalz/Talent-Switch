@@ -3,6 +3,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/Detail.css'; // Importa tus estilos CSS personalizados
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function OpportunityDetail() {
     // Manejo de datos de la oportunidad seleccionada
     const { id } = useParams(); // Recupera el ID de la URL
@@ -21,7 +23,7 @@ function OpportunityDetail() {
 
     //Revisión del tipo de Usuario para separar funciones
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
         .then(response => {
             setUser({
               userEmail: response.data.email,
@@ -43,7 +45,7 @@ function OpportunityDetail() {
 
     // Obtener los detalles de la oportunidad al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/opportunities/${id}`)
+        axios.get(`${BASE_URL}/opportunities/${id}`)
             .then(res => {
                 setOpportunity(res.data);
                 setValues(prev => ({...prev, opportunity_id: id}));
@@ -87,7 +89,7 @@ function OpportunityDetail() {
         };
 
         // Enviar datos al servidor
-        axios.post('http://localhost:8081/add-applicant', postData)
+        axios.post(`${BASE_URL}/add-applicant`, postData)
         .then(response => {
             if(response.data === "Success"){
                 alert('User applied successfully')

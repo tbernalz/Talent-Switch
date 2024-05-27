@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/PerfilU.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function UpdateProfile() {
     const [userData, setUserData] = useState({
         name: '',
@@ -21,7 +23,7 @@ function UpdateProfile() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })

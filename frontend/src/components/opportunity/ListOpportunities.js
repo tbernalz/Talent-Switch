@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para ma
 import axios from 'axios';
 import './../../styles/Opportunity.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function ListOpportunities() {
     const [opportunities, setOpportunities] = useState([]);
 
@@ -14,7 +16,7 @@ function ListOpportunities() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })
@@ -25,7 +27,7 @@ function ListOpportunities() {
     }, [navigate]);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/list-opportunities')
+        axios.get(`${BASE_URL}/list-opportunities`)
             .then(res => {
                 setOpportunities(res.data);
             })
