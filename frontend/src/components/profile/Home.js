@@ -22,6 +22,17 @@ function Home() {
       });
   }, [navigate]);
 
+  const handleLogout = () => {
+    axios.get('http://localhost:8081/logout', { withCredentials: true })
+      .then(response => {
+        setUser({ userName: '', userType: '' });
+        navigate('/'); // Redirige al usuario a la página de inicio después de cerrar sesión
+      })
+      .catch(error => {
+        console.error("There was an error logging out the user!", error);
+      });
+  };
+
   return (
     <div className={styles.dark_bg}>
       <Navbar bg="primary" variant="dark" expand="lg" fixed="top" className="rounded-4">
@@ -32,7 +43,7 @@ function Home() {
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
               <Nav.Link as={Link} to="/my-profile">Mi Perfil</Nav.Link>
-              <Nav.Link as={Link} to="/">Salir</Nav.Link>
+              <Nav.Link onClick={handleLogout}>Salir</Nav.Link>
             </Nav>
             {user.userName && (
               <Nav>
