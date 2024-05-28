@@ -87,16 +87,15 @@ function TeamDetail() {
         axios.post('http://localhost:8081/add-member', postData)
         .then(response => {
             if(response.data === "Success"){
-                alert('User Added successfully')
+                alert('Usuario Agregado al Equipo Exitosamente')
             } else if(response.data === "member_exists"){
-                alert("User is Already Part of this Team");
-            } else if(response.data === "member_not_employee"){
-                //cambiar el create-team para agregar automaticamente el leader respectivo 
-                alert("Member is not an Employee");
+                alert("El Usuario ya es Miembro de este Equipo");
+            } else if(response.data === "member_not_employee"){ 
+                alert("El Miembro No es un Empleado");
             } else if(response.data === "user_not_exists"){
-                alert("User not found or does not exist");
+                alert("Usuario No Encontrado o No Existe");
             } else{
-                alert("An Error has Cccurred")
+                alert("Ha Ocurrido un Error")
             }
         })
         .catch(error => console.log(error));

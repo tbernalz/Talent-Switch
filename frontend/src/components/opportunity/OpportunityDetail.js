@@ -91,15 +91,15 @@ function OpportunityDetail() {
         axios.post('http://localhost:8081/add-applicant', postData)
         .then(response => {
             if(response.data === "Success"){
-                alert('User applied successfully')
+                alert('Usuario Aplicó Exitosamente')
             } else if(response.data === "applicant_exists"){
-                alert("User has Already Applied for this Opportunity");
+                alert("El Usuario ya Aplicó paraa esta Oportunidad");
             } else if(response.data === "applicant_not_employee"){
-                alert("Applicant is not an Employee");
+                alert("El Aplicante No es un Empleado");
             } else if(response.data === "user_not_exists"){
-                alert("User not found or does not exist");
+                alert("Usuario No Encontrado o No Existe");
             } else{
-                alert("An Error has Occurred")
+                alert("Ha Ocurrido un Error")
             }
         })
         .catch(error => console.log(error));
