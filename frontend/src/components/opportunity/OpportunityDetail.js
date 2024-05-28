@@ -30,7 +30,7 @@ function OpportunityDetail() {
             });
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/'); // Redirige a la página de inicio si hay un error de sesión
           });
     }, [navigate]);
@@ -51,7 +51,7 @@ function OpportunityDetail() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Opportunity not Found"); // Establece el mensaje de error en caso de falla
+                setError("Oportunidad No Encontrada"); // Establece el mensaje de error en caso de falla
             });
     }, [id]);
 

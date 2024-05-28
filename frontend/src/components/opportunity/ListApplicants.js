@@ -21,7 +21,7 @@ function ListApplicants() {
             setUser(response.data);
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/'); // Redirige a la página de inicio si no hay sesión
           });
     }, [navigate]);
@@ -33,7 +33,7 @@ function ListApplicants() {
             })
             .catch(err => {
                 console.log(err)
-                setError("Opportunity not Found");
+                setError("Oportunidad No Encontrada");
             });
     }, [id]);
 

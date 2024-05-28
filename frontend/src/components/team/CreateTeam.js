@@ -29,7 +29,7 @@ function CreateOpportunity() {
             }
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/');
           });
       }, [navigate]);
@@ -51,10 +51,10 @@ function CreateOpportunity() {
             axios.post('http://localhost:8081/create-team', values)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('Project Team was created');
+                        alert('Equipo de Trabajo fue Creado');
                         navigate('/home');
                     } else {
-                        alert("It was not possible to create the Project Team");
+                        alert("No fue Posible Crear el Equipo de Trabajo");
                         navigate('/home');
                     }
                 })

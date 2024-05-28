@@ -25,14 +25,14 @@ function Login() {
             axios.post('http://localhost:8081/login', values, { withCredentials: true })
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('User was found, Welcome to Magneto Talent Switch');
+                        alert('Se Encontró Usuario, Bienvenido a Magneto Talent Switch');
                         navigate('/home');
                     } else if (res.data === "email_no_exists") {
-                        alert("Email not found");
+                        alert("Correo Electrónico No Encontrado");
                     } else if (res.data === "error_password") {
-                        alert("Incorrect Password");
+                        alert("Contraseña Incorrecta");
                     } else {
-                        alert("A problem has occurred");
+                        alert("Ha Ocurrido un Problema");
                     }
                 })
                 .catch(err => console.log(err));

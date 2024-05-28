@@ -31,12 +31,12 @@ function Signup() {
             axios.post('http://localhost:8081/signup', values)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('User was Successfully registered');
+                        alert('Usuario Registrado Exitosamente');
                         navigate('/');
                     } else if (res.data === "email_exists") {
-                        alert("Email Already Exists");
+                        alert("Este Correo ya se Encuentra en Uso por otro Usuario");
                     } else {
-                        alert("An Error has Occurred");
+                        alert("Ha Ocurrido un Problema");
                     }
                 })
                 .catch(err => console.log(err));

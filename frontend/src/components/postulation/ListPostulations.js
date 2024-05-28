@@ -19,7 +19,7 @@ function ListPostulations() {
             setUser(response.data);
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/'); // Redirige a la página de inicio si no hay sesión
           });
     }, [navigate]);

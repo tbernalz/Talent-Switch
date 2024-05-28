@@ -33,12 +33,12 @@ function UpdateProfile() {
                         });
                     })
                     .catch(error => {
-                        console.error("Error fetching user data:", error);
+                        console.error("Error al recuperar los datos del usuario: ", error);
                         navigate('/');
                     });
             })
             .catch(error => {
-                console.error("Error fetching session data:", error);
+                console.error("Error al recuperar los datos de la sesión: ", error);
                 navigate('/');
             });
     }, [navigate]);

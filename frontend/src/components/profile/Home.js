@@ -17,7 +17,7 @@ function Home() {
         });
       })
       .catch(error => {
-        console.error("There was an error fetching the user data!", error);
+        console.error("¡Hubo un error al obtener los datos del usuario!", error);
         navigate('/');
       });
   }, [navigate]);
@@ -29,7 +29,7 @@ function Home() {
         navigate('/'); // Redirige al usuario a la página de inicio después de cerrar sesión
       })
       .catch(error => {
-        console.error("There was an error logging out the user!", error);
+        console.error("¡Hubo un Error Cerrando la Sesión del Usuario!", error);
       });
   };
 

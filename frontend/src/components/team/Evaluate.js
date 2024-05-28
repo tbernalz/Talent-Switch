@@ -28,7 +28,7 @@ function Evaluate() {
             setUser(response.data);
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/'); // Redirige a la página de inicio si no hay sesión
           });
     }, [navigate]);
@@ -95,11 +95,11 @@ function Evaluate() {
             const response = await axios.post(`http://localhost:8081/evaluate-member`, postData);
     
             if (response.data === "Success") {
-                alert('User Evaluated successfully');
+                alert('Usuario Evaluado Exitosamente');
                 // Redirige al usuario a la lista de miembros
                 navigate(`/teams/${id}/list-members`);
             } else {
-                alert("An Error has Occurred in Evaluation")
+                alert("Ha Ocurrido un Error en la Evaluación")
             }
         } catch (error) {
             console.error('Error evaluating member:', error);

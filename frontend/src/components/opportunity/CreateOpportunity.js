@@ -30,7 +30,7 @@ function CreateOpportunity() {
             }
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/');
           });
       }, [navigate]);
@@ -53,10 +53,10 @@ function CreateOpportunity() {
             axios.post('http://localhost:8081/create-opportunity', values)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('Opportunity was created');
+                        alert('La Oportunidad fue Creada ');
                         navigate('/home');
                     } else {
-                        alert("It was not possible to create the opportunity");
+                        alert("No fue Posible Crear la Oportunidad");
                         navigate('/home');
                     }
                 })

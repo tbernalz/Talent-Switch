@@ -29,7 +29,7 @@ function TeamDetail() {
             });
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/'); // Redirige a la página de inicio si hay un error de sesión
           });
     }, [navigate]);
@@ -47,7 +47,7 @@ function TeamDetail() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Team not Found"); // Establece el mensaje de error en caso de falla
+                setError("Equipo No fue Encontrado"); // Establece el mensaje de error en caso de falla
             });
     }, [id]);
 
