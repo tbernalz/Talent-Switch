@@ -29,6 +29,47 @@ exports.signup = (req, res) => {
     });
 };
 
+// Controlador para obtener el perfil del usuario
+exports.myProfile = (req, res) => {
+    const userEmail = req.body.email;
+    db.query('SELECT * FROM user WHERE email = ?', [userEmail], (err, result) => {
+        if (err) {
+            console.error("Error fetching user data:", err);
+            return res.status(500).json({ message: "Error fetching user data" });
+        }
+        if (result.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const userData = result[0];
+        res.json(userData);
+    });
+};
+
+// Controlador para actualizar el perfil del usuario
+exports.updateProfile = (req, res) => {
+    const { name, email, actual_area, interest_area, skills } = req.body;
+
+    const sql = `
+        UPDATE user
+        SET name = ?, actual_area = ?, interest_area = ?, skills = ?
+        WHERE email = ?`;
+
+    const values = [name, actual_area, interest_area, skills, email];
+
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            console.error("Error updating user profile:", err);
+            return res.status(500).json("Error");
+        }
+
+        if (result.affectedRows > 0) {
+            return res.json("Success");
+        } else {
+            return res.status(404).json("User not found");
+        }
+    });
+};
+
 exports.login = (req, res) => {
     const sql = "SELECT * FROM user WHERE `email` = ?";
     db.query(sql, [req.body.email], (err, data) => {

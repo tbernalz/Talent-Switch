@@ -16,7 +16,7 @@ function Signup() {
     })
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
 
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
@@ -122,7 +122,7 @@ function Signup() {
                 <div>
                     <p>Al darle registrar aceptas nuestros terminos y condiciones.</p>
                     <div>
-                    <Link to="/"  className='button1'>Ingreso</Link>
+                        <Link to="/"  className='button1'>Ingreso</Link>
                     </div>
                 </div>
                 
