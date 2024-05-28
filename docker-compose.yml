@@ -3,8 +3,8 @@ version: '3'
 
 # Definition of services (containers) that should be run
 services:
-  # The first service is the application (in this case the backend)
-  app:
+  # The first service is the backend application
+  backend:
     # Location of Dockerfile for building the app image
     build: ./backend
     # Ports mapping - host:container
@@ -28,7 +28,15 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       # Mounts local directory to container, executing SQL scripts at startup
-      - ./backend/database/magneto_db.sql:/docker-entrypoint-initdb.d/init.sql # ./backend/database:/docker-entrypoint-initdb.d
+      - ./backend/database/magneto_db.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # The third service is the frontend application
+  frontend:
+    # Location of Dockerfile for building the frontend image
+    build: ./frontend
+    # Ports mapping - host:container
+    ports:
+      - '3000:3000'
 
 # Definition of named volumes
 volumes:
