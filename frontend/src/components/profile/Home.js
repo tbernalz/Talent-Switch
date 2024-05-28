@@ -76,6 +76,9 @@ function Home() {
                   <div className="col-md-4">
                     <Link to="/list-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Postulaciones</Link>
                   </div>
+                  <div className="col-md-4">
+                    <Link to="/list-my-evaluations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Evaluaciones</Link>
+                  </div>
                 </>
               )}
               {user.userType === 'employee' && (
@@ -91,6 +94,9 @@ function Home() {
                   </div>
                   <div className="col-md-4">
                     <Link to="/list-my-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Postulaciones</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-my-evaluations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Evaluaciones</Link>
                   </div>
                 </>
               )}

@@ -11,6 +11,10 @@ import Signup from './components/auth/Signup';
 import Home from './components/profile/Home';
 import UpdateProfile from './components/profile/UpdateProfile';
 import MyProfile from './components/profile/MyProfile';
+import ListMyEvaluations from './components/profile/ListMyEvaluations'
+
+//Evaluation
+import Evaluate from './components/team/Evaluate';
 
 //Opportunity
 import CreateOpportunity from './components/opportunity/CreateOpportunity';
@@ -31,9 +35,6 @@ import CreatePostulation from './components/postulation/CreatePostulation';
 import ListPostulations from'./components/postulation/ListPostulations';
 import ListMyPostulations from'./components/postulation/ListMyPostulations';
 import PostulationDetail from './components/postulation/PostulationDetail';
-
-//Evaluation
-import Evaluate from './components/team/Evaluate';
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
             {/* Profile Funtions */}
             <Route path='/my-profile' element={<MyProfile />}></Route>
             <Route path='/update-profile' element={<UpdateProfile />}></Route>
+            <Route path='/list-my-evaluations' element={<ListMyEvaluations />}></Route>
 
           </Routes>
       </BrowserRouter>

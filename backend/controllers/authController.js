@@ -102,3 +102,26 @@ exports.checkSession = (req, res) => {
         res.status(401).json("No session");
     }
 };
+
+exports.listMyEvaluations = (req, res) => {
+    const email = req.query.email; // Obtén el correo del usuario desde los parámetros de la solicitud
+
+    if (!email) {
+        return res.status(400).json({ error: 'El correo es obligatorio' });
+    }
+
+    // Consulta SQL para seleccionar las evaluaciones donde el correo del usuario es el evaluado
+    const sql = `
+        SELECT e.id, e.qualification, e.comment, e.evaluation_date
+        FROM evaluation AS e
+        WHERE e.evaluated_email = ?;
+    `;
+
+    db.query(sql, [email], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar las Evaluaciones' });
+        }
+        res.json(data);
+    });
+};
