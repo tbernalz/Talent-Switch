@@ -39,6 +39,12 @@ function ListPostulations() {
     return (
         <div className="List-Post">
             <h2>Listado de postulaciones</h2>
+            {postulations.length === 0 ? (
+                <div>
+                    <br />
+                    <p>Ningún Empleado se ha postulado todavía</p>
+                </div>
+            ) : (
             <table>
                 <thead>
                     <tr>
@@ -65,6 +71,7 @@ function ListPostulations() {
                     ))}
                 </tbody>
             </table>
+            )}
             <div>
                 <hr />
                 <Link to="/home" className='buttonPostulation2'>Atrás</Link>        

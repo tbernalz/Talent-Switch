@@ -93,6 +93,12 @@ function ListApplicants() {
         <section>
         <div className="applicants">
             <h2>Lista de aplicantes por oportunidad {id}</h2>
+            {applicants.length === 0 ? (
+                <div>
+                    <br />
+                    <p>No has Aplicantes todavía</p>
+                </div>
+            ) : (
             <table>
                 <thead>
                     <tr>
@@ -120,6 +126,7 @@ function ListApplicants() {
                     ))}
                 </tbody>
             </table>
+            )}
             <hr />
             <div>
                 <Link to={`/opportunities/${id}`} className='link'>Atras</Link>        

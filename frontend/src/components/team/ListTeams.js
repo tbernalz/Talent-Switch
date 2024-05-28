@@ -42,9 +42,13 @@ function ListTeams() {
 
     return (
         <div className="List-Teams">
-            <div className='lista'>
-                <h2>Lista de equipos</h2>          
-            </div>
+            <h2>Lista de Equipos</h2>
+            {teams.length === 0 ? (
+                <div>
+                    <br />
+                    <p>No hay Equipos de Trabajo creados aún</p>
+                </div>
+            ) : (
             <table>
                 <thead>
                     <tr>
@@ -62,8 +66,8 @@ function ListTeams() {
                             <td>{team.team_area}</td>
                             <td>{formatDate(team.start_date)}</td>
                             <td>{formatDate(team.final_date)}</td>
-                            <td>{formatDate(team.start_date)}</td>
-                            <td>{formatDate(team.final_date)}</td>
+                            {/* <td>{formatDate(team.start_date)}</td>
+                            <td>{formatDate(team.final_date)}</td> */}
                             <td>
                                 <Link to={`/teams/${team.team_id}`} className="button-O">Ver equipo</Link>
                             </td>
@@ -71,6 +75,7 @@ function ListTeams() {
                     ))}
                 </tbody>
             </table>
+            )}
             <hr />
             <div>
                 <Link to="/home" className='buttonTeamC1'>Atrás</Link>        

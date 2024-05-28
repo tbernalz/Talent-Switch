@@ -72,8 +72,8 @@ function ListMyTeams() {
                             <td>{team.team_area}</td>
                             <td>{formatDate(team.start_date)}</td>
                             <td>{formatDate(team.final_date)}</td>
-                            <td>{formatDate(team.start_date)}</td>
-                            <td>{formatDate(team.final_date)}</td>
+                            {/* <td>{formatDate(team.start_date)}</td>
+                            <td>{formatDate(team.final_date)}</td> */}
                             <td>
                                 <Link to={`/teams/${team.team_id}`} className="button-O">Ver equipo</Link>
                             </td>

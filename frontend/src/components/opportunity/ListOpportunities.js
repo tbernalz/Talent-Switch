@@ -47,6 +47,12 @@ function ListOpportunities() {
     return (
         <div className="List-Opp">
             <h2>Lista de oportunidades</h2>
+            {opportunities.length === 0 ? (
+                <div>
+                    <br />
+                    <p>No hay Oportunidades disponibles en este momento, por favor inténtalo de nuevo más tarde</p>
+                </div>
+            ) : (
             <table>
                 <thead>
                     <tr>
@@ -65,8 +71,8 @@ function ListOpportunities() {
                             <td>{opportunity.opportunity_area}</td>
                             <td>{formatDate(opportunity.start_date)}</td>
                             <td>{formatDate(opportunity.final_date)}</td>
-                            <td>{formatDate(opportunity.start_date)}</td>
-                            <td>{formatDate(opportunity.final_date)}</td>
+                            {/* <td>{formatDate(opportunity.start_date)}</td>
+                            <td>{formatDate(opportunity.final_date)}</td> */}
                             <td>{opportunity.opportunity_state}</td>
                             <td>
                                 <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>
@@ -75,6 +81,7 @@ function ListOpportunities() {
                     ))}
                 </tbody>
             </table>
+            )}
             <div>
                 <hr />
                 <Link to="/home" className='buttonOpportunity2'>Atrás</Link>        

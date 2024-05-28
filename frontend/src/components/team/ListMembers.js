@@ -85,6 +85,12 @@ function ListMembers() {
                 <div className='memberList'>
                     <h2>Lista de miembros de equipo {id}</h2>
                 </div>
+                {members.length === 0 ? (//debería no ocurrir nunca por autoadicción del lider
+                <div>
+                    <br />
+                    <p>No se han agregado miembros aún</p>
+                </div>
+                ) : (
                 <table>
                     <thead>
                         <tr className='Barra'>
@@ -103,6 +109,7 @@ function ListMembers() {
                         ))}
                     </tbody>
                 </table>
+                )}
                 <hr />
                 <div>
                     <Link to={`/teams/${id}`} className='buttonTeamC1'>Atrás</Link>
