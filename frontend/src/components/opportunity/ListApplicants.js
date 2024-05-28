@@ -129,7 +129,7 @@ function ListApplicants() {
             )}
             <hr />
             <div>
-                <Link to={`/opportunities/${id}`} className='link'>Atras</Link>        
+                <Link to={`/opportunities/${id}`} className='link'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

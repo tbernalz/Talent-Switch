@@ -93,7 +93,7 @@ function OpportunityDetail() {
             if(response.data === "Success"){
                 alert('Usuario Aplicó Exitosamente')
             } else if(response.data === "applicant_exists"){
-                alert("El Usuario ya Aplicó paraa esta Oportunidad");
+                alert("El Usuario ya Aplicó para esta Oportunidad");
             } else if(response.data === "applicant_not_employee"){
                 alert("El Aplicante No es un Empleado");
             } else if(response.data === "user_not_exists"){
