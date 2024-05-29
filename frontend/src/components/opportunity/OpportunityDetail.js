@@ -29,6 +29,10 @@ function OpportunityDetail() {
                 email: response.data.email,
                 userType: response.data.user_type,
             });
+            setValues(prev => ({
+                ...prev,
+                applicant_email: response.data.email // Establecer automáticamente el correo del aplicante
+            }));
           })
           .catch(error => {
             console.error("¡Hubo un error al obtener los datos del usuario!", error);
@@ -137,9 +141,12 @@ function OpportunityDetail() {
                             <input type="hidden" name="opportunity_id" value={id} />
                             <div className='form-group'>
                                 <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
-                                <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
+                                <input type="email" name='applicant_email'
+                                    value={values.applicant_email} readOnly
+                                    className='form-control rounded-0' />
+                                {/* <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
                                 onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
-                                {errors.applicant_email && <div className='invalid-feedback'> {errors.applicant_email}</div>}
+                                {errors.applicant_email && <div className='invalid-feedback'> {errors.applicant_email}</div>} */}
                             </div>
                             <div className="mt-2 text-center">
                                 <button type='submit' className='btn btn-primary'>Aplicar</button>

@@ -45,7 +45,6 @@ function Signup() {
 
   return (
     <section className="container mt-5 mb-3 text-white">
-        <div className='text-center'>Talent Switch</div>
         <form  action='' onSubmit={handleSubmit}>
             <h2 className="text-center">Registro</h2>
             <div className="row">
