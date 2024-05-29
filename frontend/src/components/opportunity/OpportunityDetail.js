@@ -13,7 +13,25 @@ function OpportunityDetail() {
         applicant_email: '',
     });
     const [errors, setErrors] = useState({});
+    const [user, setUser] = useState({ userName: '', email: '', userType: '' });
 
+    //Revisión del tipo de Usuario para separar funciones
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        .then(response => {
+            setUser({
+                userName: response.data.name,
+                email: response.data.email,
+                userType: response.data.user_type,
+            });
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/'); // Redirige a la página de inicio si hay un error de sesión
+          });
+    }, [navigate]);
+
+    // Función para manejar cambios en los inputs del formulario
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: event.target.value}))
     }
@@ -26,7 +44,7 @@ function OpportunityDetail() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Opportunity not Found");
+                setError("Oportunidad No Encontrada"); // Establece el mensaje de error en caso de falla
             });
     }, [id]);
 
@@ -62,15 +80,15 @@ function OpportunityDetail() {
         axios.post('http://localhost:8081/add-applicant', postData)
         .then(response => {
             if(response.data === "Success"){
-                alert('User applied successfully')
+                alert('Usuario Aplicó Exitosamente')
             } else if(response.data === "applicant_exists"){
-                alert("User has Already Applied for this Opportunity");
+                alert("El Usuario ya Aplicó para esta Oportunidad");
             } else if(response.data === "applicant_not_employee"){
-                alert("Applicant is not an Employee");
+                alert("El Aplicante No es un Empleado");
             } else if(response.data === "user_not_exists"){
-                alert("User not found or does not exist");
+                alert("Usuario No Encontrado o No Existe");
             } else{
-                alert("An Error has Occurred")
+                alert("Ha Ocurrido un Error")
             }
         })
         .catch(error => console.log(error));
@@ -111,11 +129,21 @@ function OpportunityDetail() {
                     <div className="mt-2 text-center">
                         <button type='submit' className='btn btn-primary'>Aplicar</button>
                     </div>
-
-                </form>
-                <hr />
-                <div className="mt-2">
-                    <Link to={`/opportunities/${id}/list-applicants`} className='btn btn-primary'>Ver aplicantes</Link>
+                )}
+                {/* Mostrar el botón de ver aplicantes solo para líderes */}
+                {user.userType === 'leader' && (
+                    <div>
+                        <Link to={`/opportunities/${id}/list-applicants`} className='buttonOppDetail2'>Ver aplicantes</Link>
+                        <hr/>
+                    </div>
+                )}
+                <div>
+                    {user.userType === 'employee' && (
+                        <Link to="/list-opportunities" className="buttonOppDetail3">Atrás</Link>
+                    )}
+                    {user.userType === 'leader' && (
+                        <Link to="/list-my-opportunities" className="buttonOppDetail3">Atrás</Link>
+                    )}
                 </div>
             </div>
             <hr/>

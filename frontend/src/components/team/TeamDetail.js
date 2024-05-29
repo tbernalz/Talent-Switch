@@ -15,6 +15,23 @@ function TeamDetail() {
     });
 
     const [errors, setErrors] = useState({});
+    const [user, setUser] = useState({ userName: '', email: '', userType: '' });
+
+    //Revisión del tipo de Usuario para separar funciones
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        .then(response => {
+            setUser({
+                userName: response.data.name,
+                email: response.data.email,
+                userType: response.data.user_type,
+            });
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/'); // Redirige a la página de inicio si hay un error de sesión
+          });
+    }, [navigate]);
 
     // Función para manejar cambios en los inputs del formulario
     const handleInput = (event) => {
@@ -29,7 +46,7 @@ function TeamDetail() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Team not Found"); // Establece el mensaje de error en caso de falla
+                setError("Equipo No fue Encontrado"); // Establece el mensaje de error en caso de falla
             });
     }, [id]);
 
@@ -67,20 +84,20 @@ function TeamDetail() {
 
         // Enviar datos al servidor
         axios.post('http://localhost:8081/add-member', postData)
-            .then(response => {
-                if (response.data === "Success") {
-                    alert('User Added successfully');
-                } else if (response.data === "member_exists") {
-                    alert("User is Already Part of this Team");
-                } else if (response.data === "member_not_employee") {
-                    alert("Member is not an Employee");
-                } else if (response.data === "user_not_exists") {
-                    alert("User not found or does not exist");
-                } else {
-                    alert("An Error has Occurred");
-                }
-            })
-            .catch(error => console.log(error));
+        .then(response => {
+            if(response.data === "Success"){
+                alert('Usuario Agregado al Equipo Exitosamente')
+            } else if(response.data === "member_exists"){
+                alert("El Usuario ya es Miembro de este Equipo");
+            } else if(response.data === "member_not_employee"){ 
+                alert("El Miembro No es un Empleado");
+            } else if(response.data === "user_not_exists"){
+                alert("Usuario No Encontrado o No Existe");
+            } else{
+                alert("Ha Ocurrido un Error")
+            }
+        })
+        .catch(error => console.log(error));
     };
 
     function formatDate(dateString) {

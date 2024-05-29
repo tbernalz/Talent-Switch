@@ -44,6 +44,23 @@ exports.listPostulations = (req, res) => {
     });
 };
 
+exports.listMyPostulations = (req, res) => {
+    const email = req.query.email; // Obtenemos el correo del usuario desde los parámetros de la solicitud
+
+    if (!email) {
+        return res.status(400).json({ error: 'El correo es obligatorio' });
+    }
+
+    const sql = "SELECT postulation_id, postulant_name, postulant_email, postulant_actual_area, postulant_interest_area, postulation_state FROM postulation WHERE postulant_email = ?";
+    db.query(sql, [email], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar las postulaciones' });
+        }
+        res.json(data);
+    });
+};
+
 exports.postulationDetail = (req, res) => {
     const teamId = req.params.id;
     const sql = "SELECT * FROM postulation WHERE postulation_id = ?";

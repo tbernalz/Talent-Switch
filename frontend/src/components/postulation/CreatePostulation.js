@@ -14,8 +14,30 @@ function CreatePostulation() {
     });
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({});
+    const [user, setUser] = useState(null);
+    const [errors, setErrors] = useState({})    
 
+    //Validación de Sesión
+    useEffect(() => {
+        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+            if (response.data.user_type !== 'employee') {
+                alert('Solo los Empleados pueden Postularse.');
+                navigate('/home');
+            }
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/');
+          });
+      }, [navigate]);
+
+    if (!user) {
+        return null; // O un mensaje de carga si lo prefieres
+    }
+
+    
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
     };
@@ -48,10 +70,10 @@ function CreatePostulation() {
                     axios.post('http://localhost:8081/create-postulation', postData)
                         .then(res => {
                             if (res.data === "Success") {
-                                alert('Postulation was created');
+                                alert('La Postulación fue Creada');
                                 navigate('/home');
                             } else {
-                                alert("It was not possible to create the Postulation");
+                                alert("No fue Posible Crear la Postulación");
                                 navigate('/home');
                             }
                         })

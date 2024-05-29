@@ -15,7 +15,28 @@ function CreateTeam() {
     });
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({});
+    const [user, setUser] = useState(null);
+    const [errors, setErrors] = useState({})
+
+    //Validación de Sesión
+    useEffect(() => {
+        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+            if (response.data.user_type !== 'leader') {
+                alert('Solo los líderes pueden crear Equipos de Trabajo.');
+                navigate('/home');
+            }
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/');
+          });
+      }, [navigate]);
+
+    if (!user) {
+        return null; // O un mensaje de carga si lo prefieres
+    }
 
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
@@ -30,10 +51,10 @@ function CreateTeam() {
             axios.post('http://localhost:8081/create-team', values)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('Project Team was created');
+                        alert('Equipo de Trabajo fue Creado');
                         navigate('/home');
                     } else {
-                        alert("It was not possible to create the Project Team");
+                        alert("No fue Posible Crear el Equipo de Trabajo");
                         navigate('/home');
                     }
                 })

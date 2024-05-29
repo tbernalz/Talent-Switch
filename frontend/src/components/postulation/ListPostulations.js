@@ -6,6 +6,24 @@ import './../../styles/bootstrap.min.css';
 function ListPostulations() {
     const [postulations, setPostulations] = useState([]);
 
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
+
     useEffect(() => {
         axios.get('http://localhost:8081/list-postulations')
             .then(res => {
@@ -21,6 +39,12 @@ function ListPostulations() {
     return (
         <div className="List-Post container mt-5 mb-5">
             <h2 style={{ color: 'white' }}>Listado de postulaciones</h2>
+            {postulations.length === 0 ? (
+                <div>
+                    <br />
+                    <p>Ningún Empleado se ha postulado todavía</p>
+                </div>
+            ) : (
             <table className="table">
                 <thead>
                     <tr>

@@ -9,6 +9,24 @@ function ListApplicants() {
     const [applicants, setApplicants] = useState([]);
     const [error, setError] = useState(null);
 
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
+
     useEffect(() => {
         axios.get(`http://localhost:8081/opportunities/${id}/list-applicants`)
             .then(res => {
@@ -16,7 +34,7 @@ function ListApplicants() {
             })
             .catch(err => {
                 console.log(err)
-                setError("Opportunity not Found");
+                setError("Oportunidad No Encontrada");
             });
     }, [id]);
 
@@ -76,7 +94,13 @@ function ListApplicants() {
         <section>
             <div className="applicants">
                 <h2 style={{ color: '#fff' }}>Lista de aplicantes por oportunidad {id}</h2>
-                <table className="table">
+                {applicants.length === 0 ? (
+                <div>
+                    <br />
+                    <p>No has Aplicantes todavía</p>
+                </div>
+            ) : (
+            <table className="table">
                     <thead>
                         <tr>
                             <th style={{ color: '#fff' }}>Correo del aplicante</th>
@@ -101,9 +125,10 @@ function ListApplicants() {
                         ))}
                     </tbody>
                 </table>
-                <hr />
+                )}
+            <hr />
                 <div className="text-center">
-                    <Link to={`/opportunities/${id}`} className='btn btn-primary'>Atras</Link>
+                    <Link to={`/opportunities/${id}`} className='btn btn-primary'>Atrás</Link>
                 </div>
                 <div className='text-center mt-4'>
                     <p style={{ color: '#fff' }}>Talent Switch</p>

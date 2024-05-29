@@ -13,6 +13,21 @@ function Evaluate() {
     });
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
 
     useEffect(() => {
         if (id && user_id && member_email) {
@@ -62,10 +77,11 @@ function Evaluate() {
             const response = await axios.post(`http://localhost:8081/evaluate-member`, postData);
     
             if (response.data === "Success") {
-                alert('User Evaluated successfully');
+                alert('Usuario Evaluado Exitosamente');
+                // Redirige al usuario a la lista de miembros
                 navigate(`/teams/${id}/list-members`);
             } else {
-                alert("An Error has Occurred in Evaluation")
+                alert("Ha Ocurrido un Error en la Evaluación")
             }
         } catch (error) {
             console.error('Error evaluating member:', error);

@@ -16,7 +16,7 @@ function Signup() {
     })
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
 
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
@@ -31,12 +31,12 @@ function Signup() {
             axios.post('http://localhost:8081/signup', values)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('User was Successfully registered');
+                        alert('Usuario Registrado Exitosamente');
                         navigate('/');
                     } else if (res.data === "email_exists") {
-                        alert("Email Already Exists");
+                        alert("Este Correo ya se Encuentra en Uso por otro Usuario");
                     } else {
-                        alert("An Error has Occurred");
+                        alert("Ha Ocurrido un Problema");
                     }
                 })
                 .catch(err => console.log(err));
@@ -122,7 +122,7 @@ function Signup() {
                 <div>
                     <p>Al darle registrar aceptas nuestros terminos y condiciones.</p>
                     <div>
-                    <Link to="/"  className='button1'>Ingreso</Link>
+                        <Link to="/"  className='button1'>Ingreso</Link>
                     </div>
                 </div>
                 

@@ -17,7 +17,28 @@ function CreateOpportunity() {
     });
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({});
+    const [user, setUser] = useState(null);
+    const [errors, setErrors] = useState({})  
+
+    //Validación de Sesión
+    useEffect(() => {
+        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+            if (response.data.user_type !== 'leader') {
+                alert('Solo los líderes pueden crear oportunidades.');
+                navigate('/home');
+            }
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/');
+          });
+      }, [navigate]);
+
+    if (!user) {
+        return null; // O un mensaje de carga si lo prefieres
+    }
 
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
@@ -32,10 +53,10 @@ function CreateOpportunity() {
             axios.post('http://localhost:8081/create-opportunity', values)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('Opportunity was created');
+                        alert('La Oportunidad fue Creada ');
                         navigate('/home');
                     } else {
-                        alert("It was not possible to create the opportunity");
+                        alert("No fue Posible Crear la Oportunidad");
                         navigate('/home');
                     }
                 })

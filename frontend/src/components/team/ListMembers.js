@@ -8,6 +8,24 @@ function ListMembers() {
     const [members, setMembers] = useState([]);
     const [error, setError] = useState(null);
 
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
+
     const handleEvaluate = async (member) => {
         try {
             const response = await axios.post('http://localhost:8081/to-evaluate-member', {
@@ -49,7 +67,7 @@ function ListMembers() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Team not Found");
+                setError("Equipo No fue Enontrado");
             });
     }, [id]);
 

@@ -7,6 +7,24 @@ import './../../styles/Opportunity.css';
 function ListOpportunities() {
     const [opportunities, setOpportunities] = useState([]);
 
+    //Validación de Sesión
+    const navigate = useNavigate();
+    
+    // eslint-disable-next-line no-unused-vars
+    const [user, setUser] = useState(null);
+
+    // Revisar si hay sesión al cargar el componente
+    useEffect(() => {
+        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+    }, [navigate]);
+
     useEffect(() => {
         axios.get('http://localhost:8081/list-opportunities')
             .then(res => {
@@ -31,7 +49,13 @@ function ListOpportunities() {
         <div className="List-Opp">
             <h2>Lista de oportunidades</h2>
             <div className="table-wrapper">
-                <table>
+                {opportunities.length === 0 ? (
+                <div>
+                    <br />
+                    <p>No hay Oportunidades disponibles en este momento, por favor inténtalo de nuevo más tarde</p>
+                </div>
+            ) : (
+            <table>
                     <thead>
                         <tr>
                             <th>Nombre oportunidad</th>
@@ -47,8 +71,8 @@ function ListOpportunities() {
                             <tr key={opportunity.opportunity_id} className={getRowClassName(opportunity)}>
                                 <td>{opportunity.opportunity_name}</td>
                                 <td>{opportunity.opportunity_area}</td>
-                                <td>{formatDate(opportunity.start_date)}</td>
-                                <td>{formatDate(opportunity.final_date)}</td>
+                                {/* <td>{formatDate(opportunity.start_date)}</td>
+                                <td>{formatDate(opportunity.final_date)}</td> */}
                                 <td>{opportunity.opportunity_state}</td>
                                 <td>
                                     <Link to={`/opportunities/${opportunity.opportunity_id}`} className="btn btn-primary">Ver oportunidad</Link>
@@ -57,6 +81,7 @@ function ListOpportunities() {
                         ))}
                     </tbody>
                 </table>
+            )}
             </div>
             <hr />
             <div className="text-center">
