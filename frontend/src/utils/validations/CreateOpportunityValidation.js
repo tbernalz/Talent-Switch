@@ -8,7 +8,7 @@ function Validation(values) {
 
     // opportunity_name validation
     if (!values.opportunity_name.trim()) {
-        error.opportunity_name = "Opportunity Name should not be empty";
+        error.opportunity_name = "El nombre de la oportunidad no debe estar vacío";
     } else {
         error.opportunity_name = "";
     }
@@ -22,39 +22,39 @@ function Validation(values) {
 
     // opportunity_area validation
     if (!values.opportunity_area.trim()) {
-        error.opportunity_area = "Opportunity Area should not be empty";
+        error.opportunity_area = "El área de la oportunidad no debe estar vacía";
     } else {
         error.opportunity_area = "";
     }
 
     // description validation
     if (!values.description.trim()) {
-        error.description = "Description should not be empty";
+        error.description = "La descripción no debe estar vacía";
     } else {
         error.description = "";
     }
 
     // required_skills validation
     if (values.required_skills.trim() === "") {
-        error.required_skills = "Required skills should not be empty";
+        error.required_skills = "Las habilidades requeridas no deben estar vacías";
     } else {
         error.required_skills = "";
     }
 
     // start_date validation
     if (!isValidDate(values.start_date)) {
-        error.start_date = "Start Date should not be empty or invalid";
+        error.start_date = "La fecha de inicio no debe estar vacía o inválida";
     } else if (new Date(values.start_date) < oneYearAgo) {
-        error.start_date = "Start Date should not be more than one year ago";
+        error.start_date = "La fecha de inicio no debe ser hace más de un año";
     } else {
         error.start_date = "";
     }
 
     // final_date validation
     if (!isValidDate(values.final_date)) {
-        error.final_date = "Final Date should not be empty or invalid";
+        error.final_date = "La fecha final no debe estar vacía o ser inválida";
     } else if (new Date(values.final_date) < oneYearAgo) {
-        error.final_date = "Final Date should not be more than one year ago";
+        error.final_date = "La fecha final no debe ser hace más de un año atrás";
     } else {
         error.final_date = "";
     }
@@ -65,7 +65,7 @@ function Validation(values) {
         const finalDate = new Date(values.final_date);
 
         if (startDate > finalDate) {
-            error.final_date = 'Final date cannot be earlier than start date';
+            error.final_date = 'La fecha final no puede ser anterior a la fecha de inicio';
         }
     }
 

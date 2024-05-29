@@ -7,61 +7,61 @@ function Validation(values) {
 
     // Name validation
     if (!values.name) {
-        error.name = "Name should not be empty";
+        error.name = "El nombre no debe estar vacío";
     } else {
         error.name = "";
     }
 
     // Email validation
     if (!values.email) {
-        error.email = "Email should not be empty";
+        error.email = "El correo electrónico no debe estar vacío";
     } else if (!email_pattern.test(values.email)) {
-        error.email = "Email didn't match";
+        error.email = "El correo electrónico no coincide con el formato válido";
     } else {
         error.email = "";
     }
 
     // Actual area validation
     if (!values.actual_area) {
-        error.actual_area = "Actual Area should not be empty";
+        error.actual_area = "El área actual no debe estar vacía";
     } else {
         error.actual_area = "";
     }
 
     // Interest area validation
     if (!values.interest_area) {
-        error.interest_area = "Interest Area should not be empty";
+        error.interest_area = "El área de interés no debe estar vacía";
     } else {
         error.interest_area = "";
     }
 
     // Skills validation
     if (!values.skills) {
-        error.skills = "Skills should not be empty";
+        error.skills = "Las habilidades no deben estar vacías";
     } else {
         error.skills = "";
     }
     
     // User type validation
     if (!values.user_type) {
-        error.user_type = "User type should not be empty";
+        error.user_type = "El tipo de usuario no debe estar vacío";
     } else {
         error.user_type = "";
     }
 
     // Password validation
     if (!values.password) {
-        error.password = "Password should not be empty";
+        error.password = "La contraseña no debe estar vacía";
     } else {
         let passwordErrors = [];
         if (values.password.length < 8) {
-            passwordErrors.push("Password must be at least 8 characters long");
+            passwordErrors.push("La contraseña debe tener al menos 8 caracteres");
         } else if (!/[a-z]/.test(values.password)) {
-            passwordErrors.push("Password must contain at least one lowercase letter");
+            passwordErrors.push("La contraseña debe contener al menos una letra minúscula");
         } else if (!/[A-Z]/.test(values.password)) {
-            passwordErrors.push("Password must contain at least one uppercase letter");
+            passwordErrors.push("La contraseña debe contener al menos una letra mayúscula");
         } else if (!/\d/.test(values.password)) {
-            passwordErrors.push("Password must contain at least one digit");
+            passwordErrors.push("La contraseña debe contener al menos un dígito");
         }
 
         if (passwordErrors.length > 0) {

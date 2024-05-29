@@ -7,7 +7,7 @@ function Validation(values) {
 
     // Name validation
     if (!values.name) {
-        error.name = "Name should not be empty";
+        error.name = "El nombre no debe estar vacío";
     } else {
         error.name = "";
     }
@@ -23,21 +23,21 @@ function Validation(values) {
 
     // Actual area validation
     if (!values.actual_area) {
-        error.actual_area = "Actual Area should not be empty";
+        error.actual_area = "El área actual no debe estar vacía";
     } else {
         error.actual_area = "";
     }
 
     // Interest area validation
     if (!values.interest_area) {
-        error.interest_area = "Interest Area should not be empty";
+        error.interest_area = "El área de interés no debe estar vacía";
     } else {
         error.interest_area = "";
     }
 
     // Skills validation
     if (!values.skills) {
-        error.skills = "Skills should not be empty";
+        error.skills = "Las habilidades no deben estar vacías";
     } else {
         error.skills = "";
     }
