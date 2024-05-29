@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../styles/Perfil.css'; // css
 import './../../styles/PerfilU.css'; // css
 
@@ -30,51 +31,53 @@ function MyProfile() {
     }, [navigate]);
 
     return (
-        <section>
-            <h2>Mi perfil</h2>
+        <section className="mt-5 mb-5 text-white">
+            <div>
+                <h2>Mi perfil</h2>
+            </div>
 
-            <div className='Update-Name'>
+            <div className='form-group'>
                     <label htmlFor='name'><strong>Nombre</strong></label>
                     <input type="text" value={user.name} readOnly
                     name='name' className={`form-control rounded-0`} />
             </div>
 
-            <div className='Update-Email'>
+            <div className='form-group'>
                 <label htmlFor='email'><strong>Correo</strong></label>
                 <input type="email" value={user.email} readOnly
                 name='name' className={`form-control rounded-0`} />
             </div>
 
-            <div className='Update-ActualArea'>
+            <div className='form-group'>
                 <label htmlFor='actual_area'><strong>Área actual</strong></label>
                 <input type="text" value={user.actual_area} readOnly
                 name='name' className={`form-control rounded-0`} />
             </div>
 
-            <div className='Interest-Update-InterestArea'>
+            <div className='form-group'>
                 <label htmlFor='interest_areas'><strong>Áreas de interés</strong></label>
                 <input type="text" value={user.interest_area} readOnly
                 name='name' className={`form-control rounded-0`} />
             </div>
 
-            <div className='Update-Skills'>
+            <div className='form-group'>
                 <label htmlFor='skills'><strong>Habilidades</strong></label>
                 <input type="text" value={user.skills} readOnly
                 name='name' className={`form-control rounded-0`} />
             </div>
 
-            <div className='Update-UserType'>
+            <div className='form-group'>
                 <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
                 <input type="text" value={user.user_type} readOnly
                 name='name' className={`form-control rounded-0`} />
             </div>
-
-            <div>
-                <hr />
-                <Link to="/update-profile" className='buttonP'>Actualizar Información</Link>
+            <br/>
+            <div className=" justify-content-between text-center">
+                <Link to="/update-profile" className='btn btn-primary'>Actualizar Información</Link>
             </div>
-            <div>
-                <Link to="/home" className='buttonP1'>Atrás</Link>
+            <div className='text-center'>
+                <hr/>
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>
             </div>
             <div className='text'>Talent Switch</div>
         </section>

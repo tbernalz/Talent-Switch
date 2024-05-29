@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/CreateTeamValidation';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; // css
 
 function CreateOpportunity() {
@@ -68,59 +69,57 @@ function CreateOpportunity() {
 
 
   return (
-    <section>
+    <section className="container mt-5 mb-5">
         <form  action='' onSubmit={handleSubmit}>
-            <div className='createProject'>
+            <div className="mb-4 text-center">
                 <h2>Crear proyecto de equipo</h2>
             </div>
-            <div className='Team-Name'>
+            <div className='form-group'>
                 <label htmlFor='team_name'><strong>Nombre del equipo</strong></label>
                 <input type="text" placeholder='Ingrese el nombre del equipo' name='team_name'
                 onChange={handleInput} className='form-control rounded-0' />
-                {errors.team_name && <span className='text-danger'> {errors.team_name}</span>}
+                {errors.team_name && <div className='invalid-feedback'> {errors.team_name}</div>}
             </div>
 
-            <div className='Team-Email'>
+            <div className='form-group'>
                 <label htmlFor='team_leader_email'><strong>Correo del lider de equipo</strong></label>
                 <input type="text"  name='team_leader_email'
                  value={values.team_leader_email} readOnly
                  className='form-control rounded-0' />
             </div>
 
-            <div className='Team-Area'>
+            <div className='form-group'>
                 <label htmlFor='team_area'><strong>Area del equipo</strong></label>
                 <input type="text" placeholder='Ingrese el area del equipo' name='team_area'
                 onChange={handleInput} className='form-control rounded-0' />
-                {errors.team_area && <span className='text-danger'> {errors.team_area}</span>}
+                {errors.team_area && <div className='invalid-feedback'> {errors.team_area}</div>}
             </div>
 
-            <div className='Team-Description'>
+            <div className='form-group'>
                 <label htmlFor='description'><strong>Descripción</strong></label>
                 <input type="text" placeholder='Ingrese la descripción' name='description'
                 onChange={handleInput} className='form-control rounded-0' />
-                {errors.description && <span className='text-danger'> {errors.description}</span>}
+                {errors.description && <div className='invalid-feedback'> {errors.description}</div>}
             </div>
 
-            <div className='Team-Start'>
+            <div className='form-group'>
                 <label htmlFor='start_date'><strong>Fecha de inicio</strong></label>
                 <input type="date" name="start_date" onChange={handleInput} className='form-control rounded-0' />
-                {errors.start_date && <span className='text-danger'> {errors.start_date}</span>}
+                {errors.start_date && <div className='invalid-feedback'> {errors.start_date}</div>}
             </div>
 
-            <div className='Team-End'>
+            <div className='form-group'>
                 <label htmlFor='final_date'><strong>Fecha final</strong></label>
                 <input type="date" name="final_date" onChange={handleInput} className='form-control rounded-0' />
-                {errors.final_date && <span className='text-danger'> {errors.final_date}</span>}
+                {errors.final_date && <div className='invalid-feedback'> {errors.final_date}</div>}
             </div>
-
-            <div> 
-                <button type='submit' className='buttonTeamC'>Crear</button>    
+            <br/>
+            <div className='form-group text-center'>
+                <button type='submit' className='btn btn-primary'>Crear</button>    
             </div>
-            <div>
-                <hr/>
-                <div>
-                    <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
-                </div>
+            <hr/>
+            <div className='text-center'>
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
         </form>
         <div className='text'>Talent Switch</div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; //css
 
 function Evaluate() {
@@ -108,15 +109,16 @@ function Evaluate() {
     };
 
     return (
-        <section>
-            <div className="evaluateHeader">
+        <section className="container mt-5 mb-5 text-white">
+            <div className="text-center mb-4">
                 <h3>Evaluacion</h3>
                 <h5>{member_email}</h5>
+                <h5>{user.name}</h5>                
                 {/* <p>ID: {id}</p> */}
                 {/* <p>User ID: {user_id}</p> */}
             </div>
             <form onSubmit={handleSubmit}>
-                <div className='Qualification'>
+                <div className='form-group'>
                     <label htmlFor='qualification'><strong>Calificacion:</strong></label>
                     <select id="qualification" name='qualification'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.qualification ? ' is-invalid' : '')}>
@@ -126,23 +128,24 @@ function Evaluate() {
                             <option value='4'>4 Estrellas: &#9733;&#9733;&#9733;&#9733;</option>
                             <option value='5'>5 Estrellas: &#9733;&#9733;&#9733;&#9733;&#9733;</option>
                     </select>
-                    {errors.qualification && <span className='text-danger'> {errors.qualification}</span>}
+                    {errors.qualification && <div className='invalid-feedback'> {errors.qualification}</div>}
                 </div>
                 
-                <div className='Comment'>
+                <div className='form-group'>
                     <label htmlFor='comment'><strong>Comentarios:</strong></label>
                     <input type="text" placeholder='Ingresa tu comentario' name='comment'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.comment ? ' is-invalid' : '')} />
-                    {errors.comment && <span className='text-danger'> {errors.comment}</span>}
+                    {errors.comment && <div className='invalid-feedback'> {errors.comment}</div>}
                 </div>
-                <div>
-                    <button type='submit' className='buttonTmembers'>Evaluar</button>
+                <br/>
+                <div className='form-group text-center'>
+                    <button type='submit' className='btn btn-primary'>Evaluar</button>
+                </div>
+                <hr />
+                <div className='text-center'>
+                    <Link to={`/teams/${id}/list-members`} className='btn btn-secondary'>Atrás</Link>
                 </div>
             </form>
-            <div className='button-container2'>
-            <hr />
-                <Link to={`/teams/${id}/list-members`} className='buttonBack'>Atrás</Link>
-            </div>
             <div className='text'>Talent Switch</div>
         </section>
     );

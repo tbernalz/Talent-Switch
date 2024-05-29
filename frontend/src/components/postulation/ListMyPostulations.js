@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // css
 
 function ListMyPostulations() {
@@ -42,7 +43,7 @@ function ListMyPostulations() {
     };
 
     return (
-        <div className="List-Post">
+        <div className="List-Post container mt-5 mb-5">
             <h2>Listado de Postulaciones</h2>
             <br /><p>Postulaciones creadas por tí, {user.userName}</p>
             {postulations.length === 0 ? (
@@ -71,7 +72,7 @@ function ListMyPostulations() {
                             <td>{postulation.postulant_interest_area}</td>
                             <td>{postulation.postulation_state}</td>
                             <td>
-                                <Link to={`/postulations/${postulation.postulation_id}`} className="buttonViewP">Ver postulación</Link>
+                                <Link to={`/postulations/${postulation.postulation_id}`} className="btn btn-primary">Ver postulación</Link>
                             </td>
                         </tr>
                     ))}
@@ -80,7 +81,7 @@ function ListMyPostulations() {
             )}
             <div>
                 <hr />
-                <Link to="/home" className='buttonPostulation2'>Atrás</Link>        
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; //css
 
 function TeamDetail() {
@@ -110,7 +111,7 @@ function TeamDetail() {
     }
 
     return (
-        <section>
+        <section className='team-detail'>
             <div className="team-header">
                 <h2>{team.team_name}</h2>
             </div>
@@ -120,40 +121,37 @@ function TeamDetail() {
                 <p><strong>Descripción:</strong> {team.description}</p>
                 <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
                 <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p>
-                {/* <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
-                <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p> */}
             </div>
             <hr/>
-            <div>
+            <div className="d-flex flex-column align-items-center">
                 {/* Mostrar el formulario y el botón de aplicar solo para empleados */}
                 {user.userType === 'leader' && (
                 <div>
                     <form action='' onSubmit={handleSubmit}>
                         <input type="hidden" name="team_id" value={id} />
-                        <div className='member-email'>
+                        <div className='form-group'>
                             <label htmlFor='member_email'><strong>Correo de miembros</strong></label>
                             <input type="email" placeholder='Ingresa el correo' name='member_email'
                             onChange={handleInput} className={'form-control rounded-0' + (errors.member_email ? ' is-invalid' : '')} />
-                            {errors.member_email && <span className='text-danger'> {errors.member_email}</span>}
+                            {errors.member_email && <div className='invalid-feedback'> {errors.member_email}</div>}
                         </div>
-                        <div>
-                            <button type='submit' className='buttonTdetails'>Agregar nuevo miembro</button>
+                        <div className="mt-2 text-center">
+                            <button type='submit' className='btn btn-primary'>Agregar Nuevo Miembro</button>
                             <hr />
-                            <br />
                         </div>
                     </form>
                 </div>
                 )}
-                <div>
-                    <Link to={`/teams/${id}/list-members`} className='buttonTmembers'>Ver miembros</Link>
+                <div className="mt-2">
+                    <Link to={`/teams/${id}/list-members`} className='btn btn-primary'>Ver Miembros</Link>
                     <hr />
                 </div>
                 <div>
                     {user.userType === 'employee' && (
-                        <Link to="/list-my-teams" className="buttonTeamC1">Atrás</Link>
+                        <Link to="/list-my-teams" className="btn btn-secondary mt-2">Atrás</Link>
                     )}
                     {user.userType === 'leader' && (
-                        <Link to="/list-teams" className="buttonTeamC1">Atrás</Link>
+                        <Link to="/list-teams" className="btn btn-secondary mt-2">Atrás</Link>
                     )}
                 </div>
             </div>

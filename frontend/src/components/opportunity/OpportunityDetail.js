@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../styles/Detail.css'; // Importa tus estilos CSS personalizados
+import './../../styles/bootstrap.min.css'; 
 
 function OpportunityDetail() {
     // Manejo de datos de la oportunidad seleccionada
@@ -125,44 +126,41 @@ function OpportunityDetail() {
                 <p><strong>Required Skills:</strong> {opportunity.required_skills}</p>
                 <p><strong>Start Date:</strong> {formatDate(opportunity.start_date)}</p>
                 <p><strong>Final Date:</strong> {formatDate(opportunity.final_date)}</p>
-                {/* <p><strong>Start Date:</strong> {formatDate(opportunity.start_date)}</p>
-                <p><strong>Final Date:</strong> {formatDate(opportunity.final_date)}</p> */}
                 <p><strong>Opportunity State:</strong> {opportunity.opportunity_state} </p>
             </div>
             <hr />
-            <div>
+            <div className="d-flex flex-column align-items-center">
                 {/* Mostrar el formulario y el botón de aplicar solo para empleados */}
                 {user.userType === 'employee' && (
                     <div>
                         <form action='' onSubmit={handleSubmit}>
                             <input type="hidden" name="opportunity_id" value={id} />
-                            <div className='emailDetail'>
+                            <div className='form-group'>
                                 <label htmlFor='applicant_email'><strong>Correo del aplicante</strong></label>
                                 <input type="email" placeholder='Ingresa el correo del aplicante' name='applicant_email'
                                 onChange={handleInput} className={'form-control rounded-0' + (errors.applicant_email ? ' is-invalid' : '')} />
-                                {errors.applicant_email && <span className='text-danger'> {errors.applicant_email}</span>}
+                                {errors.applicant_email && <div className='invalid-feedback'> {errors.applicant_email}</div>}
                             </div>
-                            <div>
-                                <button type='submit' className='buttonOppDetail'>Aplicar</button>
-                                <hr />
-                                <br />
+                            <div className="mt-2 text-center">
+                                <button type='submit' className='btn btn-primary'>Aplicar</button>
+                                <hr/>
                             </div>
                         </form>
                     </div>
                 )}
                 {/* Mostrar el botón de ver aplicantes solo para líderes */}
                 {user.userType === 'leader' && (
-                    <div>
-                        <Link to={`/opportunities/${id}/list-applicants`} className='buttonOppDetail2'>Ver aplicantes</Link>
+                    <div className="mt-2">
+                        <Link to={`/opportunities/${id}/list-applicants`} className='btn btn-primary'>Ver aplicantes</Link>
                         <hr/>
                     </div>
                 )}
                 <div>
                     {user.userType === 'employee' && (
-                        <Link to="/list-opportunities" className="buttonOppDetail3">Atrás</Link>
+                        <Link to="/list-opportunities" className="btn btn-secondary mt-2">Atrás</Link>
                     )}
                     {user.userType === 'leader' && (
-                        <Link to="/list-my-opportunities" className="buttonOppDetail3">Atrás</Link>
+                        <Link to="/list-my-opportunities" className="btn btn-secondary mt-2">Atrás</Link>
                     )}
                 </div>
             </div>

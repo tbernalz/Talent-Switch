@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/UpdateValidation';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../styles/PerfilU.css'; // css
 
 function UpdateProfile() {
@@ -74,20 +75,20 @@ function UpdateProfile() {
     };
 
     return (
-        <section>
-            <div className='text'>Talent Switch</div>
-            <form onSubmit={handleSubmit}>
+        <section className="container mt-5 mb-5 text-white">
+            <div>
                 <h2>Actualizar información</h2>
-
-                <div className='Update-Name'>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className='form-group'>
                     <label htmlFor='name'><strong>Nombre</strong></label>
                     <input type="text" name='name'
                         value={userData.name} onChange={handleInput}
                         className={`form-control rounded-0${errors.name ? ' is-invalid' : ''}`} />
-                    {errors.name && <span className='text-danger'>{errors.name}</span>}
+                    {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                 </div>
 
-                <div className='Update-Email'>
+                <div className='form-group'>
                     <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" name='email' readOnly
                         value={userData.email}
@@ -95,42 +96,42 @@ function UpdateProfile() {
                     {errors.email && <span className='text-danger'>{errors.email}</span>}
                 </div>
 
-                <div className='Update-ActualArea'>
+                <div className='form-group'>
                     <label htmlFor='actual_area'><strong>Área actual</strong></label>
                     <input type="text" name='actual_area'
                         value={userData.actual_area} onChange={handleInput}
                         className={`form-control rounded-0${errors.actual_area ? ' is-invalid' : ''}`} />
-                    {errors.actual_area && <span className='text-danger'>{errors.actual_area}</span>}
+                    {errors.actual_area && <div className="invalid-feedback">{errors.actual_area}</div>}
                 </div>
 
-                <div className='Update-InterestArea'>
+                <div className='form-group'>
                     <label htmlFor='interest_area'><strong>Áreas de interés</strong></label>
                     <input type="text" name='interest_area'
                         value={userData.interest_area} onChange={handleInput}
                         className={`form-control rounded-0${errors.interest_area ? ' is-invalid' : ''}`} />
-                    {errors.interest_area && <span className='text-danger'>{errors.interest_area}</span>}
+                    {errors.interest_area && <div className="invalid-feedback">{errors.interest_area}</div>}
                 </div>
 
-                <div className='Update-Skills'>
+                <div className='form-group'>
                     <label htmlFor='skills'><strong>Habilidades</strong></label>
                     <input type="text" name='skills'
                         value={userData.skills} onChange={handleInput}
                         className={`form-control rounded-0${errors.skills ? ' is-invalid' : ''}`} />
-                    {errors.skills && <span className='text-danger'>{errors.skills}</span>}
+                    {errors.skills && <div className="invalid-feedback">{errors.skills}</div>}
                 </div>
 
-                <div className='Update-UserType'>
+                <div className='form-group'>
                     <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
                     <input type="text" name='user_type' readOnly
                         value={userData.user_type} className='form-control rounded-0' />
                 </div>
-
-                <div>
-                    <hr />
-                    <button type='submit' className='buttonP'>Guardar</button>
+                <br/>
+                <div className=" justify-content-between text-center">
+                    <button type='submit' className='btn btn-primary'>Guardar</button>
                 </div>
-                <div>
-                    <Link to="/my-profile" className='buttonP1'>Atrás</Link>
+                <div className='text-center'>
+                    <hr/>
+                    <Link to="/my-profile" className="btn btn-secondary">Atrás</Link>
                 </div>
 
                 <div className='text'>Talent Switch</div>

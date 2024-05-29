@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Team.css'; // css
 
 function ListMyEvaluations() {
@@ -85,7 +86,7 @@ function ListMyEvaluations() {
             )}
             <hr />
             <div>
-                <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

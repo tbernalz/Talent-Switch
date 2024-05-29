@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Opportunity.css'; // css
 
 function ListMyOpportunities() {
@@ -77,11 +78,9 @@ function ListMyOpportunities() {
                             <td>{opportunity.opportunity_area}</td>
                             <td>{formatDate(opportunity.start_date)}</td>
                             <td>{formatDate(opportunity.final_date)}</td>
-                            {/* <td>{formatDate(opportunity.start_date)}</td>
-                            <td>{formatDate(opportunity.final_date)}</td> */}
                             <td>{opportunity.opportunity_state}</td>
                             <td>
-                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>
+                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="btn btn-primary">Ver oportunidad</Link>
                             </td>
                         </tr>
                     ))}
@@ -90,7 +89,7 @@ function ListMyOpportunities() {
             )}
             <div>
                 <hr />
-                <Link to="/home" className='buttonOpportunity2'>Atrás</Link>        
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

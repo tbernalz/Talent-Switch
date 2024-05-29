@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // Importa tus estilos CSS personalizados
 
 function PostulationDetail() {
@@ -83,7 +84,7 @@ function PostulationDetail() {
     }
 
     return (
-        <section>
+        <section className="container mt-5 mb-5 text-white">
             <div className="postulation-header">
                 <h2>{postulation.postulant_name}</h2>
             </div>
@@ -101,13 +102,13 @@ function PostulationDetail() {
                     <button className="reject-button" onClick={handleReject}>Rechazar</button>
                 </div>
             )}
-            <hr/>
             <div>
+                <hr/>
                 {user.userType === 'employee' && (
-                    <Link to="/list-my-postulations" className="buttonPostulation3">Atrás</Link>
+                    <Link to="/list-my-postulations" className="btn btn-secondary mt-2">Atrás</Link>
                 )}
                 {user.userType === 'leader' && (
-                    <Link to="/list-postulations" className="buttonPostulation3">Atrás</Link>
+                    <Link to="/list-postulations" className="btn btn-secondary mt-2">Atrás</Link>
                 )}
             </div>
             <div className='text'>Talent Switch</div>

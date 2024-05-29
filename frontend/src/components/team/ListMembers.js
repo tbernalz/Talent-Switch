@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; //css
 
 function ListMembers() {
@@ -80,9 +81,9 @@ function ListMembers() {
     }
 
     return (
-        <section>
+        <section className="container mt-5 mb-5">
             <div className="ListaMiembros">
-                <div className='memberList'>
+                <div className="mb-4 text-center">
                     <h2>Lista de miembros de equipo {id}</h2>
                 </div>
                 {members.length === 0 ? (//debería no ocurrir nunca por autoadicción del lider
@@ -102,9 +103,9 @@ function ListMembers() {
                         {members.map(member => (
                             <tr key={member.id}>
                                 <td>{member.member_email}</td>
-                                <td>
+                                <td className='text-center'>
                                     {user && member.member_email !== user.email ? (
-                                        <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
+                                        <button onClick={() => handleEvaluate(member)} className="btn btn-primary">Evaluar</button>
                                     ) : (
                                         <span>Este es tu usuario</span>
                                     )}
@@ -114,9 +115,9 @@ function ListMembers() {
                     </tbody>
                 </table>
                 )}
-                <hr />
-                <div>
-                    <Link to={`/teams/${id}`} className='buttonTeamC1'>Atrás</Link>
+                <div className='text-center'>
+                    <hr/>
+                    <Link to={`/teams/${id}`} className='btn btn-secondary'>Atrás</Link>
                 </div>
                 <div className='text'>Talent Switch</div>
             </div>

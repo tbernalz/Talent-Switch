@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/CreatePostulationValidation';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // css
 
 function CreatePostulation() {
@@ -88,44 +89,44 @@ function CreatePostulation() {
     };
 
   return (
-    <section>
+    <section className="container mt-5 mb-5 text-white">
         <form  action='' onSubmit={handleSubmit}>
             <h2>Crear postulación</h2>
 
-            <div className='Postulant-email'>
+            <div className='form-group'>
                     <label htmlFor='postulant_email'><strong>Correo del postulante</strong></label>
                     <input type="text" name='postulant_email'
                         value={values.postulant_email} readOnly
                         className='form-control rounded-0' />
             </div>
 
-            <div className='Postulant-Area'>
+            <div className='form-group'>
                 <label htmlFor='postulant_actual_area'><strong>Area actual del postulante</strong></label>
                 <input type="text" placeholder='Ingresa el area actual' name='postulant_actual_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_actual_area ? ' is-invalid' : '')}/>
-                {errors.postulant_actual_area && <span className='text-danger'> {errors.postulant_actual_area}</span>}
+                {errors.postulant_actual_area && <div className='invalid-feedback'> {errors.postulant_actual_area}</div>}
             </div>
 
-            <div className='Postulant-Interest'>
+            <div className='form-group'>
                 <label htmlFor='postulant_interest_area'><strong>Area de interes del postulante</strong></label>
                 <input type="text" placeholder='Ingresa el area de interes' name='postulant_interest_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_interest_area ? ' is-invalid' : '')}/>
-                {errors.postulant_interest_area && <span className='text-danger'> {errors.postulant_interest_area}</span>}
+                {errors.postulant_interest_area && <div className='invalid-feedback'> {errors.postulant_interest_area}</div>}
             </div>
 
-            <div className='Postulant-Skills'>
+            <div className='form-group'>
                 <label htmlFor='postulant_skills'><strong>Habilidades del postulante</strong></label>
                 <input type="text" placeholder='Ingrese habilidades' name='postulant_skills'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_skills ? ' is-invalid' : '')}/>
-                {errors.postulant_skills && <span className='text-danger'> {errors.postulant_skills}</span>}
+                {errors.postulant_skills && <div className='invalid-feedback'> {errors.postulant_skills}</div>}
             </div>
-
-            <div> 
-                <button type='submit' className='buttonPostulation'>Crear</button>    
+            <br/>
+            <div className='form-group text-center'>
+                <button type='submit' className='btn btn-primary'>Crear</button>    
             </div>
-            <div>
-                <hr />
-                <Link to="/home" className='buttonPostulation2'>Atrás</Link>        
+            <hr/>
+            <div className='text-center'>
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
         </form>
         <div className='text'>Talent Switch</div>

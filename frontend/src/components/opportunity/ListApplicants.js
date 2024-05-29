@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Applicants.css'; //css
 
 function ListApplicants() {
@@ -90,7 +91,7 @@ function ListApplicants() {
     };
 
     return (
-        <section>
+        <section className="container">
         <div className="applicants">
             <h2>Lista de aplicantes por oportunidad {id}</h2>
             {applicants.length === 0 ? (
@@ -104,7 +105,7 @@ function ListApplicants() {
                     <tr>
                         <th>Correo del aplicante</th>
                         <th>Estado del aplicante</th>
-                        
+                        <th>Acciones</th>
                         {/* <th></th> */}
                     </tr>
                 </thead>
@@ -115,12 +116,15 @@ function ListApplicants() {
                             <td>{applicant.applicant_state}</td>
                             {/* <td>Botón de copiar Info</td> */}
                         <td>
-                            {applicant.applicant_state === 'pending' && (
-                                <div className="button-container">
-                                    <button className="accept-button" onClick={() => handleAccept(applicant.id)}>Aceptar</button>
-                                    <button className="reject-button" onClick={() => handleReject(applicant.id)}>Rechazar</button>
-                                </div>
-                            )}
+                        {applicant.applicant_state === 'pending' ? (
+                            <div className="button-container">
+                                <button className="accept-button" onClick={() => handleAccept(applicant.id)}>Aceptar</button>
+                                <button className="reject-button" onClick={() => handleReject(applicant.id)}>Rechazar</button>
+                            </div>
+                        ) : (
+                            // podrian agregarse funciones de copiar info o de eliminar
+                            <p>Pronto tendrás más acciones</p>
+                        )}
                         </td>
                         </tr>
                     ))}
@@ -129,7 +133,7 @@ function ListApplicants() {
             )}
             <hr />
             <div>
-                <Link to={`/opportunities/${id}`} className='link'>Atrás</Link>        
+                <Link to={`/opportunities/${id}`} className='btn btn-secondary'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

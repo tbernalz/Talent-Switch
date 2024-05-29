@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
+import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; // css
 
 function ListMyTeams() {
@@ -46,7 +47,7 @@ function ListMyTeams() {
     }
 
     return (
-        <div className="List-Teams">
+        <div className="List-Teams container mt-5 mb-5">
             <h2>Lista de equipos</h2>
             <br /><p>Equipos en los que eres miembro, {user.userName}</p>
             {teams.length === 0 ? (
@@ -72,19 +73,17 @@ function ListMyTeams() {
                             <td>{team.team_area}</td>
                             <td>{formatDate(team.start_date)}</td>
                             <td>{formatDate(team.final_date)}</td>
-                            {/* <td>{formatDate(team.start_date)}</td>
-                            <td>{formatDate(team.final_date)}</td> */}
                             <td>
-                                <Link to={`/teams/${team.team_id}`} className="button-O">Ver equipo</Link>
+                                <Link to={`/teams/${team.team_id}`} className="btn btn-primary">Ver equipo</Link>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             )}
-            <hr />
             <div>
-                <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
+                <hr/>
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

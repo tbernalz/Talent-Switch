@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/LoginValidation';
 import axios from 'axios';
-import './../../styles/Login.css'; // ACA CAMBIAR NOMBRE A LOGIN
+import './../../styles/Login.css';
 
 function Login() {
     const [values, setValues] = useState({
@@ -40,34 +40,35 @@ function Login() {
     };
 
     return (
-        <section>
-            <div className='text'>Talent Switch</div>
+        <section className="container mt-5 text-white">
+            <div className='text-center'>Talent Switch</div>
 
             <form action='' onSubmit={handleSubmit}>
-                <h2>Ingreso</h2>
-                <div className='login-email'>
+                <h2 className="text-center">Ingreso</h2>
+                <div className='form-group'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" placeholder='Ingresa tu correo' name='email'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')}/>
-                    {errors.email && <span className='text-danger'> {errors.email}</span>}
+                    {errors.email && <div className='invalid-feedback'> {errors.email}</div>}
                 </div>
 
-                <div className='login-pass'>
+                <div className='form-group'>
                     <ion-icon name= 'locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Contraseña</strong></label>
                     <input type="password" placeholder='Ingresa tu contraseña' name='password'
                         onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')}/>
-                    {errors.password && <span className='text-danger'> {errors.password}</span>}
+                    {errors.password && <div className='invalid-feedback'> {errors.password}</div>}
                 </div>
-                <div>
-                    <button type='submit' className='button1'>Ingresar</button>
+                <div className='form-group text-center'>
+                    <br/>
+                    <button type='submit' className='btn btn-primary'>Ingresar</button>
                 </div>
                 <div>
                     <hr />
-                    <p>No tengo una cuenta</p>
-                    <div>
-                        <Link to="/signup" className='button1'>Crear cuenta</Link>
+                    <p className="text-center">No tengo una cuenta</p>
+                    <div className='form-group text-center'>
+                        <Link to="/signup" className='btn btn-primary'>Crear cuenta</Link>
                     </div>
                 </div>
             </form>
