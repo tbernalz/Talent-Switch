@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/CreatePostulationValidation';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -24,13 +25,17 @@ function CreatePostulation() {
         axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
+            setValues(prevValues => ({
+                ...prevValues,
+                postulant_email: response.data.email // Configurar el email del líder automáticamente
+            }));
             if (response.data.user_type !== 'employee') {
                 alert('Solo los Empleados pueden Postularse.');
                 navigate('/home');
             }
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/');
           });
       }, [navigate]);
@@ -72,10 +77,10 @@ function CreatePostulation() {
                     axios.post(`${BASE_URL}/create-postulation`, postData)
                         .then(res => {
                             if (res.data === "Success") {
-                                alert('Postulation was created');
+                                alert('La Postulación fue Creada');
                                 navigate('/home');
                             } else {
-                                alert("It was not possible to create the Postulation");
+                                alert("No fue Posible Crear la Postulación");
                                 navigate('/home');
                             }
                         })
@@ -86,52 +91,44 @@ function CreatePostulation() {
     };
 
   return (
-    <section>
+    <section className="container mt-5 mb-5 text-white">
         <form  action='' onSubmit={handleSubmit}>
             <h2>Crear postulación</h2>
 
-            {/* <div className='inputbox'>
-                <label htmlFor='postulant_name'><strong>Postulant Name</strong></label>
-                <input type="text" placeholder='Enter Postulant Name' name='postulant_name'
-                onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_name ? ' is-invalid' : '')} />
-                {errors.postulant_name && <span className='text-danger'> {errors.postulant_name}</span>}
-            </div> */}
-
-            <div className='Postulant-email'>
-                {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='postulant_email'><strong>Correo del postulante</strong></label>
-                <input type="text" placeholder='Ingresa el correo' name='postulant_email'
-                onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_email ? ' is-invalid' : '')} />
-                {errors.postulant_email && <span className='text-danger'> {errors.postulant_email}</span>}
+            <div className='form-group'>
+                    <label htmlFor='postulant_email'><strong>Correo del postulante</strong></label>
+                    <input type="text" name='postulant_email'
+                        value={values.postulant_email} readOnly
+                        className='form-control rounded-0' />
             </div>
 
-            <div className='Postulant-Area'>
+            <div className='form-group'>
                 <label htmlFor='postulant_actual_area'><strong>Area actual del postulante</strong></label>
                 <input type="text" placeholder='Ingresa el area actual' name='postulant_actual_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_actual_area ? ' is-invalid' : '')}/>
-                {errors.postulant_actual_area && <span className='text-danger'> {errors.postulant_actual_area}</span>}
+                {errors.postulant_actual_area && <div className='invalid-feedback'> {errors.postulant_actual_area}</div>}
             </div>
 
-            <div className='Postulant-Interest'>
+            <div className='form-group'>
                 <label htmlFor='postulant_interest_area'><strong>Area de interes del postulante</strong></label>
                 <input type="text" placeholder='Ingresa el area de interes' name='postulant_interest_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_interest_area ? ' is-invalid' : '')}/>
-                {errors.postulant_interest_area && <span className='text-danger'> {errors.postulant_interest_area}</span>}
+                {errors.postulant_interest_area && <div className='invalid-feedback'> {errors.postulant_interest_area}</div>}
             </div>
 
-            <div className='Postulant-Skills'>
+            <div className='form-group'>
                 <label htmlFor='postulant_skills'><strong>Habilidades del postulante</strong></label>
                 <input type="text" placeholder='Ingrese habilidades' name='postulant_skills'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_skills ? ' is-invalid' : '')}/>
-                {errors.postulant_skills && <span className='text-danger'> {errors.postulant_skills}</span>}
+                {errors.postulant_skills && <div className='invalid-feedback'> {errors.postulant_skills}</div>}
             </div>
-
-            <div> 
-                <button type='submit' className='buttonPostulation'>Crear</button>    
+            <br/>
+            <div className='form-group text-center'>
+                <button type='submit' className='btn btn-primary'>Crear</button>    
             </div>
-            <div>
-                <hr />
-                <Link to="/home" className='buttonPostulation2'>Atrás</Link>        
+            <hr/>
+            <div className='text-center'>
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
         </form>
         <div className='text'>Talent Switch</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2024 a las 06:44:55
+-- Tiempo de generación: 29-05-2024 a las 09:11:27
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -42,17 +42,13 @@ CREATE TABLE `evaluation` (
 INSERT INTO `evaluation` (`id`, `evaluated_email`, `qualification`, `comment`, `evaluation_date`) VALUES
 (1, 'jepavasg@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
 (2, 'jepavasg@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
-(3, 'jepavasg@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
-(4, 'jepavasg@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
-(5, 'tbernalz@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
-(6, 'tbernalz@eafit.edu.co', 1, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
-(7, 'tbernalz@eafit.edu.co', 2, 'Estoy probando no te preocupes, haces u gran trabajo.', '2024-05-05'),
-(8, 'tbernalz@eafit.edu.co', 3, 'Evaluación de Prueba', '2024-05-05'),
 (9, 'tbernalz@eafit.edu.co', 1, 'Evaluación de Prueba', '2024-05-05'),
-(10, 'tbernalz@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
-(11, 'tbernalz@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
-(12, 'tbernalz@eafit.edu.co', 5, 'Gran trabajo', '2024-05-05'),
-(13, 'tbernalz@eafit.edu.co', 1, 'Evaluación de Prueba', '2024-05-05');
+(13, 'tbernalz@eafit.edu.co', 1, 'Evaluación de Prueba', '2024-05-05'),
+(16, 'jepavasg@eafit.edu.co', 5, 'Gran trabajo', '2024-05-20'),
+(21, 'jepavasg@eafit.edu.co', 5, 'Gran trabajo', '2024-05-22'),
+(22, 'jepavasg@eafit.edu.co', 5, 'Gran trabajo', '2024-05-22'),
+(23, 'jepavasg@eafit.edu.co', 5, 'Muy buen trabajo', '2024-05-22'),
+(24, 'jepavasg1@eafit.edu.co', 4, 'Evaluación de Prueba', '2024-05-29');
 
 -- --------------------------------------------------------
 
@@ -77,11 +73,10 @@ CREATE TABLE `opportunity` (
 --
 
 INSERT INTO `opportunity` (`opportunity_id`, `opportunity_name`, `opportunity_leader_email`, `opportunity_area`, `description`, `required_skills`, `start_date`, `final_date`, `opportunity_state`) VALUES
-(1, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Test', 'Requerimos registrar usuarios ficticios para pruebas', 'Test', '2024-04-20', '2024-04-23', 'open'),
-(2, 'Opportunity Test 1', 'jepavasg1@eafit.edu.co', 'Infraestructura', 'Opportunity of test Sprint 1', 'Redes', '2024-04-20', '2024-04-25', 'open'),
-(4, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', 'Test', '2024-04-22', '2024-04-22', 'closed'),
-(5, 'Opportunity Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', 'Test', '2024-04-24', '2024-04-24', 'open'),
-(7, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', 'None', '2024-04-24', '2024-04-25', 'open');
+(23, 'Registro de Usuarios', 'jepavasg1@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', 'None', '2024-05-27', '2024-05-29', 'open'),
+(24, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', 'None', '2024-05-28', '2024-05-29', 'open'),
+(25, 'Registro de Usuarios', 'jepavasg1@eafit.edu.co', 'Test', 'Requerimos registrar usuarios ficticios para pruebas', 'Test', '2024-05-28', '2024-05-29', 'open'),
+(26, 'Oportunidad Test Front', 'jepavasg1@eafit.edu.co', 'Test', 'Estamos probando el fron', 'None', '2024-05-28', '2024-05-28', 'open');
 
 -- --------------------------------------------------------
 
@@ -101,11 +96,10 @@ CREATE TABLE `opportunity_applicant` (
 --
 
 INSERT INTO `opportunity_applicant` (`id`, `opportunity_id`, `applicant_email`, `applicant_state`) VALUES
-(5, 1, 'jepavasg@eafit.edu.co', 'accepted'),
-(6, 1, 'anselmo@email.com', 'rejected'),
-(7, 2, 'jepavasg@eafit.edu.co', 'pending'),
-(8, 4, 'jepavasg@eafit.edu.co', 'pending'),
-(9, 1, 'tbernalz@eafit.edu.co', 'pending');
+(16, 23, 'jepavasg@eafit.edu.co', 'accepted'),
+(17, 26, 'santiRichardYT@gmail.com', 'rejected'),
+(18, 25, 'jepavasg@eafit.edu.co', 'pending'),
+(19, 24, 'jepavasg@eafit.edu.co', 'pending');
 
 -- --------------------------------------------------------
 
@@ -128,10 +122,28 @@ CREATE TABLE `postulation` (
 --
 
 INSERT INTO `postulation` (`postulation_id`, `postulant_name`, `postulant_email`, `postulant_actual_area`, `postulant_interest_area`, `postulant_skills`, `postulation_state`) VALUES
-(1, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'pending'),
-(3, 'Juan Esteban Pavas González', 'jepavasg1@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'accepted'),
-(6, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'accepted'),
-(7, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', '', '', '', 'pending');
+(16, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Arquitectura', 'Diagramas', 'accepted'),
+(17, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Programación', 'Gestión de Bases de Datos', 'MySQL', 'rejected'),
+(18, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `expires` int(11) UNSIGNED NOT NULL,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sessions`
+--
+
+INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
+('OSymEj48ugz8ffIrZq5nAidHGYn86gDz', 1717043370, '{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2024-05-30T04:29:29.976Z\",\"httpOnly\":true,\"path\":\"/\"},\"user\":{\"user_id\":12,\"name\":\"Juan Esteban Pavas González\",\"email\":\"jepavasg1@eafit.edu.co\",\"actual_area\":\"Programación\",\"interest_area\":\"Arquitectura\",\"skills\":\"Diagramas\",\"user_type\":\"leader\",\"password\":\"Hola1234\",\"evaluation_level\":null,\"total_evaluations\":0}}');
 
 -- --------------------------------------------------------
 
@@ -154,16 +166,9 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`team_id`, `team_name`, `team_leader_email`, `team_area`, `description`, `start_date`, `final_date`) VALUES
-(1, 'Proyecto Desarrollo de Contenido', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Se requiere personal capacitado en redes para realizar mantenimiento', '2024-04-22', '2024-04-23'),
-(2, 'Registro de Usuarios', 'Jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', '2024-04-24', '0000-00-00'),
-(3, 'Proyecto Desarrollo de Contenido', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos personas con capacidad de crear contenido virtual para publicidad.', '2024-04-24', '0000-00-00'),
-(6, 'Registro de Usuarios', 'jepavasg@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', '2024-04-20', '0000-00-00'),
-(10, 'Project Team for Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Test for Sprint 2', '2024-04-23', '2024-04-24'),
-(11, 'Project Team 2 for Test Sprint 2', 'jepavasg@eafit.edu.co', 'Test', 'Description', '2024-04-23', '2024-04-22'),
-(13, 'Prueba Auto Adición', 'jepavasg1@eafit.edu.co', 'Test', 'Prueba de Autoedición del Leader a Members', '2024-05-09', '2024-05-16'),
-(14, 'Prueba Auto Adición', 'jepavasg1@eafit.edu.co', 'Test', 'Prueba de Autoedición del Leader a Members', '2024-05-09', '2024-05-16'),
-(15, 'Prueba Auto Adición 2', 'jepavasg1@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', '2024-05-07', '2024-05-15'),
-(16, 'Prueba Auto Adición 3', 'jepavasg@eafit.edu.co', 'Test', 'Opportunity of test Sprint 2', '2024-05-07', '2024-05-14');
+(20, 'Registro de Usuarios', 'jepavasg1@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', '2024-05-27', '2024-05-29'),
+(21, 'Registro de Usuarios', 'jepavasg1@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', '2024-05-28', '2024-05-29'),
+(22, 'Registro de Usuarios', 'jepavasg1@eafit.edu.co', 'Desarrollo', 'Requerimos registrar usuarios ficticios para pruebas', '2024-05-28', '2024-05-29');
 
 -- --------------------------------------------------------
 
@@ -182,16 +187,11 @@ CREATE TABLE `team_member` (
 --
 
 INSERT INTO `team_member` (`id`, `team_id`, `member_email`) VALUES
-(1, 1, 'jepavasg@eafit.edu.co'),
-(2, 14, 'jepavasg1@eafit.edu.co'),
-(3, 1, 'tbernalz@eafit.edu.co'),
-(4, 15, 'jepavasg1@eafit.edu.co'),
-(5, 6, 'jepavasg@eafit.edu.co'),
-(6, 15, 'jepavasg@eafit.edu.co'),
-(7, 16, 'jepavasg@eafit.edu.co'),
-(8, 10, 'jepavasg@eafit.edu.co'),
-(9, 11, 'jepavasg@eafit.edu.co'),
-(10, 3, 'jepavasg@eafit.edu.co');
+(17, 20, 'jepavasg1@eafit.edu.co'),
+(18, 20, 'jepavasg@eafit.edu.co'),
+(19, 21, 'jepavasg1@eafit.edu.co'),
+(20, 22, 'jepavasg1@eafit.edu.co'),
+(21, 22, 'jepavasg@eafit.edu.co');
 
 -- --------------------------------------------------------
 
@@ -219,18 +219,29 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `name`, `email`, `actual_area`, `interest_area`, `skills`, `user_type`, `password`, `evaluation_level`, `total_evaluations`) VALUES
 (1, 'Elvis', 'elvis@email.com', 'Negocios', 'Marketing', 'Ventas', 'leader', 'Hola1234', NULL, 0),
 (2, 'name', 'name@email.com', 'Programación', 'Arquitectura', 'Diagramas', 'employee', 'Hola1234', NULL, 0),
-(3, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'employee', 'Hola1234', 5, 0),
+(3, 'Juan Esteban Pavas González', 'jepavasg@eafit.edu.co', 'Programación', 'Ventas', 'Estadística', 'employee', 'Hola1234', 4.00001, 8),
 (4, 'Jose Manuel Camargo', 'chemahpta@gmail.com', 'Programación', 'Arquitectura', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
 (5, 'John Alexander Acevedo', 'jaacevedos@eafit.edu.co', 'Diseño Ux', 'Test', 'Planeación', 'employee', 'Godo1234', NULL, 0),
-(6, 'Tomas Bernal zuluaga', 'tbernalz@eafit.edu.co', 'Arquitectura', 'Test', 'Planeación', 'employee', 'Berni1234', 3.33333, 6),
+(6, 'Tomas Bernal zuluaga', 'tbernalz@eafit.edu.co', 'Arquitectura', 'Test', 'Planeación', 'employee', 'Berni1234', 3, 8),
 (7, 'Santiago Rodriguez', 'srodriguez@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
 (10, 'Alberto Restrepo', 'arestrepo@email.com', 'Ingeniería', 'Gestión Humana', '', 'leader', 'Hola1234', NULL, 0),
-(12, 'Juan Esteban Pavas González', 'jepavasg1@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', NULL, 0),
+(12, 'Juan Esteban Pavas González', 'jepavasg1@eafit.edu.co', 'Programación', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', 4, 1),
 (13, 'Luis Quiroga', 'luisquiro@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
 (15, 'Sergio Medina', 'sergiomed@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
 (16, 'Luis Quiroga', 'luisquiro1@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
 (17, 'Juan Pavas', 'juespago19@gmail.com', 'Programación', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', NULL, 0),
-(18, 'Anselmo', 'anselmo@email.com', 'Ventas', 'Desarrollo', 'Creatividad', 'employee', 'Hola1234', NULL, 0);
+(18, 'Anselmo', 'anselmo@email.com', 'Ventas', 'Desarrollo', 'Creatividad', 'employee', 'Hola1234', NULL, 0),
+(19, 'Jose Gonzalez', 'jgonzalez@email.com', 'Desarrollo', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(20, 'Juan Esteban Pavas González', 'jepavasg2@eafit.edu.co', 'Programación', 'Arquitectura', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(21, 'Jose Luis Montoya', 'jmontoya@eafit.edu.co', 'Ing. de sistemas', 'Molestar a Rua', 'Encontrar problemas de ortografía', 'leader', 'Aqws1234', NULL, 0),
+(22, 'Santiago Rodríguez Duque', 'santiRichardYT@gmail.com', 'streamer profesional', 'futbolista profesional', 'Recuperación de balones y mujeres', 'employee', 'Anakin123', NULL, 0),
+(23, 'Alejandro Zúñiga', 'azunigaj@eafit.edu.co', 'Gestión Humana', 'Desarrollo', 'python', 'employee', 'Qawsed123', NULL, 0),
+(24, 'Juan Andres Corrales', 'jacorrales@email.com', 'Programación', 'Arquitectura', 'Diagramas', 'employee', 'Hola1234', NULL, 0),
+(25, 'Juan David Osorio', 'jdosorio@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(26, 'Juan David Perez', 'jdperez@email.com', 'Gestión Humana', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(27, 'Jose Manuel Lopez', 'jmlopez@email.com', 'Programación', 'Ventas', 'Estadistica', 'employee', 'Hola1234', NULL, 0),
+(28, 'Maria Alejandra Cordoba', 'macordoba@email.com', 'Negocios', 'Programación', 'Python, Css, JavaScript', 'employee', 'Hola1234', NULL, 0),
+(29, 'Luis Sanchez', 'lsanchez@email.com', 'Gestión Humana', 'Arquitectura', 'Diagramas', 'leader', 'Hola1234', NULL, 0);
 
 --
 -- Índices para tablas volcadas
@@ -266,6 +277,12 @@ ALTER TABLE `postulation`
   ADD KEY `postulant_email` (`postulant_email`);
 
 --
+-- Indices de la tabla `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`session_id`);
+
+--
 -- Indices de la tabla `team`
 --
 ALTER TABLE `team`
@@ -295,43 +312,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `opportunity`
 --
 ALTER TABLE `opportunity`
-  MODIFY `opportunity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `opportunity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `opportunity_applicant`
 --
 ALTER TABLE `opportunity_applicant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `postulation`
 --
 ALTER TABLE `postulation`
-  MODIFY `postulation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `postulation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `team_member`
 --
 ALTER TABLE `team_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Restricciones para tablas volcadas

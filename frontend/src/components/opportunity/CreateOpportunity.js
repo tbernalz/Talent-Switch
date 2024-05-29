@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/CreateOpportunityValidation';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Opportunity.css'; // css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -26,13 +27,17 @@ function CreateOpportunity() {
         axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
+            setValues(prevValues => ({
+                ...prevValues,
+                opportunity_leader_email: response.data.email // Configurar el email del líder automáticamente
+            }));
             if (response.data.user_type !== 'leader') {
                 alert('Solo los líderes pueden crear oportunidades.');
                 navigate('/home');
             }
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/');
           });
       }, [navigate]);
@@ -55,10 +60,10 @@ function CreateOpportunity() {
             axios.post(`${BASE_URL}/create-opportunity`, values)
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('Opportunity was created');
+                        alert('La Oportunidad fue Creada ');
                         navigate('/home');
                     } else {
-                        alert("It was not possible to create the opportunity");
+                        alert("No fue Posible Crear la Oportunidad");
                         navigate('/home');
                     }
                 })
@@ -69,69 +74,65 @@ function CreateOpportunity() {
 
 
   return (
-    <section>
+    <section className="container mt-5 mb-5 text-white">
         <form  action='' onSubmit={handleSubmit}>
             <h2>Crear oportunidades</h2>
 
-            <div className='Opportunity-Name'>
+            <div className='form-group'>
                 <label htmlFor='opportunity_name'><strong>Nombre oportunidad</strong></label>
                 <input type="text" placeholder='Ingresa el nombre de la oportunidad' name='opportunity_name'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_name ? ' is-invalid' : '')} />
-                {errors.opportunity_name && <span className='text-danger'> {errors.opportunity_name}</span>}
+                {errors.opportunity_name && <div className='invalid-feedback'> {errors.opportunity_name}</div>}
             </div>
 
-            <div className='Opportunity-leader'>
-                {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='opportunity_leader_email'><strong>Correo del lider de la oportunidad</strong></label>
-                <input type="text" placeholder='Ingresa el correo del lider' name='opportunity_leader_email'
-                onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_leader_email ? ' is-invalid' : '')} />
-                {errors.opportunity_leader_email && <span className='text-danger'> {errors.opportunity_leader_email}</span>}
+            <div className='form-group'>
+                    <label htmlFor='opportunity_leader_email'><strong>Correo del líder de la oportunidad</strong></label>
+                    <input type="text" name='opportunity_leader_email' 
+                        value={values.opportunity_leader_email} readOnly
+                        className='form-control rounded-0' />
             </div>
 
-            <div className='Opportunity-Area'>
+            <div className='form-group'>
                 <label htmlFor='opportunity_area'><strong>Area de la oportunidad</strong></label>
                 <input type="text" placeholder='Ingresa el area del lider' name='opportunity_area'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_area ? ' is-invalid' : '')}/>
-                {errors.opportunity_area && <span className='text-danger'> {errors.opportunity_area}</span>}
+                {errors.opportunity_area && <div className='invalid-feedback'> {errors.opportunity_area}</div>}
             </div>
 
-            <div className='Opportunity-Description'>
+            <div className='form-group'>
                 <label htmlFor='description'><strong>Descripción</strong></label>
                 <input type="text" placeholder='Ingresa la descripción' name='description'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.description ? ' is-invalid' : '')}/>
-                {errors.description && <span className='text-danger'> {errors.description}</span>}
+                {errors.description && <div className='invalid-feedback'> {errors.description}</div>}
             </div>
 
-            <div className='Opportunity-Skills'>
+            <div className='form-group'>
                 <label htmlFor='required_skills'><strong>Habilidades requeridas</strong></label>
                 <input type="text" placeholder='Ingresa que habilidades se requieren' name='required_skills'
                 onChange={handleInput} className={'form-control rounded-0' + (errors.required_skills ? ' is-invalid' : '')}/>
-                {errors.required_skills && <span className='text-danger'> {errors.required_skills}</span>}
+                {errors.required_skills && <div className='invalid-feedback'> {errors.required_skills}</div>}
             </div>
 
-            <div className='Opportunity-Start'>
+            <div className='form-group'>
                 <label htmlFor='start_date'><strong>Fecha de inicio</strong></label>
                 <input type="date" name="start_date" 
                 onChange={handleInput} className={'form-control rounded-0' + (errors.start_date ? ' is-invalid' : '')}/>
-                {errors.start_date && <span className='text-danger'> {errors.start_date}</span>}
+                {errors.start_date && <div className='invalid-feedback'> {errors.start_date}</div>}
             </div>
 
-            <div className='Opportunity-End'>
+            <div className='form-group'>
                 <label htmlFor='final_date'><strong>Fecha final</strong></label>
                 <input type="date" name="final_date" 
                 onChange={handleInput} className={'form-control rounded-0' + (errors.final_date ? ' is-invalid' : '')}/>
-                {errors.final_date && <span className='text-danger'> {errors.final_date}</span>}
+                {errors.final_date && <div className='invalid-feedback'> {errors.final_date}</div>}
             </div>
-
-            <div>
-                <button type='submit' className='buttonOpportunity'>Crear</button>    
+            <br/>
+            <div className='form-group text-center'>
+                <button type='submit' className='btn btn-primary'>Crear</button>
             </div>
-            <div>
-                <hr/>
-                <div>
-                    {/* Css que no corresponde */}
-                    <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
-                </div>
+            <hr/>
+            <div className='text-center'>
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>
             </div>
         </form>
         <div className='text'>Talent Switch</div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // Importa tus estilos CSS personalizados
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -14,18 +15,23 @@ function PostulationDetail() {
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({ userId: '', userName: '', email: '', userType: '' });
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
+            .then(response => {
+                setUser({
+                    userId: response.data.user_id,
+                    userName: response.data.name,
+                    email: response.data.email,
+                    userType: response.data.user_type,
+                });
+            })
+            .catch(error => {
+                console.error("¡Hubo un error al obtener los datos del usuario!", error);
+                navigate('/'); // Redirige a la página de inicio si no hay sesión
+            });
     }, [navigate]);
 
     useEffect(() => {
@@ -35,9 +41,33 @@ function PostulationDetail() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Postulant not Found"); // Establece el mensaje de error en caso de falla
+                setError("Postulante No Encontrado"); // Establece el mensaje de error en caso de falla
             });
     }, [id]);
+
+    const handleAccept = () => {
+        axios.put(`${BASE_URL}/postulations/${id}/accept`)
+            .then(res => {
+                if (res.data.success) {
+                    setPostulation(prev => ({ ...prev, postulation_state: 'accepted' }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+        
+    const handleReject = () => {
+        axios.put(`${BASE_URL}/postulations/${id}/reject`)
+            .then(res => {
+                if (res.data.success) {
+                    setPostulation(prev => ({ ...prev, postulation_state: 'rejected' }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
 
     if (error) {
         return (
@@ -56,7 +86,7 @@ function PostulationDetail() {
     }
 
     return (
-        <section>
+        <section className="container mt-5 mb-5 text-white">
             <div className="postulation-header">
                 <h2>{postulation.postulant_name}</h2>
             </div>
@@ -68,8 +98,20 @@ function PostulationDetail() {
                 <p><strong>Postulant State:</strong> {postulation.postulation_state}</p>
             </div>
             <hr />
+            {user.userType === 'leader' && postulation.postulation_state === 'pending' && (
+                <div className="button-container">
+                    <button className="accept-button" onClick={handleAccept}>Aceptar</button>
+                    <button className="reject-button" onClick={handleReject}>Rechazar</button>
+                </div>
+            )}
             <div>
-                <Link to="/list-postulations" className="buttonPostulation3">Atras</Link>        
+                <hr/>
+                {user.userType === 'employee' && (
+                    <Link to="/list-my-postulations" className="btn btn-secondary mt-2">Atrás</Link>
+                )}
+                {user.userType === 'leader' && (
+                    <Link to="/list-postulations" className="btn btn-secondary mt-2">Atrás</Link>
+                )}
             </div>
             <div className='text'>Talent Switch</div>
         </section>

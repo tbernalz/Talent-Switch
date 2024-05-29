@@ -19,10 +19,21 @@ function Home() {
         });
       })
       .catch(error => {
-        console.error("There was an error fetching the user data!", error);
+        console.error("¡Hubo un error al obtener los datos del usuario!", error);
         navigate('/');
       });
   }, [navigate]);
+
+  const handleLogout = () => {
+    axios.get(`${BASE_URL}/logout`, { withCredentials: true })
+      .then(response => {
+        setUser({ userName: '', userType: '' });
+        navigate('/'); // Redirige al usuario a la página de inicio después de cerrar sesión
+      })
+      .catch(error => {
+        console.error("¡Hubo un Error Cerrando la Sesión del Usuario!", error);
+      });
+  };
 
   return (
     <div className={styles.dark_bg}>
@@ -34,7 +45,7 @@ function Home() {
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/home">Inicio</Nav.Link>
               <Nav.Link as={Link} to="/my-profile">Mi Perfil</Nav.Link>
-              <Nav.Link as={Link} to="/">Salir</Nav.Link>
+              <Nav.Link onClick={handleLogout}>Salir</Nav.Link>
             </Nav>
             {user.userName && (
               <Nav>
@@ -53,35 +64,41 @@ function Home() {
               {user.userType === 'leader' && (
                 <>
                   <div className="col-md-4">
-                    <Link to="/create-opportunity" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear oportunidades</Link>
+                    <Link to="/create-opportunity" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear Oportunidades</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver oportunidades</Link>
+                    <Link to="/list-my-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Oportunidades</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/create-team" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear equipos de proyecto</Link>
+                    <Link to="/create-team" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Crear Equipos de Proyecto</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver equipos</Link>
+                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Equipos</Link>
                   </div>
                   <div className="col-md-4">
                     <Link to="/list-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Postulaciones</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-my-evaluations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Evaluaciones</Link>
                   </div>
                 </>
               )}
               {user.userType === 'employee' && (
                 <>
                   <div className="col-md-4">
-                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver oportunidades</Link>
+                    <Link to="/list-opportunities" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Oportunidades</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver equipos</Link>
+                    <Link to="/list-my-teams" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Equipos</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/create-postulation" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Aplicacion individual</Link>
+                    <Link to="/create-postulation" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Aplicacion Individual</Link>
                   </div>
                   <div className="col-md-4">
-                    <Link to="/list-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Postulaciones</Link>
+                    <Link to="/list-my-postulations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Postulaciones</Link>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/list-my-evaluations" className="btn btn-primary btn-lg w-100 mb-4 rounded-4">Ver Mis Evaluaciones</Link>
                   </div>
                 </>
               )}

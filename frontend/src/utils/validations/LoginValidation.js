@@ -5,18 +5,18 @@ function Validation(values) {
 
     // email validation
     if (!values.email) {
-        error.email = "Email should not be empty";
+        error.email = "El correo electrónico no debe estar vacío";
     } else if (!email_pattern.test(values.email)) {
-        error.email = "Email didn't match";
+        error.email = "El correo electrónico no coincide con el formato válido";
     } else {
         error.email = "";
     }
 
     // password validation
     if (!values.password) {
-        error.password = "Password should not be empty";
+        error.password = "La contraseña no debe estar vacía";
     } else if (!password_pattern.test(values.password)) {
-        error.password = "Password didn't match";
+        error.password = "La contraseña no cumple con los requisitos mínimos";
     } else {
         error.password = "";
     }

@@ -6,35 +6,40 @@ import './../../styles/Postulation.css'; // css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-function ListPostulations() {
+function ListMyPostulations() {
     const [postulations, setPostulations] = useState([]);
 
     //Validación de Sesión
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({ userName: '', email: '' });
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("¡Hubo un error al obtener los datos del usuario!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
+            .then(response => {
+                setUser({
+                    userName: response.data.name,
+                    email: response.data.email,
+                });
+            })
+            .catch(error => {
+                console.error("¡Hubo un error al obtener los datos del usuario!", error);
+                navigate('/'); // Redirige a la página de inicio si no hay sesión
+            });
     }, [navigate]);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/list-postulations`)
-            .then(res => {
-                setPostulations(res.data);
-            })
-            .catch(err => console.log(err));
-    }, []);
-
+        if (user.email) {
+            axios.get(`${BASE_URL}/list-my-postulations?email=${user.email}`)
+                .then(res => {
+                    setPostulations(res.data);
+                })
+                .catch(err => console.log(err));
+        }
+    }, [user]);
+    
     const getRowClassName = (postulation) => {
         return postulation.postulation_state === 'accepted' ? 'accepted-row' : 'pending-row';
     };
@@ -42,10 +47,11 @@ function ListPostulations() {
     return (
         <div className="List-Post container mt-5 mb-5">
             <h2>Listado de Postulaciones</h2>
+            <br /><p>Postulaciones creadas por tí, {user.userName}</p>
             {postulations.length === 0 ? (
                 <div>
                     <br />
-                    <p>Ningún Empleado se ha postulado todavía</p>
+                    <p>No te has Postulado todavía</p>
                 </div>
             ) : (
             <table>
@@ -84,4 +90,4 @@ function ListPostulations() {
     );
 }
 
-export default ListPostulations;
+export default ListMyPostulations;

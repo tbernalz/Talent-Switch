@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Validation from '../../utils/validations/UpdateValidation';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../styles/PerfilU.css'; // css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -12,79 +14,127 @@ function UpdateProfile() {
         actual_area: '',
         interest_area: '',
         skills: '',
-        user_type: ''
     });
 
-    //Validación de Sesión
     const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
+    const [errors, setErrors] = useState({});
 
-    // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
+            .then(response => {
+                const userEmail = response.data.email;
+                axios.post(`${BASE_URL}/my-profile`, { email: userEmail })
+                    .then(userDataResponse => {
+                        const { name, email, actual_area, interest_area, skills, user_type } = userDataResponse.data;
+                        setUserData({
+                            name: name || '',
+                            email: email || '',
+                            actual_area: actual_area || '',
+                            interest_area: interest_area || '',
+                            skills: skills || '',
+                            user_type: user_type || '',
+                        });
+                    })
+                    .catch(error => {
+                        console.error("Error al recuperar los datos del usuario: ", error);
+                        navigate('/');
+                    });
+            })
+            .catch(error => {
+                console.error("Error al recuperar los datos de la sesión: ", error);
+                navigate('/');
+            });
     }, [navigate]);
 
     const handleInput = (event) => {
         setUserData(prev => ({ ...prev, [event.target.name]: event.target.value }));
-    }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Aquí se debe hacer una llamada a la base de datos para actualizar la información del usuario
-        axios.post('URL_DEL_BACKEND', userData) // Endpoint para actualizar datos del perfil del usuario
-            .then(res => {
-                // Manejar la respuesta si es necesario
-                console.log(res.data);
-            })
-            .catch(err => console.log(err));
-    }
+    
+        const validationErrors = Validation(userData);
+        setErrors(validationErrors);
+    
+        if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
+            const { name, actual_area, interest_area, skills, email } = userData;
+            axios.post(`${BASE_URL}/update-profile`, { name, actual_area, interest_area, skills, email })
+                .then(res => {
+                    if (res.data === "Success") {
+                        alert('Datos Actualizados con Éxito');
+                        navigate(`/my-profile`);
+                    } else {
+                        alert("Ha Ocurrido un Error");
+                    }
+                })
+                .catch(err => {
+                    console.error("Error al actualizar los datos:", err);
+                    alert("Ha Ocurrido un Error al actualizar los datos");
+                });
+        } else {
+            console.log("Errores de validación:", validationErrors);
+        }
+    };
 
     return (
-        <section>
-            <div className='h2Update'>
+        <section className="container mt-5 mb-5 text-white">
+            <div>
                 <h2>Actualizar información</h2>
             </div>
             <form onSubmit={handleSubmit}>
-                <div className='Name'>
+                <div className='form-group'>
                     <label htmlFor='name'><strong>Nombre</strong></label>
-                    <input type="text" name="name" value={userData.name} onChange={handleInput} />
-                </div>
-                <div className='Email'>
-                    <label htmlFor='email'><strong>Correo</strong></label>
-                    <input type="email" name="email" value={userData.email} onChange={handleInput} />
-                </div>
-                <div className='Actual-area'>
-                    <label htmlFor='actual_area'><strong>Area actual</strong></label>
-                    <input type="text" name="actual_area" value={userData.actual_area} onChange={handleInput} />
-                </div>
-                <div className='Interest-Area'>
-                    <label htmlFor='interest_areas'><strong>Areas de interes</strong></label>
-                    <input type="text" name="interest_area" value={userData.interest_area} onChange={handleInput} />
-                </div>
-                <div className='Skills'>
-                    <label htmlFor='skills'><strong>Habilidades</strong></label>
-                    <input type="text" name="skills" value={userData.skills} onChange={handleInput} />
-                </div>
-                <div className='User-Type'>
-                <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
-                <input type="text" value={userData.user_type} readOnly /></div>
-                <div>
-                    <button type='submit' className='buttonP'>Guardar</button>
-                    <button type='submit' className='buttonP'>Guardar</button>
+                    <input type="text" name='name'
+                        value={userData.name} onChange={handleInput}
+                        className={`form-control rounded-0${errors.name ? ' is-invalid' : ''}`} />
+                    {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                 </div>
 
-                    <div>
-                        <Link to="/my-profile" className='buttonP1'>Atrás</Link>
-                    </div>
+                <div className='form-group'>
+                    <label htmlFor='email'><strong>Correo</strong></label>
+                    <input type="email" name='email' readOnly
+                        value={userData.email}
+                        className={`form-control rounded-0${errors.email ? ' is-invalid' : ''}`} />
+                    {errors.email && <span className='text-danger'>{errors.email}</span>}
+                </div>
+
+                <div className='form-group'>
+                    <label htmlFor='actual_area'><strong>Área actual</strong></label>
+                    <input type="text" name='actual_area'
+                        value={userData.actual_area} onChange={handleInput}
+                        className={`form-control rounded-0${errors.actual_area ? ' is-invalid' : ''}`} />
+                    {errors.actual_area && <div className="invalid-feedback">{errors.actual_area}</div>}
+                </div>
+
+                <div className='form-group'>
+                    <label htmlFor='interest_area'><strong>Áreas de interés</strong></label>
+                    <input type="text" name='interest_area'
+                        value={userData.interest_area} onChange={handleInput}
+                        className={`form-control rounded-0${errors.interest_area ? ' is-invalid' : ''}`} />
+                    {errors.interest_area && <div className="invalid-feedback">{errors.interest_area}</div>}
+                </div>
+
+                <div className='form-group'>
+                    <label htmlFor='skills'><strong>Habilidades</strong></label>
+                    <input type="text" name='skills'
+                        value={userData.skills} onChange={handleInput}
+                        className={`form-control rounded-0${errors.skills ? ' is-invalid' : ''}`} />
+                    {errors.skills && <div className="invalid-feedback">{errors.skills}</div>}
+                </div>
+
+                <div className='form-group'>
+                    <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
+                    <input type="text" name='user_type' readOnly
+                        value={userData.user_type} className='form-control rounded-0' />
+                </div>
+                <br/>
+                <div className=" justify-content-between text-center">
+                    <button type='submit' className='btn btn-primary'>Guardar</button>
+                </div>
+                <div className='text-center'>
+                    <hr/>
+                    <Link to="/my-profile" className="btn btn-secondary">Atrás</Link>
+                </div>
 
                 <div className='text'>Talent Switch</div>
             </form>

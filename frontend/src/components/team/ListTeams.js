@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
+import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; // css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -21,7 +22,7 @@ function ListTeams() {
             setUser(response.data);
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/'); // Redirige a la página de inicio si no hay sesión
           });
     }, [navigate]);
@@ -43,10 +44,14 @@ function ListTeams() {
     }
 
     return (
-        <div className="List-Teams">
-            <div className='lista'>
-                <h2>Lista de equipos</h2>          
-            </div>
+        <div className="List-Teams container mt-5 mb-5">
+            <h2>Lista de Equipos</h2>
+            {teams.length === 0 ? (
+                <div>
+                    <br />
+                    <p>No hay Equipos de Trabajo creados aún</p>
+                </div>
+            ) : (
             <table>
                 <thead>
                     <tr>
@@ -64,18 +69,17 @@ function ListTeams() {
                             <td>{team.team_area}</td>
                             <td>{formatDate(team.start_date)}</td>
                             <td>{formatDate(team.final_date)}</td>
-                            <td>{formatDate(team.start_date)}</td>
-                            <td>{formatDate(team.final_date)}</td>
                             <td>
-                                <Link to={`/teams/${team.team_id}`} className="button-O">Ver equipo</Link>
+                                <Link to={`/teams/${team.team_id}`} className="btn btn-primary">Ver equipo</Link>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <hr />
+            )}
             <div>
-                <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
+                <hr/>
+                <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
         </div>

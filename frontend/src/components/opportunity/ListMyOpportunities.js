@@ -6,20 +6,23 @@ import './../../styles/Opportunity.css'; // css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-function ListOpportunities() {
+function ListMyOpportunities() {
     const [opportunities, setOpportunities] = useState([]);
 
     //Validación de Sesión
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({ userName: '', email: '' });
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
-            setUser(response.data);
+            setUser({
+                userName: response.data.name,
+                email: response.data.email,
+            });
           })
           .catch(error => {
             console.error("¡Hubo un error al obtener los datos del usuario!", error);
@@ -28,12 +31,14 @@ function ListOpportunities() {
     }, [navigate]);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/list-opportunities`)
-            .then(res => {
-                setOpportunities(res.data);
-            })
-            .catch(err => console.log(err));
-    }, []);
+        if (user.email) {
+            axios.get(`${BASE_URL}/list-my-opportunities?email=${user.email}`)
+                .then(res => {
+                    setOpportunities(res.data);
+                })
+                .catch(err => console.log(err));
+        }
+    }, [user]);
 
     const getRowClassName = (opportunity) => {
         return opportunity.opportunity_state === 'open' ? 'accepted-row' : 'closed-row';
@@ -50,10 +55,11 @@ function ListOpportunities() {
     return (
         <div className="List-Opp">
             <h2>Lista de oportunidades</h2>
+            <br /><p>Creadas por tí: {user.userName}</p>
             {opportunities.length === 0 ? (
                 <div>
                     <br />
-                    <p>No hay Oportunidades disponibles en este momento, por favor inténtalo de nuevo más tarde</p>
+                    <p>No has creado ninguna Oportunidad aún</p>
                 </div>
             ) : (
             <table>
@@ -92,4 +98,4 @@ function ListOpportunities() {
     );
 }
 
-export default ListOpportunities;
+export default ListMyOpportunities;

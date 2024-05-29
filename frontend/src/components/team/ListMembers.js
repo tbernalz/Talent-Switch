@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; //css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -23,7 +24,7 @@ function ListMembers() {
             setUser(response.data);
           })
           .catch(error => {
-            console.error("There was an error fetching the user data!", error);
+            console.error("¡Hubo un error al obtener los datos del usuario!", error);
             navigate('/'); // Redirige a la página de inicio si no hay sesión
           });
     }, [navigate]);
@@ -69,7 +70,7 @@ function ListMembers() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Team not Found");
+                setError("Equipo No fue Enontrado");
             });
     }, [id]);
 
@@ -82,11 +83,17 @@ function ListMembers() {
     }
 
     return (
-        <section>
+        <section className="container mt-5 mb-5">
             <div className="ListaMiembros">
-                <div className='memberList'>
+                <div className="mb-4 text-center">
                     <h2>Lista de miembros de equipo {id}</h2>
                 </div>
+                {members.length === 0 ? (//debería no ocurrir nunca por autoadicción del lider
+                <div>
+                    <br />
+                    <p>No se han agregado miembros aún</p>
+                </div>
+                ) : (
                 <table>
                     <thead>
                         <tr className='Barra'>
@@ -98,16 +105,21 @@ function ListMembers() {
                         {members.map(member => (
                             <tr key={member.id}>
                                 <td>{member.member_email}</td>
-                                <td>
-                                    <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
+                                <td className='text-center'>
+                                    {user && member.member_email !== user.email ? (
+                                        <button onClick={() => handleEvaluate(member)} className="btn btn-primary">Evaluar</button>
+                                    ) : (
+                                        <span>Este es tu usuario</span>
+                                    )}
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <hr />
-                <div>
-                    <Link to={`/teams/${id}`} className='buttonTeamC1'>Atrás</Link>
+                )}
+                <div className='text-center'>
+                    <hr/>
+                    <Link to={`/teams/${id}`} className='btn btn-secondary'>Atrás</Link>
                 </div>
                 <div className='text'>Talent Switch</div>
             </div>

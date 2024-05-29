@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
-import './../../styles/bootstrap.min.css';
-import './../../styles/Opportunity.css'; // css
+import './../../styles/bootstrap.min.css'; 
+import './../../styles/Team.css'; // css
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-function ListOpportunities() {
-    const [opportunities, setOpportunities] = useState([]);
+function ListMyTeams() {
+    const [teams, setTeams] = useState([]);
 
     //Validación de Sesión
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({ userName: '', email: '' });
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
-            setUser(response.data);
+            setUser({
+                userName: response.data.name,
+                email: response.data.email,
+            });
           })
           .catch(error => {
             console.error("¡Hubo un error al obtener los datos del usuario!", error);
@@ -28,16 +31,14 @@ function ListOpportunities() {
     }, [navigate]);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/list-opportunities`)
-            .then(res => {
-                setOpportunities(res.data);
-            })
-            .catch(err => console.log(err));
-    }, []);
-
-    const getRowClassName = (opportunity) => {
-        return opportunity.opportunity_state === 'open' ? 'accepted-row' : 'closed-row';
-    };
+        if (user.email) {
+            axios.get(`${BASE_URL}/list-my-teams?email=${user.email}`)
+                .then(res => {
+                    setTeams(res.data);
+                })
+                .catch(err => console.log(err));
+        }
+    }, [user]);
 
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -48,35 +49,34 @@ function ListOpportunities() {
     }
 
     return (
-        <div className="List-Opp">
-            <h2>Lista de oportunidades</h2>
-            {opportunities.length === 0 ? (
+        <div className="List-Teams container mt-5 mb-5">
+            <h2>Lista de equipos</h2>
+            <br /><p>Equipos en los que eres miembro, {user.userName}</p>
+            {teams.length === 0 ? (
                 <div>
                     <br />
-                    <p>No hay Oportunidades disponibles en este momento, por favor inténtalo de nuevo más tarde</p>
+                    <p>No eres miembro de ningún Equipo aún</p>
                 </div>
             ) : (
             <table>
                 <thead>
                     <tr>
-                        <th>Nombre oportunidad</th>
-                        <th>Area de la oportunidad</th>
-                        <th>Fecha de inicio</th>
+                        <th>Nombre del equipo</th>
+                        <th>Area del equipo</th>
+                        <th>Fecha inicio</th>
                         <th>Fecha final</th>
-                        <th>Estado de la oportunidad</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {opportunities.map(opportunity => (
-                        <tr key={opportunity.opportunity_id} className={getRowClassName(opportunity)}>
-                            <td>{opportunity.opportunity_name}</td>
-                            <td>{opportunity.opportunity_area}</td>
-                            <td>{formatDate(opportunity.start_date)}</td>
-                            <td>{formatDate(opportunity.final_date)}</td>
-                            <td>{opportunity.opportunity_state}</td>
+                    {teams.map(team => (
+                        <tr key={team.team_id}>
+                            <td>{team.team_name}</td>
+                            <td>{team.team_area}</td>
+                            <td>{formatDate(team.start_date)}</td>
+                            <td>{formatDate(team.final_date)}</td>
                             <td>
-                                <Link to={`/opportunities/${opportunity.opportunity_id}`} className="btn btn-primary">Ver oportunidad</Link>
+                                <Link to={`/teams/${team.team_id}`} className="btn btn-primary">Ver equipo</Link>
                             </td>
                         </tr>
                     ))}
@@ -84,7 +84,7 @@ function ListOpportunities() {
             </table>
             )}
             <div>
-                <hr />
+                <hr/>
                 <Link to="/home" className='btn btn-secondary'>Atrás</Link>        
             </div>
             <div className='text'>Talent Switch</div>
@@ -92,4 +92,4 @@ function ListOpportunities() {
     );
 }
 
-export default ListOpportunities;
+export default ListMyTeams;

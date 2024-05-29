@@ -6,48 +6,48 @@ function Validation(values){
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(today.getFullYear() - 1);
 
-    // team_name validation
+    // Validación del nombre del equipo
     if(!values.team_name.trim()){
-        error.team_name = "Team Name should not be empty";
+        error.team_name = "El nombre del equipo no debe estar vacío";
     }else {
         error.team_name = "";
     }
 
     // team_leader_email validation
-    if(!values.team_leader_email.trim()){
-        error.team_leader_email = "Team Leader Email should not be empty";
-    }else {
-        error.team_leader_email = "";
-    }
+    // if(!values.team_leader_email.trim()){
+    //     error.team_leader_email = "Team Leader Email should not be empty";
+    // }else {
+    //     error.team_leader_email = "";
+    // }
 
     // team_area validation
     if(!values.team_area.trim()){
-        error.team_area = "Team Area should not be empty";
+        error.team_area = "El área del equipo no debe estar vacía";
     }else {
         error.team_area = "";
     }
 
     // description validation
     if(!values.description.trim()){
-        error.description = "Description should not be empty";
+        error.description = "La descripción no debe estar vacía";
     }else {
         error.description = "";
     }
 
     // start_date validation
     if (!isValidDate(values.start_date)) {
-        error.start_date = "Start Date should not be empty or invalid";
+        error.start_date = "La fecha de inicio no debe estar vacía o ser inválida";
     } else if (new Date(values.start_date) < oneYearAgo) {
-        error.start_date = "Start Date should not be more than one year ago";
+        error.start_date = "La fecha de inicio no debe ser hace más de un año";
     } else {
         error.start_date = "";
     }
 
     // final_date validation
     if (!isValidDate(values.final_date)) {
-        error.final_date = "Final Date should not be empty or invalid";
+        error.final_date = "La fecha final no debe estar vacía o ser inválida";
     } else if (new Date(values.final_date) < oneYearAgo) {
-        error.final_date = "Final Date should not be more than one year ago";
+        error.final_date = "La fecha final no debe ser hace más de un año";
     } else {
         error.final_date = "";
     }
@@ -58,7 +58,7 @@ if (isValidDate(values.start_date) && isValidDate(values.final_date)) {
     const finalDate = new Date(values.final_date);
 
     if (startDate > finalDate) {
-        error.final_date = 'Final date cannot be earlier than start date';
+        error.final_date = 'La fecha final no puede ser anterior a la fecha de inicio';
     }
 }
 

@@ -30,6 +30,18 @@ app.use(session({
     }
 }));
 
+// Define la ruta para cerrar sesión
+app.get('/logout', (req, res) => {
+    // Destruye la sesión del usuario
+    req.session.destroy(err => {
+      if (err) {
+        console.error("Error destroying session:", err);
+        return res.status(500).json({ error: 'Error al cerrar la sesión' });
+      }
+      // Envía una respuesta exitosa
+      res.status(200).json({ message: 'Sesión cerrada exitosamente' });
+    });
+  });
 
 // Middleware para proteger rutas
 function isAuthenticated(req, res, next) {
@@ -51,6 +63,6 @@ app.use('/', opportunityRoutes); // /api/opportunity
 app.use('/', postulationRoutes); // /api/postulation
 app.use('/', teamRoutes); // /api/team
 
-app.listen(8082, () => {
+app.listen(8081, () => {
     console.log("Listening");
 });

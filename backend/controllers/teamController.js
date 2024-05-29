@@ -41,6 +41,33 @@ exports.listTeams = (req, res) => {
     });
 };
 
+exports.listMyTeams = (req, res) => {
+    const email = req.query.email; // Obtén el correo del usuario desde los parámetros de la solicitud
+
+    if (!email) {
+        return res.status(400).json({ error: 'El correo es obligatorio' });
+    }
+
+    // Consulta SQL para seleccionar los equipos en los que el correo del usuario es miembro
+    const sql = `
+    SELECT t.team_id, t.team_name, t.team_area, t.start_date, t.final_date 
+    FROM team AS t
+    WHERE t.team_id IN (
+        SELECT team_id
+        FROM team_member
+        WHERE member_email = ?
+    );
+`;
+
+    db.query(sql, [email], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar los equipos de trabajo' });
+        }
+        res.json(data);
+    });
+};
+
 exports.teamDetail = (req, res) => {
     const teamId = req.params.id;
     const sql = "SELECT * FROM team WHERE team_id = ?";
