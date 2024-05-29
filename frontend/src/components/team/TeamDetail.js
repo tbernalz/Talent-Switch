@@ -120,8 +120,8 @@ function TeamDetail() {
                 <p><strong>Descripción:</strong> {team.description}</p>
                 <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
                 <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p>
-                <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
-                <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p>
+                {/* <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
+                <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p> */}
             </div>
             <hr/>
             <div>

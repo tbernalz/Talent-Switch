@@ -14,11 +14,11 @@ function Validation(values) {
     }
 
     // opportunity_leader_email validation
-    if (!values.opportunity_leader_email.trim()) {
-        error.opportunity_leader_email = "Leader user ID should not be empty";
-    } else {
-        error.opportunity_leader_email = "";
-    }
+    // if (!values.opportunity_leader_email.trim()) {
+    //     error.opportunity_leader_email = "Leader user ID should not be empty";
+    // } else {
+    //     error.opportunity_leader_email = "";
+    // }
 
     // opportunity_area validation
     if (!values.opportunity_area.trim()) {

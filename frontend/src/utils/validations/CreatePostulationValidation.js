@@ -3,11 +3,11 @@ function Validation(values){
     let error = {}
 
     // postulant_email validation
-    if(!values.postulant_email.trim()){
-        error.postulant_email = "Postulant Email should not be empty"
-    }else {
-        error.postulant_email = ""
-    }
+    // if(!values.postulant_email.trim()){
+    //     error.postulant_email = "Postulant Email should not be empty"
+    // }else {
+    //     error.postulant_email = ""
+    // }
 
     // postulant_actual_area validation
     if(!values.postulant_actual_area.trim()){

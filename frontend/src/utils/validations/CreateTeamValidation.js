@@ -14,11 +14,11 @@ function Validation(values){
     }
 
     // team_leader_email validation
-    if(!values.team_leader_email.trim()){
-        error.team_leader_email = "Team Leader Email should not be empty";
-    }else {
-        error.team_leader_email = "";
-    }
+    // if(!values.team_leader_email.trim()){
+    //     error.team_leader_email = "Team Leader Email should not be empty";
+    // }else {
+    //     error.team_leader_email = "";
+    // }
 
     // team_area validation
     if(!values.team_area.trim()){

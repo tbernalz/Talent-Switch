@@ -23,6 +23,10 @@ function CreateOpportunity() {
         axios.get('http://localhost:8081/checkSession', { withCredentials: true })
           .then(response => {
             setUser(response.data);
+            setValues(prevValues => ({
+                ...prevValues,
+                team_leader_email: response.data.email // Configurar el email del líder automáticamente
+            }));
             if (response.data.user_type !== 'leader') {
                 alert('Solo los líderes pueden crear Equipos de Trabajo.');
                 navigate('/home');
@@ -77,11 +81,10 @@ function CreateOpportunity() {
             </div>
 
             <div className='Team-Email'>
-                {/* Pensar cambiar por no mostrar */}
                 <label htmlFor='team_leader_email'><strong>Correo del lider de equipo</strong></label>
-                <input type="text" placeholder='Ingrese el correo del lider' name='team_leader_email'
-                onChange={handleInput} className='form-control rounded-0' />
-                {errors.team_leader_email && <span className='text-danger'> {errors.team_leader_email}</span>}
+                <input type="text"  name='team_leader_email'
+                 value={values.team_leader_email} readOnly
+                 className='form-control rounded-0' />
             </div>
 
             <div className='Team-Area'>

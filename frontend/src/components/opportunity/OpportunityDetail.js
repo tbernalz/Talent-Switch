@@ -125,8 +125,8 @@ function OpportunityDetail() {
                 <p><strong>Required Skills:</strong> {opportunity.required_skills}</p>
                 <p><strong>Start Date:</strong> {formatDate(opportunity.start_date)}</p>
                 <p><strong>Final Date:</strong> {formatDate(opportunity.final_date)}</p>
-                <p><strong>Start Date:</strong> {formatDate(opportunity.start_date)}</p>
-                <p><strong>Final Date:</strong> {formatDate(opportunity.final_date)}</p>
+                {/* <p><strong>Start Date:</strong> {formatDate(opportunity.start_date)}</p>
+                <p><strong>Final Date:</strong> {formatDate(opportunity.final_date)}</p> */}
                 <p><strong>Opportunity State:</strong> {opportunity.opportunity_state} </p>
             </div>
             <hr />

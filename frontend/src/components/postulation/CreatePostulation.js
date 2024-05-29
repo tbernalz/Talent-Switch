@@ -22,6 +22,10 @@ function CreatePostulation() {
         axios.get('http://localhost:8081/checkSession', { withCredentials: true })
           .then(response => {
             setUser(response.data);
+            setValues(prevValues => ({
+                ...prevValues,
+                postulant_email: response.data.email // Configurar el email del líder automáticamente
+            }));
             if (response.data.user_type !== 'employee') {
                 alert('Solo los Empleados pueden Postularse.');
                 navigate('/home');
@@ -89,11 +93,10 @@ function CreatePostulation() {
             <h2>Crear postulación</h2>
 
             <div className='Postulant-email'>
-                {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='postulant_email'><strong>Correo del postulante</strong></label>
-                <input type="text" placeholder='Ingresa el correo' name='postulant_email'
-                onChange={handleInput} className={'form-control rounded-0' + (errors.postulant_email ? ' is-invalid' : '')} />
-                {errors.postulant_email && <span className='text-danger'> {errors.postulant_email}</span>}
+                    <label htmlFor='postulant_email'><strong>Correo del postulante</strong></label>
+                    <input type="text" name='postulant_email'
+                        value={values.postulant_email} readOnly
+                        className='form-control rounded-0' />
             </div>
 
             <div className='Postulant-Area'>

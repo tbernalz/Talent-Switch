@@ -24,6 +24,10 @@ function CreateOpportunity() {
         axios.get('http://localhost:8081/checkSession', { withCredentials: true })
           .then(response => {
             setUser(response.data);
+            setValues(prevValues => ({
+                ...prevValues,
+                opportunity_leader_email: response.data.email // Configurar el email del líder automáticamente
+            }));
             if (response.data.user_type !== 'leader') {
                 alert('Solo los líderes pueden crear oportunidades.');
                 navigate('/home');
@@ -79,11 +83,10 @@ function CreateOpportunity() {
             </div>
 
             <div className='Opportunity-leader'>
-                {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='opportunity_leader_email'><strong>Correo del lider de la oportunidad</strong></label>
-                <input type="text" placeholder='Ingresa el correo del lider' name='opportunity_leader_email'
-                onChange={handleInput} className={'form-control rounded-0' + (errors.opportunity_leader_email ? ' is-invalid' : '')} />
-                {errors.opportunity_leader_email && <span className='text-danger'> {errors.opportunity_leader_email}</span>}
+                    <label htmlFor='opportunity_leader_email'><strong>Correo del líder de la oportunidad</strong></label>
+                    <input type="text" name='opportunity_leader_email' 
+                        value={values.opportunity_leader_email} readOnly
+                        className='form-control rounded-0' />
             </div>
 
             <div className='Opportunity-Area'>
