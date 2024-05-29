@@ -46,9 +46,12 @@ function Signup() {
     };
 
   return (
-    <section className="container mt-5 text-white">
-        <div className='text-center'>Talent Switch</div>
+    <section className="container mt-5 mb-5 text-white">
+        <div>Talent Switch</div>
         <form onSubmit={handleSubmit}>
+
+            <div className="row">
+                <div className="col-md-6 offset-md-3">
             <h2 className="text-center">Registro</h2>
 
             <div className='form-group'>
@@ -108,12 +111,13 @@ function Signup() {
             </div>
 
             <div className='form-group'>
-                <button type='submit' className='btn btn-primary btn-block rounded-0'> Registrarse</button>
+                <button type='submit' className='btn btn-primary rounded-0'> Registrarse</button>
             </div>
-
+            </div>
+            </div>
             <div className='text-center'>
                 <p>Al darle registrar aceptas nuestros términos y condiciones.</p>
-                <Link to="/" className='btn btn-secondary btn-block rounded-0'>Ingreso</Link>
+                <Link to="/" className='btn btn-secondary rounded-0'>Ingreso</Link>
             </div>
         </form>
     </section>
