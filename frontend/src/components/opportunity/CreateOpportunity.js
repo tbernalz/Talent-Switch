@@ -29,6 +29,7 @@ function CreateOpportunity() {
                 navigate('/home');
             }
           })
+          
           .catch(error => {
             console.error("There was an error fetching the user data!", error);
             navigate('/');
