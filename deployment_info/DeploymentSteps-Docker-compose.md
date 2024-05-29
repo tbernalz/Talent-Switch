@@ -151,6 +151,8 @@ Apply the Kubernetes manifests:
 kubectl apply -f <generated-yaml-files>
 ```
 
+## **THE ORDER OF THE APPLY IS VERY IMPORTANT**
+
 ## 12. Set Up Persistent Storage
 
 * Create a persistent disk:
