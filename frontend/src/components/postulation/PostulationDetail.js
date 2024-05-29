@@ -12,13 +12,14 @@ function PostulationDetail() {
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState({ userName: '', email: '', userType: '' });
+    const [user, setUser] = useState({ userId: '', userName: '', email: '', userType: '' });
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
             .then(response => {
                 setUser({
+                    userId: response.data.user_id,
                     userName: response.data.name,
                     email: response.data.email,
                     userType: response.data.user_type,
@@ -40,6 +41,30 @@ function PostulationDetail() {
                 setError("Postulante No Encontrado"); // Establece el mensaje de error en caso de falla
             });
     }, [id]);
+
+    const handleAccept = () => {
+        axios.put(`http://localhost:8081/postulations/${id}/accept`)
+            .then(res => {
+                if (res.data.success) {
+                    setPostulation(prev => ({ ...prev, postulation_state: 'accepted' }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+        
+    const handleReject = () => {
+        axios.put(`http://localhost:8081/postulations/${id}/reject`)
+            .then(res => {
+                if (res.data.success) {
+                    setPostulation(prev => ({ ...prev, postulation_state: 'rejected' }));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
 
     if (error) {
         return (
@@ -70,6 +95,13 @@ function PostulationDetail() {
                 <p><strong>Postulant State:</strong> {postulation.postulation_state}</p>
             </div>
             <hr />
+            {user.userType === 'leader' && postulation.postulation_state === 'pending' && (
+                <div className="button-container">
+                    <button className="accept-button" onClick={handleAccept}>Aceptar</button>
+                    <button className="reject-button" onClick={handleReject}>Rechazar</button>
+                </div>
+            )}
+            <hr/>
             <div>
                 {user.userType === 'employee' && (
                     <Link to="/list-my-postulations" className="buttonPostulation3">Atrás</Link>

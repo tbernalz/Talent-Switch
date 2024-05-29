@@ -75,3 +75,27 @@ exports.postulationDetail = (req, res) => {
         return res.json(data[0]);
     });
 };
+
+exports.acceptPostulation = (req, res) => {
+    const { id } = req.params;
+    const sql = "UPDATE postulation SET postulation_state = 'accepted' WHERE postulation_id = ?";
+    db.query(sql, [id], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al aceptar la postulación' });
+        }
+        return res.json({ success: true });
+    });
+};
+
+exports.rejectPostulation = (req, res) => {
+    const { id } = req.params;
+    const sql = "UPDATE postulation SET postulation_state = 'rejected' WHERE postulation_id = ?";
+    db.query(sql, [id], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al rechazar la postulación' });
+        }
+        return res.json({ success: true });
+    });
+};
