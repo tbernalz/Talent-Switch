@@ -4,12 +4,14 @@ import axios from 'axios';
 import { Navbar, Nav, Container } from 'react-bootstrap'; 
 import styles from './../../styles/bootstrap.min.css';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Home() {
   const [user, setUser] = useState({ userName: '', userType: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+    axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
       .then(response => {
         setUser({
           userName: response.data.name,

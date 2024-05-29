@@ -3,9 +3,10 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 
 const dbConfig = {
-    host: 'localhost',
+    host: 'db', // the name of the MariaDB service in docker-compose.yml
+    // host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'admin123', // password: '', 
     database: 'magneto_db'
 };
 

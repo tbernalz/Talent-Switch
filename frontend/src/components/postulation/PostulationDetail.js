@@ -4,6 +4,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // Importa tus estilos CSS personalizados
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function PostulationDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
     const [postulation, setPostulation] = useState(null);
@@ -17,6 +19,7 @@ function PostulationDetail() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
+<<<<<<< HEAD
         axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
             .then(response => {
                 setUser({
@@ -30,10 +33,20 @@ function PostulationDetail() {
                 console.error("¡Hubo un error al obtener los datos del usuario!", error);
                 navigate('/'); // Redirige a la página de inicio si no hay sesión
             });
+=======
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+>>>>>>> main
     }, [navigate]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/postulations/${id}`)
+        axios.get(`${BASE_URL}/postulations/${id}`)
             .then(res => {
                 setPostulation(res.data);
             })

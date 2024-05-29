@@ -5,6 +5,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function CreatePostulation() {
     const [values, setValues] = useState({
         postulant_name: '',
@@ -20,7 +22,7 @@ function CreatePostulation() {
 
     //Validación de Sesión
     useEffect(() => {
-        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
             setValues(prevValues => ({
@@ -56,7 +58,7 @@ function CreatePostulation() {
 
         // Si no hay errores de validación, proceder con la creación de la postulación
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            axios.get(`http://localhost:8081/get-name?email=${values.postulant_email}`)
+            axios.get(`${BASE_URL}/get-name?email=${values.postulant_email}`)
                 .then(res => {
                     const userName = res.data.name; // Suponiendo que el nombre se devuelve como 'name'
                     // Actualizar el estado con el nombre encontrado en la base de datos
@@ -72,7 +74,7 @@ function CreatePostulation() {
                     };
 
                     // Enviar los datos actualizados al servidor para la creación de la postulación
-                    axios.post('http://localhost:8081/create-postulation', postData)
+                    axios.post(`${BASE_URL}/create-postulation`, postData)
                         .then(res => {
                             if (res.data === "Success") {
                                 alert('La Postulación fue Creada');

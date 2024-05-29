@@ -5,6 +5,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function CreateOpportunity() {
     const [values, setValues] = useState({
         team_name: '',
@@ -21,7 +23,7 @@ function CreateOpportunity() {
 
     //Validación de Sesión
     useEffect(() => {
-        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
             setValues(prevValues => ({
@@ -53,7 +55,7 @@ function CreateOpportunity() {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            axios.post('http://localhost:8081/create-team', values)
+            axios.post(`${BASE_URL}/create-team`, values)
                 .then(res => {
                     if (res.data === "Success") {
                         alert('Equipo de Trabajo fue Creado');

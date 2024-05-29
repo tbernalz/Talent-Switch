@@ -4,6 +4,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function ListTeams() {
     const [teams, setTeams] = useState([]);
 
@@ -15,7 +17,7 @@ function ListTeams() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })
@@ -26,7 +28,7 @@ function ListTeams() {
     }, [navigate]);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/list-teams')
+        axios.get(`${BASE_URL}/list-teams`)
             .then(res => {
                 setTeams(res.data);
             })

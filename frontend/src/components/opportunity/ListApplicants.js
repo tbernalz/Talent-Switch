@@ -4,6 +4,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css';
 import './../../styles/Applicants.css'; //css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function ListApplicants() {
     const { id } = useParams(); // Obtener el ID de la oportunidad de los parámetros de la URL
     const [applicants, setApplicants] = useState([]);
@@ -17,7 +19,7 @@ function ListApplicants() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })
@@ -28,7 +30,7 @@ function ListApplicants() {
     }, [navigate]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/opportunities/${id}/list-applicants`)
+        axios.get(`${BASE_URL}/opportunities/${id}/list-applicants`)
             .then(res => {
                 setApplicants(res.data);
             })
@@ -39,7 +41,7 @@ function ListApplicants() {
     }, [id]);
 
     const handleAccept = (applicantId) => {
-        axios.put(`http://localhost:8081/opportunities/${id}/applicants/${applicantId}/accept`)
+        axios.put(`${BASE_URL}/opportunities/${id}/applicants/${applicantId}/accept`)
             .then(res => {
                 if (res.data.success) {
                     setApplicants(applicants.map(applicant => {
@@ -56,7 +58,7 @@ function ListApplicants() {
     };
 
     const handleReject = (applicantId) => {
-        axios.put(`http://localhost:8081/opportunities/${id}/applicants/${applicantId}/reject`)
+        axios.put(`${BASE_URL}/${id}/applicants/${applicantId}/reject`)
             .then(res => {
                 if (res.data.success) {
                     setApplicants(applicants.map(applicant => {

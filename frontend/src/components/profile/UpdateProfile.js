@@ -5,6 +5,8 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../styles/PerfilU.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function UpdateProfile() {
     const [userData, setUserData] = useState({
         name: '',
@@ -18,6 +20,7 @@ function UpdateProfile() {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
+<<<<<<< HEAD
         axios.get('http://localhost:8081/checkSession', { withCredentials: true })
             .then(response => {
                 const userEmail = response.data.email;
@@ -42,6 +45,16 @@ function UpdateProfile() {
                 console.error("Error al recuperar los datos de la sesión: ", error);
                 navigate('/');
             });
+=======
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+>>>>>>> main
     }, [navigate]);
 
     const handleInput = (event) => {

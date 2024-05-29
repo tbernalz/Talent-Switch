@@ -4,6 +4,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css'; 
 import './../../styles/Team.css'; //css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function ListMembers() {
     const { id } = useParams(); // team_id
     const [members, setMembers] = useState([]);
@@ -17,7 +19,7 @@ function ListMembers() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })
@@ -29,7 +31,7 @@ function ListMembers() {
 
     const handleEvaluate = async (member) => {
         try {
-            const response = await axios.post('http://localhost:8081/to-evaluate-member', {
+            const response = await axios.post(`${BASE_URL}/to-evaluate-member`, {
                 team_id: id, // Utiliza el team_id en lugar del id del miembro
                 user_id: member.user_id,
                 member_email: member.member_email
@@ -45,11 +47,11 @@ function ListMembers() {
     };
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/teams/${id}/list-members`)
+        axios.get(`${BASE_URL}/teams/${id}/list-members`)
             .then(res => {
                 // Por cada miembro, realiza una consulta adicional para obtener su user_id
                 const promises = res.data.map(member => {
-                    return axios.get(`http://localhost:8081/get-user-id?email=${member.member_email}`)
+                    return axios.get(`${BASE_URL}/get-user-id?email=${member.member_email}`)
                         .then(response => ({
                             ...member,
                             user_id: response.data.user_id // Recupera el user_id del miembro

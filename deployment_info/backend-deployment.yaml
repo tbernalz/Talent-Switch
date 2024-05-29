@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: tbernal121/talent-switch-backend
+        ports:
+        - containerPort: 8082
+        #volumeMounts:
+        #- name: backend-code
+        #  mountPath: /app
+      #volumes:
+      #- name: backend-code
+      #  emptyDir: {}
+        env:
+        - name: DB_HOST
+          value: "db"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "admin123"
+        - name: DB_NAME
+          value: "magneto_db"

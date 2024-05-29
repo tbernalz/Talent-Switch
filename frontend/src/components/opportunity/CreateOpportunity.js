@@ -5,6 +5,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css';
 import './../../styles/Opportunity.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function CreateOpportunity() {
     const [values, setValues] = useState({
         opportunity_name: '',
@@ -22,7 +24,7 @@ function CreateOpportunity() {
 
     //Validación de Sesión
     useEffect(() => {
-        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
             setValues(prevValues => ({
@@ -55,7 +57,7 @@ function CreateOpportunity() {
         setErrors(validationErrors);
     
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            axios.post('http://localhost:8081/create-opportunity', values)
+            axios.post(`${BASE_URL}/create-opportunity`, values)
                 .then(res => {
                     if (res.data === "Success") {
                         alert('La Oportunidad fue Creada ');

@@ -5,11 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../../styles/Perfil.css'; // css
 import './../../styles/PerfilU.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function MyProfile() {
     const navigate = useNavigate();
     const [user, setUser] = useState({ name: '', email: '', actual_area: '', interest_area: '', skills: '', user_type: '' });
 
     useEffect(() => {
+<<<<<<< HEAD
         // Verificar la sesión antes de obtener los datos del usuario
         axios.get('http://localhost:8081/checkSession', { withCredentials: true })
             .then(response => {
@@ -28,6 +31,16 @@ function MyProfile() {
                 console.error("Error al recuperar los datos de la sesión: ", error);
                 navigate('/');
             });
+=======
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => {
+            console.error("There was an error fetching the user data!", error);
+            navigate('/'); // Redirige a la página de inicio si no hay sesión
+          });
+>>>>>>> main
     }, [navigate]);
 
     return (

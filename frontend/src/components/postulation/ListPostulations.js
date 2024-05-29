@@ -4,6 +4,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css';
 import './../../styles/Postulation.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function ListPostulations() {
     const [postulations, setPostulations] = useState([]);
 
@@ -15,7 +17,7 @@ function ListPostulations() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser(response.data);
           })
@@ -26,7 +28,7 @@ function ListPostulations() {
     }, [navigate]);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/list-postulations')
+        axios.get(`${BASE_URL}/list-postulations`)
             .then(res => {
                 setPostulations(res.data);
             })
