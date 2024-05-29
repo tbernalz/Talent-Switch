@@ -25,7 +25,7 @@ function Home() {
   }, [navigate]);
 
   const handleLogout = () => {
-    axios.get('http://localhost:8081/logout', { withCredentials: true })
+    axios.get(`${BASE_URL}/logout`, { withCredentials: true })
       .then(response => {
         setUser({ userName: '', userType: '' });
         navigate('/'); // Redirige al usuario a la página de inicio después de cerrar sesión

@@ -20,11 +20,10 @@ function UpdateProfile() {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-<<<<<<< HEAD
-        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
             .then(response => {
                 const userEmail = response.data.email;
-                axios.post('http://localhost:8081/my-profile', { email: userEmail })
+                axios.post(`${BASE_URL}/my-profile`, { email: userEmail })
                     .then(userDataResponse => {
                         const { name, email, actual_area, interest_area, skills, user_type } = userDataResponse.data;
                         setUserData({
@@ -45,16 +44,6 @@ function UpdateProfile() {
                 console.error("Error al recuperar los datos de la sesión: ", error);
                 navigate('/');
             });
-=======
-        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
->>>>>>> main
     }, [navigate]);
 
     const handleInput = (event) => {
@@ -69,7 +58,7 @@ function UpdateProfile() {
     
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
             const { name, actual_area, interest_area, skills, email } = userData;
-            axios.post('http://localhost:8081/update-profile', { name, actual_area, interest_area, skills, email })
+            axios.post(`${BASE_URL}/update-profile`, { name, actual_area, interest_area, skills, email })
                 .then(res => {
                     if (res.data === "Success") {
                         alert('Datos Actualizados con Éxito');

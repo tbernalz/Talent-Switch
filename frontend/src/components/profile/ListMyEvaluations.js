@@ -4,6 +4,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css';
 import './../../styles/Team.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function ListMyEvaluations() {
     const [evaluations, setEvaluations] = useState([]);
 
@@ -15,7 +17,7 @@ function ListMyEvaluations() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser({
                 userName: response.data.name,
@@ -30,7 +32,7 @@ function ListMyEvaluations() {
 
     useEffect(() => {
         if (user.email) {
-            axios.get(`http://localhost:8081/list-my-evaluations?email=${user.email}`)
+            axios.get(`${BASE_URL}/list-my-evaluations?email=${user.email}`)
                 .then(res => {
                     setEvaluations(res.data);
                 })

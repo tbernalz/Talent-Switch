@@ -4,6 +4,8 @@ import axios from 'axios';
 import './../../styles/bootstrap.min.css';
 import './../../styles/Opportunity.css'; // css
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function ListMyOpportunities() {
     const [opportunities, setOpportunities] = useState([]);
 
@@ -15,7 +17,7 @@ function ListMyOpportunities() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
           .then(response => {
             setUser({
                 userName: response.data.name,
@@ -30,7 +32,7 @@ function ListMyOpportunities() {
 
     useEffect(() => {
         if (user.email) {
-            axios.get(`http://localhost:8081/list-my-opportunities?email=${user.email}`)
+            axios.get(`${BASE_URL}/list-my-opportunities?email=${user.email}`)
                 .then(res => {
                     setOpportunities(res.data);
                 })

@@ -19,8 +19,7 @@ function PostulationDetail() {
 
     // Revisar si hay sesión al cargar el componente
     useEffect(() => {
-<<<<<<< HEAD
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
+        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
             .then(response => {
                 setUser({
                     userId: response.data.user_id,
@@ -33,16 +32,6 @@ function PostulationDetail() {
                 console.error("¡Hubo un error al obtener los datos del usuario!", error);
                 navigate('/'); // Redirige a la página de inicio si no hay sesión
             });
-=======
-        axios.get(`${BASE_URL}/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
->>>>>>> main
     }, [navigate]);
 
     useEffect(() => {
@@ -57,7 +46,7 @@ function PostulationDetail() {
     }, [id]);
 
     const handleAccept = () => {
-        axios.put(`http://localhost:8081/postulations/${id}/accept`)
+        axios.put(`${BASE_URL}/postulations/${id}/accept`)
             .then(res => {
                 if (res.data.success) {
                     setPostulation(prev => ({ ...prev, postulation_state: 'accepted' }));
@@ -69,7 +58,7 @@ function PostulationDetail() {
     };
         
     const handleReject = () => {
-        axios.put(`http://localhost:8081/postulations/${id}/reject`)
+        axios.put(`${BASE_URL}/postulations/${id}/reject`)
             .then(res => {
                 if (res.data.success) {
                     setPostulation(prev => ({ ...prev, postulation_state: 'rejected' }));

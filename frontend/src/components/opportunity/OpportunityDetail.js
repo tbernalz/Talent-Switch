@@ -19,6 +19,7 @@ function OpportunityDetail() {
     })
 
     const navigate = useNavigate();
+    // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState({});
     const [user, setUser] = useState({ userName: '', email: '', userType: '' });
 
@@ -43,6 +44,7 @@ function OpportunityDetail() {
     }, [navigate]);
 
     // Función para manejar cambios en los inputs del formulario
+    // eslint-disable-next-line no-unused-vars
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: event.target.value}))
     }
