@@ -5,9 +5,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - name: "http"
-      port: 80
-      targetPort: 3000
+  - port: 80
+    targetPort: 3000
   selector:
-    io.kompose.service: frontend
+    app: frontend
   loadBalancerIP: 34.121.2.28

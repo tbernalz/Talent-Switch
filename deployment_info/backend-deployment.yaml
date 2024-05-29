@@ -1,31 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose.yml
-    kompose.version: 1.33.0 (3ce457399)
-  labels:
-    io.kompose.service: backend
   name: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: backend
+      app: backend
   template:
     metadata:
-      annotations:
-        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose.yml
-        kompose.version: 1.33.0 (3ce457399)
       labels:
-        io.kompose.network/magneto-p07-default: "true"
-        io.kompose.service: backend
+        app: backend
     spec:
       containers:
-        - image: tbernal121/talent-switch-backend
-          name: backend
-          ports:
-            - containerPort: 8082
-              hostPort: 8082
-              protocol: TCP
-      restartPolicy: Always
+      - name: backend
+        image: tbernal121/talent-switch-backend
+        ports:
+        - containerPort: 8082
+        #volumeMounts:
+        #- name: backend-code
+        #  mountPath: /app
+      #volumes:
+      #- name: backend-code
+      #  emptyDir: {}
+        env:
+        - name: DB_HOST
+          value: "db"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "admin123"
+        - name: DB_NAME
+          value: "magneto_db"
