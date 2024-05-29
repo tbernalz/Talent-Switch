@@ -103,7 +103,11 @@ function ListMembers() {
                             <tr key={member.id}>
                                 <td>{member.member_email}</td>
                                 <td>
-                                    <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
+                                    {user && member.member_email !== user.email ? (
+                                        <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
+                                    ) : (
+                                        <span>Este es tu usuario</span>
+                                    )}
                                 </td>
                             </tr>
                         ))}
