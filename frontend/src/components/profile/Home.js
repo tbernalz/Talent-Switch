@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Navbar, Nav, Container } from 'react-bootstrap'; 
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import styles from './../../styles/bootstrap.min.css';
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
         });
       })
       .catch(error => {
-        console.error("¡Hubo un error al obtener los datos del usuario!", error);
+        console.error("There was an error fetching the user data!", error);
         navigate('/');
       });
   }, [navigate]);

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Validation from '../../utils/validations/UpdateValidation';
 import axios from 'axios';
-import './../../styles/PerfilU.css'; // css
+import Validation from '../../utils/validations/UpdateValidation';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../../styles/PerfilU.css'; // Importar estilos CSS personalizados
 
 function UpdateProfile() {
-    const [userData, setUserData] = useState({
+    const navigate = useNavigate();
+    const [user, setUser] = useState({
         name: '',
         email: '',
         actual_area: '',
         interest_area: '',
         skills: '',
+        user_type: ''
     });
-
-    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -22,15 +23,7 @@ function UpdateProfile() {
                 const userEmail = response.data.email;
                 axios.post('http://localhost:8081/my-profile', { email: userEmail })
                     .then(userDataResponse => {
-                        const { name, email, actual_area, interest_area, skills, user_type } = userDataResponse.data;
-                        setUserData({
-                            name: name || '',
-                            email: email || '',
-                            actual_area: actual_area || '',
-                            interest_area: interest_area || '',
-                            skills: skills || '',
-                            user_type: user_type || '',
-                        });
+                        setUser(userDataResponse.data);
                     })
                     .catch(error => {
                         console.error("Error al recuperar los datos del usuario: ", error);
@@ -44,17 +37,17 @@ function UpdateProfile() {
     }, [navigate]);
 
     const handleInput = (event) => {
-        setUserData(prev => ({ ...prev, [event.target.name]: event.target.value }));
+        setUser(prev => ({ ...prev, [event.target.name]: event.target.value }));
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-    
-        const validationErrors = Validation(userData);
+
+        const validationErrors = Validation(user);
         setErrors(validationErrors);
-    
+
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            const { name, actual_area, interest_area, skills, email } = userData;
+            const { name, actual_area, interest_area, skills, email } = user;
             axios.post('http://localhost:8081/update-profile', { name, actual_area, interest_area, skills, email })
                 .then(res => {
                     if (res.data === "Success") {
@@ -74,66 +67,44 @@ function UpdateProfile() {
     };
 
     return (
-        <section>
-            <div className='text'>Talent Switch</div>
-            <form onSubmit={handleSubmit}>
+        <section className="container mt-5">
+            <div className="text-center mb-4 mt-5 pt-5">
                 <h2>Actualizar información</h2>
-
-                <div className='Update-Name'>
-                    <label htmlFor='name'><strong>Nombre</strong></label>
-                    <input type="text" name='name'
-                        value={userData.name} onChange={handleInput}
-                        className={`form-control rounded-0${errors.name ? ' is-invalid' : ''}`} />
-                    {errors.name && <span className='text-danger'>{errors.name}</span>}
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label htmlFor="name" className="form-label"><strong>Nombre</strong></label>
+                    <input type="text" className={`form-control${errors.name ? ' is-invalid' : ''}`} name="name" value={user.name} onChange={handleInput} />
+                    {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                 </div>
-
-                <div className='Update-Email'>
-                    <label htmlFor='email'><strong>Correo</strong></label>
-                    <input type="email" name='email' readOnly
-                        value={userData.email}
-                        className={`form-control rounded-0${errors.email ? ' is-invalid' : ''}`} />
-                    {errors.email && <span className='text-danger'>{errors.email}</span>}
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label"><strong>Correo</strong></label>
+                    <input type="email" className="form-control" name="email" value={user.email} readOnly />
                 </div>
-
-                <div className='Update-ActualArea'>
-                    <label htmlFor='actual_area'><strong>Área actual</strong></label>
-                    <input type="text" name='actual_area'
-                        value={userData.actual_area} onChange={handleInput}
-                        className={`form-control rounded-0${errors.actual_area ? ' is-invalid' : ''}`} />
-                    {errors.actual_area && <span className='text-danger'>{errors.actual_area}</span>}
+                <div className="mb-3">
+                    <label htmlFor="actual_area" className="form-label"><strong>Area actual</strong></label>
+                    <input type="text" className={`form-control${errors.actual_area ? ' is-invalid' : ''}`} name="actual_area" value={user.actual_area} onChange={handleInput} />
+                    {errors.actual_area && <div className="invalid-feedback">{errors.actual_area}</div>}
                 </div>
-
-                <div className='Update-InterestArea'>
-                    <label htmlFor='interest_area'><strong>Áreas de interés</strong></label>
-                    <input type="text" name='interest_area'
-                        value={userData.interest_area} onChange={handleInput}
-                        className={`form-control rounded-0${errors.interest_area ? ' is-invalid' : ''}`} />
-                    {errors.interest_area && <span className='text-danger'>{errors.interest_area}</span>}
+                <div className="mb-3">
+                    <label htmlFor="interest_area" className="form-label"><strong>Areas de interes</strong></label>
+                    <input type="text" className={`form-control${errors.interest_area ? ' is-invalid' : ''}`} name="interest_area" value={user.interest_area} onChange={handleInput} />
+                    {errors.interest_area && <div className="invalid-feedback">{errors.interest_area}</div>}
                 </div>
-
-                <div className='Update-Skills'>
-                    <label htmlFor='skills'><strong>Habilidades</strong></label>
-                    <input type="text" name='skills'
-                        value={userData.skills} onChange={handleInput}
-                        className={`form-control rounded-0${errors.skills ? ' is-invalid' : ''}`} />
-                    {errors.skills && <span className='text-danger'>{errors.skills}</span>}
+                <div className="mb-3">
+                    <label htmlFor="skills" className="form-label"><strong>Habilidades</strong></label>
+                    <input type="text" className={`form-control${errors.skills ? ' is-invalid' : ''}`} name="skills" value={user.skills} onChange={handleInput} />
+                    {errors.skills && <div className="invalid-feedback">{errors.skills}</div>}
                 </div>
-
-                <div className='Update-UserType'>
-                    <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
-                    <input type="text" name='user_type' readOnly
-                        value={userData.user_type} className='form-control rounded-0' />
+                <div className="mb-3">
+                    <label htmlFor="user_type" className="form-label"><strong>Tipo de usuario</strong></label>
+                    <input type="text" className="form-control" name="user_type" value={user.user_type} readOnly />
                 </div>
-
-                <div>
-                    <hr />
-                    <button type='submit' className='buttonP'>Guardar</button>
+                <div className="d-flex justify-content-between">
+                    <button type="submit" className="btn btn-primary">Guardar</button>
+                    <Link to="/my-profile" className="btn btn-secondary">Atrás</Link>
                 </div>
-                <div>
-                    <Link to="/my-profile" className='buttonP1'>Atrás</Link>
-                </div>
-
-                <div className='text'>Talent Switch</div>
+                <div className="text-center mt-4">Talent Switch</div>
             </form>
         </section>
     );

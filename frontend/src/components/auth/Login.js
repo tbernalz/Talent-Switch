@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/LoginValidation';
 import axios from 'axios';
-import './../../styles/Login.css'; // ACA CAMBIAR NOMBRE A LOGIN
+import './../../styles/Login.css'; // Make sure this file is properly imported
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function Login() {
     const [values, setValues] = useState({
@@ -22,17 +24,17 @@ function Login() {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            axios.post('http://localhost:8081/login', values, { withCredentials: true })
+            axios.post(`${BASE_URL}/login`, values, { withCredentials: true })
                 .then(res => {
                     if (res.data === "Success") {
-                        alert('Se Encontró Usuario, Bienvenido a Magneto Talent Switch');
+                        alert('User was found, Welcome to Magneto Talent Switch');
                         navigate('/home');
                     } else if (res.data === "email_no_exists") {
-                        alert("Correo Electrónico No Encontrado");
+                        alert("Email not found");
                     } else if (res.data === "error_password") {
-                        alert("Contraseña Incorrecta");
+                        alert("Incorrect Password");
                     } else {
-                        alert("Ha Ocurrido un Problema");
+                        alert("A problem has occurred");
                     }
                 })
                 .catch(err => console.log(err));
@@ -40,35 +42,33 @@ function Login() {
     };
 
     return (
-        <section>
-            <div className='text'>Talent Switch</div>
+        <section className="container mt-5 text-white">
+            <div className='text-center'>Talent Switch</div>
 
-            <form action='' onSubmit={handleSubmit}>
-                <h2>Ingreso</h2>
-                <div className='login-email'>
+            <form onSubmit={handleSubmit}>
+                <h2 className="text-center">Ingreso</h2>
+                <div className='form-group'>
                     <ion-icon name='mail-outline'></ion-icon>
                     <label htmlFor='email'><strong>Correo</strong></label>
                     <input type="email" placeholder='Ingresa tu correo' name='email'
-                        onChange={handleInput} className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')}/>
-                    {errors.email && <span className='text-danger'> {errors.email}</span>}
+                        onChange={handleInput} className={'form-control rounded-0' + (errors.email ? ' is-invalid' : '')} />
+                    {errors.email && <div className='invalid-feedback'> {errors.email}</div>}
                 </div>
 
-                <div className='login-pass'>
-                    <ion-icon name= 'locked-closed-outline'></ion-icon>
+                <div className='form-group'>
+                    <ion-icon name='locked-closed-outline'></ion-icon>
                     <label htmlFor='password'><strong>Contraseña</strong></label>
                     <input type="password" placeholder='Ingresa tu contraseña' name='password'
-                        onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')}/>
-                    {errors.password && <span className='text-danger'> {errors.password}</span>}
+                        onChange={handleInput} className={'form-control rounded-0' + (errors.password ? ' is-invalid' : '')} />
+                    {errors.password && <div className='invalid-feedback'> {errors.password}</div>}
                 </div>
-                <div>
-                    <button type='submit' className='button1'>Ingresar</button>
+                <div className='form-group text-center'>
+                    <button type='submit' className='btn btn-primary'>Ingresar</button>
                 </div>
-                <div>
-                    <hr />
-                    <p>No tengo una cuenta</p>
-                    <div>
-                        <Link to="/signup" className='button1'>Crear cuenta</Link>
-                    </div>
+                <hr />
+                <p className="text-center">No tengo una cuenta</p>
+                <div className='form-group text-center'>
+                    <Link to="/signup" className='btn btn-primary'>Crear cuenta</Link>
                 </div>
             </form>
         </section>

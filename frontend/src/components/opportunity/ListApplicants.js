@@ -1,29 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Applicants.css'; //css
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import './../../styles/bootstrap.min.css';
+import './../../styles/Applicants.css';
 
 function ListApplicants() {
-    const { id } = useParams(); // Obtener el ID de la oportunidad de los parámetros de la URL
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [applicants, setApplicants] = useState([]);
     const [error, setError] = useState(null);
-
-    //Validación de Sesión
-    const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
     const [user, setUser] = useState(null);
 
-    // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("¡Hubo un error al obtener los datos del usuario!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
+            .then(response => {
+                setUser(response.data);
+            })
+            .catch(error => {
+                console.error("¡Hubo un error al obtener los datos del usuario!", error);
+                navigate('/');
+            });
     }, [navigate]);
 
     useEffect(() => {
@@ -33,7 +29,7 @@ function ListApplicants() {
             })
             .catch(err => {
                 console.log(err)
-                setError("Oportunidad No Encontrada");
+                setError("Opportunity not Found");
             });
     }, [id]);
 
@@ -90,49 +86,42 @@ function ListApplicants() {
     };
 
     return (
-        <section>
-        <div className="applicants">
-            <h2>Lista de aplicantes por oportunidad {id}</h2>
-            {applicants.length === 0 ? (
-                <div>
-                    <br />
-                    <p>No has Aplicantes todavía</p>
-                </div>
-            ) : (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Correo del aplicante</th>
-                        <th>Estado del aplicante</th>
-                        
-                        {/* <th></th> */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {applicants.map(applicant => (
-                        <tr key={applicant.id} className={getRowClassName(applicant)}>
-                            <td>{applicant.applicant_email}</td>
-                            <td>{applicant.applicant_state}</td>
-                            {/* <td>Botón de copiar Info</td> */}
-                        <td>
-                            {applicant.applicant_state === 'pending' && (
-                                <div className="button-container">
-                                    <button className="accept-button" onClick={() => handleAccept(applicant.id)}>Aceptar</button>
-                                    <button className="reject-button" onClick={() => handleReject(applicant.id)}>Rechazar</button>
-                                </div>
-                            )}
-                        </td>
+        <section className="container">
+            <div className="applicants">
+                <h2>Lista de aplicantes por oportunidad {id}</h2>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Correo del aplicante</th>
+                            <th>Estado del aplicante</th>
+                            <th>Acciones</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            )}
-            <hr />
-            <div>
-                <Link to={`/opportunities/${id}`} className='link'>Atrás</Link>        
+                    </thead>
+                    <tbody>
+                        {applicants.map(applicant => (
+                            <tr key={applicant.id} className={getRowClassName(applicant)}>
+                                <td>{applicant.applicant_email}</td>
+                                <td>{applicant.applicant_state}</td>
+                                <td>
+                                    {applicant.applicant_state === 'pending' && (
+                                        <div className="button-container">
+                                            <button className="btn btn-success" onClick={() => handleAccept(applicant.id)}>Aceptar</button>
+                                            <button className="btn btn-danger" onClick={() => handleReject(applicant.id)}>Rechazar</button>
+                                        </div>
+                                    )}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <hr />
+                <div className="text-center">
+                    <Link to={`/opportunities/${id}`} className='btn btn-primary'>Atras</Link>
+                </div>
+                <div className='text-center mt-4'>
+                    <p>Talent Switch</p>
+                </div>
             </div>
-            <div className='text'>Talent Switch</div>
-        </div>
         </section>
     );
 }

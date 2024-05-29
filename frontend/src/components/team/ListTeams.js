@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
-import './../../styles/Team.css'; // css
+import { Link, useNavigate } from 'react-router-dom'; 
+import './../../styles/bootstrap.min.css'; 
 
 function ListTeams() {
     const [teams, setTeams] = useState([]);
-
-    //Validación de Sesión
     const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
 
-    // Revisar si hay sesión al cargar el componente
     useEffect(() => {
         axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
           .then(response => {
-            setUser(response.data);
+            // setUser(response.data); // Si necesitas el usuario en algún momento
           })
           .catch(error => {
             console.error("¡Hubo un error al obtener los datos del usuario!", error);
@@ -41,47 +35,46 @@ function ListTeams() {
     }
 
     return (
-        <div className="List-Teams">
-            <h2>Lista de Equipos</h2>
-            {teams.length === 0 ? (
-                <div>
-                    <br />
-                    <p>No hay Equipos de Trabajo creados aún</p>
-                </div>
-            ) : (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre del equipo</th>
-                        <th>Area del equipo</th>
-                        <th>Fecha inicio</th>
-                        <th>Fecha final</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {teams.map(team => (
-                        <tr key={team.team_id}>
-                            <td>{team.team_name}</td>
-                            <td>{team.team_area}</td>
-                            <td>{formatDate(team.start_date)}</td>
-                            <td>{formatDate(team.final_date)}</td>
-                            {/* <td>{formatDate(team.start_date)}</td>
-                            <td>{formatDate(team.final_date)}</td> */}
-                            <td>
-                                <Link to={`/teams/${team.team_id}`} className="button-O">Ver equipo</Link>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            )}
-            <hr />
-            <div>
-                <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
+        <section className="container mt-5 mb-5 text-white">
+            <div className="mb-4 text-center">
+                <h2 className="text-white">Lista de equipos</h2>          
             </div>
-            <div className='text'>Talent Switch</div>
-        </div>
+            <div className="table-wrapper">
+                <table className="table table-striped">
+                    <thead className="thead-dark">
+                        <tr>
+                            <th scope="col" className="text-white">Nombre del equipo</th>
+                            <th scope="col" className="text-white">Área del equipo</th>
+                            <th scope="col" className="text-white">Fecha inicio</th>
+                            <th scope="col" className="text-white">Fecha final</th>
+                            <th scope="col" className="text-white"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {teams.map(team => (
+                            <tr key={team.team_id}>
+                                <td className="text-white">{team.team_name}</td>
+                                <td className="text-white">{team.team_area}</td>
+                                <td className="text-white">{formatDate(team.start_date)}</td>
+                                <td className="text-white">{formatDate(team.final_date)}</td>
+                                <td>
+                                    <Link to={`/teams/${team.team_id}`} className="btn btn-primary">
+                                        Ver equipo
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div className="d-flex justify-content-between">
+                <Link to="/home" className="btn btn-secondary">Atrás</Link>        
+            </div>
+            <div className="text-center mt-4">
+                <small className="text-white">Talent Switch</small>
+            </div>
+        </section>
     );
 }
 

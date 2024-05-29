@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Importamos Link para manejar la navegación
 import axios from 'axios';
-import './../../styles/Opportunity.css'; // css
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import './../../styles/bootstrap.min.css';
+import './../../styles/Opportunity.css';
 
 function ListOpportunities() {
-    const [opportunities, setOpportunities] = useState([]);
-
-    //Validación de Sesión
+    const { id } = useParams(); // Obtener el ID de la oportunidad de los parámetros de la URL
     const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
+    const [opportunities, setOpportunities] = useState([]);
+    const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
 
     // Revisar si hay sesión al cargar el componente
@@ -71,8 +70,6 @@ function ListOpportunities() {
                             <td>{opportunity.opportunity_area}</td>
                             <td>{formatDate(opportunity.start_date)}</td>
                             <td>{formatDate(opportunity.final_date)}</td>
-                            {/* <td>{formatDate(opportunity.start_date)}</td>
-                            <td>{formatDate(opportunity.final_date)}</td> */}
                             <td>{opportunity.opportunity_state}</td>
                             <td>
                                 <Link to={`/opportunities/${opportunity.opportunity_id}`} className="button-O">Ver oportunidad</Link>

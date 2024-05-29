@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Team.css'; //css
+import './../../styles/bootstrap.min.css'; // css
 
 function TeamDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
     const [team, setTeam] = useState(null);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     // Estado para los valores del formulario
     const [values, setValues] = useState({
         team_id: '',
         member_email: '',
-    })
+    });
 
-    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [user, setUser] = useState({ userName: '', email: '', userType: '' });
 
@@ -36,8 +36,8 @@ function TeamDetail() {
 
     // Función para manejar cambios en los inputs del formulario
     const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: event.target.value}))
-    }
+        setValues(prev => ({...prev, [event.target.name]: event.target.value}));
+    };
 
     useEffect(() => {
         axios.get(`http://localhost:8081/teams/${id}`)
@@ -53,15 +53,15 @@ function TeamDetail() {
 
     if (error) {
         return (
-            <section className="team-detail error">
-                <p style={{ color: '#000' }}>{error}</p>
+            <section className="container mt-5 mb-5 text-white">
+                <p style={{ color: '#fff' }}>{error}</p>
             </section>
         );
     }
 
     if (!team) {
         return (
-            <section className="team-detail">
+            <section className="container mt-5 mb-5 text-white">
                 <p>Loading...</p>
             </section>
         );
@@ -110,55 +110,55 @@ function TeamDetail() {
     }
 
     return (
-        <section>
-            <div className="team-header">
+        <section className="container mt-5 mb-5 text-white">
+            <div className="text-center mb-4">
                 <h2>{team.team_name}</h2>
             </div>
-            <div className="team-details">
-                <p><strong>Correo del Lider:</strong> {team.team_leader_email}</p>
-                <p><strong>Area del equipo:</strong> {team.team_area}</p>
+            <div className="mb-3">
+                <p><strong>Correo del Líder:</strong> {team.team_leader_email}</p>
+                <p><strong>Área del equipo:</strong> {team.team_area}</p>
                 <p><strong>Descripción:</strong> {team.description}</p>
                 <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
                 <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p>
-                <p><strong>Inicio de fecha:</strong> {formatDate(team.start_date)}</p>
-                <p><strong>Final de fecha:</strong> {formatDate(team.final_date)}</p>
             </div>
-            <hr/>
-            <div>
-                {/* Mostrar el formulario y el botón de aplicar solo para empleados */}
-                {user.userType === 'leader' && (
-                <div>
-                    <form action='' onSubmit={handleSubmit}>
-                        <input type="hidden" name="team_id" value={id} />
-                        <div className='member-email'>
-                            <label htmlFor='member_email'><strong>Correo de miembros</strong></label>
-                            <input type="email" placeholder='Ingresa el correo' name='member_email'
-                            onChange={handleInput} className={'form-control rounded-0' + (errors.member_email ? ' is-invalid' : '')} />
-                            {errors.member_email && <span className='text-danger'> {errors.member_email}</span>}
-                        </div>
-                        <div>
-                            <button type='submit' className='buttonTdetails'>Agregar nuevo miembro</button>
-                            <hr />
-                            <br />
-                        </div>
-                    </form>
-                </div>
+            <hr />
+            {/* Mostrar el formulario y el botón de aplicar solo para empleados */}
+            {user.userType === 'leader' && (
+                <form onSubmit={handleSubmit}>
+                    <input type="hidden" name="team_id" value={id} />
+                    <div className="mb-3">
+                        <label htmlFor="member_email" className="form-label"><strong>Correo de miembros</strong></label>
+                        <input
+                            type="email"
+                            placeholder="Ingresa el correo de un nuevo miembro"
+                            name="member_email"
+                            onChange={handleInput}
+                            className={`form-control rounded-0${errors.member_email ? ' is-invalid' : ''}`}
+                        />
+                        {errors.member_email && <span className="text-danger"> {errors.member_email}</span>}
+                    </div>
+                    <button type="submit" className="btn btn-primary mb-3">Agregar nuevo miembro</button>
+                </form>
+            )}
+            <hr />
+            <div className="mb-3 text-center">
+                <Link to={`/teams/${id}/list-members`} className="btn btn-primary">Ver miembros</Link>
+            </div>
+            <div className="text-center">
+                {/* Botón de retroceso */}
+                {user.userType === 'employee' && (
+                    <Link to="/list-my-teams" className="btn btn-secondary">Atrás</Link>
                 )}
-                <div>
-                    <Link to={`/teams/${id}/list-members`} className='buttonTmembers'>Ver miembros</Link>
-                    <hr />
-                </div>
-                <div>
-                    {user.userType === 'employee' && (
-                        <Link to="/list-my-teams" className="buttonTeamC1">Atrás</Link>
-                    )}
-                    {user.userType === 'leader' && (
-                        <Link to="/list-teams" className="buttonTeamC1">Atrás</Link>
-                    )}
-                </div>
+                {user.userType === 'leader' && (
+                    <Link to="/list-teams" className="btn btn-secondary">Atrás</Link>
+                )}
             </div>
-            <div className='text'>Talent Switch</div>
-
+            <div className="text-center mt-4">
+                <p>Aún no se discierne la información de ambos perfiles, se hará próximamente.</p>
+            </div>
+            <div className="text-center mt-4">
+                <small className="text-white">Talent Switch</small>
+            </div>
         </section>
     );
 }

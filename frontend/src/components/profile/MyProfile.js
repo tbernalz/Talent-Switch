@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Perfil.css'; // css
-import './../../styles/PerfilU.css'; // css
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../../styles/Perfil.css'; // Importar estilos CSS personalizados
+import './../../styles/PerfilU.css'; // Importar estilos CSS personalizados
 
 function MyProfile() {
     const navigate = useNavigate();
-    const [user, setUser] = useState({ name: '', email: '', actual_area: '', interest_area: '', skills: '', user_type: '' });
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        actual_area: '',
+        interest_area: '',
+        skills: '',
+        user_type: ''
+    });
 
     useEffect(() => {
         // Verificar la sesión antes de obtener los datos del usuario
@@ -30,53 +38,47 @@ function MyProfile() {
     }, [navigate]);
 
     return (
-        <section>
-            <h2>Mi perfil</h2>
-
-            <div className='Update-Name'>
-                    <label htmlFor='name'><strong>Nombre</strong></label>
-                    <input type="text" value={user.name} readOnly
-                    name='name' className={`form-control rounded-0`} />
+        <section className="container mt-5 mb-5 profile-container">
+            <div className="text-center mb-4 mt-3 pt-3">
+                <h2>Mi perfil</h2>
             </div>
-
-            <div className='Update-Email'>
-                <label htmlFor='email'><strong>Correo</strong></label>
-                <input type="email" value={user.email} readOnly
-                name='name' className={`form-control rounded-0`} />
+            <div className="row">
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="name" className="form-label"><strong>Nombre</strong></label>
+                    <input type="text" className="form-control" id="name" value={user.name} readOnly />
+                </div>
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="email" className="form-label"><strong>Correo</strong></label>
+                    <input type="email" className="form-control" id="email" value={user.email} readOnly />
+                </div>
             </div>
-
-            <div className='Update-ActualArea'>
-                <label htmlFor='actual_area'><strong>Área actual</strong></label>
-                <input type="text" value={user.actual_area} readOnly
-                name='name' className={`form-control rounded-0`} />
+            <div className="row">
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="actual_area" className="form-label"><strong>Área actual</strong></label>
+                    <input type="text" className="form-control" id="actual_area" value={user.actual_area} readOnly />
+                </div>
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="interest_areas" className="form-label"><strong>Áreas de interés</strong></label>
+                    <input type="text" className="form-control" id="interest_areas" value={user.interest_area} readOnly />
+                </div>
             </div>
-
-            <div className='Interest-Update-InterestArea'>
-                <label htmlFor='interest_areas'><strong>Áreas de interés</strong></label>
-                <input type="text" value={user.interest_area} readOnly
-                name='name' className={`form-control rounded-0`} />
+            <div className="row">
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="skills" className="form-label"><strong>Habilidades</strong></label>
+                    <input type="text" className="form-control" id="skills" value={user.skills} readOnly />
+                </div>
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="user_type" className="form-label"><strong>Tipo de usuario</strong></label>
+                    <input type="text" className="form-control" id="user_type" value={user.user_type} readOnly />
+                </div>
             </div>
-
-            <div className='Update-Skills'>
-                <label htmlFor='skills'><strong>Habilidades</strong></label>
-                <input type="text" value={user.skills} readOnly
-                name='name' className={`form-control rounded-0`} />
+            <div className="d-flex justify-content-between mt-4">
+                <Link to="/update-profile" className="btn btn-primary me-3">Actualizar información</Link>
+                <Link to="/home" className="btn btn-secondary">Atrás</Link>
             </div>
-
-            <div className='Update-UserType'>
-                <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
-                <input type="text" value={user.user_type} readOnly
-                name='name' className={`form-control rounded-0`} />
+            <div className="text-center mt-4">
+                <small className="text-muted">Talent Switch</small>
             </div>
-
-            <div>
-                <hr />
-                <Link to="/update-profile" className='buttonP'>Actualizar Información</Link>
-            </div>
-            <div>
-                <Link to="/home" className='buttonP1'>Atrás</Link>
-            </div>
-            <div className='text'>Talent Switch</div>
         </section>
     );
 }

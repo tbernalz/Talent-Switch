@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Postulation.css'; // Importa tus estilos CSS personalizados
+import './../../styles/bootstrap.min.css'; // Importamos los estilos de Bootstrap
+import './../../styles/Postulation.css'; // Importamos los estilos personalizados
 
 function PostulationDetail() {
     const { id } = useParams(); // Recupera el ID de la URL
     const [postulation, setPostulation] = useState(null);
     const [error, setError] = useState(null);
-
-    //Validación de Sesión
     const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
     const [user, setUser] = useState({ userName: '', email: '', userType: '' });
 
     // Revisar si hay sesión al cargar el componente
@@ -58,7 +55,7 @@ function PostulationDetail() {
     }
 
     return (
-        <section>
+        <section className="container mt-5 mb-5 text-white">
             <div className="postulation-header">
                 <h2>{postulation.postulant_name}</h2>
             </div>
