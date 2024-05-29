@@ -1,30 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Team.css'; //css
+import { Link, useParams } from 'react-router-dom';
+import './../../styles/bootstrap.min.css'; 
 
 function ListMembers() {
     const { id } = useParams(); // team_id
     const [members, setMembers] = useState([]);
     const [error, setError] = useState(null);
-
-    //Validación de Sesión
-    const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
-
-    // Revisar si hay sesión al cargar el componente
-    useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
-    }, [navigate]);
 
     const handleEvaluate = async (member) => {
         try {
@@ -73,41 +55,45 @@ function ListMembers() {
 
     if (error) {
         return (
-            <section className="team-detail error">
-                <p style={{ color: '#000' }}>{error}</p>
+            <section className="container mt-5">
+                <div className="alert alert-danger" role="alert">
+                    {error}
+                </div>
             </section>
         );
     }
 
     return (
-        <section>
-            <div className="ListaMiembros">
-                <div className='memberList'>
-                    <h2>Lista de miembros de equipo {id}</h2>
-                </div>
-                <table>
-                    <thead>
-                        <tr className='Barra'>
-                            <th>Correo del miembro</th>
-                            <th>Evaluaciones del miembro</th>
+        <section className="container mt-5 mb-5">
+            <div className="mb-4 text-center">
+                <h2 style={{ color: 'white' }}>Lista de miembros de equipo {id}</h2>
+            </div>
+            <table className="table table-striped">
+                <thead className="thead-dark">
+                    <tr>
+                        <th scope="col" style={{ color: 'white' }}>Correo del miembro</th>
+                        <th scope="col" style={{ color: 'white' }}>Evaluaciones del miembro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {members.map(member => (
+                        <tr key={member.id}>
+                            <td style={{ color: 'white' }}>{member.member_email}</td>
+                            <td>
+                                <button onClick={() => handleEvaluate(member)} className="btn btn-primary">
+                                    Evaluar
+                                </button>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {members.map(member => (
-                            <tr key={member.id}>
-                                <td>{member.member_email}</td>
-                                <td>
-                                    <button onClick={() => handleEvaluate(member)} className="buttonTmembers">Evaluar</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <hr />
-                <div>
-                    <Link to={`/teams/${id}`} className='buttonTeamC1'>Atrás</Link>
-                </div>
-                <div className='text'>Talent Switch</div>
+                    ))}
+                </tbody>
+            </table>
+            <hr />
+            <div className="d-flex justify-content-between">
+                <Link to={`/teams/${id}`} className="btn btn-secondary">Atrás</Link>
+            </div>
+            <div className="text-center mt-4">
+                <small className="text-muted">Talent Switch</small>
             </div>
         </section>
     );

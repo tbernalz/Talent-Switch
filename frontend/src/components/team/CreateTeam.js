@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../../utils/validations/CreateTeamValidation';
 import axios from 'axios';
-import './../../styles/Team.css'; // css
+import './../../styles/bootstrap.min.css';
 
-function CreateOpportunity() {
+function CreateTeam() {
     const [values, setValues] = useState({
         team_name: '',
         team_leader_email: '',
@@ -12,31 +12,10 @@ function CreateOpportunity() {
         description: '',
         start_date: '',
         final_date: ''
-    })
+    });
 
     const navigate = useNavigate();
-    const [user, setUser] = useState(null);
-    const [errors, setErrors] = useState({})
-
-    //Validación de Sesión
-    useEffect(() => {
-        axios.get('http://localhost:8081/checkSession', { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-            if (response.data.user_type !== 'leader') {
-                alert('Solo los líderes pueden crear Equipos de Trabajo.');
-                navigate('/home');
-            }
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/');
-          });
-      }, [navigate]);
-
-    if (!user) {
-        return null; // O un mensaje de carga si lo prefieres
-    }
+    const [errors, setErrors] = useState({});
 
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
@@ -62,67 +41,59 @@ function CreateOpportunity() {
         }
     };
 
-
-  return (
-    <section>
-        <form  action='' onSubmit={handleSubmit}>
-            <div className='createProject'>
-                <h2>Crear proyecto de equipo</h2>
-            </div>
-            <div className='Team-Name'>
-                <label htmlFor='team_name'><strong>Nombre del equipo</strong></label>
-                <input type="text" placeholder='Ingrese el nombre del equipo' name='team_name'
-                onChange={handleInput} className='form-control rounded-0' />
-                {errors.team_name && <span className='text-danger'> {errors.team_name}</span>}
-            </div>
-
-            <div className='Team-Email'>
-                {/* Pensar cambiar por no mostrar */}
-                <label htmlFor='team_leader_email'><strong>Correo del lider de equipo</strong></label>
-                <input type="text" placeholder='Ingrese el correo del lider' name='team_leader_email'
-                onChange={handleInput} className='form-control rounded-0' />
-                {errors.team_leader_email && <span className='text-danger'> {errors.team_leader_email}</span>}
-            </div>
-
-            <div className='Team-Area'>
-                <label htmlFor='team_area'><strong>Area del equipo</strong></label>
-                <input type="text" placeholder='Ingrese el area del equipo' name='team_area'
-                onChange={handleInput} className='form-control rounded-0' />
-                {errors.team_area && <span className='text-danger'> {errors.team_area}</span>}
-            </div>
-
-            <div className='Team-Description'>
-                <label htmlFor='description'><strong>Descripción</strong></label>
-                <input type="text" placeholder='Ingrese la descripción' name='description'
-                onChange={handleInput} className='form-control rounded-0' />
-                {errors.description && <span className='text-danger'> {errors.description}</span>}
-            </div>
-
-            <div className='Team-Start'>
-                <label htmlFor='start_date'><strong>Fecha de inicio</strong></label>
-                <input type="date" name="start_date" onChange={handleInput} className='form-control rounded-0' />
-                {errors.start_date && <span className='text-danger'> {errors.start_date}</span>}
-            </div>
-
-            <div className='Team-End'>
-                <label htmlFor='final_date'><strong>Fecha final</strong></label>
-                <input type="date" name="final_date" onChange={handleInput} className='form-control rounded-0' />
-                {errors.final_date && <span className='text-danger'> {errors.final_date}</span>}
-            </div>
-
-            <div> 
-                <button type='submit' className='buttonTeamC'>Crear</button>    
-            </div>
-            <div>
-                <hr/>
-                <div>
-                    <Link to="/home" className='buttonTeamC1'>Atrás</Link>        
+    return (
+        <section className="container mt-5 mb-5">
+            <form onSubmit={handleSubmit}>
+                <div className="mb-4 text-center">
+                    <h2>Crear proyecto de equipo</h2>
                 </div>
+
+                <div className="mb-3">
+                    <label htmlFor="team_name" className="form-label"><strong>Nombre del equipo</strong></label>
+                    <input type="text" placeholder="Ingrese el nombre del equipo" name="team_name" onChange={handleInput} className="form-control rounded-0" />
+                    {errors.team_name && <span className="text-danger"> {errors.team_name}</span>}
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="team_leader_email" className="form-label"><strong>Correo del líder de equipo</strong></label>
+                    <input type="email" placeholder="Ingrese el correo del líder" name="team_leader_email" onChange={handleInput} className="form-control rounded-0" />
+                    {errors.team_leader_email && <span className="text-danger"> {errors.team_leader_email}</span>}
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="team_area" className="form-label"><strong>Área del equipo</strong></label>
+                    <input type="text" placeholder="Ingrese el área del equipo" name="team_area" onChange={handleInput} className="form-control rounded-0" />
+                    {errors.team_area && <span className="text-danger"> {errors.team_area}</span>}
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="description" className="form-label"><strong>Descripción</strong></label>
+                    <input type="text" placeholder="Ingrese la descripción" name="description" onChange={handleInput} className="form-control rounded-0" />
+                    {errors.description && <span className="text-danger"> {errors.description}</span>}
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="start_date" className="form-label"><strong>Fecha de inicio</strong></label>
+                    <input type="date" name="start_date" onChange={handleInput} className="form-control rounded-0" />
+                    {errors.start_date && <span className="text-danger"> {errors.start_date}</span>}
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="final_date" className="form-label"><strong>Fecha final</strong></label>
+                    <input type="date" name="final_date" onChange={handleInput} className="form-control rounded-0" />
+                    {errors.final_date && <span className="text-danger"> {errors.final_date}</span>}
+                </div>
+
+                <div className="d-flex justify-content-center gap-2 mb-3">
+                    <button type="submit" className="btn btn-primary px-4">Crear</button>
+                    <Link to="/home" className="btn btn-secondary px-4">Atrás</Link>
+                </div>
+            </form>
+            <div className="text-center mt-4">
+                <small className="text-muted">Talent Switch</small>
             </div>
-        </form>
-        <div className='text'>Talent Switch</div>
-    </section>
-  );
+        </section>
+    );
 }
 
-export default CreateOpportunity;
+export default CreateTeam;

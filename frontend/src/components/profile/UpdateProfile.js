@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/PerfilU.css'; // css
+import './../../styles/bootstrap.min.css';
 
 function UpdateProfile() {
     const [userData, setUserData] = useState({
@@ -12,24 +12,6 @@ function UpdateProfile() {
         skills: '',
         user_type: ''
     });
-
-    //Validación de Sesión
-    const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
-
-    // Revisar si hay sesión al cargar el componente
-    useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
-    }, [navigate]);
 
     const handleInput = (event) => {
         setUserData(prev => ({ ...prev, [event.target.name]: event.target.value }));
@@ -47,44 +29,40 @@ function UpdateProfile() {
     }
 
     return (
-        <section>
-            <div className='h2Update'>
+        <section className="container mt-5">
+            <div className="text-center mb-4 mt-5 pt-5">
                 <h2>Actualizar información</h2>
             </div>
             <form onSubmit={handleSubmit}>
-                <div className='Name'>
-                    <label htmlFor='name'><strong>Nombre</strong></label>
-                    <input type="text" name="name" value={userData.name} onChange={handleInput} />
+                <div className="mb-3">
+                    <label htmlFor="name" className="form-label"><strong>Nombre</strong></label>
+                    <input type="text" className="form-control" name="name" value={userData.name} onChange={handleInput} />
                 </div>
-                <div className='Email'>
-                    <label htmlFor='email'><strong>Correo</strong></label>
-                    <input type="email" name="email" value={userData.email} onChange={handleInput} />
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label"><strong>Correo</strong></label>
+                    <input type="email" className="form-control" name="email" value={userData.email} onChange={handleInput} />
                 </div>
-                <div className='Actual-area'>
-                    <label htmlFor='actual_area'><strong>Area actual</strong></label>
-                    <input type="text" name="actual_area" value={userData.actual_area} onChange={handleInput} />
+                <div className="mb-3">
+                    <label htmlFor="actual_area" className="form-label"><strong>Area actual</strong></label>
+                    <input type="text" className="form-control" name="actual_area" value={userData.actual_area} onChange={handleInput} />
                 </div>
-                <div className='Interest-Area'>
-                    <label htmlFor='interest_areas'><strong>Areas de interes</strong></label>
-                    <input type="text" name="interest_area" value={userData.interest_area} onChange={handleInput} />
+                <div className="mb-3">
+                    <label htmlFor="interest_area" className="form-label"><strong>Areas de interes</strong></label>
+                    <input type="text" className="form-control" name="interest_area" value={userData.interest_area} onChange={handleInput} />
                 </div>
-                <div className='Skills'>
-                    <label htmlFor='skills'><strong>Habilidades</strong></label>
-                    <input type="text" name="skills" value={userData.skills} onChange={handleInput} />
+                <div className="mb-3">
+                    <label htmlFor="skills" className="form-label"><strong>Habilidades</strong></label>
+                    <input type="text" className="form-control" name="skills" value={userData.skills} onChange={handleInput} />
                 </div>
-                <div className='User-Type'>
-                <label htmlFor='user_type'><strong>Tipo de usuario</strong></label>
-                <input type="text" value={userData.user_type} readOnly /></div>
-                <div>
-                    <button type='submit' className='buttonP'>Guardar</button>
-                    <button type='submit' className='buttonP'>Guardar</button>
+                <div className="mb-3">
+                    <label htmlFor="user_type" className="form-label"><strong>Tipo de usuario</strong></label>
+                    <input type="text" className="form-control" name="user_type" value={userData.user_type} readOnly />
                 </div>
-
-                    <div>
-                        <Link to="/my-profile" className='buttonP1'>Atrás</Link>
-                    </div>
-
-                <div className='text'>Talent Switch</div>
+                <div className="d-flex justify-content-between">
+                    <button type="submit" className="btn btn-primary">Guardar</button>
+                    <Link to="/my-profile" className="btn btn-secondary">Atrás</Link>
+                </div>
+                <div className="text-center mt-4">Talent Switch</div>
             </form>
         </section>
     );

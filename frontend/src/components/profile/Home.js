@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Navbar, Nav, Container } from 'react-bootstrap'; 
 import styles from './../../styles/bootstrap.min.css';
 
+
 function Home() {
   const [user, setUser] = useState({ userName: '', userType: '' });
   const navigate = useNavigate();

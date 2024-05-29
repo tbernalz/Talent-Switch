@@ -1,30 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/Postulation.css'; // Importa tus estilos CSS personalizados
+import './../../styles/bootstrap.min.css';
 
 function PostulationDetail() {
-    const { id } = useParams(); // Recupera el ID de la URL
+    const { id } = useParams();
     const [postulation, setPostulation] = useState(null);
     const [error, setError] = useState(null);
-
-    //Validación de Sesión
-    const navigate = useNavigate();
-    
-    // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null);
-
-    // Revisar si hay sesión al cargar el componente
-    useEffect(() => {
-        axios.get(`http://localhost:8081/checkSession`, { withCredentials: true })
-          .then(response => {
-            setUser(response.data);
-          })
-          .catch(error => {
-            console.error("There was an error fetching the user data!", error);
-            navigate('/'); // Redirige a la página de inicio si no hay sesión
-          });
-    }, [navigate]);
 
     useEffect(() => {
         axios.get(`http://localhost:8081/postulations/${id}`)
@@ -33,28 +15,38 @@ function PostulationDetail() {
             })
             .catch(err => {
                 console.log(err);
-                setError("Postulant not Found"); // Establece el mensaje de error en caso de falla
+                setError("Postulant not Found");
             });
     }, [id]);
 
     if (error) {
         return (
-            <section className="postulation-detail error">
-                <p style={{ color: '#000' }}>{error}</p>
+            <section className="container mt-5 mb-5 text-white">
+                <div className="postulation-detail error">
+                    <p>{error}</p>
+                </div>
+                <div className='text-center mt-4'>
+                    <p>Talent Switch</p>
+                </div>
             </section>
         );
     }
 
     if (!postulation) {
         return (
-            <section className="postulation-detail">
-                <p>Loading...</p>
+            <section className="container mt-5 mb-5 text-white">
+                <div className="postulation-detail">
+                    <p>Loading...</p>
+                </div>
+                <div className='text-center mt-4'>
+                    <p>Talent Switch</p>
+                </div>
             </section>
         );
     }
 
     return (
-        <section>
+        <section className="container mt-5 mb-5 text-white">
             <div className="postulation-header">
                 <h2>{postulation.postulant_name}</h2>
             </div>
@@ -66,10 +58,12 @@ function PostulationDetail() {
                 <p><strong>Postulant State:</strong> {postulation.postulation_state}</p>
             </div>
             <hr />
-            <div>
-                <Link to="/list-postulations" className="buttonPostulation3">Atras</Link>        
+            <div className='d-flex justify-content-center'>
+                <Link to="/list-postulations" className="btn btn-secondary">Atrás</Link>        
             </div>
-            <div className='text'>Talent Switch</div>
+            <div className='text-center mt-4'>
+                <p>Talent Switch</p>
+            </div>
         </section>
     );
 }

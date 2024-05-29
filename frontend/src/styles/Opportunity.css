@@ -525,3 +525,9 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
     background-color: transparent;
 }
+
+.table-wrapper {
+    max-height: 400px; /* Altura máxima de la tabla */
+    overflow-y: auto; /* Agregar desplazamiento vertical */
+    margin-bottom: 20px; /* Espacio inferior */
+}
