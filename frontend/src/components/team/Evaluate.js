@@ -114,8 +114,7 @@ function Evaluate() {
         <section className="container mt-5 mb-5 text-white">
             <div className="text-center mb-4">
                 <h3>Evaluacion</h3>
-                <h5>{member_email}</h5>
-                <h5>{user.name}</h5>                
+                <h5>{member_email}</h5>                
                 {/* <p>ID: {id}</p> */}
                 {/* <p>User ID: {user_id}</p> */}
             </div>
